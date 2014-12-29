@@ -1,0 +1,22 @@
+{
+  "name": "slir",
+  "version": "0.0.0",
+  "authors": [
+    "ideadapt <kunz@ideadapt.net>"
+  ],
+  "description": "SLIR",
+  "license": "GPL",
+  "homepage": "www.digiges.ch",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "observe-js": "~0.4.2"
+  }
+}
