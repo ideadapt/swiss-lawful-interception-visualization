@@ -9,6 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/nvd3/src/nv.d3.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -56,25 +57,9 @@
           <td data-art-aktiv>123</td>
         </tr>
       </table>
-
     </div>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/observe-js/src/observe.js"></script>
-    <script src="bower_components/es6-promise/promise.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/nvd3/nv.d3.js"></script>
-    <script src="bower_components/papaparse/papaparse.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/data/data.js"></script>
-    <script src="scripts/course/course.js"></script>
-    <script src="scripts/map/map.js"></script>
+    <script src="scripts/vendor.js"></script>
     <script src="scripts/main.js"></script>
-    <!-- endbuild -->
 </body>
 </html>

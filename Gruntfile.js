@@ -36,7 +36,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint'],
+        tasks: ['jshint', 'concat', 'browserify'],
         options: {
           livereload: true
         }
@@ -190,16 +190,16 @@ module.exports = function (grunt) {
     },
 
     // Automatically inject Bower components into the HTML file
-    wiredep: {
+    /*wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
         src: ['<%= config.app %>/index.html']
       },
       sass: {
-        src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        ignorePath: /(\.\.\/){1,2}bower_components\//
+        *///src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+        /*ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    },
+    },*/
 
     // Renames files for browser caching purposes
     rev: {
@@ -219,15 +219,15 @@ module.exports = function (grunt) {
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
-    useminPrepare: {
+    /*useminPrepare: {
       options: {
         dest: '<%= config.dist %>'
       },
       html: '<%= config.app %>/index.html'
-    },
+    },*/
 
     // Performs rewrites based on rev and the useminPrepare configuration
-    usemin: {
+    /*usemin: {
       options: {
         assetsDirs: [
           '<%= config.dist %>',
@@ -235,9 +235,11 @@ module.exports = function (grunt) {
           '<%= config.dist %>/styles'
         ]
       },
-      html: ['<%= config.dist %>/{,*/}*.html'],
-      css: ['<%= config.dist %>/styles/{,*/}*.css']
+      *///html: ['<%= config.dist %>/{,*/}*.html'],/*
+      //css: ['<%= config.dist %>/styles/{,*/}*.css']
+      /*
     },
+    */
 
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
@@ -287,28 +289,52 @@ module.exports = function (grunt) {
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
     // wish to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= config.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css',
-    //         '<%= config.app %>/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= config.dist %>/scripts/scripts.js': [
-    //         '<%= config.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= config.dist %>/styles/main.css': [
+            '.tmp/styles/{,*/}*.css',
+            '<%= config.app %>/styles/{,*/}*.css'
+          ]
+        }
+      }
+    },
+    uglify: {
+      dist: {
+        files: [{
+          '.tmp/scripts/vendor.js': [
+            '.tmp/scripts/vendor.js',
+          ]
+        },
+        {
+          '.tmp/scripts/main.js': [
+            '.tmp/scripts/main.js',
+          ]
+        }]
+      }
+    },
+    concat: {
+      dist: {
+        files: [{
+          '.tmp/scripts/vendor.js': [
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/observe-js/src/observe.js',
+            'bower_components/d3/d3.js',
+            'bower_components/nvd3/nv.d3.js',
+            'bower_components/papaparse/papaparse.js',
+            'bower_components/es6-promise/promise.js'
+          ]
+        },
+        {
+          '.tmp/scripts/main.js': [
+            '<%= config.app %>/scripts/data/data.js',
+            '<%= config.app %>/scripts/course/course.js',
+            '<%= config.app %>/scripts/map/map.js',
+            '<%= config.app %>/scripts/main.js'
+          ]
+        }]
+      }
+    },
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -327,6 +353,12 @@ module.exports = function (grunt) {
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
+        }, {
+          src: '.tmp/scripts/main.js',
+          dest: '<%= config.dist %>/scripts/main.js'
+        }, {
+          src: '.tmp/scripts/vendor.js',
+          dest: '<%= config.dist %>/scripts/vendor.js'
         }]
       },
       styles: {
@@ -342,7 +374,9 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server',
-        'copy:styles'
+        'copy:styles',
+        'concat',
+        'browserify'
       ],
       test: [
         'copy:styles'
@@ -353,6 +387,17 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    browserify: {
+      dev: {
+        src: ['.tmp/scripts/main.js'],
+        dest: '.tmp/scripts/main.js',
+        options: {
+          debug: true,
+          external: ['jquery']
+        }
+      }
     }
   });
 
@@ -367,7 +412,6 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -397,16 +441,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
-    'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'cssmin',
+    'browserify',
     'uglify',
+    'cssmin',
     'copy:dist',
-    'rev',
-    'usemin',
     'htmlmin'
   ]);
 
