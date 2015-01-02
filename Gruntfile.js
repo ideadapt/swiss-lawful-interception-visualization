@@ -267,6 +267,11 @@ module.exports = function (grunt) {
             '<%= config.app %>/scripts/map/map.js',
             '<%= config.app %>/scripts/main.js'
           ]
+        },
+        {
+          '.tmp/styles/vendor.css': [
+            'bower_components/nvd3/nv.d3.css',
+          ]
         }]
       }
     },
@@ -295,6 +300,9 @@ module.exports = function (grunt) {
         }, {
           src: '.tmp/scripts/vendor.js',
           dest: '<%= config.dist %>/scripts/vendor.js'
+        }, {
+          src: '.tmp/styles/vendor.css',
+          dest: '<%= config.dist %>/styles/vendor.css'
         }]
       },
       styles: {
