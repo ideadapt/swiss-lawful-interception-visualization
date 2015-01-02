@@ -1,8 +1,9 @@
 (function(){
 	function Filter(){
 		var self = this;
+		var data = require('sliv-data');
 		this.init = function init(){
-			window.data.all().then(function(){
+			data.all().then(function(){
 				// get all years
 				self.years = ['2012'];
 			});

@@ -6,7 +6,8 @@ $(window).load(function(){
 	};
 
 	this.controller = function controller(){
-		window.data.all().then(function (data){
+		var data = require('sliv-data');
+		data.all().then(function (data){
 			console.log('got data from service', data);
 
 			nv.addGraph(function() {

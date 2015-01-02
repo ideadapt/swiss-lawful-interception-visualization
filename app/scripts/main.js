@@ -1,7 +1,9 @@
 /*global PathObserver*/
 $(document).ready(function(){
 	require('es6-promise').polyfill();
-	window.data.init();
+	var data = require('sliv-data');
+	data.init();
+	require('sliv-filter');
 });
 $(window).load(function(){
 	// require map
