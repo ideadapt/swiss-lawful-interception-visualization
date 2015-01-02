@@ -30,10 +30,6 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bower: {
-        files: ['bower.json'],
-        tasks: ['wiredep']
-      },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
         tasks: ['jshint', 'concat', 'browserify'],
@@ -157,18 +153,22 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
+          cwd: '<%= config.app %>',
+          src: [
+            'styles/main.scss'
+            ],
+          dest: '<%= config.dist %>',
           ext: '.css'
         }]
       },
       server: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
+          cwd: '<%= config.app %>',
+          src: [
+            'styles/main.scss'
+            ],
+          dest: '.tmp',
           ext: '.css'
         }]
       }
@@ -188,58 +188,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-
-    // Automatically inject Bower components into the HTML file
-    /*wiredep: {
-      app: {
-        ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/index.html']
-      },
-      sass: {
-        *///src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        /*ignorePath: /(\.\.\/){1,2}bower_components\//
-      }
-    },*/
-
-    // Renames files for browser caching purposes
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css',
-            '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/styles/fonts/{,*/}*.*',
-            '<%= config.dist %>/*.{ico,png}'
-          ]
-        }
-      }
-    },
-
-    // Reads HTML for usemin blocks to enable smart builds that automatically
-    // concat, minify and revision files. Creates configurations in memory so
-    // additional tasks can operate on them
-    /*useminPrepare: {
-      options: {
-        dest: '<%= config.dist %>'
-      },
-      html: '<%= config.app %>/index.html'
-    },*/
-
-    // Performs rewrites based on rev and the useminPrepare configuration
-    /*usemin: {
-      options: {
-        assetsDirs: [
-          '<%= config.dist %>',
-          '<%= config.dist %>/images',
-          '<%= config.dist %>/styles'
-        ]
-      },
-      *///html: ['<%= config.dist %>/{,*/}*.html'],/*
-      //css: ['<%= config.dist %>/styles/{,*/}*.css']
-      /*
-    },
-    */
 
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
@@ -286,19 +234,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // By default, your `index.html`'s <!-- Usemin block --> will take care
-    // of minification. These next options are pre-configured if you do not
-    // wish to use the Usemin blocks.
-    cssmin: {
-      dist: {
-        files: {
-          '<%= config.dist %>/styles/main.css': [
-            '.tmp/styles/{,*/}*.css',
-            '<%= config.app %>/styles/{,*/}*.css'
-          ]
-        }
-      }
-    },
     uglify: {
       dist: {
         files: [{
@@ -321,8 +256,8 @@ module.exports = function (grunt) {
             'bower_components/observe-js/src/observe.js',
             'bower_components/d3/d3.js',
             'bower_components/nvd3/nv.d3.js',
-            'bower_components/papaparse/papaparse.js',
-            'bower_components/es6-promise/promise.js'
+            'bower_components/papaparse/papaparse.js'
+            //'bower_components/es6-promise/promise.js' // required
           ]
         },
         {
@@ -348,7 +283,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'data/*.csv'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
@@ -374,15 +310,13 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server',
-        'copy:styles',
-        'concat',
-        'browserify'
+        'copy:styles'
       ],
       test: [
         'copy:styles'
       ],
       dist: [
-        'sass',
+        'sass:dist',
         'copy:styles',
         'imagemin',
         'svgmin'
@@ -401,7 +335,6 @@ module.exports = function (grunt) {
     }
   });
 
-
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
@@ -414,6 +347,8 @@ module.exports = function (grunt) {
       'clean:server',
       'concurrent:server',
       'autoprefixer',
+      'concat',
+      'browserify',
       'connect:livereload',
       'watch'
     ]);
@@ -441,12 +376,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'concurrent:dist',
+    'concurrent',
     'autoprefixer',
     'concat',
     'browserify',
     'uglify',
-    'cssmin',
     'copy:dist',
     'htmlmin'
   ]);

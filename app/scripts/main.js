@@ -1,6 +1,6 @@
-/*global PathObserver, ES6Promise*/
+/*global PathObserver*/
 $(document).ready(function(){
-	ES6Promise.polyfill();
+	require('es6-promise').polyfill();
 	window.data.init();
 });
 $(window).load(function(){
