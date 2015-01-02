@@ -3,7 +3,8 @@ $(document).ready(function(){
 	require('es6-promise').polyfill();
 	var data = require('sliv-data');
 	data.init();
-	require('sliv-filter');
+	var Filter = require('sliv-filter');
+	new Filter(data);
 });
 $(window).load(function(){
 	// require map

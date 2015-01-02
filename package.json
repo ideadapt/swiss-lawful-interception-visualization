@@ -26,7 +26,8 @@
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.4.0",
-    "browserify-shim": "~3.2.0"
+    "browserify-shim": "~3.2.0",
+    "jadeify": "~4.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -41,6 +42,9 @@
     "jquery": "$"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim",
+      ["jadeify", { "compileDebug": true, "pretty": true }]
+    ]
   }
 }
