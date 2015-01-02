@@ -4,18 +4,19 @@ $(window).load(function(){
 		selected: null
 	};
 
-	var svgContainer = document.getElementById('svgMap');
-	var svg = svgContainer.contentDocument;
+	this.controller = function controller(){
+		var svgContainer = document.getElementById('svgMap');
+		var svg = svgContainer.contentDocument;
+		var cantons = svg.querySelectorAll('#Cantons_default>path');
 
-	var cantons = svg.querySelectorAll('#Cantons_default>path');
-
-	function cantonClicked(){
-		self.interface.selected = this.id;
-	}
-
-	for(var i = 0; i<cantons.length;i++){
-		cantons[i].addEventListener('click', cantonClicked, false);
-	}
+		function cantonClicked(){
+			self.interface.selected = this.id;
+		}
+		for(var i = 0; i<cantons.length;i++){
+			cantons[i].addEventListener('click', cantonClicked, false);
+		}
+	};
 
 	window.map = this.interface;
+	this.controller();
 });

@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>slir</title>
+    <title>SLIV</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -20,20 +20,59 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <h1>SLIR 2015</h1>
+    <h1>SLIV 2015</h1>
+    <div id="year">
+      <svg></svg>
+    </div>
+    <div id="year-legend">
+      <h2>Jahreszahlen</h2>
+      <dl>
+        <dt>Aktiv</dt>
+        <dd>lorem ipsuene elijv svlneoin vo I enelinei.</dd>
+      </dl>
+    </div>
+    <hr/>
+
     <div id="map">
       <object id="svgMap" type="image/svg+xml" data="scripts/map/ch-divisions.svg"></object>
     </div>
+    <div id="filter">
+      <ul>
+        <li><a href="">2010</a></li>
+        <li><a href="">2011</a></li>
+        <li><a href="">2012</a></li>
+      </ul>
+      <ul>
+        <li><a href="">AG</a></li>
+        <li><a href="">GR</a></li>
+      </ul>
+    </div>
+    <hr>
 
+    <div id="art">
+      <table>
+        <tr>
+          <th>Aktiv</th>
+          <td data-art-aktiv>123</td>
+        </tr>
+      </table>
+
+    </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/observe-js/src/observe.js"></script>
+    <script src="bower_components/es6-promise/promise.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/nv.d3.js"></script>
+    <script src="bower_components/papaparse/papaparse.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/data/data.js"></script>
+    <script src="scripts/course/course.js"></script>
     <script src="scripts/map/map.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->

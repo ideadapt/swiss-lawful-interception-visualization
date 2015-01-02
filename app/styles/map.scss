@@ -1,3 +1,4 @@
 #map{
-	width: 60%;
+	@include container;
+	width: 300px;
 }

@@ -7,4 +7,23 @@ body {
   color: #333;
 }
 
+@mixin container{
+	float: left;
+	display: inline;
+	width: 50%;
+}
+
+#year{
+	@include container;
+}
+#year-legend{
+	@include container;
+}
+hr{
+	clear: both;
+}
+#filter{
+	@include container;
+}
+
 @import "map";

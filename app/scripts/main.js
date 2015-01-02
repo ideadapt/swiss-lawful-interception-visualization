@@ -1,4 +1,8 @@
-/*global PathObserver*/
+/*global PathObserver, ES6Promise*/
+$(document).ready(function(){
+	ES6Promise.polyfill();
+	window.data.init();
+});
 $(window).load(function(){
 	// require map
 

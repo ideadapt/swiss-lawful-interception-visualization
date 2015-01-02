@@ -17,6 +17,9 @@
   ],
   "dependencies": {
     "jquery": "~1.11.1",
-    "observe-js": "~0.4.2"
+    "observe-js": "~0.4.2",
+    "nvd3": "~1.1.15",
+    "papaparse": "4.0.7",
+    "es6-promise": "~2.0.0"
   }
 }
