@@ -10,17 +10,15 @@ body {
 	width: 50%;
 }
 
-#year{
+#course{
 	@include container;
 }
-#year-legend{
+#course-legend{
 	@include container;
 }
 hr{
 	clear: both;
 }
-#filter{
-	@include container;
-}
 
 @import "map";
+@import "filter";

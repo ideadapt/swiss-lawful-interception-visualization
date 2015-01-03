@@ -1,5 +1,4 @@
-/*global PathObserver*/
-function Art(data, filter){
+function Art(data, filter, CompoundObserver){
 	var self = this;
 	self.activ = null;
 
@@ -8,10 +7,18 @@ function Art(data, filter){
 	}
 
 	function controller(){
-		var yearObserver = new PathObserver(filter, 'year');
-		yearObserver.open(function(newYear){
-			data.activ(newYear).then(function(activ){
+		var observer = new CompoundObserver();
+		observer.addPath(filter, 'year');
+		observer.addPath(filter, 'canton');
+		observer.open(function(newValues){
+
+			var activPromise = data.activ(newValues[0], newValues[1]).then(function(activ){
 				self.activ = activ;
+			});
+			var vorratsdatenPromise = data.vorratsdaten(newValues[0], newValues[1]).then(function(vorratsdaten){
+				self.vorratsdaten = vorratsdaten;
+			});
+			Promise.all([activPromise, vorratsdatenPromise]).then(function(){
 				render.call(self);
 			});
 		});
@@ -19,8 +26,8 @@ function Art(data, filter){
 
 	function render(){
 		var template = require('./art.jade');
-		var html = template({activ: self.activ});
-		$('#art').prepend(html);
+		var html = template({activ: self.activ, vorratsdaten: self.vorratsdaten});
+		$('#art').html(html);
 		return Promise.resolve();
 	}
 

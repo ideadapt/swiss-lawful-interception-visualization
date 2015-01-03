@@ -1,3 +1,4 @@
+/*global CompoundObserver*/
 $(document).ready(function(){
 	require('es6-promise').polyfill();
 	var data = require('sliv-data');
@@ -7,5 +8,5 @@ $(document).ready(function(){
 	var filter = new Filter(data);
 
 	var Art = require('sliv-art');
-	new Art(data, filter);
+	new Art(data, filter, CompoundObserver);
 });

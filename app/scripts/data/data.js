@@ -17,14 +17,14 @@ function Data(){
 				var superc = row[0];
 				var sub = row[1];
 				var year= row[2];
-				row.splice(0, 2);
+				row.splice(0, 3);
 				row.map(function(val, i){
 					flat.push({
 						'super': superc,
 						'sub': sub,
 						'canton': cantons[i],
 						'value': +val,
-						'year': year
+						'year': +year
 					});
 				});
 			});
@@ -33,6 +33,22 @@ function Data(){
 	};
 }
 
+function unique(e, i, arr) {
+    return arr.lastIndexOf(e) === i;
+}
+var fakeCantons = ['CH', 'BA'];
+function byYear(year, e){
+	if(year){
+		return e.year === year;
+	}
+	return true;
+}
+function byCanton(canton, e){
+	if(canton){
+		return e.canton === canton;
+	}
+	return true;
+}
 // public interface
 Data.prototype.all = function all(){
 	return this.transformed;
@@ -42,20 +58,52 @@ Data.prototype.activ = function(year, canton){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
 			return r.sub === 'aktiv' && r.super === 'typ';
-		}).filter(function(r){
-			if(year){
-				return r.year === year;
-			}
-			return true;
-		}).filter(function(r){
-			if(canton){
-				return r.canton === canton;
-			}
-			return true;
-		}).reduce(function(a, b){
+		})
+		.filter(byYear.bind(null, year))
+		.filter(byCanton.bind(null, canton))
+		.reduce(function(a, b){
 			return a += b.value;
 		}, 0);
 	});
+};
+
+Data.prototype.vorratsdaten = function(year, canton){
+	return this.transformed.then(function(transformed){
+		return transformed.filter(function(r){
+			return r.sub === 'vds' && r.super === 'typ';
+		})
+		.filter(byYear.bind(null, year))
+		.filter(byCanton.bind(null, canton))
+		.reduce(function(a, b){
+			return a += b.value;
+		}, 0);
+	});
+};
+
+Data.prototype.cantons = function(){
+	return this.transformed.then(function(transformed){
+		return transformed.filter(function(r){
+			return fakeCantons.indexOf(r.canton) === -1;
+		}).map(function(r){
+			return r.canton;
+		})
+		.filter(unique)
+		.sort();
+	});
+};
+
+Data.prototype.years = function(){
+	return this.transformed.then(function(transformed){
+		return transformed.map(function(r){
+			return r.year;
+		})
+		.filter(unique)
+		.sort();
+	});
+};
+
+Data.prototype.fakeCantons = function(){
+	return Promise.resolve(fakeCantons);
 };
 
 var data = new Data();

@@ -1,31 +1,52 @@
 
 function Filter(data){
 	var self = this;
-
-	function unique(arr){
-		return arr.filter(function (e, i, arr) {
-		    return arr.lastIndexOf(e) === i;
-		});
-	}
+	self.year = null;
+	self.canton = null;
 
 	function init(){
-		return data.all().then(function(data){
+		var years = data.years().then(function(years){
 			// get a set of years
-			var years = unique(data.map(function(d){return d.year;})).sort();
 			self.years = years;
+			self.year = Math.max(years);
 		});
+		var cantons = data.cantons().then(function(cantons){
+			self.cantons = cantons;
+		});
+		var fakeCantons = data.fakeCantons().then(function(fakeCantons){
+			self.fakeCantons = fakeCantons;
+			self.canton = fakeCantons[0]; // CH
+		});
+
+		return Promise.all([cantons, years, fakeCantons]);
 	}
 
 	function controller(){
-		$('#filter').on('click', 'li', function yearFilterClicked(e){
+		$('#filter years').on('click', 'li', function yearFilterClicked(e){
 			self.year = e.target.value;
+			renderYears.call(self);
+		});
+		$('#filter cantons').on('click', 'li', function cantonFilterClicked(e){
+			self.canton = e.target.value;
+			renderCantons.call(self);
 		});
 	}
 
+	function renderYears(){
+		var template = require('./filterYears.jade');
+		var html = template({years: this.years, year: self.year});
+		$('#filter>years').html(html);
+	}
+
+	function renderCantons(){
+		var template = require('./filterCantons.jade');
+		var html = template({cantons: this.cantons, fakeCantons: this.fakeCantons, canton: self.canton});
+		$('#filter>cantons').html(html);
+	}
+
 	function render(){
-		var template = require('./filter.jade');
-		var html = template({years: this.years});
-		$('#filter').prepend(html);
+		renderYears.call(this);
+		renderCantons.call(this);
 		return Promise.resolve();
 	}
 

@@ -20,7 +20,7 @@ $(window).load(function(){
 			    chart.multibar.stacked(true); // default to stacked
 			    chart.showControls(false); // don't show controls
 
-			    d3.select('#year>svg').datum([{
+			    d3.select('#course>svg').datum([{
 			    	key: 'Aktiv',
 			    	values: [
 			    		{

@@ -47,7 +47,7 @@
 
 		#Cantons_default > path:hover{
 			fill: rgba(138, 198, 121, 0.9);
-			transition: fill 0.5s 0.2s;
+			transition: fill 0.5s 0.1s;
 		}
 
 	</style>

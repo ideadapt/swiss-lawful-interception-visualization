@@ -1,0 +1,24 @@
+
+#filter{
+	@include container;
+	years, cantons{
+		display: block;
+		clear: both;
+	}
+	ul {
+		li{
+			list-style-type: none;
+			float: left;
+			padding-left: 1rem;
+
+			button{
+				border: 1px solid black;
+				background-color: rgba(102,140,217, 0.5);
+				border-radius: 2px;
+				&:hover, &.active{
+					background-color: rgb(102, 140, 217);
+				}
+			}
+		}
+	}
+}
