@@ -52,6 +52,13 @@ module.exports = function (grunt) {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
+      templates: {
+        files: ['<%= config.app %>/scripts/{,*/}*.jade'],
+        tasks: ['concat', 'browserify'],
+        options: {
+          livereload: true
+        }
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'

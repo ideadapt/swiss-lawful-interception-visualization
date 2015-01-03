@@ -23,7 +23,7 @@ function Data(){
 						'super': superc,
 						'sub': sub,
 						'canton': cantons[i],
-						'value': val,
+						'value': +val,
 						'year': year
 					});
 				});
@@ -36,6 +36,26 @@ function Data(){
 // public interface
 Data.prototype.all = function all(){
 	return this.transformed;
+};
+
+Data.prototype.activ = function(year, canton){
+	return this.transformed.then(function(transformed){
+		return transformed.filter(function(r){
+			return r.sub === 'aktiv' && r.super === 'typ';
+		}).filter(function(r){
+			if(year){
+				return r.year === year;
+			}
+			return true;
+		}).filter(function(r){
+			if(canton){
+				return r.canton === canton;
+			}
+			return true;
+		}).reduce(function(a, b){
+			return a += b.value;
+		}, 0);
+	});
 };
 
 var data = new Data();

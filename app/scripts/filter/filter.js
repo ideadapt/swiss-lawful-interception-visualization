@@ -17,8 +17,8 @@ function Filter(data){
 	}
 
 	function controller(){
-		$('#filter').on('click', 'li', function yearFilterClicked(){
-			console.log('yearFilterClicked', arguments);
+		$('#filter').on('click', 'li', function yearFilterClicked(e){
+			self.year = e.target.value;
 		});
 	}
 
@@ -34,7 +34,7 @@ function Filter(data){
 		.then(controller.bind(this));
 }
 
-Filter.prototype.years = function years(){
-	return this.years;
+Filter.prototype.year = function year(){
+	return this.year;
 };
 module.exports = Filter;
