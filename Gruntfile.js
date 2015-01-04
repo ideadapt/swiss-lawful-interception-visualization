@@ -48,6 +48,10 @@ module.exports = function (grunt) {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['sass:server', 'autoprefixer']
       },
+      less: {
+        files: ['<%= config.app %>/styles/{,*/}*.less'],
+        tasks: ['less:server', 'concat:vendor', 'autoprefixer']
+      },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -181,6 +185,19 @@ module.exports = function (grunt) {
       }
     },
 
+    less: {
+      server: {
+        files: {
+          '.tmp/styles/bootstrap.css': '<%= config.app %>/styles/bootstrap.less'
+        }
+      },
+      dist: {
+        files: {
+          '.tmp/styles/bootstrap.css': '<%= config.app %>/styles/bootstrap.less'
+        }
+      }
+    },
+
     // Add vendor prefixed styles
     autoprefixer: {
       options: {
@@ -255,8 +272,9 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     concat: {
-      dist: {
+      js: {
         files: [{
           '.tmp/scripts/vendor.js': [
             'bower_components/jquery/dist/jquery.js',
@@ -274,10 +292,13 @@ module.exports = function (grunt) {
             '<%= config.app %>/scripts/map/map.js',
             '<%= config.app %>/scripts/main.js'
           ]
-        },
-        {
+        }]
+      },
+      vendor:{
+        files:[{
           '.tmp/styles/vendor.css': [
-            'bower_components/nvd3/nv.d3.css',
+            '.tmp/styles/bootstrap.css',
+            'bower_components/nvd3/nv.d3.css'
           ]
         }]
       }
@@ -325,6 +346,7 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server',
+        'less:server',
         'copy:styles'
       ],
       test: [
@@ -332,6 +354,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'sass:dist',
+        'less:dist',
         'copy:styles',
         'imagemin',
         'svgmin'
@@ -345,6 +368,15 @@ module.exports = function (grunt) {
         options: {
           debug: true,
           external: ['jquery']
+        }
+      }
+    },
+    customizeBootstrap: {
+      dev: {
+        options: {
+          bootstrapPath: 'node_modules/bootstrap',
+          src: 'app/styles/bootstrap/',
+          dest: 'app/styles/'
         }
       }
     }
