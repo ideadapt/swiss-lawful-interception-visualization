@@ -22,11 +22,11 @@ function Filter(data){
 	}
 
 	function controller(){
-		$('#filter years').on('click', 'li', function yearFilterClicked(e){
+		$('#filter years').on('click', 'button', function yearFilterClicked(e){
 			self.year = e.target.value;
 			renderYears.call(self);
 		});
-		$('#filter cantons').on('click', 'li', function cantonFilterClicked(e){
+		$('#filter cantons').on('click', 'button', function cantonFilterClicked(e){
 			self.canton = e.target.value;
 			renderCantons.call(self);
 		});

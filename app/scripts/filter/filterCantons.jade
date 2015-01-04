@@ -1,8 +1,6 @@
 
-ul
+.btn-group
 	each aCanton in cantons
-		li
-			button(value=aCanton, class={active: aCanton==canton})=aCanton
+		button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default')=aCanton
 	each aFakeCanton in fakeCantons
-		li
-			button(value=aFakeCanton, class={active: aFakeCanton==canton}, class='fake')=aFakeCanton
+		button(value=aFakeCanton, class={active: aFakeCanton==canton}, class='fake btn btn-default')=aFakeCanton

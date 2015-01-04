@@ -4,17 +4,12 @@ body {
   color: #333;
 }
 
-@mixin container{
-	float: left;
-	display: inline;
-	width: 50%;
-}
 
 #course{
-	@include container;
+
 }
 #course-legend{
-	@include container;
+
 }
 hr{
 	clear: both;

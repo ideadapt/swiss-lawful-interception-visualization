@@ -1,5 +1,4 @@
 
-ul
+.btn-group
 	each aYear in years
-		li
-			button(value=aYear, class={active: aYear==year}, class='btn-primary')=aYear
+		button(value=aYear, class={active: aYear==year}, class='btn btn-default')=aYear
