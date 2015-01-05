@@ -1,0 +1,23 @@
+body {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333; }
+
+hr {
+  clear: both; }
+
+#map {
+  max-width: 300px; }
+
+#filter years, #filter cantons {
+  display: block;
+  clear: both; }
+#filter cantons > .btn-group {
+  display: block;
+  clear: both; }
+#filter .btn-group > .btn {
+  font-family: monospace;
+  margin-bottom: 1rem; }
+  #filter .btn-group > .btn.focus {
+    outline: none;
+    transition: background-color 0.5s 0.1s; }

@@ -1,6 +1,6 @@
 {
-  "name": "SLIV",
-  "dependencies": {
+  "name": "slir",
+  "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "bootstrap": "^3.3.1",
     "browserify-shim": "~3.2.0",
@@ -30,14 +30,13 @@
     "jadeify": "~4.0.0",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.4.0",
-    "harp": "*",
-    "bower": "*",
-    "grunt-cli": "*"
+    "time-grunt": "^0.4.0"
+  },
+  "dependencies":{
+    "harp": "*"
   },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": "^2.1.0"
+    "node": ">=0.10.0"
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
@@ -64,6 +63,6 @@
   "scripts": {
     "start": "node server.js",
     "test": "grunt test",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "bower install && grunt build"
   }
 }
