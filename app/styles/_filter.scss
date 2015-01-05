@@ -4,11 +4,16 @@
 		display: block;
 		clear: both;
 	}
-	ul {
-		li{
-			list-style-type: none;
-			float: left;
-			padding-left: 1rem;
+	cantons>.btn-group{
+		display: block;
+		clear: both;
+	}
+	.btn-group>.btn{
+		font-family: monospace;
+		margin-bottom: 1rem;
+		&.focus{
+			outline: none;
+			transition: background-color 0.5s 0.1s;
 		}
 	}
 }

@@ -12,8 +12,16 @@ $(window).load(function(){
 		function cantonClicked(){
 			self.interface.selected = this.id;
 		}
+		function cantonEnter(){
+			$('#filter cantons .btn[value='+this.id+']').addClass('focus');
+		}
+		function cantonLeave(){
+			$('#filter cantons .btn[value='+this.id+']').removeClass('focus');
+		}
 		for(var i = 0; i<cantons.length;i++){
 			cantons[i].addEventListener('click', cantonClicked, false);
+			cantons[i].addEventListener('mouseenter', cantonEnter, false);
+			cantons[i].addEventListener('mouseleave', cantonLeave, false);
 		}
 	};
 
