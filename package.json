@@ -1,5 +1,5 @@
 {
-  "name": "slir",
+  "name": "SLIV",
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "bootstrap": "^3.3.1",
@@ -62,7 +62,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "grunt test",
-    "postinstall": "bower install && grunt build"
+    "test": "grunt test"
   }
 }
