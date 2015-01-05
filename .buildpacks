@@ -1,3 +1,3 @@
-https://github.com/zeke/harp-buildpack.git
 https://github.com/heroku/heroku-buildpack-nodejs.git#fae41898
+https://github.com/zeke/harp-buildpack.git
 https://github.com/heroku/heroku-buildpack-ruby.git
