@@ -18,7 +18,10 @@ function Art(dataDivisions, filter, CompoundObserver){
 			var vorratsdatenPromise = dataDivisions.vorratsdaten(newValues[0], newValues[1]).then(function(vorratsdaten){
 				self.vorratsdaten = vorratsdaten;
 			});
-			Promise.all([activPromise, vorratsdatenPromise]).then(function(){
+			var telefonbuchPromise = dataDivisions.telefonbuch(newValues[0], newValues[1]).then(function(telefonbuch){
+				self.telefonbuch = telefonbuch;
+			});
+			Promise.all([activPromise, vorratsdatenPromise, telefonbuchPromise]).then(function(){
 				render.call(self);
 			});
 		});
@@ -26,7 +29,7 @@ function Art(dataDivisions, filter, CompoundObserver){
 
 	function render(){
 		var template = require('./art.jade');
-		var html = template({activ: self.activ, vorratsdaten: self.vorratsdaten});
+		var html = template({activ: self.activ, vorratsdaten: self.vorratsdaten, telefonbuch: self.telefonbuch});
 		$('#art').html(html);
 		return Promise.resolve();
 	}

@@ -49,10 +49,6 @@ function byCanton(canton, e){
 	}
 	return true;
 }
-// public interface
-DataDivisions.prototype.all = function all(){
-	return this.transformed;
-};
 
 DataDivisions.prototype.activ = function(year, canton){
 	return this.transformed.then(function(transformed){
@@ -71,6 +67,19 @@ DataDivisions.prototype.vorratsdaten = function(year, canton){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
 			return r.sub === 'vds' && r.super === 'typ';
+		})
+		.filter(byYear.bind(null, year))
+		.filter(byCanton.bind(null, canton))
+		.reduce(function(a, b){
+			return a += b.value;
+		}, 0);
+	});
+};
+
+DataDivisions.prototype.telefonbuch = function(year, canton){
+	return this.transformed.then(function(transformed){
+		return transformed.filter(function(r){
+			return r.sub === 'telefon' && r.super === 'art';
 		})
 		.filter(byYear.bind(null, year))
 		.filter(byCanton.bind(null, canton))

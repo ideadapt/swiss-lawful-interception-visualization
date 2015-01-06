@@ -1,21 +1,21 @@
 
-function Filter(data, PathObserver, map){
+function Filter(dataDivisions, PathObserver, map){
 	var self = this;
 	self.year = null;
 	self.canton = null;
 	self.svgDoc = null;
 
 	function init(){
-		var years = data.years().then(function(years){
+		var years = dataDivisions.years().then(function(years){
 			// get a set of years
 			self.years = years;
-			self.year = Math.max(years);
+			self.year = Math.max.apply(null, years);
 		});
-		var cantons = data.cantons().then(function(cantons){
+		var cantons = dataDivisions.cantons().then(function(cantons){
 			self.cantons1 = cantons.slice(0, 13);
 			self.cantons2 = cantons.slice(13);
 		});
-		var fakeCantons = data.fakeCantons().then(function(fakeCantons){
+		var fakeCantons = dataDivisions.fakeCantons().then(function(fakeCantons){
 			self.fakeCantons = fakeCantons;
 			self.canton = fakeCantons[0]; // CH
 		});
@@ -32,7 +32,7 @@ function Filter(data, PathObserver, map){
 
 	function controller(){
 		$('#filter years').on('click', 'button', function yearFilterClicked(e){
-			self.year = e.target.value;
+			self.year = +e.target.value;
 			renderYears.call(self);
 		});
 		$('#filter cantons').on('click', 'button', function cantonFilterClicked(e){

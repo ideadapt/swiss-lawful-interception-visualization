@@ -38,11 +38,6 @@ function unique(e, i, arr) {
 }
 var fakeCantons = ['CH', 'BA'];
 
-// public interface
-DataSummary.prototype.all = function all(){
-	return this.transformed;
-};
-
 DataSummary.prototype.activ = function(){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){

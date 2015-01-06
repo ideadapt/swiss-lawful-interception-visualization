@@ -11,20 +11,12 @@ function Course(dataSummary){
 		    chart.showControls(false); // don't show controls
 		    chart.height(300);
 
-		    var valuesActiv = dataSummary.activ().then(function(data){
-		    	return data;
-		    });
-		    var valuesVds = dataSummary.vorratsdaten().then(function(data){
-		    	return data;
-		    });
-		    var valuesTech = dataSummary.tech().then(function(data){
-		    	return data;
-		    });
-		    var valuesTel = dataSummary.tel().then(function(data){
-		    	return data;
-		    });
+		    Promise.all([dataSummary.activ(),
+		    	dataSummary.vorratsdaten(),
+		    	dataSummary.tech(),
+		    	dataSummary.tel()
+		    	]).then(function(resolved){
 
-		    Promise.all([valuesActiv, valuesVds, valuesTech, valuesTel]).then(function(resolved){
 		    	var activ = resolved[0];
 		    	var vds = resolved[1];
 		    	var tech = resolved[2];
@@ -63,10 +55,6 @@ function Course(dataSummary){
 		    //chart.yAxis.tickFormat(d3.format(',.1f'));
 
 		    nv.utils.windowResize(chart.update);
-
-		    chart.multibar.dispatch.on('elementClick', function click(){
-		    	//console.log('selected year', obj.point.x);
-		    });
 
 		    return chart;
 		});
