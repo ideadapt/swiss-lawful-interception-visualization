@@ -1,4 +1,4 @@
-function Art(data, filter, CompoundObserver){
+function Art(dataDivisions, filter, CompoundObserver){
 	var self = this;
 	self.activ = null;
 
@@ -12,10 +12,10 @@ function Art(data, filter, CompoundObserver){
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
 
-			var activPromise = data.activ(newValues[0], newValues[1]).then(function(activ){
+			var activPromise = dataDivisions.activ(newValues[0], newValues[1]).then(function(activ){
 				self.activ = activ;
 			});
-			var vorratsdatenPromise = data.vorratsdaten(newValues[0], newValues[1]).then(function(vorratsdaten){
+			var vorratsdatenPromise = dataDivisions.vorratsdaten(newValues[0], newValues[1]).then(function(vorratsdaten){
 				self.vorratsdaten = vorratsdaten;
 			});
 			Promise.all([activPromise, vorratsdatenPromise]).then(function(){

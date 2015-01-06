@@ -7,6 +7,11 @@
 #
 # https://httpd.apache.org/docs/current/howto/htaccess.html.
 
+AuthType Basic
+AuthName "SLIV"
+AuthUserFile ./.htpasswd
+Require valid-user
+
 # ######################################################################
 # # CROSS-ORIGIN                                                       #
 # ######################################################################

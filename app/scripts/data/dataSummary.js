@@ -1,12 +1,12 @@
 /*global Papa*/
 
-function Data(){
+function DataSummary(){
 	var self = this;
 	self.transformed = null;
 
 	this.init = function init(){
 		self.transformed = Promise.resolve($.ajax({
-			url: 'data/data.csv'
+			url: 'data/slirv_data_annualsummary.csv'
 		})).then(function transform(data){
 			var parsedCsv = Papa.parse(data);
 			parsedCsv.data[0].splice(0,3);
@@ -37,62 +37,45 @@ function unique(e, i, arr) {
     return arr.lastIndexOf(e) === i;
 }
 var fakeCantons = ['CH', 'BA'];
-function byYear(year, e){
-	if(year){
-		return e.year === year;
-	}
-	return true;
-}
-function byCanton(canton, e){
-	if(canton){
-		return e.canton === canton;
-	}
-	return true;
-}
+
 // public interface
-Data.prototype.all = function all(){
+DataSummary.prototype.all = function all(){
 	return this.transformed;
 };
 
-Data.prototype.activ = function(year, canton){
+DataSummary.prototype.activ = function(){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
 			return r.sub === 'aktiv' && r.super === 'typ';
-		})
-		.filter(byYear.bind(null, year))
-		.filter(byCanton.bind(null, canton))
-		.reduce(function(a, b){
-			return a += b.value;
-		}, 0);
+		});
 	});
 };
 
-Data.prototype.vorratsdaten = function(year, canton){
+DataSummary.prototype.vorratsdaten = function(){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
 			return r.sub === 'vds' && r.super === 'typ';
-		})
-		.filter(byYear.bind(null, year))
-		.filter(byCanton.bind(null, canton))
-		.reduce(function(a, b){
-			return a += b.value;
-		}, 0);
+		});
 	});
 };
 
-Data.prototype.cantons = function(){
+DataSummary.prototype.tech = function(){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
-			return fakeCantons.indexOf(r.canton) === -1;
-		}).map(function(r){
-			return r.canton;
-		})
-		.filter(unique)
-		.sort();
+			return r.sub === 'techadm' && r.super === 'typ';
+		});
 	});
 };
 
-Data.prototype.years = function(){
+DataSummary.prototype.tel = function(){
+	return this.transformed.then(function(transformed){
+		return transformed.filter(function(r){
+			return r.sub === 'telefonbuch' && r.super === 'typ';
+		});
+	});
+};
+
+DataSummary.prototype.years = function(){
 	return this.transformed.then(function(transformed){
 		return transformed.map(function(r){
 			return r.year;
@@ -102,9 +85,9 @@ Data.prototype.years = function(){
 	});
 };
 
-Data.prototype.fakeCantons = function(){
+DataSummary.prototype.fakeCantons = function(){
 	return Promise.resolve(fakeCantons);
 };
 
-var data = new Data();
+var data = new DataSummary();
 module.exports = data;

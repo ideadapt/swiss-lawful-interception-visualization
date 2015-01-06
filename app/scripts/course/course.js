@@ -1,62 +1,78 @@
 /*global nv, d3*/
-$(window).load(function(){
+function Course(dataSummary){
 	//var self = this;
-	this.interface = {
-		selected: null
-	};
 
-	this.controller = function controller(){
-		var data = require('sliv-data');
-		data.all().then(function (data){
-			console.log('got data from service', data);
+	function controller(){
+		//console.log('got data from service', data);
 
-			nv.addGraph(function() {
-			    var chart = nv.models.multiBarChart();
+		nv.addGraph(function() {
+		    var chart = nv.models.multiBarChart();
+		    chart.multibar.stacked(true); // default to stacked
+		    chart.showControls(false); // don't show controls
+		    chart.height(300);
 
-			    //chart.xAxis.tickFormat(d3.format(',f'));
+		    var valuesActiv = dataSummary.activ().then(function(data){
+		    	return data;
+		    });
+		    var valuesVds = dataSummary.vorratsdaten().then(function(data){
+		    	return data;
+		    });
+		    var valuesTech = dataSummary.tech().then(function(data){
+		    	return data;
+		    });
+		    var valuesTel = dataSummary.tel().then(function(data){
+		    	return data;
+		    });
 
-			    //chart.yAxis.tickFormat(d3.format(',.1f'));
-
-			    chart.multibar.stacked(true); // default to stacked
-			    chart.showControls(false); // don't show controls
-
+		    Promise.all([valuesActiv, valuesVds, valuesTech, valuesTel]).then(function(resolved){
+		    	var activ = resolved[0];
+		    	var vds = resolved[1];
+		    	var tech = resolved[2];
+		    	var tel = resolved[3];
 			    d3.select('#course>svg').datum([{
 			    	key: 'Aktiv',
-			    	values: [
-			    		{
-			    			x: '2012', y: 10
-			    		},
-			    		{
-			    			x: '2013', y: 30
-			    		}
-			    	]
+			    	values: activ.map(function(r){
+		    			return {x: r.year, y: r.value};
+		    		})
 			    },{
-			    	key: 'Passiv',
-			    	values: [
-			    		{
-			    			x: '2012', y: 6
-			    		},
-			    		{
-			    			x: '2013', y: 40
-			    		}
-			    	]
+			    	key: 'VDS',
+			    	values: vds.map(function(r){
+		    			return {x: r.year, y: r.value};
+		    		})
+			    },
+			    {
+			    	key: 'TechAdm',
+			    	values: tech.map(function(r){
+		    			return {x: r.year, y: r.value};
+		    		})
+			    },
+			    {
+			    	key: 'Tel',
+			    	values: tel.map(function(r){
+		    			//return {x: r.year, y: r.value};
+		    			return {x: r.year, y: 0}; // out of scale
+		    		})
 			    }
 			    ])
-			    	.transition()
-			    	.duration(250)
-			    	.call(chart);
+		    	.transition()
+		    	.duration(250)
+		    	.call(chart);
+		    });
 
-			    nv.utils.windowResize(chart.update);
+		    //chart.xAxis.tickFormat(d3.format(',f'));
+		    //chart.yAxis.tickFormat(d3.format(',.1f'));
 
-			    chart.multibar.dispatch.on('elementClick', function click(obj){
-			    	console.log('selected year', obj.point.x);
-			    });
+		    nv.utils.windowResize(chart.update);
 
-			    return chart;
-			});
+		    chart.multibar.dispatch.on('elementClick', function click(){
+		    	//console.log('selected year', obj.point.x);
+		    });
+
+		    return chart;
 		});
-	};
+	}
 
-	window.year = this.interface;
-	this.controller();
-});
+	controller.call(this);
+}
+
+module.exports = Course;

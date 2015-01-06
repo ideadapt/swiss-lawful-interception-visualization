@@ -1,5 +1,5 @@
 {
-  "name": "SLIV",
+  "name": "SLIRV",
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "bootstrap": "^3.3.1",
@@ -41,9 +41,12 @@
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
     "es6-promise": "./bower_components/es6-promise/promise.js",
-    "sliv-data": "./app/scripts/data/data.js",
+    "sliv-data-divisions": "./app/scripts/data/dataDivisions.js",
+    "sliv-data-summary": "./app/scripts/data/dataSummary.js",
     "sliv-filter": "./app/scripts/filter/filter.js",
-    "sliv-art": "./app/scripts/art/art.js"
+    "sliv-art": "./app/scripts/art/art.js",
+    "sliv-map": "./app/scripts/map/map.js",
+    "sliv-course": "./app/scripts/course/course.js"
   },
   "browserify-shim": {
     "jquery": "$"

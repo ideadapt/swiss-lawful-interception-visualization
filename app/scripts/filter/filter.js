@@ -1,5 +1,5 @@
 
-function Filter(data, PathObserver){
+function Filter(data, PathObserver, map){
 	var self = this;
 	self.year = null;
 	self.canton = null;
@@ -20,6 +20,9 @@ function Filter(data, PathObserver){
 			self.canton = fakeCantons[0]; // CH
 		});
 		var svg = document.getElementById('svgMap');
+		if(svg.contentDocument.readyState === 'complete'){
+			self.svgDoc = svg.contentDocument;
+		}
 		svg.addEventListener('load', function(){
 			self.svgDoc = svg.contentDocument;
 		});
@@ -49,7 +52,7 @@ function Filter(data, PathObserver){
 			var canton = e.target.value;
 			$(self.svgDoc).find('#'+canton).attr('class', '');
 		});
-		var selectedMapCanton = new PathObserver(window.map, 'selected');
+		var selectedMapCanton = new PathObserver(map, 'selected');
 		selectedMapCanton.open(function(newCanton){
 			self.canton = newCanton;
 			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
