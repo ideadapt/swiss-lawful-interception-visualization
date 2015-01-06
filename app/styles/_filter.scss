@@ -9,11 +9,17 @@
 		clear: both;
 	}
 	.btn-group>.btn{
-		font-family: monospace;
+		font-family: "Lucida Console", Monaco, monospace;
 		margin-bottom: 1rem;
 		&.focus{
 			outline: none;
 			transition: background-color 0.5s 0.1s;
 		}
+		// &.flag-gr{
+		// 	background-image: url(../images/flags/flag_gr.png);
+		// 	background-repeat: no-repeat;
+		// 	background-position: left center;
+		// 	background-size: 16px 16px;
+		// }
 	}
 }

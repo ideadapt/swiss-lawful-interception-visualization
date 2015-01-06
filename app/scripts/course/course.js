@@ -10,6 +10,7 @@ function Course(dataSummary){
 		    chart.multibar.stacked(true); // default to stacked
 		    chart.showControls(false); // don't show controls
 		    chart.height(300);
+		    chart.reduceXTicks(false);
 
 		    Promise.all([dataSummary.activ(),
 		    	dataSummary.vorratsdaten(),
@@ -52,7 +53,7 @@ function Course(dataSummary){
 		    });
 
 		    //chart.xAxis.tickFormat(d3.format(',f'));
-		    //chart.yAxis.tickFormat(d3.format(',.1f'));
+		    chart.yAxis.tickFormat(d3.format(''));
 
 		    nv.utils.windowResize(chart.update);
 

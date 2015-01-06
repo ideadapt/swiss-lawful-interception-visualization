@@ -3,8 +3,10 @@
 	each aFakeCanton in fakeCantons
 		button(value=aFakeCanton, class={active: aFakeCanton==canton}, class='fake btn btn-default')=aFakeCanton
 .btn-group
+	//- .btn-group-lg
 	each aCanton in cantons1
 		button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default')=aCanton
 .btn-group
+	//- .btn-group-lg
 	each aCanton in cantons2
 		button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default')=aCanton

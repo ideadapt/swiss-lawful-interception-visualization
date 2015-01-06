@@ -50,10 +50,10 @@ function byCanton(canton, e){
 	return true;
 }
 
-DataDivisions.prototype.activ = function(year, canton){
+function sumByYearCantonSuperSub(year, canton, _super, sub){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
-			return r.sub === 'aktiv' && r.super === 'typ';
+			return r.sub === sub && r.super === _super;
 		})
 		.filter(byYear.bind(null, year))
 		.filter(byCanton.bind(null, canton))
@@ -61,32 +61,30 @@ DataDivisions.prototype.activ = function(year, canton){
 			return a += b.value;
 		}, 0);
 	});
+}
+
+DataDivisions.prototype.activ = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'aktiv');
 };
 
 DataDivisions.prototype.vorratsdaten = function(year, canton){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
-			return r.sub === 'vds' && r.super === 'typ';
-		})
-		.filter(byYear.bind(null, year))
-		.filter(byCanton.bind(null, canton))
-		.reduce(function(a, b){
-			return a += b.value;
-		}, 0);
-	});
+	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'vds');
 };
 
 DataDivisions.prototype.telefonbuch = function(year, canton){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
-			return r.sub === 'telefon' && r.super === 'art';
-		})
-		.filter(byYear.bind(null, year))
-		.filter(byCanton.bind(null, canton))
-		.reduce(function(a, b){
-			return a += b.value;
-		}, 0);
-	});
+	return sumByYearCantonSuperSub.call(this, year, canton, 'art', 'telefon');
+};
+
+DataDivisions.prototype.terror = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'terror');
+};
+
+DataDivisions.prototype.paedo = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'paedo');
+};
+
+DataDivisions.prototype.krimorg = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'krimorg');
 };
 
 DataDivisions.prototype.cantons = function(){

@@ -17,4 +17,7 @@ $(document).ready(function(){
 
 	var Art = require('sliv-art');
 	new Art(dataDivisions, filter, CompoundObserver);
+
+	var Straftaten = require('sliv-straftaten');
+	new Straftaten(dataDivisions, filter, CompoundObserver);
 });

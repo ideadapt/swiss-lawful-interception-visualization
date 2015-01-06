@@ -45,6 +45,7 @@
     "sliv-data-summary": "./app/scripts/data/dataSummary.js",
     "sliv-filter": "./app/scripts/filter/filter.js",
     "sliv-art": "./app/scripts/art/art.js",
+    "sliv-straftaten": "./app/scripts/straftaten/straftaten.js",
     "sliv-map": "./app/scripts/map/map.js",
     "sliv-course": "./app/scripts/course/course.js"
   },

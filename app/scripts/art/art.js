@@ -12,16 +12,14 @@ function Art(dataDivisions, filter, CompoundObserver){
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
 
-			var activPromise = dataDivisions.activ(newValues[0], newValues[1]).then(function(activ){
-				self.activ = activ;
-			});
-			var vorratsdatenPromise = dataDivisions.vorratsdaten(newValues[0], newValues[1]).then(function(vorratsdaten){
-				self.vorratsdaten = vorratsdaten;
-			});
-			var telefonbuchPromise = dataDivisions.telefonbuch(newValues[0], newValues[1]).then(function(telefonbuch){
-				self.telefonbuch = telefonbuch;
-			});
-			Promise.all([activPromise, vorratsdatenPromise, telefonbuchPromise]).then(function(){
+			Promise.all([
+				dataDivisions.activ(newValues[0], newValues[1]),
+				dataDivisions.vorratsdaten(newValues[0], newValues[1]),
+				dataDivisions.telefonbuch(newValues[0], newValues[1])
+			]).then(function(resolved){
+				self.activ = resolved[0];
+				self.vorratsdaten = resolved[1];
+				self.telefonbuch = resolved[2];
 				render.call(self);
 			});
 		});
@@ -39,7 +37,4 @@ function Art(dataDivisions, filter, CompoundObserver){
 		.then(controller.bind(this));
 }
 
-Art.prototype.activ = function activ(){
-	return this.activ;
-};
 module.exports = Art;

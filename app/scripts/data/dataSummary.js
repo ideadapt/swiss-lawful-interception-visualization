@@ -38,36 +38,28 @@ function unique(e, i, arr) {
 }
 var fakeCantons = ['CH', 'BA'];
 
-DataSummary.prototype.activ = function(){
+function bySuperSub(_super, sub){
 	return this.transformed.then(function(transformed){
 		return transformed.filter(function(r){
-			return r.sub === 'aktiv' && r.super === 'typ';
+			return r.sub === sub && r.super === _super;
 		});
 	});
+}
+
+DataSummary.prototype.activ = function(){
+	return bySuperSub.call(this, 'typ', 'aktiv');
 };
 
 DataSummary.prototype.vorratsdaten = function(){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
-			return r.sub === 'vds' && r.super === 'typ';
-		});
-	});
+	return bySuperSub.call(this, 'typ', 'vds');
 };
 
 DataSummary.prototype.tech = function(){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
-			return r.sub === 'techadm' && r.super === 'typ';
-		});
-	});
+	return bySuperSub.call(this, 'typ', 'techadm');
 };
 
 DataSummary.prototype.tel = function(){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
-			return r.sub === 'telefonbuch' && r.super === 'typ';
-		});
-	});
+	return bySuperSub.call(this, 'typ', 'telefonbuch');
 };
 
 DataSummary.prototype.years = function(){
