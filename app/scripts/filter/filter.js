@@ -20,7 +20,9 @@ function Filter(data, PathObserver){
 			self.canton = fakeCantons[0]; // CH
 		});
 		var svg = document.getElementById('svgMap');
-		self.svgDoc = svg.contentDocument;
+		svg.addEventListener('load', function(){
+			self.svgDoc = svg.contentDocument;
+		});
 
 		return Promise.all([cantons, years, fakeCantons]);
 	}
