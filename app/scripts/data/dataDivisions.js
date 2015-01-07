@@ -57,8 +57,8 @@ function sumByYearCantonSuperSub(year, canton, _super, sub){
 		})
 		.filter(byYear.bind(null, year))
 		.filter(byCanton.bind(null, canton))
-		.reduce(function(a, b){
-			return a += b.value;
+		.reduce(function(sum, b){
+			return sum + b.value;
 		}, 0);
 	});
 }
@@ -83,8 +83,44 @@ DataDivisions.prototype.paedo = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'paedo');
 };
 
+DataDivisions.prototype.menschenhandel = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'menschenhandel');
+};
+
+DataDivisions.prototype.menschenhandelProzent = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'menschenhandel_prozent');
+};
+
+DataDivisions.prototype.nachrichtendienst = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'nachrichtendienst');
+};
+
+DataDivisions.prototype.nachrichtendienstProzent = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'nachrichtendienst_prozent');
+};
+
+DataDivisions.prototype.geldwaesche = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'geldwaesche');
+};
+
+DataDivisions.prototype.geldwaescheProzent = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'geldwaesche_prozent');
+};
+
 DataDivisions.prototype.krimorg = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'krimorg');
+};
+
+DataDivisions.prototype.terrorProzent = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'terror_prozent');
+};
+
+DataDivisions.prototype.paedoProzent = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'paedo_prozent');
+};
+
+DataDivisions.prototype.krimorgProzent = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'krimorg_prozent');
 };
 
 DataDivisions.prototype.cantons = function(){

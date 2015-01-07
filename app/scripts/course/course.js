@@ -40,10 +40,9 @@ function Course(dataSummary){
 		    		})
 			    },
 			    {
-			    	key: 'Tel',
+			    	key: 'Tel (x100)',
 			    	values: tel.map(function(r){
-		    			//return {x: r.year, y: r.value};
-		    			return {x: r.year, y: 0}; // out of scale
+		    			return {x: r.year, y: Math.floor(r.value/100)};
 		    		})
 			    }
 			    ])
