@@ -363,8 +363,8 @@ module.exports = function (grunt) {
 
     browserify: {
       dev: {
-        src: ['.tmp/scripts/main.js'],
-        dest: '.tmp/scripts/main.js',
+        src: ['./.tmp/scripts/main.js'],
+        dest: './.tmp/scripts/main.js',
         options: {
           debug: true,
           external: ['jquery']

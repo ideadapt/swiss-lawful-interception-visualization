@@ -1,10 +1,8 @@
 /*global nv, d3*/
-function Course(dataSummary){
+function Course(dataSummary, tooltipTemplate){
 	//var self = this;
 
 	function controller(){
-		//console.log('got data from service', data);
-	    var tooltipTemplate = require('./tooltip.jade');
 
 		nv.addGraph(function() {
 		    var chart = nv.models.multiBarChart();
@@ -31,6 +29,7 @@ function Course(dataSummary){
 			    	view.vds = tooltip[x].VDS;
 			    	view.techadm = tooltip[x].TechAdm;
 			    	view.tel = tooltip[x].Tel;
+			    	view.year = x;
 			    	console.log('view', view);
 			    	return tooltipTemplate(view);
 		       	});

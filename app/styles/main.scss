@@ -7,6 +7,23 @@ body {
 
 #course{
 	height: 300px;
+
+	.table.small{
+		width: 90%;
+		th, td{
+			padding: 2px;
+			width: 20px;
+		}
+		td{
+			text-align: right;
+		}
+
+		tr{
+			&.art-vds{
+				color: blue;
+			}
+		}
+	}
 }
 #course-legend{
 

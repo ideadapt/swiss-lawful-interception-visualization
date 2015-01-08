@@ -6,8 +6,10 @@ $(document).ready(function(){
 	var dataSummary = require('sliv-data-summary');
 	dataSummary.init();
 
+	// somehow!!! require('./tooltip.jade') does not work form inside course.js ...
+	var tooltipTemplate = require('../../app/scripts/course/tooltip.jade');
 	var Course = require('sliv-course');
-	new Course(dataSummary);
+	new Course(dataSummary, tooltipTemplate);
 
 	var Map = require('sliv-map');
 	var map = new Map();
