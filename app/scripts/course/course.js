@@ -4,6 +4,7 @@ function Course(dataSummary){
 
 	function controller(){
 		//console.log('got data from service', data);
+	    var tooltipTemplate = require('./tooltip.jade');
 
 		nv.addGraph(function() {
 		    var chart = nv.models.multiBarChart();
@@ -22,27 +23,44 @@ function Course(dataSummary){
 		    	var vds = resolved[1];
 		    	var tech = resolved[2];
 		    	var tel = resolved[3];
+		    	var tooltip = {};
+				chart.tooltipContent(function(art, x) {
+			    	//console.log(art, x, y, graph);
+			    	var view = {};
+			    	view.activ = tooltip[x].Aktiv;
+			    	view.vds = tooltip[x].VDS;
+			    	view.techadm = tooltip[x].TechAdm;
+			    	view.tel = tooltip[x].Tel;
+			    	console.log('view', view);
+			    	return tooltipTemplate(view);
+		       	});
+
+		       	tel.map(function(r){
+	    			tooltip[r.year] = tooltip[r.year] || {};
+		    		tooltip[r.year].Tel = r.value;
+	    		});
+
 			    d3.select('#course>svg').datum([{
 			    	key: 'Aktiv',
 			    	values: activ.map(function(r){
+			    		tooltip[r.year] = tooltip[r.year] || {};
+			    		tooltip[r.year].Aktiv = r.value;
 		    			return {x: r.year, y: r.value};
 		    		})
 			    },{
 			    	key: 'VDS',
 			    	values: vds.map(function(r){
+			    		tooltip[r.year] = tooltip[r.year] || {};
+			    		tooltip[r.year].VDS = r.value;
 		    			return {x: r.year, y: r.value};
 		    		})
 			    },
 			    {
 			    	key: 'TechAdm',
 			    	values: tech.map(function(r){
+			    		tooltip[r.year] = tooltip[r.year] || {};
+			    		tooltip[r.year].TechAdm = r.value;
 		    			return {x: r.year, y: r.value};
-		    		})
-			    },
-			    {
-			    	key: 'Tel (x100)',
-			    	values: tel.map(function(r){
-		    			return {x: r.year, y: Math.floor(r.value/100)};
 		    		})
 			    }
 			    ])
