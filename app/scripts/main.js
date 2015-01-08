@@ -1,5 +1,27 @@
-/*global CompoundObserver,PathObserver*/
+/*global CompoundObserver,PathObserver, numeral*/
 $(document).ready(function(){
+
+	numeral.language('de', {
+	    delimiters: {
+	        thousands: '\'',
+	        decimal: ','
+	    },
+	    abbreviations: {
+	        thousand: 'k',
+	        million: 'Mio',
+	        billion: 'Mrd',
+	        trillion: 't'
+	    },
+	    ordinal : function (number) {
+	        return number === 1 ? 'e' : 'e';
+	    },
+	    currency: {
+	        symbol: 'CHF'
+	    }
+	});
+	numeral.language('de');
+	numeral.defaultFormat('0,0');
+
 	require('es6-promise').polyfill();
 	var dataDivisions = require('sliv-data-divisions');
 	dataDivisions.init();

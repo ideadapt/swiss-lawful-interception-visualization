@@ -18,8 +18,10 @@
   "dependencies": {
     "jquery": "~1.11.1",
     "observe-js": "~0.4.2",
-    "nvd3": "~1.1.15",
+    "nvd3-community": "~1.7.0",
     "papaparse": "4.0.7",
-    "es6-promise": "~2.0.0"
+    "es6-promise": "~2.0.0",
+    "moment": "~2.9.0",
+    "numeral": "~1.5.3"
   }
 }

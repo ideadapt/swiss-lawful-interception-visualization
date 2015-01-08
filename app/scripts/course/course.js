@@ -1,4 +1,4 @@
-/*global nv, d3*/
+/*global nv, d3, numeral*/
 function Course(dataSummary, tooltipTemplate){
 	//var self = this;
 
@@ -10,6 +10,7 @@ function Course(dataSummary, tooltipTemplate){
 		    chart.showControls(false); // don't show controls
 		    chart.height(300);
 		    chart.reduceXTicks(false);
+		    chart.color(['#FE0405', '#9BBB59', '#668CD9']);
 
 		    Promise.all([dataSummary.activ(),
 		    	dataSummary.vorratsdaten(),
@@ -25,12 +26,17 @@ function Course(dataSummary, tooltipTemplate){
 				chart.tooltipContent(function(art, x) {
 			    	//console.log(art, x, y, graph);
 			    	var view = {};
-			    	view.activ = tooltip[x].Aktiv;
-			    	view.vds = tooltip[x].VDS;
-			    	view.techadm = tooltip[x].TechAdm;
-			    	view.tel = tooltip[x].Tel;
+			    	view.activ = numeral(tooltip[x].Aktiv).format();
+			    	view.vds = numeral(tooltip[x].VDS).format();
+			    	view.techadm = numeral(tooltip[x].TechAdm).format();
+			    	view.tel = numeral(tooltip[x].Tel).format();
 			    	view.year = x;
-			    	console.log('view', view);
+			    	view.total = 0;
+			    	view.total = Object.keys(tooltip[x]).reduce(function(sum, key){
+						return sum + tooltip[x][key];
+					}, view.total);
+					view.total = numeral(view.total).format();
+
 			    	return tooltipTemplate(view);
 		       	});
 
@@ -68,8 +74,9 @@ function Course(dataSummary, tooltipTemplate){
 		    	.call(chart);
 		    });
 
-		    //chart.xAxis.tickFormat(d3.format(',f'));
-		    chart.yAxis.tickFormat(d3.format(''));
+		    chart.yAxis.tickFormat(function(n){
+		    	return numeral(n).format();
+		    });
 
 		    nv.utils.windowResize(chart.update);
 

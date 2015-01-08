@@ -280,7 +280,9 @@ module.exports = function (grunt) {
             'bower_components/jquery/dist/jquery.js',
             'bower_components/observe-js/src/observe.js',
             'bower_components/d3/d3.js',
-            'bower_components/nvd3/nv.d3.js',
+            'bower_components/nvd3-community/build/nv.d3.js',
+            'bower_components/numeral/numeral.js',
+            'bower_components/moment/moment.js',
             'bower_components/papaparse/papaparse.js'
             //'bower_components/es6-promise/promise.js' // required
           ]

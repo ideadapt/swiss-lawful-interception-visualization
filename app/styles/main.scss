@@ -19,8 +19,14 @@ body {
 		}
 
 		tr{
+			&.art-aktiv{
+				color: #FE0405; //rgb(254,4,5);
+			}
 			&.art-vds{
-				color: blue;
+				color: #9BBB59;
+			}
+			&.art-techadm{
+				color: #668CD9; //rgb(102,140,217);
 			}
 		}
 	}

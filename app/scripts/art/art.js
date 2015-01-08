@@ -1,6 +1,5 @@
 function Art(dataDivisions, filter, CompoundObserver){
 	var self = this;
-	self.activ = null;
 
 	function init(){
 		return Promise.resolve();
@@ -20,6 +19,7 @@ function Art(dataDivisions, filter, CompoundObserver){
 				self.activ = resolved[0];
 				self.vorratsdaten = resolved[1];
 				self.telefonbuch = resolved[2];
+				self.total = self.activ + self.vorratsdaten + self.telefonbuch;
 				render.call(self);
 			});
 		});
@@ -27,7 +27,7 @@ function Art(dataDivisions, filter, CompoundObserver){
 
 	function render(){
 		var template = require('./art.jade');
-		var html = template({activ: self.activ, vorratsdaten: self.vorratsdaten, telefonbuch: self.telefonbuch});
+		var html = template(self);
 		$('#art').html(html);
 		return Promise.resolve();
 	}

@@ -2,13 +2,13 @@ h2 Art der Überwachung
 table.table
 	tr
 		th Total
-		td=activ+vorratsdaten+telefonbuch
+		td.text-right=numeral(total).format()
 	tr
 		th Aktiv
-		td=activ
+		td.text-right=numeral(activ).format()
 	tr
 		th Vorratsdaten
-		td=vorratsdaten
+		td.text-right=numeral(vorratsdaten).format()
 	tr
 		th Telefon
-		td=telefonbuch
+		td.text-right=numeral(telefonbuch).format()
