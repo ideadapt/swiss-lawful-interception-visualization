@@ -1,22 +1,21 @@
 /*global nv, d3, numeral*/
 function Course(dataSummary, tooltipTemplate){
-	//var self = this;
 
 	function controller(){
 
 		nv.addGraph(function() {
 		    var chart = nv.models.multiBarChart();
-		    chart.multibar.stacked(true); // default to stacked
-		    chart.showControls(false); // don't show controls
-		    chart.height(300);
-		    chart.reduceXTicks(false);
-		    chart.color(['#FE0405', '#9BBB59', '#668CD9']);
+		    	chart.multibar.stacked(true);
+		    	chart.showControls(false)
+			    .height(300)
+			    .reduceXTicks(false)
+			    .color(['#FE0405', '#9BBB59', '#668CD9']);
 
-		    Promise.all([dataSummary.activ(),
-		    	dataSummary.vorratsdaten(),
-		    	dataSummary.tech(),
-		    	dataSummary.tel()
-		    	]).then(function(resolved){
+			var keys = ['activ', 'vorratsdaten', 'tech', 'tel'];
+			var promises = keys.map(function(key){
+				return dataSummary[key]();
+			});
+		    Promise.all(promises).then(function(resolved){
 
 		    	var activ = resolved[0];
 		    	var vds = resolved[1];

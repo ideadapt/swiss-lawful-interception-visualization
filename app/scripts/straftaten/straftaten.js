@@ -12,32 +12,20 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
 
-			Promise.all([
-				dataDivisions.terror(newValues[0], newValues[1]),
-				dataDivisions.paedo(newValues[0], newValues[1]),
-				dataDivisions.krimorg(newValues[0], newValues[1]),
-				dataDivisions.terrorProzent(newValues[0], newValues[1]),
-				dataDivisions.paedoProzent(newValues[0], newValues[1]),
-				dataDivisions.krimorgProzent(newValues[0], newValues[1]),
-				dataDivisions.geldwaescheProzent(newValues[0], newValues[1]),
-				dataDivisions.nachrichtendienstProzent(newValues[0], newValues[1]),
-				dataDivisions.menschenhandelProzent(newValues[0], newValues[1]),
-				dataDivisions.geldwaesche(newValues[0], newValues[1]),
-				dataDivisions.nachrichtendienst(newValues[0], newValues[1]),
-				dataDivisions.menschenhandel(newValues[0], newValues[1])
-			]).then(function(resolved){
-				self.view.terror = resolved[0];
-				self.view.paedo = resolved[1];
-				self.view.krimorg = resolved[2];
-				self.view.terrorProzent = resolved[3];
-				self.view.paedoProzent = resolved[4];
-				self.view.krimorgProzent = resolved[5];
-				self.view.geldwaescheProzent = resolved[6];
-				self.view.nachrichtendienstProzent = resolved[7];
-				self.view.menschenhandelProzent = resolved[8];
-				self.view.geldwaesche = resolved[9];
-				self.view.nachrichtendienst = resolved[10];
-				self.view.menschenhandel = resolved[11];
+			var year = newValues[0];
+			var canton = newValues[1];
+			var keys = ['terror', 'paedo', 'krimorg', 'menschenhandel', 'nachrichtendienst', 'geldwaesche'];
+			keys.forEach(function(key){
+				keys.push(key+'Prozent');
+			});
+			var promises = keys.map(function(key){
+				return dataDivisions[key](year, canton);
+			});
+
+			Promise.all(promises).then(function(resolved){
+				resolved.forEach(function(value, i){
+					self.view[keys[i]] = value;
+				});
 				self.view.total = 0;
 				self.view.total = Object.keys(self.view).reduce(function(sum, key){
 					return sum + self.view[key];
