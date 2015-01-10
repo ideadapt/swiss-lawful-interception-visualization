@@ -75,53 +75,14 @@ DataDivisions.prototype.telefonbuch = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'art', 'telefon');
 };
 
-DataDivisions.prototype.terror = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'terror');
-};
-
-DataDivisions.prototype.paedo = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'paedo');
-};
-
-DataDivisions.prototype.menschenhandel = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'menschenhandel');
-};
-
-DataDivisions.prototype.menschenhandelProzent = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'menschenhandel_prozent');
-};
-
-DataDivisions.prototype.nachrichtendienst = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'nachrichtendienst');
-};
-
-DataDivisions.prototype.nachrichtendienstProzent = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'nachrichtendienst_prozent');
-};
-
-DataDivisions.prototype.geldwaesche = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'geldwaesche');
-};
-
-DataDivisions.prototype.geldwaescheProzent = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'geldwaesche_prozent');
-};
-
-DataDivisions.prototype.krimorg = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'krimorg');
-};
-
-DataDivisions.prototype.terrorProzent = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'terror_prozent');
-};
-
-DataDivisions.prototype.paedoProzent = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'paedo_prozent');
-};
-
-DataDivisions.prototype.krimorgProzent = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', 'krimorg_prozent');
-};
+['terror', 'paedo', 'krimorg', 'nachrichtendienst', 'geldwaesche', 'menschenhandel'].forEach(function(section){
+	DataDivisions.prototype[section] = function(year, canton){
+		return Promise.all([
+			sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', section),
+			sumByYearCantonSuperSub.call(this, year, canton, 'schwerestraftaten', section+'_prozent')
+		]);
+	};
+});
 
 DataDivisions.prototype.cantons = function(){
 	return this.transformed.then(function(transformed){

@@ -2,29 +2,11 @@ h2 Schwere Straftaten
 table.table
 	tr
 		th Total
-		td.text-right=numeral(total).format()
+		td.text-right=numeral(view.total).format()
 		td=''
-	tr
-		th Terror
-		td.text-right=numeral(terror).format()
-		td='('+terrorProzent+' %)'
-	tr
-		th Pädo-Kriminalität
-		td.text-right=numeral(paedo).format()
-		td='('+paedoProzent+' %)'
-	tr
-		th Org. Kriminalität
-		td.text-right=numeral(krimorg).format()
-		td='('+krimorgProzent+' %)'
-	tr
-		th Menschenhandel
-		td.text-right=numeral(menschenhandel).format()
-		td='('+menschenhandelProzent+' %)'
-	tr
-		th Nachrichtendienst
-		td.text-right=numeral(nachrichtendienst).format()
-		td='('+nachrichtendienstProzent+' %)'
-	tr
-		th Geldwäsche
-		td.text-right=numeral(geldwaesche).format()
-		td='('+geldwaescheProzent+' %)'
+	if view.sectionValues
+		for section, idx in view.sectionValues
+			tr
+				th=section.key
+				td.text-right=section ? numeral(section.number).format() : ''
+				td (#{section ? section.prozent : ''}%)
