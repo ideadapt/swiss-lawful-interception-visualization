@@ -11,8 +11,7 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 		observer.addPath(filter, 'year');
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
-			var year = newValues[0];
-			var canton = newValues[1];
+			var [year, canton]  = newValues;
 			var sections = ['terror', 'paedo', 'krimorg', 'nachrichtendienst', 'geldwaesche', 'menschenhandel'];
 			var promises = sections.map(function(section){
 				return dataDivisions[section](year, canton);
@@ -28,7 +27,7 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 						key: sections[i]
 					};
 				});
-				self.view.total = sections.reduce(function(sum, section){
+				self.view.total = sections.reduce((sum, section) => {
 					return sum + self.view.sectionValues[section].number;
 				}, 0);
 				render.call(self);
@@ -38,7 +37,6 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 
 	function render(){
 		var template = require('./straftaten.jade');
-		console.log(this.view);
 		var html = template({view: this.view});
 		$('#straftaten').html(html);
 		return Promise.resolve();
@@ -47,7 +45,7 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 	init.call(this)
 		.then(render.bind(this))
 		.then(controller.bind(this))
-		.catch(function(err){
+		.catch((err) => {
 			console.error(err.message);
 		});
 }

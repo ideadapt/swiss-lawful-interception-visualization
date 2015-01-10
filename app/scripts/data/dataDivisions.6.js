@@ -14,11 +14,9 @@ function DataDivisions(){
 			var flat = [];
 			parsedCsv.data.splice(0, 1);
 			parsedCsv.data.map(function(row){
-				var superc = row[0];
-				var sub = row[1];
-				var year= row[2];
+				var [superc, sub, year] = row;
 				row.splice(0, 3);
-				row.map(function(val, i){
+				row.map((val, i) => {
 					flat.push({
 						'super': superc,
 						'sub': sub,
@@ -51,13 +49,13 @@ function byCanton(canton, e){
 }
 
 function sumByYearCantonSuperSub(year, canton, _super, sub){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
+	return this.transformed.then(transformed => {
+		return transformed.filter(r => {
 			return r.sub === sub && r.super === _super;
 		})
 		.filter(byYear.bind(null, year))
 		.filter(byCanton.bind(null, canton))
-		.reduce(function(sum, b){
+		.reduce((sum, b) => {
 			return sum + b.value;
 		}, 0);
 	});
@@ -85,10 +83,10 @@ DataDivisions.prototype.telefonbuch = function(year, canton){
 });
 
 DataDivisions.prototype.cantons = function(){
-	return this.transformed.then(function(transformed){
-		return transformed.filter(function(r){
+	return this.transformed.then(transformed => {
+		return transformed.filter(r => {
 			return fakeCantons.indexOf(r.canton) === -1;
-		}).map(function(r){
+		}).map((r) => {
 			return r.canton;
 		})
 		.filter(unique)
@@ -97,8 +95,8 @@ DataDivisions.prototype.cantons = function(){
 };
 
 DataDivisions.prototype.years = function(){
-	return this.transformed.then(function(transformed){
-		return transformed.map(function(r){
+	return this.transformed.then(transformed => {
+		return transformed.map(r => {
 			return r.year;
 		})
 		.filter(unique)
