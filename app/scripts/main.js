@@ -44,4 +44,7 @@ $(document).ready(function(){
 
 	var Straftaten = require('sliv-straftaten');
 	new Straftaten(dataDivisions, filter, CompoundObserver);
+
+	var Technologie = require('sliv-technologie');
+	new Technologie();
 });

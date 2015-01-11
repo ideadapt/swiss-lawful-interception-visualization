@@ -48,6 +48,7 @@
     "sliv-art": "./app/scripts/art/art.js",
     "sliv-course": "./app/scripts/course/course.js",
     "sliv-straftaten": "./app/scripts/straftaten/straftaten.6.js",
+    "sliv-technologie": "./app/scripts/technologie/technologie.6.js",
     "sliv-map": "./app/scripts/map/map.js"
   },
   "browserify-shim": {
