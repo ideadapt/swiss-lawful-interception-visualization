@@ -14,12 +14,12 @@ function Art(dataDivisions, filter, CompoundObserver){
 			Promise.all([
 				dataDivisions.activ(newValues[0], newValues[1]),
 				dataDivisions.vorratsdaten(newValues[0], newValues[1]),
-				dataDivisions.telefonbuch(newValues[0], newValues[1])
+				dataDivisions.telefon(newValues[0], newValues[1])
 			]).then(function(resolved){
 				self.activ = resolved[0];
 				self.vorratsdaten = resolved[1];
-				self.telefonbuch = resolved[2];
-				self.total = self.activ + self.vorratsdaten + self.telefonbuch;
+				self.telefon = resolved[2];
+				self.total = self.activ + self.vorratsdaten + self.telefon;
 				render.call(self);
 			});
 		});

@@ -69,9 +69,11 @@ DataDivisions.prototype.vorratsdaten = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'vds');
 };
 
-DataDivisions.prototype.telefonbuch = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'art', 'telefon');
-};
+['post', 'internet', 'telefon', 'notsuche'].forEach(function(section){
+	DataDivisions.prototype[section] = function(year, canton){
+		return sumByYearCantonSuperSub.call(this, year, canton, 'art', section);
+	};
+});
 
 ['terror', 'paedo', 'krimorg', 'nachrichtendienst', 'geldwaesche', 'menschenhandel'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
