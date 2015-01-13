@@ -69,9 +69,21 @@ DataDivisions.prototype.vorratsdaten = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'vds');
 };
 
+['oeFrieden', 'staat', 'sex', 'buepf', 'diverse', 'drogen', 'drohung', 'finanz', 'gewalt', 'vermoegen'].forEach(function(section){
+	DataDivisions.prototype[section] = function(year, canton){
+		return sumByYearCantonSuperSub.call(this, year, canton, 'deliktegruppe', section);
+	};
+});
+
 ['post', 'internet', 'telefon', 'notsuche'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
 		return sumByYearCantonSuperSub.call(this, year, canton, 'art', section);
+	};
+});
+
+['post', 'internet', 'festnetz', 'mobil'].forEach(function(section){
+	DataDivisions.prototype[section] = function(year, canton){
+		return sumByYearCantonSuperSub.call(this, year, canton, 'technologie', section);
 	};
 });
 

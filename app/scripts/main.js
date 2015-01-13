@@ -47,4 +47,7 @@ $(document).ready(function(){
 
 	var Technologie = require('sliv-technologie');
 	new Technologie(dataDivisions, filter, CompoundObserver);
+
+	var Delikt = require('sliv-delikt');
+	new Delikt(dataDivisions, filter, CompoundObserver);
 });
