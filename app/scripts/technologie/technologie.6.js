@@ -39,7 +39,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 				dates.forEach((date, idx)=> {
 					var centerX = ((idx+1)*sectionWidth - idx*sectionWidth)/2 + idx*sectionWidth;
 					var hebel = 30;
-					var radiusMin = 10;
+					var radiusMin = 2;
 					var radius = radiusMin+hebel*date.value;
 					var radiusMax = radiusMin+hebel*1;
 					var centerY = radiusMax+10;
@@ -48,6 +48,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 				    circle3.attr('fill', '#333333');
 				    var text3 = paper3.text(centerX, centerY + radiusMax + 10, date.label);
 				    text3.attr('fill', '#333333');
+				    text3.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });
 			});
 		});
