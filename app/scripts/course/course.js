@@ -40,7 +40,7 @@ function Course(dataSummary, tooltipTemplate){
 	    		});
 
 			    d3.select('#course>svg').datum([{
-			    	key: 'Aktiv',
+			    	key: window.i18n.l('TYP_TXT_AKTIV'),
 			    	values: activ.map(function(r){
 			    		tooltip[r.year] = tooltip[r.year] || {};
 			    		tooltip[r.year].Aktiv = r.value;

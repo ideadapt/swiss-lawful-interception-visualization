@@ -4,7 +4,7 @@ function DataSummary(){
 	var self = this;
 	self.transformed = null;
 
-	this.init = function init(){
+	function init(){
 		self.transformed = Promise.resolve($.ajax({
 			url: 'data/slirv_data_annualsummary.csv'
 		})).then(function transform(data){
@@ -30,7 +30,13 @@ function DataSummary(){
 			});
 			return flat;
 		});
-	};
+
+		return self.transformed;
+	}
+
+	init.call(this).catch(err => {
+		console.error(err.message);
+	});
 }
 
 function unique(e, i, arr) {

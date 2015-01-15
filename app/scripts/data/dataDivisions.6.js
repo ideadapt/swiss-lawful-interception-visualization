@@ -4,7 +4,7 @@ function DataDivisions(){
 	var self = this;
 	self.transformed = null;
 
-	this.init = function init(){
+	function init(){
 		self.transformed = Promise.resolve($.ajax({
 			url: 'data/data.csv'
 		})).then(function transform(data){
@@ -28,7 +28,13 @@ function DataDivisions(){
 			});
 			return flat;
 		});
-	};
+
+		return self.transformed;
+	}
+
+	init.call(this).catch(err => {
+		console.error(err.message);
+	});
 }
 
 function unique(e, i, arr) {
