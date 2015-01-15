@@ -1,39 +1,15 @@
-/*global Papa*/
-
 function I18n(){
 	var self = this;
 	self.transformed = null;
-	self.language = 'de';
+	self.store = {};
 
-	function init(){
-		self.transformed = Promise.resolve($.ajax({
-			url: 'data/slirv_translations.csv'
-		})).then(function transform(data){
-			var parsedCsv = Papa.parse(data, {header: true});
-			self.map = {};
-			parsedCsv.data.map(row => {
-				var key = ['group', 'typ', 'detail']
-							.map(key=>{
-								return row[key];
-							})
-							.join('_').toUpperCase();
-
-				self.map[key] = row[self.language];
-			});
-
-			return self.map;
-		});
-		return self.transformed;
-	}
-
-	this.l = function l(key){
-		return self.map[key] || 'KEY NOT FOUND';
+	this.init = function(locales, lang){
+		self.store = locales[lang];
 	};
 
-	init.call(this).catch((err) => {
-		console.error(err.message);
-	});
+	this.l = function l(key){
+		return self.store[key] || 'KEY NOT FOUND';
+	};
 }
 
-var i18n = new I18n();
-module.exports = i18n;
+module.exports = I18n;

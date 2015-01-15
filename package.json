@@ -5,6 +5,8 @@
     "apache-server-configs": "^2.7.1",
     "bootstrap": "^3.3.1",
     "browserify-shim": "~3.8.0",
+    "csv": "^0.4.1",
+    "csv-parse": "0.0.6",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^1.0.0",
     "grunt-browserify": "^3.2.1",
@@ -42,6 +44,7 @@
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
     "es6-promise": "./bower_components/es6-promise/promise.js",
+    "sliv-translations": "./app/scripts/translations.js",
     "sliv-data-divisions": "./app/scripts/data/dataDivisions.6.js",
     "sliv-data-summary": "./app/scripts/data/dataSummary.6.js",
     "sliv-i18n": "./app/scripts/data/i18n.6.js",

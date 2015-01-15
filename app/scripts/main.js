@@ -23,6 +23,13 @@ $(document).ready(function(){
 	numeral.defaultFormat('0,0');
 
 	require('es6-promise').polyfill();
+
+	var locales = require('sliv-translations').locales;
+	var I18n = require('sliv-i18n');
+	var i18n = new I18n();
+	i18n.init(locales, 'de');
+	window.i18n = i18n;
+
 	var dataDivisions = require('sliv-data-divisions');
 	var dataSummary = require('sliv-data-summary');
 
@@ -33,9 +40,6 @@ $(document).ready(function(){
 
 	var Map = require('sliv-map');
 	var map = new Map();
-
-	var i18n = require('sliv-i18n');
-	window.i18n = i18n;
 
 	var Filter = require('sliv-filter');
 	var filter = new Filter(dataDivisions, PathObserver, map);
