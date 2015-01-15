@@ -13,7 +13,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
 			var [year, canton]  = newValues;
-			var sections = ['internet', 'post', 'notsuche'];
+			var sections = ['internet', 'post', 'mobil', 'festnetz'];
 			var promises = sections.map(function(section){
 				return dataDivisions[section](year, canton);
 			});
@@ -21,33 +21,38 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 			Promise.all(promises).then(function(resolved){
 				self.view.sections = sections;
 				var total = resolved.reduce((sum, r) => {return sum + r;}, 0);
-				var dates = resolved.map(function(value, i){
+				var technologies = resolved.map(function(value, i){
 					return {
 						'label': sections[i],
-						'value': value / total
+						'relative': value / total,
+						'absolute': value
 					};
 				});
-				console.log(dates);
+
 				var container = document.querySelector('#circles');
 				while (container.firstChild) {
 				    container.removeChild(container.firstChild);
 				}
 				var sectionWidth = 100;
-				var width = dates.length * sectionWidth;
+				var width = technologies.length * sectionWidth;
 				var height = 60;
-				var paper3 = new Raphael(container, width, height);
-				dates.forEach((date, idx)=> {
+				var raphPaper = new Raphael(container, width, height);
+				technologies.forEach((date, idx)=> {
 					var centerX = ((idx+1)*sectionWidth - idx*sectionWidth)/2 + idx*sectionWidth;
 					var hebel = 30;
-					var radiusMin = 10;
-					var radius = radiusMin+hebel*date.value;
+					var radiusMin = 1;
+					var radius = radiusMin+hebel*date.relative;
 					var radiusMax = radiusMin+hebel*1;
-					var centerY = radiusMax+10;
+					var centerY = radiusMax+20;
 
-				    var circle3 = paper3.circle(centerX, centerY, radius);
-				    circle3.attr('fill', '#333333');
-				    var text3 = paper3.text(centerX, centerY + radiusMax + 10, date.label);
-				    text3.attr('fill', '#333333');
+				    var circle = raphPaper.circle(centerX, centerY, radius);
+				    circle.attr('fill', '#333333');
+				    var value = raphPaper.text(centerX, centerY + radiusMax + 10, date.absolute);
+				    value.attr('fill', '#333333');
+				    value.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
+				    var name = raphPaper.text(centerX, centerY - radiusMax - 10, date.label);
+				    name.attr('fill', '#333333');
+				    name.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });
 			});
 		});
