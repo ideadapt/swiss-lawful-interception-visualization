@@ -1,17 +1,9 @@
 h3 Art der Überwachung
 table.table
 	tr
-		th Total
-		td.text-right=numeral(total).format()
-	tr
-		th Post
-		td.text-right=numeral(post).format()
-	tr
-		th Internet
-		td.text-right=numeral(internet).format()
-	tr
-		th Telefon
-		td.text-right=numeral(telefon).format()
-	tr
-		th Notsuche
-		td.text-right=numeral(notsuche).format()
+		th=view.total.i18n
+		td.text-right=numeral(view.total.value).format()
+	for item in view.keyValues
+		tr
+			th=item.i18n
+			td.text-right=numeral(item.value).format()

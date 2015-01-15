@@ -31,7 +31,7 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 
 				    var series = resolved.map((section, idx) => {
 				    	return {
-				    		key: sections[idx],
+				    		key: window.i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx]),
 				    		values: [{x: year, y: resolved[idx] }]
 				    	};
 					});

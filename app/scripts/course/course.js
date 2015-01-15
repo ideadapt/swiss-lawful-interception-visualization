@@ -1,5 +1,7 @@
 /*global nv, d3, numeral*/
-function Course(dataSummary, tooltipTemplate){
+function Course(dataSummary, tooltipTemplate, legendTemplate){
+	var self = this;
+	self.view = {};
 
 	function controller(){
 
@@ -47,7 +49,7 @@ function Course(dataSummary, tooltipTemplate){
 		    			return {x: r.year, y: r.value};
 		    		})
 			    },{
-			    	key: 'VDS',
+			    	key: window.i18n.l('TYP_TXT_VDS'),
 			    	values: vds.map(function(r){
 			    		tooltip[r.year] = tooltip[r.year] || {};
 			    		tooltip[r.year].VDS = r.value;
@@ -55,7 +57,7 @@ function Course(dataSummary, tooltipTemplate){
 		    		})
 			    },
 			    {
-			    	key: 'TechAdm',
+			    	key: window.i18n.l('TYP_TXT_TECHADM'),
 			    	values: tech.map(function(r){
 			    		tooltip[r.year] = tooltip[r.year] || {};
 			    		tooltip[r.year].TechAdm = r.value;
@@ -76,9 +78,25 @@ function Course(dataSummary, tooltipTemplate){
 
 		    return chart;
 		});
+
+		self.view = {
+			l: window.i18n.l
+		};
+
+		return Promise.resolve();
 	}
 
-	controller.call(this);
+	function render(){
+		var html = legendTemplate({l: this.view.l});
+		$('#course-legend').html(html);
+		return Promise.resolve();
+	}
+
+	controller.call(this)
+		.then(render.bind(this))
+		.catch(function(err){
+			console.log(err);
+		});
 }
 
 module.exports = Course;

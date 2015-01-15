@@ -8,7 +8,8 @@ function I18n(){
 	};
 
 	this.l = function l(key){
-		return self.store[key] || 'KEY NOT FOUND';
+		key = key.toUpperCase();
+		return self.store[key] || ':' + key;
 	};
 }
 

@@ -50,7 +50,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 				    var value = raphPaper.text(centerX, centerY + radiusMax + 10, date.absolute);
 				    value.attr('fill', '#333333');
 				    value.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
-				    var name = raphPaper.text(centerX, centerY - radiusMax - 10, date.label);
+				    var name = raphPaper.text(centerX, centerY - radiusMax - 10, window.i18n.l('technologie_txt_'+date.label));
 				    name.attr('fill', '#333333');
 				    name.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });

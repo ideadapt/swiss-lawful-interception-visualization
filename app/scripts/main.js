@@ -35,8 +35,9 @@ $(document).ready(function(){
 
 	// somehow!!! require('./tooltip.jade') does not work form inside course.js ...
 	var tooltipTemplate = require('../../app/scripts/course/tooltip.jade');
+	var legendTemplate = require('../../app/scripts/course/legend.jade');
 	var Course = require('sliv-course');
-	new Course(dataSummary, tooltipTemplate);
+	new Course(dataSummary, tooltipTemplate, legendTemplate);
 
 	var Map = require('sliv-map');
 	var map = new Map();

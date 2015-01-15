@@ -24,7 +24,7 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 					self.view.sectionValues[sections[i]] = {
 						number: value[0],
 						prozent: value[1],
-						key: sections[i]
+						key: window.i18n.l('schwerestraftaten_txt_'+sections[i])
 					};
 				});
 				render.call(self);

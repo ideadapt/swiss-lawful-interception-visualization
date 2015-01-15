@@ -1,5 +1,9 @@
 function Art(dataDivisions, filter, CompoundObserver){
 	var self = this;
+	self.view = {
+		total: '',
+		keyValues: []
+	};
 
 	function init(){
 		return Promise.resolve();
@@ -11,18 +15,26 @@ function Art(dataDivisions, filter, CompoundObserver){
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
 
-			Promise.all([
-				// 'post', 'internet', 'telefon', 'notsuche'
-				dataDivisions.post(newValues[0], newValues[1]),
-				dataDivisions.internet(newValues[0], newValues[1]),
-				dataDivisions.telefon(newValues[0], newValues[1]),
-				dataDivisions.notsuche(newValues[0], newValues[1])
-			]).then(function(resolved){
-				self.post = resolved[0];
-				self.internet = resolved[1];
-				self.telefon = resolved[2];
-				self.notsuche = resolved[3];
-				self.total = self.post + self.internet + self.telefon + self.notsuche;
+			var keys = ['post', 'internet', 'telefon', 'notsuche'];
+			self.view.keys = keys;
+			var promises = keys.map(function(key){
+				return dataDivisions[key](newValues[0], newValues[1]);
+			});
+		    Promise.all(promises).then(function(resolved){
+		    	var total = 0;
+		    	self.view.keyValues = [];
+		    	keys.forEach(function(key, idx){
+		    		self.view.keyValues.push({
+		    			i18n: window.i18n.l('ART_TXT_'+ keys[idx]),
+		    			value: resolved[idx]
+		    		});
+
+		    		total += resolved[idx];
+		    	});
+		    	self.view.total = {
+	    			i18n: window.i18n.l('total'),
+	    			value: total
+	    		};
 				render.call(self);
 			});
 		});
@@ -30,14 +42,17 @@ function Art(dataDivisions, filter, CompoundObserver){
 
 	function render(){
 		var template = require('./art.jade');
-		var html = template(self);
+		var html = template({view: self.view});
 		$('#art').html(html);
 		return Promise.resolve();
 	}
 
 	init.call(this)
 		.then(render.bind(this))
-		.then(controller.bind(this));
+		.then(controller.bind(this))
+		.catch(function(err){
+			console.log(err);
+		});
 }
 
 module.exports = Art;
