@@ -69,6 +69,11 @@ DataDivisions.prototype.vorratsdaten = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'vds');
 };
 
+DataDivisions.prototype.techadm = function(year, canton){
+	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'techadm');
+};
+
+
 ['oeFrieden', 'staat', 'sex', 'buepf', 'diverse', 'drogen', 'drohung', 'finanz', 'gewalt', 'vermoegen'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
 		return sumByYearCantonSuperSub.call(this, year, canton, 'deliktegruppe', section);

@@ -12,14 +12,17 @@ function Art(dataDivisions, filter, CompoundObserver){
 		observer.open(function(newValues){
 
 			Promise.all([
-				dataDivisions.activ(newValues[0], newValues[1]),
-				dataDivisions.vorratsdaten(newValues[0], newValues[1]),
-				dataDivisions.telefon(newValues[0], newValues[1])
+				// 'post', 'internet', 'telefon', 'notsuche'
+				dataDivisions.post(newValues[0], newValues[1]),
+				dataDivisions.internet(newValues[0], newValues[1]),
+				dataDivisions.telefon(newValues[0], newValues[1]),
+				dataDivisions.notsuche(newValues[0], newValues[1])
 			]).then(function(resolved){
-				self.activ = resolved[0];
-				self.vorratsdaten = resolved[1];
+				self.post = resolved[0];
+				self.internet = resolved[1];
 				self.telefon = resolved[2];
-				self.total = self.activ + self.vorratsdaten + self.telefon;
+				self.notsuche = resolved[3];
+				self.total = self.post + self.internet + self.telefon + self.notsuche;
 				render.call(self);
 			});
 		});

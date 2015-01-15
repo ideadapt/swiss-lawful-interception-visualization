@@ -35,7 +35,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 				}
 				var sectionWidth = 100;
 				var width = technologies.length * sectionWidth;
-				var height = 60;
+				var height = 80;
 				var raphPaper = new Raphael(container, width, height);
 				technologies.forEach((date, idx)=> {
 					var centerX = ((idx+1)*sectionWidth - idx*sectionWidth)/2 + idx*sectionWidth;
@@ -44,7 +44,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 					var radius = radiusMin+hebel*date.relative;
 					var radiusMax = radiusMin+hebel*1;
 					var centerY = radiusMax+20;
-
+					if(date.label !== 'mobil'){radius = radius * 7;}
 				    var circle = raphPaper.circle(centerX, centerY, radius);
 				    circle.attr('fill', '#333333');
 				    var value = raphPaper.text(centerX, centerY + radiusMax + 10, date.absolute);

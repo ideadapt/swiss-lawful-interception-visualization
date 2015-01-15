@@ -11,7 +11,7 @@ function Course(dataSummary, tooltipTemplate){
 			    .reduceXTicks(false)
 			    .color(['#FE0405', '#9BBB59', '#668CD9']);
 
-			var keys = ['activ', 'vorratsdaten', 'tech', 'tel'];
+			var keys = ['activ', 'vds', 'techadm', 'telefonbuch'];
 			var promises = keys.map(function(key){
 				return dataSummary[key]();
 			});
@@ -28,13 +28,8 @@ function Course(dataSummary, tooltipTemplate){
 			    	view.activ = numeral(tooltip[x].Aktiv).format();
 			    	view.vds = numeral(tooltip[x].VDS).format();
 			    	view.techadm = numeral(tooltip[x].TechAdm).format();
-			    	view.tel = numeral(tooltip[x].Tel).format();
+			    	view.telefonbuch = numeral(tooltip[x].Tel).format();
 			    	view.year = x;
-			    	view.total = 0;
-			    	view.total = Object.keys(tooltip[x]).reduce(function(sum, key){
-						return sum + tooltip[x][key];
-					}, view.total);
-					view.total = numeral(view.total).format();
 
 			    	return tooltipTemplate(view);
 		       	});

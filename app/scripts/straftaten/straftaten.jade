@@ -1,9 +1,5 @@
-h2 Schwere Straftaten
+h3 Schwere Straftaten
 table.table
-	tr
-		th Total
-		td.text-right=numeral(view.total).format()
-		td=''
 	if view.sectionValues
 		for section, idx in view.sectionValues
 			tr

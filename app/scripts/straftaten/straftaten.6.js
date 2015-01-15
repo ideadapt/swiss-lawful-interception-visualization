@@ -27,9 +27,6 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 						key: sections[i]
 					};
 				});
-				self.view.total = sections.reduce((sum, section) => {
-					return sum + self.view.sectionValues[section].number;
-				}, 0);
 				render.call(self);
 			});
 		});

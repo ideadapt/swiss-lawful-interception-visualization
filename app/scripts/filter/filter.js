@@ -19,6 +19,7 @@ function Filter(dataDivisions, PathObserver, map){
 			self.fakeCantons = fakeCantons;
 			self.canton = fakeCantons[0]; // CH
 		});
+
 		var svg = document.getElementById('svgMap');
 		if(svg.contentDocument.readyState === 'complete'){
 			self.svgDoc = svg.contentDocument;
@@ -31,14 +32,22 @@ function Filter(dataDivisions, PathObserver, map){
 	}
 
 	function controller(){
+
+		function selectionChanged(year, canton){
+			$('#filterText').text(canton + ' ' + year);
+		}
+		selectionChanged(self.year, self.canton);
+
 		$('#filter years').on('click', 'button', function yearFilterClicked(e){
 			self.year = +e.target.value;
+			selectionChanged(self.year, self.canton);
 			renderYears.call(self);
 		});
 		$('#filter cantons').on('click', 'button', function cantonFilterClicked(e){
 			self.canton = e.target.value;
 			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
 			$(self.svgDoc).find('#'+self.canton).attr('class', 'active');
+			selectionChanged(self.year, self.canton);
 			renderCantons.call(self);
 		});
 		$('#filter cantons').on('mouseenter', 'button', function cantonFilterClicked(e){
@@ -80,8 +89,8 @@ function Filter(dataDivisions, PathObserver, map){
 	}
 
 	init.call(this)
-		.then(render.bind(this))
-		.then(controller.bind(this));
+		.then(controller.bind(this))
+		.then(render.bind(this));
 }
 
 Filter.prototype.year = function year(){

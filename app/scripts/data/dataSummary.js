@@ -50,15 +50,15 @@ DataSummary.prototype.activ = function(){
 	return bySuperSub.call(this, 'typ', 'aktiv');
 };
 
-DataSummary.prototype.vorratsdaten = function(){
+DataSummary.prototype.vds = function(){
 	return bySuperSub.call(this, 'typ', 'vds');
 };
 
-DataSummary.prototype.tech = function(){
+DataSummary.prototype.techadm = function(){
 	return bySuperSub.call(this, 'typ', 'techadm');
 };
 
-DataSummary.prototype.tel = function(){
+DataSummary.prototype.telefonbuch = function(){
 	return bySuperSub.call(this, 'typ', 'telefonbuch');
 };
 
