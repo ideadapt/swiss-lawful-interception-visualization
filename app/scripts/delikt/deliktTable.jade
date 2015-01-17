@@ -1,0 +1,8 @@
+h3 Deliktgruppen
+table.table
+	if view.sectionValues
+		for section, idx in view.sectionValues
+			tr(style='color: '+section.color+';')
+				th=section.key
+				td.text-right=section ? numeral(section.number).format() : ''
+				td (#{section ? section.prozent : ''}%)
