@@ -10,7 +10,6 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 		'#B2FF66',
 		'#9C14DB',
 		'#FF6767',
-		//'#1439DA',
 		'#C2943E',
 		'#86BAFA',
 		'#BEC3BE'];
@@ -40,12 +39,14 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 						value: value,
 						key: window.i18n.l('deliktegruppe_txt_'+sections[i]),
 						color: colors[i],
+						idx: i,
 						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i])[v]; }).join(', ')
 					};
 				});
 				render.call(self);
 
 				nv.addGraph(function() {
+					var [width, height ] = [450, 450];
 				    var chart = nv.models.pieChart();
 			    	chart.donut(true);
 				    chart.height(450);
@@ -77,6 +78,43 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 				    	.call(chart);
 
 			    	nv.utils.windowResize(chart.update);
+
+			    	$('#deliktTable tr').on('mouseenter', (e)=>{
+			    		var idx = $(e.currentTarget).data('idx');
+			    		var el = $('#delikt .nv-slice').get(idx);
+			    		var elPath = $('#delikt .nv-slice>path').get(idx);
+			    		d3.select(el).classed('hover', true);
+
+						var availableWidth = width -50;
+						var availableHeight = height-50;
+						var radius = Math.min(availableWidth, availableHeight) / 2;
+						var arcRadius = radius-(radius / 5);
+
+			    		// DOES NOT WORK ...., how to trigger that event from outside?
+			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+5).innerRadius(radius * 0.6);
+			    		d3.select(elPath)
+			    			.transition()
+               				.duration(250)
+               				.attr('d', arcOver);
+			    	});
+			    	$('#deliktTable tr').on('mouseleave', (e)=>{
+			    		var idx = $(e.currentTarget).data('idx');
+			    		var el = $('#delikt .nv-slice').get(idx);
+			    		d3.select(el).classed('hover', false);
+			    		var elPath = $('#delikt .nv-slice>path').get(idx);
+
+			    		var availableWidth = width-50;
+						var availableHeight = height-50;
+						var radius = Math.min(availableWidth, availableHeight) / 2;
+						var arcRadius = radius-(radius / 5);
+
+			    		// DOES NOT WORK ...., how to trigger that event from outside?
+			    		var arcOver = d3.svg.arc().outerRadius(arcRadius).innerRadius(radius * 0.618);
+			    		d3.select(elPath)
+			    			.transition()
+               				.duration(250)
+               				.attr('d', arcOver);
+			    	});
 			 	});
 			});
 		});
