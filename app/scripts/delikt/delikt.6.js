@@ -37,34 +37,37 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 				self.view.sectionValues = {};
 				resolved.forEach(function(value, i){
 					self.view.sectionValues[sections[i]] = {
-						number: value,
-						prozent: 23,
+						value: value,
 						key: window.i18n.l('deliktegruppe_txt_'+sections[i]),
-						color: colors[i]
+						color: colors[i],
+						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i])[v]; }).join(', ')
 					};
 				});
 				render.call(self);
 
 				nv.addGraph(function() {
 				    var chart = nv.models.pieChart();
-				    	//chart.showLegend(false);
-					    chart.height(600);
-					    chart.width(600);
-					    chart.tooltips(false);
-					    chart.showLabels(true);
-					    chart.showLegend(false);
-					    chart.x(function(d) { return d.label; })
-  							.y(function(d) { return d.value; });
-  						d3.scale.myColors = function() {
-					        return d3.scale.ordinal().range(colors);
-					    };
-					    chart.color(d3.scale.myColors().range());
+			    	chart.donut(true);
+				    chart.height(450);
+				    chart.width(450);
+				    chart.tooltips(false);
+				    chart.showLabels(true);
+				    chart.showLegend(false);
+				    chart.labelType('percent');
+				    chart.donutRatio(0.618);
+				    chart.donutLabelsOutside(true);
+				    chart.labelThreshold(0);
+				    chart.x(function(d) { return d.label; })
+						 .y(function(d) { return d.value; });
+					d3.scale.slirColors = () => {
+				        return d3.scale.ordinal().range(colors);
+				    };
+				    chart.color(d3.scale.slirColors().range());
 
 				    var series = resolved.map((section, idx) => {
 				    	return {
 				    		label: window.i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx]),
 				    		value: resolved[idx]
-				    		//key: window.i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx])
 				    	};
 					});
 
@@ -74,22 +77,11 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 				    	.call(chart);
 
 			    	nv.utils.windowResize(chart.update);
-				});
-
-				// window.setTimeout(()=>{
-
-				// 	colors.forEach((color, idx) => {
-				// 		var series = $('#delikt .nv-series-'+idx);
-				// 		var value = series.attr('style');
-				// 		value = series.attr('style', value + ' fill: '+color +';').attr('style');
-				// 		series.attr('style', value + ' fill-opacity: 1;');
-				// 	});
-
-				// 	$('#delikt .nv-legendWrap').attr('transform', 'translate(-30, -50)');
-
-				// }, 400);
+			 	});
 			});
 		});
+
+		return Promise.resolve();
 	}
 
 	function render(){
@@ -100,8 +92,8 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 	}
 
 	init.call(this)
-		.then(controller.bind(this))
 		.then(render.bind(this))
+		.then(controller.bind(this))
 		.catch((err) => {
 			console.error(err.message);
 		});

@@ -4,6 +4,16 @@ body {
   color: #333;
 }
 
+table{
+	width: 100%;
+	td, th{
+		white-space: nowrap;
+		&.fill{
+			width: 100%;
+		}
+	}
+}
+
 
 #course{
 	height: 300px;
@@ -35,7 +45,7 @@ body {
 
 }
 #delikt{
-	height: 600px;
+	height: 450px;
 }
 hr{
 	clear: both;

@@ -3,6 +3,6 @@ table.table
 	if view.sectionValues
 		for section, idx in view.sectionValues
 			tr
-				th=section.key
+				th.fill=section.key
 				td.text-right=section ? numeral(section.number).format() : ''
 				td (#{section ? section.prozent : ''}%)

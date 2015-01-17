@@ -44,11 +44,12 @@ function Filter(dataDivisions, PathObserver, map){
 		}
 		selectionChanged(self.year, self.canton);
 
-		$('#filter years').on('click', 'button', function yearFilterClicked(e){
+		$('#filter years').on('click, mouseenter', 'button', function yearFilterClicked(e){
 			self.year = +e.target.value;
 			renderYears.call(self);
 			selectionChanged(self.year, self.canton);
 		});
+
 		$('#filter cantons').on('click', 'button', function cantonFilterClicked(e){
 			self.canton = e.target.value;
 			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
@@ -57,8 +58,9 @@ function Filter(dataDivisions, PathObserver, map){
 			selectionChanged(self.year, self.canton);
 		});
 		$('#filter cantons').on('mouseenter', 'button', function cantonFilterClicked(e){
-			var canton = e.target.value;
-			$(self.svgDoc).find('#'+canton).attr('class', 'active');
+			self.canton = e.target.value;
+			$(self.svgDoc).find('#'+self.canton).attr('class', 'active');
+			selectionChanged(self.year, self.canton);
 		});
 		$('#filter cantons').on('mouseleave', 'button', function cantonFilterClicked(e){
 			if(e.target.value === self.canton){

@@ -1,0 +1,22 @@
+Setup
+
+Install NPM (Node.js Package Manager)
+http://nodejs.org/download/
+
+Run in terminal:
+> sudo npm -g install grunt-cli
+> sudo npm -g install jshint
+> npm install
+> bower install
+
+
+Build
+Builds the client and puts all files into dist folder. Use this dist folder as website root.
+
+> grunt build
+
+
+Development, Live Preview
+Builds dev client, starts Webserver, watch changes, preview in browser
+
+> grunt serve

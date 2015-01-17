@@ -13,7 +13,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 		observer.addPath(filter, 'canton');
 		observer.open(function(newValues){
 			var [year, canton]  = newValues;
-			var sections = ['internet', 'post', 'mobil', 'festnetz'];
+			var sections = ['mobil', 'festnetz', 'internet', 'post'];
 			var promises = sections.map(function(section){
 				return dataDivisions[section](year, canton);
 			});
@@ -39,7 +39,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 				var raphPaper = new Raphael(container, width, height);
 				technologies.forEach((date, idx)=> {
 					var centerX = ((idx+1)*sectionWidth - idx*sectionWidth)/2 + idx*sectionWidth;
-					var hebel = 30;
+					var hebel = 10;
 					var radiusMin = 1;
 					var radius = radiusMin+hebel*date.relative;
 					var radiusMax = radiusMin+hebel*1;

@@ -285,7 +285,8 @@ module.exports = function (grunt) {
             'bower_components/moment/moment.js',
             'bower_components/papaparse/papaparse.js',
             'bower_components/raphael/raphael.js',
-            'node_modules/bootstrap/dist/js/bootstrap.js'
+            'node_modules/bootstrap/dist/js/bootstrap.js',
+            'bower_components/highcharts/highcharts-all.js'
             //'bower_components/es6-promise/promise.js' // required
           ]
         },

@@ -1,12 +1,12 @@
-i18n mit neustem csv per json
-total weg bei course und straftaten
+.i18n mit neustem csv per json
+.total weg bei course und straftaten
 ff rendering
 vds, aktiv, techadm überall titel in balkenfarben
 .h2 andhand von filter: Bern 2013 oder BA 2011
 n/a = "", 0 = 0
 telefonbuch / tel / art (voice, internet) / typ (activ, vds) / tech (medium das verwendet wird) fixen
-mobil, festnetz, internet, post
+.mobil, festnetz, internet, post
 davon
 	x antennensuchläufe
 	x notsuchen
-delikte horizontal bar & legende
+delikte pie chart
