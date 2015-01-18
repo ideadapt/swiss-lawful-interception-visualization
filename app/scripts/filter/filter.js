@@ -41,7 +41,6 @@ function Filter(dataDivisions, map){
 		function selectionChanged(year, canton){
 			$('#filterText').text(window.i18n.l('region_txt_'+canton) + ' ' + year);
 			self.emitter.emitSync('selectionChanged', year, canton);
-			initTooltip();
 		}
 		selectionChanged(self.year, self.canton);
 
@@ -87,15 +86,16 @@ function Filter(dataDivisions, map){
 	}
 
 	function renderCantons(){
+		$('#filter>cantons [data-toggle="tooltip"]').tooltip('destroy');
 		var template = require('./filterCantons.jade');
 		var html = template({cantons1: this.cantons1, cantons2: this.cantons2, fakeCantons: this.fakeCantons, canton: self.canton});
 		$('#filter>cantons').html(html);
+		initTooltip();
 	}
 
 	function render(){
 		renderYears.call(this);
 		renderCantons.call(this);
-		initTooltip();
 		return Promise.resolve();
 	}
 

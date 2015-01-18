@@ -12,3 +12,4 @@ davon
 .delikte pie chart
 rückblick ohne tooltip, aber zahlen gleich rechts im text anzeigen, farbig
 deliktgruppen: tooltip mit bezeichner
+CH | BA buttons layout
