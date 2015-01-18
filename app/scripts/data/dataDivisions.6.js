@@ -69,7 +69,7 @@ function sumByYearCantonSuperSub(year, canton, _super, sub){
 	});
 }
 
-DataDivisions.prototype.activ = function(year, canton){
+DataDivisions.prototype.aktiv = function(year, canton){
 	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'aktiv');
 };
 

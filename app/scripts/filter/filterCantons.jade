@@ -1,10 +1,12 @@
-
-.btn-group.btn-group-lg
-	each aFakeCanton in fakeCantons
-		button(value=aFakeCanton, class={active: aFakeCanton==canton}, class='fake btn btn-default')=window.i18n.l('region_txt_'+aFakeCanton)
-.btn-group
-	each aCanton in cantons1
-		button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', title=window.i18n.l('region_txt_'+aCanton))=aCanton
-.btn-group
-	each aCanton in cantons2
-		button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', title=window.i18n.l('region_txt_'+aCanton))=aCanton
+.row
+	.col-md-2
+		.btn-group.btn-group-lg.split-h
+			each aFakeCanton, idx in fakeCantons
+				button(value=aFakeCanton, class={active: aFakeCanton==canton}, class='fake btn btn-default', data-toggle='tooltip', data-placement=(idx%2? 'bottom':'top') title=window.i18n.l('region_txt_'+aFakeCanton))=aFakeCanton
+	.col-md-10
+		.btn-group
+			each aCanton in cantons1
+				button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', title=window.i18n.l('region_txt_'+aCanton))=aCanton
+		.btn-group
+			each aCanton in cantons2
+				button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', data-placement='bottom' title=window.i18n.l('region_txt_'+aCanton))=aCanton

@@ -1,15 +1,15 @@
 .i18n mit neustem csv per json
 .total weg bei course und straftaten
 .ff rendering
-vds, aktiv, techadm überall titel in balkenfarben
 .h2 andhand von filter: Bern 2013 oder BA 2011
-n/a = "", 0 = 0
+.n/a = "", 0 = 0
 telefonbuch / tel / art (voice, internet) / typ (activ, vds) / tech (medium das verwendet wird) fixen
 .mobil, festnetz, internet, post
 davon
 	x antennensuchläufe
 	x notsuchen
 .delikte pie chart
-rückblick ohne tooltip, aber zahlen gleich rechts im text anzeigen, farbig
+.rückblick ohne tooltip, aber zahlen gleich rechts im text anzeigen, farbig
 deliktgruppen: tooltip mit bezeichner
-CH | BA buttons layout
+.CH | BA buttons layout
+.smaller font-size

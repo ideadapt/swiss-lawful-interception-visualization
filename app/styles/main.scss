@@ -42,8 +42,32 @@ table{
 	}
 }
 #course-legend{
-
+	h2, h3{
+		margin-top: 0;
+	}
+	h3{
+		font-size: 16px;
+		>span{
+			position: absolute;
+			left: -34px;
+			font-size: 12px;
+			padding-top: 3px;
+			text-align: right;
+			width: 43px;
+		}
+	}
 }
+
+#legend_typ_aktiv{
+	color: #FE0405;
+}
+#legend_typ_vds{
+	color: #9BBB59;
+}
+#legend_typ_techadm{
+	color: #668CD9;
+}
+
 #delikt{
 	height: 450px;
 }

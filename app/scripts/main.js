@@ -21,6 +21,7 @@ $(document).ready(function(){
 	});
 	numeral.language('de');
 	numeral.defaultFormat('0,0');
+	numeral.zeroFormat('');
 
 	require('es6-promise').polyfill();
 
@@ -34,27 +35,26 @@ $(document).ready(function(){
 	var dataSummary = require('sliv-data-summary');
 
 	// somehow!!! require('./tooltip.jade') does not work form inside course.js ...
-	var tooltipTemplate = require('../../app/scripts/course/tooltip.jade');
 	var legendTemplate = require('../../app/scripts/course/legend.jade');
 	var Course = require('sliv-course');
-	new Course(dataSummary, tooltipTemplate, legendTemplate);
+	new Course(dataSummary, legendTemplate);
 
 	var Map = require('sliv-map');
 	var map = new Map();
 
 	var Filter = require('sliv-filter');
 	var filter = new Filter(dataDivisions, map);
-// console.log('filtery');
+
 	var Art = require('sliv-art');
 	new Art(dataDivisions, filter);
-// console.log('arty');
+
 	var Straftaten = require('sliv-straftaten');
 	new Straftaten(dataDivisions, filter);
-// console.log('strafy');
+
 	var Technologie = require('sliv-technologie');
 	new Technologie(dataDivisions, filter);
-console.log('techy');
+
 	var Delikt = require('sliv-delikt');
 	new Delikt(dataDivisions, filter);
-console.log('dilekty');
+
 });

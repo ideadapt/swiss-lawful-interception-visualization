@@ -1,4 +1,7 @@
 h2=l('TXT_TXT_JAHRESZAHLEN')
-dl
-	dt=l('TYP_TXT_AKTIV')
-	dd=l('TYP_DESCR_AKTIV')
+
+each typ in ['aktiv', 'vds', 'techadm', 'telefonbuch'].reverse()
+	h3
+		span(id='legend_typ_'+typ)
+		=l('TYP_TXT_'+typ)
+	p=l('TYP_DESCR_'+typ)

@@ -52,7 +52,7 @@ function bySuperSub(_super, sub){
 	});
 }
 
-DataSummary.prototype.activ = function(){
+DataSummary.prototype.aktiv = function(){
 	return bySuperSub.call(this, 'typ', 'aktiv');
 };
 

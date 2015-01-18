@@ -1,5 +1,5 @@
 /*global nv, d3, numeral*/
-function Course(dataSummary, tooltipTemplate, legendTemplate){
+function Course(dataSummary, legendTemplate){
 	var self = this;
 	self.view = {};
 
@@ -9,32 +9,32 @@ function Course(dataSummary, tooltipTemplate, legendTemplate){
 		    var chart = nv.models.multiBarChart();
 		    	chart.multibar.stacked(true);
 		    	chart.showControls(false)
+		    	.showLegend(false)
 			    .height(300)
+				.tooltips(false)
 			    .reduceXTicks(false)
 			    .color(['#FE0405', '#9BBB59', '#668CD9']);
 
-			var keys = ['activ', 'vds', 'techadm', 'telefonbuch'];
+			var keys = ['aktiv', 'vds', 'techadm', 'telefonbuch'];
 			var promises = keys.map(function(key){
 				return dataSummary[key]();
 			});
 		    Promise.all(promises).then(function(resolved){
 
-		    	var activ = resolved[0];
+		    	var aktiv = resolved[0];
 		    	var vds = resolved[1];
 		    	var tech = resolved[2];
 		    	var tel = resolved[3];
 		    	var tooltip = {};
-				chart.tooltipContent(function(art, x) {
-			    	//console.log(art, x, y, graph);
-			    	var view = {};
-			    	view.activ = numeral(tooltip[x].Aktiv).format();
-			    	view.vds = numeral(tooltip[x].VDS).format();
-			    	view.techadm = numeral(tooltip[x].TechAdm).format();
-			    	view.telefonbuch = numeral(tooltip[x].Tel).format();
-			    	view.year = x;
 
-			    	return tooltipTemplate(view);
-		       	});
+		       	function selectionChanged(e){
+		       		$('#legend_typ_telefonbuch').text(numeral(tooltip[e.point.x].Tel).format());
+		       		$('#legend_typ_aktiv').text(numeral(tooltip[e.point.x].Aktiv).format());
+		       		$('#legend_typ_vds').text(numeral(tooltip[e.point.x].VDS).format());
+		       		$('#legend_typ_techadm').text(numeral(tooltip[e.point.x].TechAdm).format());
+		       	}
+		       	chart.multibar.dispatch.on('elementClick', selectionChanged);
+		       	chart.multibar.dispatch.on('elementMouseover', selectionChanged);
 
 		       	tel.map(function(r){
 	    			tooltip[r.year] = tooltip[r.year] || {};
@@ -43,7 +43,7 @@ function Course(dataSummary, tooltipTemplate, legendTemplate){
 
 			    d3.select('#course>svg').datum([{
 			    	key: window.i18n.l('TYP_TXT_AKTIV'),
-			    	values: activ.map(function(r){
+			    	values: aktiv.map(function(r){
 			    		tooltip[r.year] = tooltip[r.year] || {};
 			    		tooltip[r.year].Aktiv = r.value;
 		    			return {x: r.year, y: r.value};
@@ -68,11 +68,15 @@ function Course(dataSummary, tooltipTemplate, legendTemplate){
 		    	.transition()
 		    	.duration(250)
 		    	.call(chart);
+
+		       	selectionChanged({point: {x: aktiv[aktiv.length-1].year }});
 		    });
 
 		    chart.yAxis.tickFormat(function(n){
 		    	return numeral(n).format();
 		    });
+		    chart.yAxis.axisLabel('Anzahl Gesuche');
+
 
 		    nv.utils.windowResize(chart.update);
 
