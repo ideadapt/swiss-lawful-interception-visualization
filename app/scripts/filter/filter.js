@@ -69,6 +69,27 @@ function Filter(dataDivisions, map){
 			$(self.svgDoc).find('#'+canton).attr('class', '');
 		});
 
+		$(document).ready(function(){
+			var $nav = $('#filter-row>nav');
+			var $filter = $('#filter-row');
+			var filterOffsetTop = $filter.offset().top;
+			var startSticky = filterOffsetTop;
+			var heightSet = false;
+
+			$(window).bind('scroll', function() {
+				if(($(window).scrollTop() > startSticky)){
+					if(!heightSet){
+						$filter.height($filter.height());
+						$nav.find('>.content').height($filter.height());
+						heightSet = true;
+					}
+					$nav.addClass('goToTop');
+				}else{
+					$nav.removeClass('goToTop');
+				}
+			});
+		});
+
 		function mapSelectionChanged(newCanton){
 			self.canton = newCanton;
 			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');

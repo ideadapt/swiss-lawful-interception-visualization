@@ -42,3 +42,28 @@
 		}
 	}
 }
+
+#filter-row{
+
+}
+
+.goToTop {
+  position: fixed;
+  top: 0;
+  padding-top: 10px;
+  z-index: 1;
+
+  .content{
+  	background-color: #fafafa;
+  }
+}
+
+#gradient-border{
+	height: 40px;
+	background-image: -ms-linear-gradient(top, #fafafa 0%, transparent 100%);
+	background-image: -moz-linear-gradient(top, #fafafa 0%, transparent 100%);
+	background-image: -o-linear-gradient(top, #fafafa 0%, transparent 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(1, transparent));
+	background-image: -webkit-linear-gradient(top, #fafafa 0%, transparent 100%);
+	background-image: linear-gradient(to bottom, #fafafa 0%, transparent 100%);
+}

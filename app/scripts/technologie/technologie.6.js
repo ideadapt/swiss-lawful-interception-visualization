@@ -29,24 +29,29 @@ function Technologie(dataDivisions, filter){
 				while (container.firstChild) {
 				    container.removeChild(container.firstChild);
 				}
-				var sectionWidth = 100;
+				var sectionWidth = 120;
+				var height = 160;
 				var width = technologies.length * sectionWidth;
-				var height = 80;
 				var raphPaper = new Raphael(container, width, height);
 				technologies.forEach((date, idx)=> {
 					var centerX = ((idx+1)*sectionWidth - idx*sectionWidth)/2 + idx*sectionWidth;
-					var hebel = 10;
+					var hebel = 40;
 					var radiusMin = 1;
 					var radius = radiusMin+hebel*date.relative;
-					var radiusMax = radiusMin+hebel*1;
+					var radiusMax = radiusMin+hebel;
 					var centerY = radiusMax+20;
-					if(date.label !== 'mobil'){radius = radius * 7;}
+					if(date.absolute === 0){
+						radius = 0;
+					}
+
 				    var circle = raphPaper.circle(centerX, centerY, radius);
 				    circle.attr('fill', '#333333');
-				    var value = raphPaper.text(centerX, centerY + radiusMax + 10, date.absolute);
+
+				    var value = raphPaper.text(centerX, centerY + radiusMax + 15, date.absolute);
 				    value.attr('fill', '#333333');
 				    value.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
-				    var name = raphPaper.text(centerX, centerY - radiusMax - 10, window.i18n.l('technologie_txt_'+date.label));
+
+				    var name = raphPaper.text(centerX, centerY - radiusMax - 15, window.i18n.l('technologie_txt_'+date.label));
 				    name.attr('fill', '#333333');
 				    name.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });
