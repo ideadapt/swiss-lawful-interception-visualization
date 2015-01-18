@@ -43,17 +43,13 @@
 	}
 }
 
-#filter-row{
-
-}
-
 .goToTop {
   position: fixed;
   top: 0;
-  padding-top: 10px;
   z-index: 1;
 
   .content{
+  	padding-top: 10px;
   	background-color: #fafafa;
   }
 }

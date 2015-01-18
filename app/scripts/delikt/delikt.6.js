@@ -72,41 +72,66 @@ function Delikt(dataDivisions, filter){
 				    	.duration(250)
 				    	.call(chart);
 
-			    	nv.utils.windowResize(chart.update);
+				    function updateLabel(idx, label){
+				    	label = label ? label : window.i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx]);
+				    	var svgWidth = $('#delikt>svg').width();
+               			var svgHeight = $('#delikt>svg').height();
+               			var centerX = svgWidth/2 - 20;
+               			var centerY = svgHeight/2 - 10;
+               			d3.select('#delikt .nv-legendWrap>text').remove();
+               			var text =d3.select('#delikt .nv-legendWrap')
+               				.append('text')
+               				.text(label);
+               			var textWidth = $(text[0]).width();
+               			centerX = centerX - textWidth/2;
+               			text.attr('transform', `translate(${centerX}, ${centerY})`);
+				    }
 
-			    	$('#deliktTable tr').on('mouseenter', (e)=>{
-			    		var idx = $(e.currentTarget).data('idx');
-			    		var el = $('#delikt .nv-slice').get(idx);
-			    		var elPath = $('#delikt .nv-slice>path').get(idx);
-			    		d3.select(el).classed('hover', true);
+			    	var $slices = $('#delikt .nv-slice');
+			    	var $paths = $slices.find('>path');
+				    function updateArc(hover, element){
+				    	var innerRadiusFactor = 0.618;
+				    	var outerRadiusExtra = 0;
+				    	if(hover === true){
+				    		innerRadiusFactor = 0.6;
+				    		outerRadiusExtra = 5;
+				    	}
+				    	var idx = $(element).data('idx');
+			    		var el = $slices.get(idx);
+			    		var elPath = $paths.get(idx);
+			    		d3.select(el).classed('hover', hover);
 
 						var availableWidth = width -50;
 						var availableHeight = height-50;
 						var radius = Math.min(availableWidth, availableHeight) / 2;
 						var arcRadius = radius-(radius / 5);
 
-			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+5).innerRadius(radius * 0.6);
+			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+outerRadiusExtra).innerRadius(radius * innerRadiusFactor);
 			    		d3.select(elPath)
 			    			.transition()
                				.duration(250)
                				.attr('d', arcOver);
+
+               			updateLabel(idx);
+				    }
+
+					chart.dispatch.on('stateChange', function (e) {
+						console.log(e);
+					});
+			    	nv.utils.windowResize(chart.update);
+
+			    	$('#deliktTable tr').on('mouseenter', (e)=>{
+			    		updateArc(true, e.currentTarget);
+			    	})
+			    	.on('mouseleave', (e)=>{
+			    		updateArc(false, e.currentTarget);
 			    	});
-			    	$('#deliktTable tr').on('mouseleave', (e)=>{
-			    		var idx = $(e.currentTarget).data('idx');
-			    		var el = $('#delikt .nv-slice').get(idx);
-			    		d3.select(el).classed('hover', false);
-			    		var elPath = $('#delikt .nv-slice>path').get(idx);
 
-			    		var availableWidth = width-50;
-						var availableHeight = height-50;
-						var radius = Math.min(availableWidth, availableHeight) / 2;
-						var arcRadius = radius-(radius / 5);
-
-			    		var arcOver = d3.svg.arc().outerRadius(arcRadius).innerRadius(radius * 0.618);
-			    		d3.select(elPath)
-			    			.transition()
-               				.duration(250)
-               				.attr('d', arcOver);
+			    	$slices.on('mouseenter', (e)=>{
+			    		updateLabel(null, e.currentTarget.__data__.data.label);
+			    	})
+			    	.on('mouseleave', (e)=>{
+			    		updateLabel(null, e.currentTarget.__data__.data.label);
 			    	});
 			 	});
 			});
