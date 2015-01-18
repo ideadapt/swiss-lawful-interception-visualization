@@ -1,5 +1,7 @@
+/*global Emitter*/
 function Map(){
 	var self = this;
+	self.emitter = new Emitter();
 
 	function controller(){
 		var svgContainer = document.getElementById('svgMap');
@@ -7,7 +9,7 @@ function Map(){
 		var cantons = svg.querySelectorAll('#Cantons_default>path');
 
 		function cantonClicked(){
-			self.selected = this.id;
+			self.emitter.emitSync('selectionChanged', this.id);
 		}
 		function cantonEnter(){
 			$('#filter cantons .btn[value='+this.id+']').addClass('focus');
@@ -25,7 +27,4 @@ function Map(){
 	controller.call(this);
 }
 
-Map.prototype.selected = function selected(){
-	return this.selected;
-};
 module.exports = Map;

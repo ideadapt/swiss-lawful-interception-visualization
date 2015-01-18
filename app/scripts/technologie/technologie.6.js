@@ -1,5 +1,5 @@
 /*global Raphael*/
-function Technologie(dataDivisions, filter, CompoundObserver){
+function Technologie(dataDivisions, filter){
 	var self = this;
 	self.view = {};
 
@@ -8,11 +8,7 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 	}
 
 	function controller(){
-		var observer = new CompoundObserver();
-		observer.addPath(filter, 'year');
-		observer.addPath(filter, 'canton');
-		observer.open(function(newValues){
-			var [year, canton]  = newValues;
+		function selectionChanged(year, canton){
 			var sections = ['mobil', 'festnetz', 'internet', 'post'];
 			var promises = sections.map(function(section){
 				return dataDivisions[section](year, canton);
@@ -55,7 +51,8 @@ function Technologie(dataDivisions, filter, CompoundObserver){
 				    name.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });
 			});
-		});
+		}
+		filter.emitter.on('selectionChanged', selectionChanged);
 	}
 
 	function render(){

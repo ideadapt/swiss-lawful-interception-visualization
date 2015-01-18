@@ -1,4 +1,4 @@
-function Art(dataDivisions, filter, CompoundObserver){
+function Art(dataDivisions, filter){
 	var self = this;
 	self.view = {
 		total: '',
@@ -10,15 +10,11 @@ function Art(dataDivisions, filter, CompoundObserver){
 	}
 
 	function controller(){
-		var observer = new CompoundObserver();
-		observer.addPath(filter, 'year');
-		observer.addPath(filter, 'canton');
-		observer.open(function(newValues){
-
+		function selectionChanged(year, canton){
 			var keys = ['post', 'internet', 'telefon', 'notsuche'];
 			self.view.keys = keys;
 			var promises = keys.map(function(key){
-				return dataDivisions[key](newValues[0], newValues[1]);
+				return dataDivisions[key](year, canton);
 			});
 		    Promise.all(promises).then(function(resolved){
 		    	var total = 0;
@@ -37,7 +33,8 @@ function Art(dataDivisions, filter, CompoundObserver){
 	    		};
 				render.call(self);
 			});
-		});
+		}
+		filter.emitter.on('selectionChanged', selectionChanged);
 	}
 
 	function render(){
@@ -48,8 +45,8 @@ function Art(dataDivisions, filter, CompoundObserver){
 	}
 
 	init.call(this)
-		.then(render.bind(this))
 		.then(controller.bind(this))
+		.then(render.bind(this))
 		.catch(function(err){
 			console.log(err);
 		});

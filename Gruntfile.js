@@ -278,7 +278,6 @@ module.exports = function (grunt) {
         files: [{
           '.tmp/scripts/vendor.js': [
             'bower_components/jquery/dist/jquery.js',
-            'bower_components/observe-js/src/observe.js',
             'bower_components/d3/d3.js',
             'bower_components/nvd3-community/build/nv.d3.js',
             'bower_components/numeral/numeral.js',
@@ -286,8 +285,7 @@ module.exports = function (grunt) {
             'bower_components/papaparse/papaparse.js',
             'bower_components/raphael/raphael.js',
             'node_modules/bootstrap/dist/js/bootstrap.js',
-            'bower_components/highcharts/highcharts-all.js'
-            //'bower_components/es6-promise/promise.js' // required
+            'bower_components/emitter/emitter.js'
           ]
         },
         {

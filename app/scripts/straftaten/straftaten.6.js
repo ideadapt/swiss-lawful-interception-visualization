@@ -1,5 +1,6 @@
-function Straftaten(dataDivisions, filter, CompoundObserver){
+function Straftaten(dataDivisions, filter){
 	var self = this;
+	self.template = require('./straftaten.jade');
 	self.view = {};
 
 	function init(){
@@ -7,11 +8,7 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 	}
 
 	function controller(){
-		var observer = new CompoundObserver();
-		observer.addPath(filter, 'year');
-		observer.addPath(filter, 'canton');
-		observer.open(function(newValues){
-			var [year, canton]  = newValues;
+		function selectionChanged(year, canton){
 			var sections = ['terror', 'paedo', 'krimorg', 'nachrichtendienst', 'geldwaesche', 'menschenhandel'];
 			var promises = sections.map(function(section){
 				return dataDivisions[section](year, canton);
@@ -29,7 +26,8 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 				});
 				render.call(self);
 			});
-		});
+		}
+		filter.emitter.on('selectionChanged', selectionChanged);
 	}
 
 	function render(){
@@ -40,8 +38,8 @@ function Straftaten(dataDivisions, filter, CompoundObserver){
 	}
 
 	init.call(this)
-		.then(render.bind(this))
 		.then(controller.bind(this))
+		.then(render.bind(this))
 		.catch((err) => {
 			console.error(err.message);
 		});

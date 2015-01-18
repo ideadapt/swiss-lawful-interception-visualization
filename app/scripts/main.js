@@ -1,4 +1,4 @@
-/*global CompoundObserver,PathObserver, numeral*/
+/*global numeral*/
 $(document).ready(function(){
 
 	numeral.language('de', {
@@ -43,17 +43,18 @@ $(document).ready(function(){
 	var map = new Map();
 
 	var Filter = require('sliv-filter');
-	var filter = new Filter(dataDivisions, PathObserver, map);
-
+	var filter = new Filter(dataDivisions, map);
+// console.log('filtery');
 	var Art = require('sliv-art');
-	new Art(dataDivisions, filter, CompoundObserver);
-
+	new Art(dataDivisions, filter);
+// console.log('arty');
 	var Straftaten = require('sliv-straftaten');
-	new Straftaten(dataDivisions, filter, CompoundObserver);
-
+	new Straftaten(dataDivisions, filter);
+// console.log('strafy');
 	var Technologie = require('sliv-technologie');
-	new Technologie(dataDivisions, filter, CompoundObserver);
-
+	new Technologie(dataDivisions, filter);
+console.log('techy');
 	var Delikt = require('sliv-delikt');
-	new Delikt(dataDivisions, filter, CompoundObserver);
+	new Delikt(dataDivisions, filter);
+console.log('dilekty');
 });

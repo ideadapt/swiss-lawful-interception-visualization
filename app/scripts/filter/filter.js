@@ -1,6 +1,7 @@
-
-function Filter(dataDivisions, PathObserver, map){
+/*global Emitter*/
+function Filter(dataDivisions, map){
 	var self = this;
+	self.emitter = new Emitter();
 	self.year = null;
 	self.canton = null;
 	self.svgDoc = null;
@@ -37,14 +38,14 @@ function Filter(dataDivisions, PathObserver, map){
 
 	function controller(){
 
-
 		function selectionChanged(year, canton){
 			$('#filterText').text(window.i18n.l('region_txt_'+canton) + ' ' + year);
+			self.emitter.emitSync('selectionChanged', year, canton);
 			initTooltip();
 		}
 		selectionChanged(self.year, self.canton);
 
-		$('#filter years').on('click, mouseenter', 'button', function yearFilterClicked(e){
+		$('#filter years').on('click', 'button', function yearFilterClicked(e){
 			self.year = +e.target.value;
 			renderYears.call(self);
 			selectionChanged(self.year, self.canton);
@@ -58,9 +59,8 @@ function Filter(dataDivisions, PathObserver, map){
 			selectionChanged(self.year, self.canton);
 		});
 		$('#filter cantons').on('mouseenter', 'button', function cantonFilterClicked(e){
-			self.canton = e.target.value;
-			$(self.svgDoc).find('#'+self.canton).attr('class', 'active');
-			selectionChanged(self.year, self.canton);
+			var canton = e.target.value;
+			$(self.svgDoc).find('#'+canton).attr('class', 'active');
 		});
 		$('#filter cantons').on('mouseleave', 'button', function cantonFilterClicked(e){
 			if(e.target.value === self.canton){
@@ -69,14 +69,15 @@ function Filter(dataDivisions, PathObserver, map){
 			var canton = e.target.value;
 			$(self.svgDoc).find('#'+canton).attr('class', '');
 		});
-		var selectedMapCanton = new PathObserver(map, 'selected');
-		selectedMapCanton.open(function(newCanton){
+
+		function mapSelectionChanged(newCanton){
 			self.canton = newCanton;
 			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
 			$(self.svgDoc).find('#'+self.canton).attr('class', 'active');
 			renderCantons.call(self);
 			selectionChanged(self.year, self.canton);
-		});
+		}
+		map.emitter.on('selectionChanged', mapSelectionChanged);
 	}
 
 	function renderYears(){

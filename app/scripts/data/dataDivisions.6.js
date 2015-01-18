@@ -27,6 +27,8 @@ function DataDivisions(){
 				});
 			});
 			return flat;
+		}).catch((err)=>{
+			console.error(err.message);
 		});
 
 		return self.transformed;

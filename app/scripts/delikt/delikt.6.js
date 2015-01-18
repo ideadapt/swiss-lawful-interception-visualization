@@ -1,5 +1,5 @@
 /*global nv, d3*/
-function Delikt(dataDivisions, filter, CompoundObserver){
+function Delikt(dataDivisions, filter){
 	var self = this;
 	self.view = {};
 	 self.view.colors = [
@@ -19,19 +19,14 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 	}
 
 	function controller(){
-		var observer = new CompoundObserver();
-		observer.addPath(filter, 'year');
-		observer.addPath(filter, 'canton');
-		observer.open(function(newValues){
-			var [year, canton]  = newValues;
+		function selectionChanged(year, canton){
 			var sections = ['drogen', 'drohung', 'finanz', 'gewalt', 'sex', 'oeFrieden', 'staat', 'vermoegen', 'buepf', 'diverse'];
 			var colors = self.view.colors;
-			var promises = sections.map(function(section){
+			var promises = sections.map((section) => {
 				return dataDivisions[section](year, canton);
 			});
 
 			Promise.all(promises).then(function(resolved){
-
 				self.view.sections = sections;
 				self.view.sectionValues = {};
 				resolved.forEach(function(value, i){
@@ -90,7 +85,6 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 						var radius = Math.min(availableWidth, availableHeight) / 2;
 						var arcRadius = radius-(radius / 5);
 
-			    		// DOES NOT WORK ...., how to trigger that event from outside?
 			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+5).innerRadius(radius * 0.6);
 			    		d3.select(elPath)
 			    			.transition()
@@ -108,7 +102,6 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 						var radius = Math.min(availableWidth, availableHeight) / 2;
 						var arcRadius = radius-(radius / 5);
 
-			    		// DOES NOT WORK ...., how to trigger that event from outside?
 			    		var arcOver = d3.svg.arc().outerRadius(arcRadius).innerRadius(radius * 0.618);
 			    		d3.select(elPath)
 			    			.transition()
@@ -117,7 +110,8 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 			    	});
 			 	});
 			});
-		});
+		}
+		filter.emitter.on('selectionChanged', selectionChanged);
 
 		return Promise.resolve();
 	}
@@ -130,8 +124,8 @@ function Delikt(dataDivisions, filter, CompoundObserver){
 	}
 
 	init.call(this)
-		.then(render.bind(this))
 		.then(controller.bind(this))
+		.then(render.bind(this))
 		.catch((err) => {
 			console.error(err.message);
 		});
