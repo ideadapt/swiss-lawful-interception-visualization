@@ -24,6 +24,7 @@ $(document).ready(function(){
 	numeral.zeroFormat('');
 
 	require('es6-promise').polyfill();
+	require('6to5-polyfill');
 
 	var locales = require('sliv-translations').locales;
 	var I18n = require('sliv-i18n');

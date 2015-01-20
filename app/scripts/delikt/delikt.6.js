@@ -1,4 +1,4 @@
-/*global nv, d3*/
+/*global nv, d3, numeral*/
 function Delikt(dataDivisions, filter){
 	var self = this;
 	self.view = {};
@@ -22,6 +22,8 @@ function Delikt(dataDivisions, filter){
 		function selectionChanged(year, canton){
 			var sections = ['drogen', 'drohung', 'finanz', 'gewalt', 'sex', 'oeFrieden', 'staat', 'vermoegen', 'buepf', 'diverse'];
 			var colors = self.view.colors;
+			var total = 0;
+			var innerRadiusFactor = 0.5;
 			var promises = sections.map((section) => {
 				return dataDivisions[section](year, canton);
 			});
@@ -37,6 +39,7 @@ function Delikt(dataDivisions, filter){
 						idx: i,
 						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i])[v]; }).join(', ')
 					};
+					total += value;
 				});
 				render.call(self);
 
@@ -47,11 +50,9 @@ function Delikt(dataDivisions, filter){
 				    chart.height(450);
 				    chart.width(450);
 				    chart.tooltips(false);
-				    chart.showLabels(true);
+				    chart.showLabels(false);
 				    chart.showLegend(false);
-				    chart.labelType('percent');
-				    chart.donutRatio(0.618);
-				    chart.donutLabelsOutside(true);
+				    chart.donutRatio(innerRadiusFactor);
 				    chart.labelThreshold(0);
 				    chart.x(function(d) { return d.label; })
 						 .y(function(d) { return d.value; });
@@ -72,28 +73,39 @@ function Delikt(dataDivisions, filter){
 				    	.duration(250)
 				    	.call(chart);
 
-				    function updateLabel(idx, label){
-				    	label = label ? label : window.i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx]);
+				    function updateLabel(idx){
+				    	var label = series[idx].label;
+				    	var value = series[idx].value;
+               			var percent = (value/(total/100)).toPrecision(2);
+               			value = numeral(series[idx].value).format();
 				    	var svgWidth = $('#delikt>svg').width();
                			var svgHeight = $('#delikt>svg').height();
                			var centerX = svgWidth/2 - 20;
                			var centerY = svgHeight/2 - 10;
-               			d3.select('#delikt .nv-legendWrap>text').remove();
+               			d3.selectAll('#delikt .nv-legendWrap>text').remove();
+
                			var text =d3.select('#delikt .nv-legendWrap')
                				.append('text')
                				.text(label);
                			var textWidth = $(text[0]).width();
-               			centerX = centerX - textWidth/2;
-               			text.attr('transform', `translate(${centerX}, ${centerY})`);
+               			var textX = centerX - textWidth/2;
+               			text.attr('transform', `translate(${textX}, ${centerY})`);
+
+						text =d3.select('#delikt .nv-legendWrap')
+               				.append('text')
+               				.text(`${value} (${percent}%)`);
+               			textWidth = $(text[0]).width();
+               			textX = centerX - textWidth/2;
+               			text.attr('transform', `translate(${textX}, ${centerY+16})`);
 				    }
 
 			    	var $slices = $('#delikt .nv-slice');
 			    	var $paths = $slices.find('>path');
 				    function updateArc(hover, element){
-				    	var innerRadiusFactor = 0.618;
 				    	var outerRadiusExtra = 0;
+				    	var innerRadiusFactorEff = innerRadiusFactor;
 				    	if(hover === true){
-				    		innerRadiusFactor = 0.6;
+				    		innerRadiusFactorEff = innerRadiusFactorEff - 0.05;
 				    		outerRadiusExtra = 5;
 				    	}
 				    	var idx = $(element).data('idx');
@@ -106,7 +118,7 @@ function Delikt(dataDivisions, filter){
 						var radius = Math.min(availableWidth, availableHeight) / 2;
 						var arcRadius = radius-(radius / 5);
 
-			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+outerRadiusExtra).innerRadius(radius * innerRadiusFactor);
+			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+outerRadiusExtra).innerRadius(radius * innerRadiusFactorEff);
 			    		d3.select(elPath)
 			    			.transition()
                				.duration(250)
@@ -115,9 +127,6 @@ function Delikt(dataDivisions, filter){
                			updateLabel(idx);
 				    }
 
-					chart.dispatch.on('stateChange', function (e) {
-						console.log(e);
-					});
 			    	nv.utils.windowResize(chart.update);
 
 			    	$('#deliktTable tr').on('mouseenter', (e)=>{
@@ -128,10 +137,12 @@ function Delikt(dataDivisions, filter){
 			    	});
 
 			    	$slices.on('mouseenter', (e)=>{
-			    		updateLabel(null, e.currentTarget.__data__.data.label);
+			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
+			    		updateLabel(idx);
 			    	})
 			    	.on('mouseleave', (e)=>{
-			    		updateLabel(null, e.currentTarget.__data__.data.label);
+			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
+			    		updateLabel(idx);
 			    	});
 			 	});
 			});

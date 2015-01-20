@@ -9,7 +9,13 @@ function I18n(){
 
 	this.l = function l(key){
 		key = key.toUpperCase();
-		return self.store[key] || ':' + key;
+		var value = self.store[key];
+		if(value){
+			return value;
+		}else{
+			console.warn('i18n: key not found: ', key);
+			return ':'+key;
+		}
 	};
 }
 

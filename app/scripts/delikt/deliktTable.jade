@@ -2,7 +2,7 @@ h3 Deliktgruppen
 table.table
 	if view.sectionValues
 		for section in view.sectionValues
-			tr(data-idx=section.idx)
+			tr(data-idx=section.idx, data-value=section.value)
 				td(style='background-color: rgb('+section.rgb+');')
 				th=section.key
 				td.fill.text-right=section ? numeral(section.value).format() : ''
