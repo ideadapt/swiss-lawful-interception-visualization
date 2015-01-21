@@ -9,7 +9,7 @@ function Straftaten(dataDivisions, filter){
 
 	function controller(){
 		function selectionChanged(year, canton){
-			var sections = ['terror', 'paedo', 'krimorg', 'nachrichtendienst', 'geldwaesche', 'menschenhandel'];
+			var sections = ['krimorg', 'terror', 'geldwaesche', 'menschenhandel', 'paedo', 'nachrichtendienst'];
 			var promises = sections.map(function(section){
 				return dataDivisions[section](year, canton);
 			});

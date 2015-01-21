@@ -4,6 +4,13 @@
 		display: block;
 		clear: both;
 	}
+	years{
+		float: left;
+		margin-right: 2em;
+	}
+	#filterText{
+		margin-top: 0;
+	}
 	cantons>.row{
 		padding-top: 30px;
 		&>div:last-child>.btn-group:last-child{

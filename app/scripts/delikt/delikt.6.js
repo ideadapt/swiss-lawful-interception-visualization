@@ -3,16 +3,17 @@ function Delikt(dataDivisions, filter){
 	var self = this;
 	self.view = {};
 	 self.view.colors = [
-		'#282828',
-		'#109618',
-		'#668CD9',
-		'#FE0405',
-		'#B2FF66',
-		'#9C14DB',
-		'#FF6767',
-		'#C2943E',
-		'#86BAFA',
-		'#BEC3BE'];
+		'#282828', // drogen
+		'#FE0405', // gewalt
+		'#109618', // drohung
+		'#B2FF66', // sex
+		'#9C14DB', // oeFrieden
+		'#FF6767', // staat
+		'#668CD9', // finanz
+		'#C2943E', // vermoegen
+		'#86BAFA', // buepf
+		'#BEC3BE',  // diverse
+		];
 
 	function init(){
 		return Promise.resolve();
@@ -20,7 +21,18 @@ function Delikt(dataDivisions, filter){
 
 	function controller(){
 		function selectionChanged(year, canton){
-			var sections = ['drogen', 'drohung', 'finanz', 'gewalt', 'sex', 'oeFrieden', 'staat', 'vermoegen', 'buepf', 'diverse'];
+			var sections = [
+			 'drogen',
+			 'gewalt',
+			 'drohung',
+			 'sex',
+			 'oeFrieden',
+			 'staat',
+			 'finanz',
+			 'vermoegen',
+			 'buepf',
+			 'diverse'
+			];
 			var colors = self.view.colors;
 			var total = 0;
 			var innerRadiusFactor = 0.5;
@@ -127,7 +139,7 @@ function Delikt(dataDivisions, filter){
                			updateLabel(idx);
 				    }
 
-			    	nv.utils.windowResize(chart.update);
+				    nv.utils.windowResize(() => {chart.update(); });
 
 			    	$('#deliktTable tr').on('mouseenter', (e)=>{
 			    		updateArc(true, e.currentTarget);

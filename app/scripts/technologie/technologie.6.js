@@ -1,4 +1,4 @@
-/*global Raphael*/
+/*global Raphael, numeral*/
 function Technologie(dataDivisions, filter){
 	var self = this;
 	self.view = {};
@@ -47,13 +47,13 @@ function Technologie(dataDivisions, filter){
 				    var circle = raphPaper.circle(centerX, centerY, radius);
 				    circle.attr('fill', '#333333');
 
-				    var value = raphPaper.text(centerX, centerY + radiusMax + 15, date.absolute);
+				    var value = raphPaper.text(centerX, centerY + radiusMax + 15, numeral(date.absolute).format());
 				    value.attr('fill', '#333333');
-				    value.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
+				    value.attr({'font-size': 12, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 
 				    var name = raphPaper.text(centerX, centerY - radiusMax - 15, window.i18n.l('technologie_txt_'+date.label));
 				    name.attr('fill', '#333333');
-				    name.attr({'font-size': 14, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
+				    name.attr({'font-size': 12, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });
 			});
 		}

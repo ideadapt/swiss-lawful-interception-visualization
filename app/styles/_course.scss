@@ -27,6 +27,7 @@
 	}
 }
 #course-legend{
+	padding-left: 65px;
 	h2, h3{
 		margin-top: 0;
 	}
@@ -34,11 +35,7 @@
 		font-size: 16px;
 		>span{
 			position: absolute;
-			left: -34px;
-			font-size: 12px;
-			padding-top: 3px;
-			text-align: right;
-			width: 43px;
+			left: 0px;
 		}
 	}
 }

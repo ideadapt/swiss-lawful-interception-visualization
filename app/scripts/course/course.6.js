@@ -13,11 +13,12 @@ function Course(dataSummary, legendTemplate){
 			    var chart = nv.models.multiBarChart();
 			    	chart.multibar.stacked(true);
 			    	chart.showControls(false)
+			    	.groupSpacing(0.25)
 			    	.showLegend(false)
 				    .height(300)
 					.tooltips(false)
-				    .reduceXTicks(false)
-				    .color(['#668CD9', '#9BBB59', '#FE0405']);
+				    .reduceXTicks(true)
+				    .color(['#668CD9', '#9BBB59', '#FE0405']); // telefonbuch is not in charts datum. first color is for techadm
 
 				var keys = ['telefonbuch', 'techadm', 'vds', 'aktiv'];
 				self.view.keys = keys;
@@ -66,7 +67,7 @@ function Course(dataSummary, legendTemplate){
 			    });
 			    chart.yAxis.axisLabel(window.i18n.l('anzahl_gesuche'));
 
-			    nv.utils.windowResize(chart.update);
+			    nv.utils.windowResize(() => {chart.update(); });
 
 			    return chart;
 			});
