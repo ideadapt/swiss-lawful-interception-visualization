@@ -1,6 +1,6 @@
 h2=l('TXT_TXT_JAHRESZAHLEN')
 
-each typ in ['aktiv', 'vds', 'techadm', 'telefonbuch'].reverse()
+each typ in keys.reverse()
 	h3
 		span(id='legend_typ_'+typ)
 		=l('TYP_TXT_'+typ)

@@ -51,7 +51,7 @@
     "sliv-i18n": "./app/scripts/data/i18n.6.js",
     "sliv-filter": "./app/scripts/filter/filter.js",
     "sliv-art": "./app/scripts/art/art.js",
-    "sliv-course": "./app/scripts/course/course.js",
+    "sliv-course": "./app/scripts/course/course.6.js",
     "sliv-straftaten": "./app/scripts/straftaten/straftaten.6.js",
     "sliv-technologie": "./app/scripts/technologie/technologie.6.js",
     "sliv-delikt": "./app/scripts/delikt/delikt.6.js",
