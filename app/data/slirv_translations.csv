@@ -1,1 +1,89 @@
-group,typ,detail,deregion,txt,CH,Schweizregion,txt,BA,Bundesanwaltschaftregion,txt,AG,Aargauregion,txt,AI,Appenzell Innerrhodenregion,txt,AR,Appenzell Ausserrhodenregion,txt,BE,Bernregion,txt,BL,Basel-Landregion,txt,BS,Basel-Stadtregion,txt,FR,Freiburgregion,txt,GE,Genfregion,txt,GL,Glarusregion,txt,GR,Graubündenregion,txt,JU,Juraregion,txt,LU,Luzernregion,txt,NE,Neuenburgregion,txt,NW,Nidwaldenregion,txt,OW,Obwaldenregion,txt,SG,St.Gallenregion,txt,SH,Schaffhausenregion,txt,SO,Schwyzregion,txt,SZ,Solothurnregion,txt,TG,Thurgauregion,txt,TI,Tessinregion,txt,UR,Uriregion,txt,VD,Waadtregion,txt,VS,Wallisregion,txt,ZG,Zugregion,txt,ZH,Zürichtxt,txt,year,Jahrtxt,txt,canton,Kantontyp,txt,aktiv,Aktivtyp,txt,vds,Vorratsdatenspeicherungtyp,txt,techadm,Technisch Administrativtyp,txt,telefonbuch,Einfache Anfragentyp,descr,aktiv,"Überwachung in Echtzeit. Bspeispiele: Telefongespräche werden abgehört, Mobiltelefone geortet"typ,descr,vds,Verkehrs- und Rechnungsdaten der letzten sechs Monate. Beispiel: wer hat wann mit wem kommuniziert.typ,descr,techadm,Beispiel: Vertragskopientyp,descr,telefonbuch,"einfache Basisinformationen zu Teilnehmeranschlüssen, z.B. wem gehört eine bestimmte IP-Adresse zu einer bestimmten Zeit oder eine bestimmte Telefonnummer?"technologie,txt,festnetz,Festnetztechnologie,txt,internet,Internettechnologie,txt,mobil,Mobiltechnologie,txt,post,Postdeliktegruppe,txt,buepf,BÜPFdeliktegruppe,txt,diverse,Diversedeliktegruppe,txt,drogen,Drogenhandeldeliktegruppe,txt,drohung,Drohung und Entführungdeliktegruppe,txt,finanz,Finanzdeliktedeliktegruppe,txt,gewalt,Gewaltdeliktedeliktegruppe,txt,oeFrieden,Störung des öffentlichen Friedensdeliktegruppe,txt,sex,Sexualdeliktedeliktegruppe,txt,staat,Staat und Landesverteidigungdeliktegruppe,txt,vermoegen,Vermögensdeliktedeliktegruppe,descr,buepf,BÜPFdeliktegruppe,descr,diverse,Diversedeliktegruppe,descr,drogen,Drogenhandeldeliktegruppe,descr,drohung,Drohung und Entführungdeliktegruppe,descr,finanz,Finanzdeliktedeliktegruppe,descr,gewalt,Gewaltdeliktedeliktegruppe,descr,oeFrieden,Störung des öffentlichen Friedensdeliktegruppe,descr,sex,Sexualdeliktedeliktegruppe,descr,staat,Staat und Landesverteidigungdeliktegruppe,descr,vermoegen,Vermögensdelikteschwerestraftaten,txt,paedo,Pädokriminalitätschwerestraftaten,txt,krimorg,Kriminelle Organisationschwerestraftaten,txt,terror,Terrorismusschwerestraftaten,txt,menschenhandel,Menschenhandelschwerestraftaten,txt,nachrichtendienst,Nachrichtendienstschwerestraftaten,txt,geldwaesche,Geldwäschereischwerestraftaten,descr,paedo,Pädokriminalitätschwerestraftaten,descr,krimorg,Kriminelle Organisationschwerestraftaten,descr,terror,Terrorismusschwerestraftaten,descr,menschenhandel,Menschenhandelschwerestraftaten,descr,nachrichtendienst,Nachrichtendienstschwerestraftaten,descr,geldwaesche,Geldwäscherei
+group,typ,detail,de
+art,txt,antennensuchlauf,Antennensuchlauf
+art,txt,internet,Internet
+art,txt,notsuche,Notsuche
+art,txt,post,Post
+art,txt,telefon,Telefon
+deliktegruppe,descr,buepf,BÜPF
+deliktegruppe,descr,diverse,Diverse
+deliktegruppe,descr,drogen,Drogenhandel
+deliktegruppe,descr,drohung,Drohung und Entführung
+deliktegruppe,descr,finanz,Finanzdelikte
+deliktegruppe,descr,gewalt,Gewaltdelikte
+deliktegruppe,descr,oeFrieden,Störung des öffentlichen Friedens
+deliktegruppe,descr,sex,Sexualdelikte
+deliktegruppe,descr,staat,Staat und Landesverteidigung
+deliktegruppe,descr,vermoegen,Vermögensdelikte
+deliktegruppe,txt,buepf,BÜPF
+deliktegruppe,txt,diverse,Diverse
+deliktegruppe,txt,drogen,Drogenhandel
+deliktegruppe,txt,drohung,Drohung und Entführung
+deliktegruppe,txt,finanz,Finanzdelikte
+deliktegruppe,txt,gewalt,Gewaltdelikte
+deliktegruppe,txt,oeFrieden,Störung des öffentlichen Friedens
+deliktegruppe,txt,sex,Sexualdelikte
+deliktegruppe,txt,staat,Staat und Landesverteidigung
+deliktegruppe,txt,vermoegen,Vermögensdelikte
+region,txt,AG,Aargau
+region,txt,AI,Appenzell Innerrhoden
+region,txt,AR,Appenzell Ausserrhoden
+region,txt,BA,Bundesanwaltschaft
+region,txt,BE,Bern
+region,txt,BL,Basel-Land
+region,txt,BS,Basel-Stadt
+region,txt,CH,Schweiz
+region,txt,FR,Freiburg
+region,txt,GE,Genf
+region,txt,GL,Glarus
+region,txt,GR,Graubünden
+region,txt,JU,Jura
+region,txt,LU,Luzern
+region,txt,NE,Neuenburg
+region,txt,NW,Nidwalden
+region,txt,OW,Obwalden
+region,txt,SG,St.Gallen
+region,txt,SH,Schaffhausen
+region,txt,SZ,Schwyz
+region,txt,SO,Solothurn
+region,txt,TG,Thurgau
+region,txt,TI,Tessin
+region,txt,UR,Uri
+region,txt,VD,Waadt
+region,txt,VS,Wallis
+region,txt,ZG,Zug
+region,txt,ZH,Zürich
+schwerestraftaten,descr,geldwaesche,Geldwäscherei
+schwerestraftaten,descr,krimorg,Kriminelle Organisation
+schwerestraftaten,descr,menschenhandel,Menschenhandel
+schwerestraftaten,descr,nachrichtendienst,Nachrichtendienst
+schwerestraftaten,descr,paedo,Pädokriminalität
+schwerestraftaten,descr,terror,Terrorismus
+schwerestraftaten,txt,geldwaesche,Geldwäscherei
+schwerestraftaten,txt,krimorg,Kriminelle Organisation
+schwerestraftaten,txt,menschenhandel,Menschenhandel
+schwerestraftaten,txt,nachrichtendienst,Nachrichtendienst
+schwerestraftaten,txt,paedo,Pädokriminalität
+schwerestraftaten,txt,terror,Terrorismus
+technologie,txt,festnetz,Festnetz
+technologie,txt,internet,Internet
+technologie,txt,mobil,Mobil
+technologie,txt,post,Post
+title,txt,art,Art der Überwachung
+title,txt,deliktegruppe,Deliktgruppen
+title,txt,jahreszahlen,Überwachungen nach Typ
+title,txt,maintitle,Swiss Lawful Interception Visual
+title,txt,schwerestraftaten,Schwere Straftaten
+title,txt,technologie,Technologie
+title,txt,typ,Typ der Überwachung
+txt,txt,anzahl_anfragen,Anzahl Anfragen
+txt,txt,canton,Kanton
+txt,txt,no_value,k. A.
+txt,txt,year,Jahr
+typ,descr,aktiv,"Überwachung in Echtzeit. Bspeispiele: Telefongespräche werden abgehört, Mobiltelefone geortet"
+typ,descr,techadm,Beispiel: Vertragskopien
+typ,descr,telefonbuch,"einfache Basisinformationen zu Teilnehmeranschlüssen, z.B. wem gehört eine bestimmte IP-Adresse zu einer bestimmten Zeit oder eine bestimmte Telefonnummer?"
+typ,descr,vds,Verkehrs- und Rechnungsdaten der letzten sechs Monate. Beispiel: wer hat wann mit wem kommuniziert.
+typ,txt,aktiv,Aktiv
+typ,txt,techadm,Technisch Administrativ
+typ,txt,telefonbuch,Einfache Anfragen
+typ,txt,vds,Vorratsdatenspeicherung
