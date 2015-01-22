@@ -28,6 +28,7 @@ region,txt,AG,Aargau,Aargau,Argovie,Argovia,Argovia,1
 region,txt,AI,Appenzell Innerrhoden,Appenzell Inner-Rhodes,Appenzell Rhodes-Intérieures,Appenzello Interno,Appenzell Dadens,1
 region,txt,AR,Appenzell Ausserrhoden,Appenzell Outer-Rhodes,Appenzell Rhodes-Extérieures,Appenzello Esterno,Appenzell Dadora,1
 region,txt,BA,Bundesanwaltschaft,Attorney General,Ministère public de la Confédération,Ministero pubblico della Confederazione,Bundesanwaltschaft,1
+region,txt,BA_short,Bundesanw.,Attorney G.,Min. Public,M. pubblico,Bundesanw.,
 region,txt,BE,Bern,Bern,Berne,Berna,Berna,1
 region,txt,BL,Basel-Land,Basel District,Bâle-Campagne,Basilea-Campagna,Basel-Champagna,1
 region,txt,BS,Basel-Stadt,Basel City,Bâle-Ville,Basilea-Città,Basel-Citad,1
@@ -94,13 +95,6 @@ typ,txt,telefonbuch,Einfache Anfragen,simple requests,demandes simples,richieste
 typ,txt,vds,Vorratsdatenspeicherung,data retention,conservation des données,conservazione dei dati,retenziun dei dati,1
 typ,txt,facebook,Facebook,Facebook,Facebook,Facebook,Facebook,1
 typ,txt,microsoft,"Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft",1
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
+longtext,descr,welcome,"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",,,,
+longtext,descr,slir,"Neben dieser Visualisierung der Überwachungmassnahmen publiziert die Digitale Gesellschaft jährlich einen detailierten Report, der die Statistiken der Überwachungsmassnahmen noch genauer beleuchtet. Der Swiss Lawful Interception Report kann hier heruntergeladen werden: <a href='https://www.digitale-gesellschaft.ch/uploads/2014/03/SLIR_2014.pdf'>Swiss Lawful Interception Report 2015</a>","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et",,,,
+longtext,descr,impressum,"Die Digitale Gesellschaft ist ein offener Zusammenschluss netzpolitisch interessierter Kreise. Dem Bündnis angeschlossen sind rund 50 Personen und 15 Gruppierungen. Dazu gehören Grundrechtsorganisationen, Parteien, KünstlerInnen-Kollektive, BetreiberInnen von Netzwerkdiensten und weiteren Gruppen, die sich der kritischen, digitalen Zivilgesellschaft verpflichtet fühlen. </br> Weitere Informationen zu netzpolitischen Themen sind im Blog zu finden: <a href='https://www.digitale-gesellschaft.ch'>https://www.digitale-gesellschaft.ch</a>",,,,,
