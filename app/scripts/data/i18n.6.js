@@ -3,8 +3,11 @@ function I18n(){
 	self.transformed = null;
 	self.store = {};
 
-	this.init = function(locales, lang){
+	this.init = function(locales, lang, fallbackLang = 'de'){
+		self.lang = lang;
+		self.fallbackLang = fallbackLang;
 		self.store = locales[lang];
+		self.fallbackStore = locales[fallbackLang];
 	};
 
 	this.l = function l(key){
@@ -13,8 +16,14 @@ function I18n(){
 		if(value){
 			return value;
 		}else{
-			console.warn('i18n: key not found: ', key);
-			return ':'+key;
+			value = self.fallbackStore[key];
+			if(value){
+				console.warn('i18n,', self.lang, ', missing key: ', key);
+				return value;
+			}else{
+				console.warn('i18n,', self.fallbackLang, ', missing key: ', key);
+				return ':'+key;
+			}
 		}
 	};
 }

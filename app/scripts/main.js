@@ -1,36 +1,45 @@
 /*global numeral*/
 $(document).ready(function(){
 
-	numeral.language('de', {
-	    delimiters: {
-	        thousands: '\'',
-	        decimal: ','
-	    },
-	    abbreviations: {
-	        thousand: 'k',
-	        million: 'Mio',
-	        billion: 'Mrd',
-	        trillion: 't'
-	    },
-	    ordinal : function (number) {
-	        return number === 1 ? 'e' : 'e';
-	    },
-	    currency: {
-	        symbol: 'CHF'
-	    }
+	var defaultLocale = 'de';
+	var localeMatch = window.location.search.match(/locale=([a-z]{2})/);
+	var selectedLocale = localeMatch ? localeMatch[1] : defaultLocale;
+	var locales = require('sliv-translations').locales;
+	var I18n = require('sliv-i18n');
+	var i18n = new I18n();
+	i18n.init(locales, selectedLocale);
+	window.i18n = i18n;
+
+	['rm', 'de', 'fr', 'it', 'en'].forEach(function(lang){
+		numeral.language(lang, {
+		    delimiters: {
+		        thousands: '\'',
+		        decimal: ','
+		    },
+		    abbreviations: {
+		        thousand: 'k',
+		        million: 'Mio',
+		        billion: 'Mrd',
+		        trillion: 't'
+		    },
+		    ordinal : function (number) {
+		        return number === 1 ? 'e' : 'e';
+		    },
+		    currency: {
+		        symbol: 'CHF'
+		    }
+		});
+		numeral.defaultFormat('0,0');
+		numeral.zeroFormat('');
+		// i18n.l('txt_txt_no_value') does not work. should have NaN Format and zeroFormat
 	});
-	numeral.language('de');
-	numeral.defaultFormat('0,0');
-	numeral.zeroFormat('');
+	numeral.language(selectedLocale);
 
 	require('es6-promise').polyfill();
 	require('6to5-polyfill');
 
-	var locales = require('sliv-translations').locales;
-	var I18n = require('sliv-i18n');
-	var i18n = new I18n();
-	i18n.init(locales, 'de');
-	window.i18n = i18n;
+	$('#mainTitle').text(i18n.l('title_txt_maintitle'));
+	window.document.title = i18n.l('title_txt_maintitle');
 
 	var dataDivisions = require('sliv-data-divisions');
 	var dataSummary = require('sliv-data-summary');
@@ -57,5 +66,4 @@ $(document).ready(function(){
 
 	var Delikt = require('sliv-delikt');
 	new Delikt(dataDivisions, filter);
-
 });

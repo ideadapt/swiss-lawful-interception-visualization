@@ -65,7 +65,7 @@ function Course(dataSummary, legendTemplate){
 			    chart.yAxis.tickFormat(function(n){
 			    	return numeral(n).format();
 			    });
-			    chart.yAxis.axisLabel(window.i18n.l('anzahl_gesuche'));
+			    chart.yAxis.axisLabel(window.i18n.l('txt_txt_anzahl_anfragen'));
 
 			    nv.utils.windowResize(() => {chart.update(); });
 
