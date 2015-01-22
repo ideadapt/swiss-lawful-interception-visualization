@@ -6,7 +6,7 @@ var inputStream = fs.createReadStream(__dirname+'/../app/data/slirv_translations
 var outputStream = fs.createWriteStream(__dirname+'/translations.js');
 var recordIdx = 0;
 var translations = {};
-var langs = ['de'];
+var langs = ['de', 'en', 'fr', 'it', 'rm'];
 langs.forEach(function lang(lang){
     translations[lang] = {};
 });
