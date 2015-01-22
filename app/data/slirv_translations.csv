@@ -1,94 +1,106 @@
-group,typ,detail,de,en,fr,it,rm
-art,txt,antennensuchlauf,Antennensuchlauf,mobile subscriber scan,,,
-art,txt,internet,Internet,internet,,,
-art,txt,notsuche,Notsuche,emergency rescue,,,
-art,txt,post,Post,post mail,,,
-art,txt,telefon,Telefon,phone,,,
-deliktegruppe,descr,buepf,Überwachung ohne Strafverfahren,requests without criminal proceedings,,,
-deliktegruppe,descr,diverse,,,,,
-deliktegruppe,descr,drogen,,,,,
-deliktegruppe,descr,drohung,Drohung und Entführung,threat and kidnapping,,,
-deliktegruppe,descr,finanz,"Geldwäscherei, sich bestechen lassen, Kreditkartenmissbrauch","Money laundering, be bribed, credit card fraud",,,
-deliktegruppe,descr,gewalt,"Körperverletzung, Mord, Tötung, Totschlag, Gewaltdarstellungen","Assault, murder, homicide, manslaughter, violence",,,
-deliktegruppe,descr,oeFrieden,Störung des öffentlichen Friedens,disturbing public peace,,,
-deliktegruppe,descr,sex,"Sexuelle Nötigung, Vergewaltigung, illegale Prostitution, Pornographie","sexual assault, rape, illegal prostitution, pornography",,,
-deliktegruppe,descr,staat,Staat und Landesverteidigung,security and national defence,,,
-deliktegruppe,descr,vermoegen,Vermögensdelikte,property crimes ,,,
-deliktegruppe,txt,buepf,BÜPF,LPTS,,,
-deliktegruppe,txt,diverse,Diverse,miscellaneous,,,
-deliktegruppe,txt,drogen,Drogenhandel,drug trafficking,,,
-deliktegruppe,txt,drohung,Drohung und Entführung,threat and kidnapping,,,
-deliktegruppe,txt,finanz,Finanzdelikte,financial crimes,,,
-deliktegruppe,txt,gewalt,Gewaltdelikte,violent crimes,,,
-deliktegruppe,txt,oeFrieden,Störung des öffentlichen Friedens,disturbing public peace,,,
-deliktegruppe,txt,sex,Sexualdelikte,sexual crimes,,,
-deliktegruppe,txt,staat,Staat und Landesverteidigung,security and national defence,,,
-deliktegruppe,txt,vermoegen,Vermögensdelikte,property crimes ,,,
-region,txt,AG,Aargau,Aargau,Argovie,Argovia,Argovia
-region,txt,AI,Appenzell Innerrhoden,Appenzell Inner-Rhodes,Appenzell Rhodes-Intérieures,Appenzello Interno,Appenzell Dadens
-region,txt,AR,Appenzell Ausserrhoden,Appenzell Outer-Rhodes,Appenzell Rhodes-Extérieures,Appenzello Esterno,Appenzell Dadora
-region,txt,BA,Bundesanwaltschaft,Attorney General,Ministère public de la Confédération,Ministero pubblico della Confederazione,Bundesanwaltschaft
-region,txt,BE,Bern,Bern,Berne,Berna,Berna
-region,txt,BL,Basel-Land,Basel District,Bâle-Campagne,Basilea-Campagna,Basel-Champagna
-region,txt,BS,Basel-Stadt,Basel City,Bâle-Ville,Basilea-Città,Basel-Citad
-region,txt,CH,Schweiz,Switzerland,Suisse,Svizzera,
-region,txt,FR,Freiburg,Fribourg,Fribourg,Friburgo,Friburg
-region,txt,GE,Genf,Geneva,Genève,Ginevra,Genevra
-region,txt,GL,Glarus,Glarus,Glaris,Glarona,Glaruna
-region,txt,GR,Graubünden,Grisons,Grisons,Grigioni,Grischun
-region,txt,JU,Jura,Jura,Jura,Giura,Giura
-region,txt,LU,Luzern,Lucerne,Lucerne,Lucerna,Lucerna
-region,txt,NE,Neuenburg,Neuchâtel,Neuchâtel,Neuchâtel,Neuchatel
-region,txt,NW,Nidwalden,Nidwalden,Nidwald,Nidwaldo,Sutsilvania
-region,txt,OW,Obwalden,Obwalden,Obwald,Obwaldo,Sursilvania
-region,txt,SG,St.Gallen,St.Gallen,St.Gall,San Gallo,Son Gagl
-region,txt,SH,Schaffhausen,Schaffhausen,Schaffhouse,Sciaffusa,Schaffusa
-region,txt,SO,Schwyz,Schwyz,Schwytz,Svitto,Sviz
-region,txt,SZ,Solothurn,Solothurn,Soleure,Soletta,Soloturn
-region,txt,TG,Thurgau,Thurgau,Thurgovie,Turgovia,Turgovia
-region,txt,TI,Tessin,Ticino,Tessin,Ticino,Tessin
-region,txt,UR,Uri,Uri,Uri,Uri,Uri
-region,txt,VD,Waadt,Vaud,Vaud,Vaud,Vad
-region,txt,VS,Wallis,Valais,Valais,Vallese,Vallais
-region,txt,ZG,Zug,Zug,Zoug,Zugo,Zug
-region,txt,ZH,Zürich,Zurich,Zurich,Zurigo,Turitg
-schwerestraftaten,descr,geldwaesche,,,,,
-schwerestraftaten,descr,krimorg,,,,,
-schwerestraftaten,descr,menschenhandel,,,,,
-schwerestraftaten,descr,nachrichtendienst,verbotene politische oder wirtschaftliche Nachrichtendiensttätigkeiten,illegal political or economic intelligence activities,,,
-schwerestraftaten,descr,paedo,"Sexueller Kindesmissbrauch, Kinderpornografie","child sexual abuse, child pornography",,,
-schwerestraftaten,descr,terror,"Gefährdung der öffentlichen Sicherheit, Finanzierung Terror","threat to public safety, financing terrorism",,,
-schwerestraftaten,txt,geldwaesche,Geldwäscherei,money laundering,,,
-schwerestraftaten,txt,krimorg,Kriminelle Organisation,criminal organization,,,
-schwerestraftaten,txt,menschenhandel,Menschenhandel,human trafficking,,,
-schwerestraftaten,txt,nachrichtendienst,verbotener Nachrichtendienst,illegal intelligence activities,,,
-schwerestraftaten,txt,paedo,Pädokriminalität,pedocriminality,,,
-schwerestraftaten,txt,terror,Terrorismus,terrorism,,,
-technologie,txt,festnetz,Festnetz,fixed network,,,
-technologie,txt,internet,Internet,internet,,,
-technologie,txt,mobil,Mobil,cell phone,,,
-technologie,txt,post,Post,post mail,,,
-sprache,txt,DE,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch
-sprache,txt,EN,English,English,English,English,English
-sprache,txt,FR,Français,Français,Français,Français,Français
-sprache,txt,IT,Italiano,Italiano,Italiano,Italiano,Italiano
-sprache,txt,RM,Rumantsch,Rumantsch,Rumantsch,Rumantsch,Rumantsch
-title,txt,art,Art der Überwachung,kind of interception,,,
-title,txt,deliktegruppe,Deliktegruppen,group of crimes,,,
-title,txt,jahreszahlen,Überwachungen nach Typ,type of interception,,,
-title,txt,maintitle,Swiss Lawful Interception Visual,Swiss Lawful Interception Visual,,,
-title,txt,schwerestraftaten,Schwere Straftaten,serious crimes,,,
-title,txt,technologie,Technologie,technology,,,
-title,txt,typ,Überwachungen nach Typ,type of interception,,,
-txt,txt,anzahl_anfragen,Anzahl Anfragen,count of requests,,,
-txt,txt,canton,Kanton,canton,,,
-txt,txt,no_value,k. A.,n/a,,,
-txt,txt,year,Jahr,year,,,
-typ,descr,aktiv,"Überwachung in Echtzeit. Beispispiele: Telefongespräche werden abgehört, Mobiltelefone geortet","Monitoring in real time. e.g. listen to cellphone calls, track cellphone",,,
-typ,descr,techadm,Beispiel: Vertragskopien,"e.g. contract, billing info",,,
-typ,descr,telefonbuch,"einfache Basisinformationen, z.B. wem gehört eine bestimmte IP-Adresse zu einer bestimmten Zeit oder eine bestimmte Telefonnummer?","simple basic information e.g who used IP adress, who ueses a certrain cell number",,,
-typ,descr,vds,Verkehrs- und Rechnungsdaten der letzten sechs Monate. Beispiel: wer hat wann mit wem kommuniziert.,dataretention of the last six monts. E.g who communicated when to whom ,,,
-typ,txt,aktiv,Aktiv,active,,,
-typ,txt,techadm,administrativ,administrative,,,
-typ,txt,telefonbuch,Einfache Anfragen,simple requests,,,
-typ,txt,vds,Vorratsdatenspeicherung,data retention,,,
+group,typ,detail,de,en,fr,it,rm,done
+art,txt,antennensuchlauf,Antennensuchlauf,mobile subscriber scan,analyse de l'abonné mobile,ricerca abbonato mobile,tschertgar abbonato mobile,
+art,txt,internet,Internet,internet,internet,internet,internet,
+art,txt,notsuche,Notsuche,emergency rescue,secours d'urgence,salvataggio di emergenza,tschertgar di emergenza,
+art,txt,post,Post,post mail,poste,internet,internet,
+art,txt,telefon,Telefon,phone,téléphone,telefono,telefon,
+deliktegruppe,descr,buepf,Überwachung ohne Strafverfahren,requests without criminal proceedings,surveillance sans criminelle,richieste senza un procedimento penale,,
+deliktegruppe,descr,diverse,,,,,,1
+deliktegruppe,descr,drogen,,,,,,1
+deliktegruppe,descr,drohung,Drohung und Entführung,threat and kidnapping,menaces et enlèvements,minacce e sequestro di persona,,
+deliktegruppe,descr,finanz,"Geldwäscherei, sich bestechen lassen, Kreditkartenmissbrauch","Money laundering, be bribed, credit card fraud","Le blanchiment d'argent, est corrompu, la fraud de carte de crédit","Riciclaggio di denaro, essere corrotto, frodi con carta di credito",,
+deliktegruppe,descr,gewalt,"Körperverletzung, Mord, Tötung, Totschlag, Gewaltdarstellungen","Assault, murder, homicide, manslaughter, violence","assault, assassiner, homicide, homicide involontaire coupable, la violence","Assault, omicidio, omicidio, omicidio colposo, violenza",,
+deliktegruppe,descr,oeFrieden,Störung des öffentlichen Friedens,disturbing public peace,paix publique inquiétante,inquietante pace pubblica,,
+deliktegruppe,descr,sex,"Sexuelle Nötigung, Vergewaltigung, illegale Prostitution, Pornographie","sexual assault, rape, illegal prostitution, pornography","agression sexuelle, le viol, la prostitution illégale, la pornographie","sexual assault, rape, illegal prostitution, pornography",,
+deliktegruppe,descr,staat,Staat und Landesverteidigung,security and national defence,sécurité et la défense nationale,sicurezza e la difesa nazionale,,
+deliktegruppe,descr,vermoegen,Vermögensdelikte,property crimes ,crimes contre les biens,reati contro la proprietà,,
+deliktegruppe,txt,buepf,BÜPF,LPTS,LSCPT,LSCPT,LSTPT,
+deliktegruppe,txt,diverse,Diverse,miscellaneous,divers,miscellaneo,,
+deliktegruppe,txt,drogen,Drogenhandel,drug trafficking,trafic de drogue,traffico di droga,martgà di droga,
+deliktegruppe,txt,drohung,Drohung und Entführung,threat and kidnapping,menace et d'enlèvement,minacce e sequestro di persona,xxx et rapinament  ,
+deliktegruppe,txt,finanz,Finanzdelikte,financial crimes,crimes financiers,reati finanziari,,
+deliktegruppe,txt,gewalt,Gewaltdelikte,violent crimes,crimes violents,crimini violenti,,
+deliktegruppe,txt,oeFrieden,Störung des öffentlichen Friedens,disturbing public peace,paix publique inquiétante,inquietante pace pubblica,,
+deliktegruppe,txt,sex,Sexualdelikte,sexual crimes,crimes sexuels,crimini sessuali,,
+deliktegruppe,txt,staat,Staat und Landesverteidigung,security and national defence,sécurité et la défense nationale,sicurezza e la difesa nazionale,,
+deliktegruppe,txt,vermoegen,Vermögensdelikte,property crimes ,crimes contre les biens,reati contro la proprietà,,
+region,txt,AG,Aargau,Aargau,Argovie,Argovia,Argovia,1
+region,txt,AI,Appenzell Innerrhoden,Appenzell Inner-Rhodes,Appenzell Rhodes-Intérieures,Appenzello Interno,Appenzell Dadens,1
+region,txt,AR,Appenzell Ausserrhoden,Appenzell Outer-Rhodes,Appenzell Rhodes-Extérieures,Appenzello Esterno,Appenzell Dadora,1
+region,txt,BA,Bundesanwaltschaft,Attorney General,Ministère public de la Confédération,Ministero pubblico della Confederazione,Bundesanwaltschaft,1
+region,txt,BE,Bern,Bern,Berne,Berna,Berna,1
+region,txt,BL,Basel-Land,Basel District,Bâle-Campagne,Basilea-Campagna,Basel-Champagna,1
+region,txt,BS,Basel-Stadt,Basel City,Bâle-Ville,Basilea-Città,Basel-Citad,1
+region,txt,CH,Schweiz,Switzerland,Suisse,Svizzera,Svizra,1
+region,txt,FR,Freiburg,Fribourg,Fribourg,Friburgo,Friburg,1
+region,txt,GE,Genf,Geneva,Genève,Ginevra,Genevra,1
+region,txt,GL,Glarus,Glarus,Glaris,Glarona,Glaruna,1
+region,txt,GR,Graubünden,Grisons,Grisons,Grigioni,Grischun,1
+region,txt,JU,Jura,Jura,Jura,Giura,Giura,1
+region,txt,LU,Luzern,Lucerne,Lucerne,Lucerna,Lucerna,1
+region,txt,NE,Neuenburg,Neuchâtel,Neuchâtel,Neuchâtel,Neuchatel,1
+region,txt,NW,Nidwalden,Nidwalden,Nidwald,Nidwaldo,Sutsilvania,1
+region,txt,OW,Obwalden,Obwalden,Obwald,Obwaldo,Sursilvania,1
+region,txt,SG,St.Gallen,St.Gallen,St.Gall,San Gallo,Son Gagl,1
+region,txt,SH,Schaffhausen,Schaffhausen,Schaffhouse,Sciaffusa,Schaffusa,1
+region,txt,SO,Schwyz,Schwyz,Schwytz,Svitto,Sviz,1
+region,txt,SZ,Solothurn,Solothurn,Soleure,Soletta,Soloturn,1
+region,txt,TG,Thurgau,Thurgau,Thurgovie,Turgovia,Turgovia,1
+region,txt,TI,Tessin,Ticino,Tessin,Ticino,Tessin,1
+region,txt,UR,Uri,Uri,Uri,Uri,Uri,1
+region,txt,VD,Waadt,Vaud,Vaud,Vaud,Vad,1
+region,txt,VS,Wallis,Valais,Valais,Vallese,Vallais,1
+region,txt,ZG,Zug,Zug,Zoug,Zugo,Zug,1
+region,txt,ZH,Zürich,Zurich,Zurich,Zurigo,Turitg,1
+schwerestraftaten,descr,geldwaesche,,,,,,1
+schwerestraftaten,descr,krimorg,,,,,,1
+schwerestraftaten,descr,menschenhandel,,,,,,1
+schwerestraftaten,descr,nachrichtendienst,verbotene politische oder wirtschaftliche Nachrichtendiensttätigkeiten,illegal political or economic intelligence activities,illégale activités politiques ou économiques renseignement,attività di intelligence politici o economici illegali,,
+schwerestraftaten,descr,paedo,"Sexueller Kindesmissbrauch, Kinderpornografie","child sexual abuse, child pornography","exploitation sexuelle des enfants, la pornographie juvénile","abusi sessuali sui minori, la pedopornografia",,
+schwerestraftaten,descr,terror,"Gefährdung der öffentlichen Sicherheit, Finanzierung Terror","threat to public safety, financing terrorism","menace pour la sécurité publique, le financement du terrorisme","minaccia per la sicurezza pubblica, il finanziamento del terrorismo",,
+schwerestraftaten,txt,geldwaesche,Geldwäscherei,money laundering,le blanchiment d'argent,il riciclaggio di denaro,,
+schwerestraftaten,txt,krimorg,Kriminelle Organisation,criminal organization,organisation criminelle,organizzazione criminale,,
+schwerestraftaten,txt,menschenhandel,Menschenhandel,human trafficking,traite des êtres humains,tratta di esseri umani,,
+schwerestraftaten,txt,nachrichtendienst,verbotener Nachrichtendienst,illegal intelligence activities,activités de renseignement illégales,attività di intelligence illegali,,
+schwerestraftaten,txt,paedo,Pädokriminalität,pedocriminality,pédocriminalité,pedocriminality,,
+schwerestraftaten,txt,terror,Terrorismus,terrorism,terrorisme,terrorismo,,
+technologie,txt,festnetz,Festnetz,fixed network,téléphone fixe,telefono fisso,,
+technologie,txt,internet,Internet,internet,internet,internet,internet,1
+technologie,txt,mobil,Mobil,cell phone,téléphone cellulaire,telefono cellulare,,
+technologie,txt,post,Post,post mail,poste,postale,,
+sprache,txt,DE,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,1
+sprache,txt,EN,English,English,English,English,English,1
+sprache,txt,FR,Français,Français,Français,Français,Français,1
+sprache,txt,IT,Italiano,Italiano,Italiano,Italiano,Italiano,1
+sprache,txt,RM,Rumantsch,Rumantsch,Rumantsch,Rumantsch,Rumantsch,1
+title,txt,art,Art der Überwachung,kind of interception,forme de surveillance,forma di sorveglianza,,
+title,txt,deliktegruppe,Deliktegruppen,group of crimes,groupe de crimes,gruppo di reati,,
+title,txt,jahreszahlen,Überwachungen nach Typ,type of interception,type de surveillance,tipo di monitoraggio,,
+title,txt,maintitle,Swiss Lawful Interception Visual,Swiss Lawful Interception Visual,Suiss Lawfull Inteception Visual,Svizzera Lawfull Interception,,
+title,txt,schwerestraftaten,Schwere Straftaten,serious crimes,crimes graves,reati gravi,,
+title,txt,technologie,Technologie,technology,technologie,tecnologia,,
+title,txt,typ,Überwachungen nach Typ,type of interception,type de surveillance,tipo di monitoraggio,,
+txt,txt,anzahl_anfragen,Anzahl Anfragen,count of requests,nombre de demandes,numero di richieste,,
+txt,txt,canton,Kanton,canton,canton,canton,,
+txt,txt,no_value,k. A.,n/a,n.s.,n.i.,,
+txt,txt,year,Jahr,year,année,anno,,
+typ,descr,aktiv,"Überwachung in Echtzeit. Beispispiele: Telefongespräche werden abgehört, Mobiltelefone geortet","Monitoring in real time. e.g. listen to cellphone calls, track cellphone","Suivi en temps réel. p.e. écouter les appels de téléphone cellulaire, téléphone portable suivre","Monitoraggio in tempo reale a.e. ascoltare le chiamate del cellulare, tenere traccia del cellulare",,
+typ,descr,techadm,Beispiel: Vertragskopien,"e.g. contract, billing info","p.e. contrat, informations","a.e. contratto, informazioni di fatturazione",,
+typ,descr,telefonbuch,"einfache Basisinformationen, z.B. wem gehört eine bestimmte IP-Adresse zu einer bestimmten Zeit oder eine bestimmte Telefonnummer?","simple basic information e.g who used IP adress, who used a certrain cell number","informations de base simple p.e. qui utilisé adresse IP, qui a utilisé un certain nombre de cellules certrain","semplice le informazioni di base per esempio che ha usato indirizzo IP, che uesed un numero di cellule certrain",,
+typ,descr,vds,Verkehrs- und Rechnungsdaten der letzten sechs Monate. Beispiel: wer hat wann mit wem kommuniziert.,dataretention of the last six months e.g who communicated when to whom ,dataretention des six derniers monts. p.e. qui communiquées lors à qui,"dataretention degli ultimi sei mesi ad esempio, che hanno comunicato quando a chi",,
+typ,txt,aktiv,Aktiv,active,actif,attivo,activ,1
+typ,txt,techadm,administrativ,administrative,administratif,amministrativo,administrativ,1
+typ,txt,telefonbuch,Einfache Anfragen,simple requests,demandes simples,richieste semplici,dumonda simpel,1
+typ,txt,vds,Vorratsdatenspeicherung,data retention,conservation des données,conservazione dei dati,retenziun dei dati,1
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
