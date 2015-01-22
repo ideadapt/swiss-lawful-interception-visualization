@@ -4,7 +4,7 @@ art,txt,internet,Internet,internet,internet,internet,internet,
 art,txt,notsuche,Notsuche,emergency rescue,secours d'urgence,salvataggio di emergenza,tschertgar di emergenza,
 art,txt,post,Post,post mail,poste,internet,internet,
 art,txt,telefon,Telefon,phone,téléphone,telefono,telefon,
-deliktegruppe,descr,buepf,Überwachung ohne Strafverfahren,requests without criminal proceedings,surveillance sans criminelle,richieste senza un procedimento penale,,
+deliktegruppe,descr,buepf,"Überwachung ohne Strafverfahren, Notsuche","requests without criminal proceedings, emergency rescue","surveillance sans criminelle, secours d'urgence","richieste senza un procedimento penale, salvataggio di emergenza",,
 deliktegruppe,descr,diverse,,,,,,1
 deliktegruppe,descr,drogen,,,,,,1
 deliktegruppe,descr,drohung,Drohung und Entführung,threat and kidnapping,menaces et enlèvements,minacce e sequestro di persona,,
@@ -80,7 +80,7 @@ title,txt,maintitle,Swiss Lawful Interception Visual,Swiss Lawful Interception V
 title,txt,schwerestraftaten,Schwere Straftaten,serious crimes,crimes graves,reati gravi,,
 title,txt,technologie,Technologie,technology,technologie,tecnologia,,
 title,txt,typ,Überwachungen nach Typ,type of interception,type de surveillance,tipo di monitoraggio,,
-txt,txt,anzahl_anfragen,Anzahl Anfragen,count of requests,nombre de demandes,numero di richieste,,
+txt,txt,anzahl_anfragen,Anzahl Anfragen,number of requests,nombre de demandes,numero di richieste,,
 txt,txt,canton,Kanton,canton,canton,canton,,
 txt,txt,no_value,k. A.,n/a,n.s.,n.i.,,
 txt,txt,year,Jahr,year,année,anno,,
@@ -92,8 +92,8 @@ typ,txt,aktiv,Aktiv,active,actif,attivo,activ,1
 typ,txt,techadm,administrativ,administrative,administratif,amministrativo,administrativ,1
 typ,txt,telefonbuch,Einfache Anfragen,simple requests,demandes simples,richieste semplici,dumonda simpel,1
 typ,txt,vds,Vorratsdatenspeicherung,data retention,conservation des données,conservazione dei dati,retenziun dei dati,1
-,,,,,,,,
-,,,,,,,,
+typ,txt,facebook,Facebook,Facebook,Facebook,Facebook,Facebook,1
+typ,txt,microsoft,"Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft",1
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
