@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint', 'concat', 'browserify'],
+        tasks: ['concat', 'browserify'],
         options: {
           livereload: true
         }
@@ -275,6 +275,9 @@ module.exports = function (grunt) {
 
     concat: {
       js: {
+        options:{
+          sourceMap: true
+        },
         files: [{
           '.tmp/scripts/vendor.js': [
             'bower_components/jquery/dist/jquery.js',
@@ -290,9 +293,6 @@ module.exports = function (grunt) {
         },
         {
           '.tmp/scripts/main.js': [
-            '<%= config.app %>/scripts/data/data.js',
-            '<%= config.app %>/scripts/course/course.js',
-            '<%= config.app %>/scripts/map/map.js',
             '<%= config.app %>/scripts/main.js'
           ]
         }]
@@ -370,7 +370,10 @@ module.exports = function (grunt) {
         dest: './.tmp/scripts/main.js',
         options: {
           debug: true,
-          external: ['jquery']
+          external: ['jquery'],
+          browserifyOptions: {
+            debug: true
+          }
         }
       }
     },
@@ -426,7 +429,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'concurrent:dist',
+    'concurrent',
     'autoprefixer',
     'concat',
     'browserify',

@@ -56,11 +56,11 @@ function Delikt(dataDivisions, filter){
 				render.call(self);
 
 				nv.addGraph(function() {
-					var [width, height ] = [450, 450];
+					//var [width, height ] = [450, 450];
 				    var chart = nv.models.pieChart();
 			    	chart.donut(true);
-				    chart.height(450);
-				    chart.width(450);
+				    var margin = -40;
+				    chart.margin({left: margin, right: margin, top: margin, bottom: margin});
 				    chart.tooltips(false);
 				    chart.showLabels(false);
 				    chart.showLegend(false);
@@ -86,55 +86,52 @@ function Delikt(dataDivisions, filter){
 				    	.call(chart);
 
 				    function updateLabel(idx){
-				    	var label = series[idx].label;
 				    	var value = series[idx].value;
                			var percent = (value/(total/100)).toPrecision(2);
                			value = numeral(series[idx].value).format();
+
+               			$('#deliktDescr').html(`Lorem Ipsum Shizzle text comes here. Lorem Ipsum Shizzle text comes here.`);
+               			$('#deliktTable td').removeClass('active');
+               			$('#deliktTable tr').eq(idx).find('td:last-child').addClass('active');
+
 				    	var svgWidth = $('#delikt>svg').width();
                			var svgHeight = $('#delikt>svg').height();
                			var centerX = svgWidth/2 - 20;
                			var centerY = svgHeight/2 - 10;
-               			d3.selectAll('#delikt .nv-legendWrap>text').remove();
+               			d3.selectAll('#delikt .nv-legendWrap>text:nth-of-type(2)').remove();
 
-               			var text =d3.select('#delikt .nv-legendWrap')
-               				.append('text')
-               				.text(label);
-               			var textWidth = $(text[0]).width();
-               			var textX = centerX - textWidth/2;
-               			text.attr('transform', `translate(${textX}, ${centerY})`);
-
-						text =d3.select('#delikt .nv-legendWrap')
+						var textSelected =d3.select('#delikt .nv-legendWrap')
                				.append('text')
                				.text(`${value} (${percent}%)`);
-               			textWidth = $(text[0]).width();
-               			textX = centerX - textWidth/2;
-               			text.attr('transform', `translate(${textX}, ${centerY+16})`);
+               			var textWidth = $(textSelected[0]).width();
+               			var textX = centerX - textWidth/2;
+               			textSelected.attr('transform', `translate(${textX}, ${centerY+8})`);
 				    }
+
+				    var svgWidth = $('#delikt>svg').width();
+               			var svgHeight = $('#delikt>svg').height();
+               			var centerX = svgWidth/2 - 20;
+               			var centerY = svgHeight/2 - 10;
+
+					var textTotal =d3.select('#delikt .nv-legendWrap')
+           				.append('text')
+           				.text(`Total ${numeral(total).format()}`);
+               			var textWidth = $(textTotal[0]).width();
+               			var textX = centerX - textWidth/2;
+               			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
 
 			    	var $slices = $('#delikt .nv-slice');
 			    	var $paths = $slices.find('>path');
-				    function updateArc(hover, element){
-				    	var outerRadiusExtra = 0;
-				    	var innerRadiusFactorEff = innerRadiusFactor;
+				    function updateArc(idx, hover){
+				    	var translate = '';
 				    	if(hover === true){
-				    		innerRadiusFactorEff = innerRadiusFactorEff - 0.05;
-				    		outerRadiusExtra = 5;
+				    		translate = 'scale(1.05, 1.05)';
 				    	}
-				    	var idx = $(element).data('idx');
-			    		var el = $slices.get(idx);
 			    		var elPath = $paths.get(idx);
-			    		d3.select(el).classed('hover', hover);
-
-						var availableWidth = width -50;
-						var availableHeight = height-50;
-						var radius = Math.min(availableWidth, availableHeight) / 2;
-						var arcRadius = radius-(radius / 5);
-
-			    		var arcOver = d3.svg.arc().outerRadius(arcRadius+outerRadiusExtra).innerRadius(radius * innerRadiusFactorEff);
 			    		d3.select(elPath)
 			    			.transition()
                				.duration(250)
-               				.attr('d', arcOver);
+               				.attr('transform', translate);
 
                			updateLabel(idx);
 				    }
@@ -142,10 +139,13 @@ function Delikt(dataDivisions, filter){
 				    nv.utils.windowResize(() => {chart.update(); });
 
 			    	$('#deliktTable tr').on('mouseenter', (e)=>{
-			    		updateArc(true, e.currentTarget);
+			    		var idx = e.currentTarget.attributes['data-idx'].value;
+			    		updateLabel(idx);
+			    		updateArc(idx, true);
 			    	})
 			    	.on('mouseleave', (e)=>{
-			    		updateArc(false, e.currentTarget);
+			    		var idx = e.currentTarget.attributes['data-idx'].value;
+			    		updateArc(idx, false);
 			    	});
 
 			    	$slices.on('mouseenter', (e)=>{

@@ -3,6 +3,6 @@ table.table
 	if view.sectionValues
 		for section in view.sectionValues
 			tr(data-idx=section.idx)
-				td(style='background-color: rgb('+section.rgb+');')
-				th=section.key
-				td.fill.text-right=section ? numeral(section.value).format() : ''
+				td(style='color: rgb('+section.rgb+');')
+					span(class='glyphicon glyphicon-user')
+				td=section.key

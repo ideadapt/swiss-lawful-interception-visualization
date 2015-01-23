@@ -2,6 +2,9 @@ body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
+  >.container{
+  	margin-bottom: 3em;
+  }
 }
 
 table{
@@ -15,7 +18,33 @@ table{
 }
 
 #delikt{
-	height: 450px;
+	height: 263px;
+	>svg{
+		margin-top: 25px;
+	}
+}
+#deliktTable{
+	td{
+		padding: 2px;
+		border: 0;
+		transition: padding-left 0.25s;
+
+		&:hover, &.active{
+			cursor: pointer;
+			padding-left: 1em;
+			transition: padding-left 0.25s;
+		}
+	}
+	td:first-child{
+		padding-right: 0;
+		padding-left: 0;
+		&>span{
+			top: 3px;
+		}
+	}
+}
+#deliktDescr{
+	padding-top: 2em;
 }
 
 hr{
