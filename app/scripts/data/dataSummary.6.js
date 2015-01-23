@@ -8,29 +8,24 @@ function DataSummary(){
 		self.transformed = Promise.resolve($.ajax({
 			url: 'data/slirv_data_annualsummary.csv'
 		})).then(function transform(data){
-			var parsedCsv = Papa.parse(data);
-			parsedCsv.data[0].splice(0,3);
-			var cantons = parsedCsv.data[0];
+			var parsedCsv = Papa.parse(data, {header: true});
+			//Field,FieldValueExport,year,CH
+			//typ,aktiv,1998,2138
 			var flat = [];
-			parsedCsv.data.splice(0, 1);
 			parsedCsv.data.map(function(row){
-				var superc = row[0];
-				var sub = row[1];
-				var year= row[2];
-				row.splice(0, 3);
-				row.map(function(val, i){
-					flat.push({
-						'super': superc,
-						'sub': sub,
-						'canton': cantons[i],
-						'value': +val,
-						'year': +year
-					});
+				var superc = row.Field;
+				var sub = row.FieldValueExport;
+				var year= row.year;
+				flat.push({
+					'super': superc,
+					'sub': sub,
+					'value': !row.CH ? 0 : +row.CH,
+					'year': +year
 				});
 			});
+			console.log(flat);
 			return flat;
 		});
-
 		return self.transformed;
 	}
 

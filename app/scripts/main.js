@@ -1,4 +1,14 @@
 /*global numeral*/
+function index(i18n){
+
+	$('#mainTitle').text(i18n.l('title_txt_maintitle'));
+	window.document.title = i18n.l('title_txt_maintitle');
+
+	$('#welcome').html(i18n.l('longtext_descr_welcome'));
+	$('#impressum').html(i18n.l('longtext_descr_impressum'));
+	$('#slir').html(i18n.l('longtext_descr_slir'));
+}
+
 $(document).ready(function(){
 
 	var defaultLocale = 'de';
@@ -30,7 +40,7 @@ $(document).ready(function(){
 		    }
 		});
 		numeral.defaultFormat('0,0');
-		numeral.zeroFormat('');
+		// numeral.zeroFormat('');
 		// i18n.l('txt_txt_no_value') does not work. should have NaN Format and zeroFormat
 	});
 	numeral.language(selectedLocale);
@@ -38,8 +48,7 @@ $(document).ready(function(){
 	require('es6-promise').polyfill();
 	require('6to5-polyfill');
 
-	$('#mainTitle').text(i18n.l('title_txt_maintitle'));
-	window.document.title = i18n.l('title_txt_maintitle');
+	index(i18n);
 
 	var dataDivisions = require('sliv-data-divisions');
 	var dataSummary = require('sliv-data-summary');

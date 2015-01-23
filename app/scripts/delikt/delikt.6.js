@@ -39,6 +39,7 @@ function Delikt(dataDivisions, filter){
 			var promises = sections.map((section) => {
 				return dataDivisions[section](year, canton);
 			});
+			d3.selectAll('#delikt .nv-legendWrap>text').remove();
 
 			Promise.all(promises).then(function(resolved){
 				self.view.sections = sections;
@@ -89,8 +90,9 @@ function Delikt(dataDivisions, filter){
 				    	var value = series[idx].value;
                			var percent = (value/(total/100)).toPrecision(2);
                			value = numeral(series[idx].value).format();
+               			var descr = window.i18n.l('deliktegruppe_descr_'+sections[idx]);
 
-               			$('#deliktDescr').html(`Lorem Ipsum Shizzle text comes here. Lorem Ipsum Shizzle text comes here.`);
+               			$('#deliktDescr').text(descr);
                			$('#deliktTable td').removeClass('active');
                			$('#deliktTable tr').eq(idx).find('td:last-child').addClass('active');
 
@@ -108,18 +110,6 @@ function Delikt(dataDivisions, filter){
                			textSelected.attr('transform', `translate(${textX}, ${centerY+8})`);
 				    }
 
-				    var svgWidth = $('#delikt>svg').width();
-               			var svgHeight = $('#delikt>svg').height();
-               			var centerX = svgWidth/2 - 20;
-               			var centerY = svgHeight/2 - 10;
-
-					var textTotal =d3.select('#delikt .nv-legendWrap')
-           				.append('text')
-           				.text(`Total ${numeral(total).format()}`);
-               			var textWidth = $(textTotal[0]).width();
-               			var textX = centerX - textWidth/2;
-               			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
-
 			    	var $slices = $('#delikt .nv-slice');
 			    	var $paths = $slices.find('>path');
 				    function updateArc(idx, hover){
@@ -135,6 +125,18 @@ function Delikt(dataDivisions, filter){
 
                			updateLabel(idx);
 				    }
+
+				    var svgWidth = $('#delikt>svg').width();
+               			var svgHeight = $('#delikt>svg').height();
+               			var centerX = svgWidth/2 - 20;
+               			var centerY = svgHeight/2 - 10;
+
+					var textTotal =d3.select('#delikt .nv-legendWrap')
+           				.append('text')
+           				.text(`Total ${numeral(total).format()}`);
+               			var textWidth = $(textTotal[0]).width();
+               			var textX = centerX - textWidth/2;
+               			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
 
 				    nv.utils.windowResize(() => {chart.update(); });
 
