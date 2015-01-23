@@ -27,8 +27,8 @@ deliktegruppe,txt,vermoegen,Vermögensdelikte,property crimes ,crimes contre les
 region,txt,AG,Aargau,Aargau,Argovie,Argovia,Argovia,1
 region,txt,AI,Appenzell Innerrhoden,Appenzell Inner-Rhodes,Appenzell Rhodes-Intérieures,Appenzello Interno,Appenzell Dadens,1
 region,txt,AR,Appenzell Ausserrhoden,Appenzell Outer-Rhodes,Appenzell Rhodes-Extérieures,Appenzello Esterno,Appenzell Dadora,1
-region,txt,BA,Bundesanwaltschaft,Attorney General,Ministère public de la Confédération,Ministero pubblico della Confederazione,Procuratur general da la Confederaziun ,1
-region,txt,BA_short,Bundesanw.,Attorney G.,Min. Public,M. pubblico,Bundesanw.,1
+region,txt,BA,Bundesanwaltschaft,Attorney General,Ministère public de la Confédération,Ministero pubblico della Confederazione,Procura Publica Federala,1
+region,txt,BA_short,Bundesanw.,Attorney G.,Min. Public,M. pubblico,Proc. Publica,1
 region,txt,BE,Bern,Bern,Berne,Berna,Berna,1
 region,txt,BL,Basel-Land,Basel District,Bâle-Campagne,Basilea-Campagna,Basel-Champagna,1
 region,txt,BS,Basel-Stadt,Basel City,Bâle-Ville,Basilea-Città,Basel-Citad,1
@@ -59,45 +59,49 @@ schwerestraftaten,descr,menschenhandel,,,,,,1
 schwerestraftaten,descr,nachrichtendienst,verbotene politische oder wirtschaftliche Nachrichtendiensttätigkeiten,illegal political or economic intelligence activities,illégale activités politiques ou économiques renseignement,attività di intelligence politici o economici illegali,servetsch da spiunadi scumandà politica u economica,1
 schwerestraftaten,descr,paedo,"Sexueller Kindesmissbrauch, Kinderpornografie","child sexual abuse, child pornography","exploitation sexuelle des enfants, la pornographie juvénile","abusi sessuali sui minori, la pedopornografia","maltractament d'uffants, pornografia d'uffants",1
 schwerestraftaten,descr,terror,"Gefährdung der öffentlichen Sicherheit, Finanzierung Terror","threat to public safety, financing terrorism","menace pour la sécurité publique, le financement du terrorisme","minaccia per la sicurezza pubblica, il finanziamento del terrorismo","privel da segirezza publica, finanziaziun da terrorissem",1
-schwerestraftaten,txt,geldwaesche,Geldwäscherei,Money Laundering,le blanchiment d'argent,il riciclaggio di denaro,lavada da daners suspectus,1
-schwerestraftaten,txt,krimorg,Kriminelle Organisation,Criminal Organization,organisation criminelle,organizzazione criminale,associaziun da delinquents,1
-schwerestraftaten,txt,menschenhandel,Menschenhandel,Human Trafficking,traite des êtres humains,tratta di esseri umani,commerzi cun umans,1
-schwerestraftaten,txt,nachrichtendienst,verbotener Nachrichtendienst,Illegal Intelligence Activities,activités de renseignement illégales,attività di intelligence illegali, servetsch da spiunadi scumandà,1
-schwerestraftaten,txt,paedo,Pädokriminalität,Pedocriminality,pédocriminalité,pedocriminality,pedo criminalitad,1
-schwerestraftaten,txt,terror,Terrorismus,Terrorism,terrorisme,terrorismo,terrorissem,1
-technologie,txt,festnetz,Festnetz,Fixed Network,téléphone fixe,telefono fisso,rait fixa,1
+schwerestraftaten,txt,geldwaesche,Geldwäscherei,money laundering,le blanchiment d'argent,il riciclaggio di denaro,lavada da daners suspectus,1
+schwerestraftaten,txt,krimorg,Kriminelle Organisation,criminal organization,organisation criminelle,organizzazione criminale,associaziun da delinquents,1
+schwerestraftaten,txt,menschenhandel,Menschenhandel,human trafficking,traite des êtres humains,tratta di esseri umani,commerzi cun umans,1
+schwerestraftaten,txt,nachrichtendienst,verbotener Nachrichtendienst,illegal intelligence activities,activités de renseignement illégales,attività di intelligence illegali,servetsch da spiunadi scumandà,1
+schwerestraftaten,txt,paedo,Pädokriminalität,pedocriminality,pédocriminalité,pedocriminality,pedo criminalitad,1
+schwerestraftaten,txt,terror,Terrorismus,terrorism,terrorisme,terrorismo,terrorissem,1
+technologie,txt,festnetz,Festnetz,fixed network,téléphone fixe,telefono fisso,rait fixa,1
 technologie,txt,internet,Internet,internet,internet,internet,internet,1
-technologie,txt,mobil,Mobil,Cell Phone,téléphone cellulaire,telefono cellulare,telefonin,1
-technologie,txt,post,Post,Post Mail,poste,postale,posta,1
+technologie,txt,mobil,Mobil,cell phone,téléphone cellulaire,telefono cellulare,telefonin,1
+technologie,txt,post,Post,post,poste,postale,posta,1
 sprache,txt,DE,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,1
 sprache,txt,EN,English,English,English,English,English,1
 sprache,txt,FR,Français,Français,Français,Français,Français,1
 sprache,txt,IT,Italiano,Italiano,Italiano,Italiano,Italiano,1
 sprache,txt,RM,Rumantsch,Rumantsch,Rumantsch,Rumantsch,Rumantsch,1
-title,txt,art,Art der Überwachung,Kind of Interception,forme de surveillance,forma di sorveglianza,furma da surveglianza,1
-title,txt,deliktegruppe,Deliktegruppen,Group of Crimes,groupe de crimes,gruppo di reati,gruppa da delict,1
-title,txt,jahreszahlen,Jahresrückblick,Year in Review,rétrospective de l'année,bilancio annuale,recapitulaziun da onn,1
-title,txt,maintitle,Swiss Lawful Interception Visual,Swiss Lawful Interception Visual,Suiss Lawfull Inteception Visual,Svizzera Lawfull Interception,Sviz LIV,1
-title,txt,schwerestraftaten,Schwere Straftaten,Serious Crimes,crimes graves,reati gravi,delict gravant,1
-title,txt,technologie,Technologie,Technology,technologie,tecnologia,tecnologia,1
-title,txt,typ,Überwachungen nach Typ,Type of Interception,type de surveillance,tipo di sorveglianza,,
+title,txt,art,Art der Überwachung,Kind of Interception,Forme de Surveillance,Forma di Sorveglianza,Furma da Surveglianza,1
+title,txt,deliktegruppe,Deliktegruppen,Groups of Crimes,Groupes de Crimes,Gruppi di Reati,Gruppi da Delict,1
+title,txt,jahreszahlen,Überwachungsmassnahmen in,Review of,Rétrospective de,Bilancia di,Recapitulaziun da,1
+title,txt,maintitle,Visualisierung der staatlichen Überwachung in der Schweiz,Swiss Lawful Interception Visualization,Swiss Lawful Interception Visualization,Swiss Lawful Interception Visualization,Swiss Lawful Interception Visualization,1
+title,txt,schwerestraftaten,Schwere Straftaten,Serious Crimes,Crimes Graves,Reati Gravi,Delict Gravant,1
+title,txt,technologie,Technologie,Technology,Technologie,Tecnologia,Tecnologia,1
+title,txt,typ,Überwachungen nach Typ,Type of Interception,Type de Surveillance,Tipo di Sorveglianza,Tip da Surveglianza,1
+title,txt,slir,Swiss Lawful Interception Report,Swiss Lawful Interception Report,Swiss Lawful Interception Report,Swiss Lawful Interception Report,Swiss Lawful Interception Report,1
+title,txt,about,Impressum,Imprint,Empreinte,Impronta,Impressum,
 txt,txt,anzahl_anfragen,Anzahl Anfragen,Number of Requests,nombre de demandes,numero di richieste,dumber da dumandas,1
 txt,txt,canton,Kanton,Canton,canton,canton,chantun,1
 txt,txt,no_value,k. A.,n/a,n.s.,n.i.,b.v.,1
 txt,txt,year,Jahr,Year,année,anno,onn,1
-typ,descr,aktiv,"Überwachung in Echtzeit. Beispispiele: Telefongespräche werden abgehört, Mobiltelefone geortet","Monitoring in real time. e.g. listen to cellphone calls, track cellphone","Suivi en temps réel. p.e. écouter les appels de téléphone cellulaire, téléphone portable suivre","Monitoraggio in tempo reale a.e. ascoltare le chiamate del cellulare, tenere traccia del cellulare",,
-typ,descr,techadm,Beispiel: Vertragskopien,"e.g. contract, billing info","p.e. contrat, informations","a.e. contratto, informazioni di fatturazione",,
-typ,descr,telefonbuch,"einfache Basisinformationen, z.B. wem gehört eine bestimmte IP-Adresse zu einer bestimmten Zeit oder eine bestimmte Telefonnummer?","simple basic information e.g who used IP adress, who used a certrain cell number","informations de base simple p.e. qui utilisé adresse IP, qui a utilisé un certain nombre de cellules certrain","semplice le informazioni di base per esempio che ha usato indirizzo IP, che uesed un numero di cellule certrain",,
-typ,descr,vds,Verkehrs- und Rechnungsdaten der letzten sechs Monate. Beispiel: wer hat wann mit wem kommuniziert.,dataretention of the last six months e.g who communicated when to whom ,dataretention des six derniers monts. p.e. qui communiquées lors à qui,"dataretention degli ultimi sei mesi ad esempio, che hanno comunicato quando a chi",,
+txt,txt,dienstuepf,Dienst Überwachung Post- und Fernmeldeverkehr,Post and Telecommunications Surveillance Service,Service Surveillance de la correspondance par poste et télécommunication,Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni,Servetsch da surveglianza dal traffic da posta e da telecommunicaziun,
+typ,descr,aktiv,"Überwachung in Echtzeit. Telefongespräche werden abgehört, Mobiltelefone geortet","Monitoring in real time. e.g. listen to cellphone calls, track cellphone","Suivi en temps réel. p.e. écouter les appels de téléphone cellulaire, téléphone portable suivre","Monitoraggio in tempo reale a.e. ascoltare le chiamate del cellulare, tenere traccia del cellulare","Surveglianza en temp real, spiunar a telefon, localisar en telefonin",1
+typ,descr,techadm,Vertragskopien oder Rechungskopien,"contract, billing info","contrat, informations de facturation","contratto, informazioni di fatturazione","copia da contract, infurmaziun da factura",1
+typ,descr,telefonbuch,"Basisinformationen, z.B. wem gehört eine eine bestimmte Telefonnummer oder eine bestimmte IP-Adresse zu einer bestimmten Zeit.","simple basic information, ex. who used a certrain cell number or who used an IP adress at a certain time","informations de base simple, ex. qui a un nombre de cellules certrain ou utilisé adresse IP a quel temp","semplice le informazioni di base, es. chi usano un numero di cellule o ha usato indirizzo IP",,
+typ,descr,vds,Verkehrs- und Rechnungsdaten der letzten sechs Monate. Beispiel: wer hat wann mit wem kommuniziert.,dataretention of the last six months e.g who communicated when to whom ,conservation des données des six derniers monts. p.e. qui communiquées lors à qui,conservazione dei dati degli ultimi sei mesi es. Chi ha utilizzato negli ultimi mesi quali indirizzi IP o quali cellulari e dove,,
 typ,txt,aktiv,Aktiv,active,actif,attivo,activ,1
-typ,txt,techadm,administrativ,administrative,administratif,amministrativo,administrativ,1
+typ,txt,techadm,Administrative Anfragen,administrative requests,demandes administratif,richieste amministrativo,dumonda administrativ,1
 typ,txt,telefonbuch,Einfache Anfragen,simple requests,demandes simples,richieste semplici,dumonda simpel,1
 typ,txt,vds,Vorratsdatenspeicherung,data retention,conservation des données,conservazione dei dati,retenziun dei dati,1
 typ,txt,facebook,Facebook,Facebook,Facebook,Facebook,Facebook,1
 typ,txt,microsoft,"Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft",1
 longtext,descr,welcome,"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 longtext,descr,slir,"Neben dieser Visualisierung der Überwachungmassnahmen publiziert die Digitale Gesellschaft jährlich einen detailierten Report, der die Statistiken der Überwachungsmassnahmen noch genauer beleuchtet. Der Swiss Lawful Interception Report kann hier heruntergeladen werden: <a href='https://www.digitale-gesellschaft.ch/uploads/2014/03/SLIR_2014.pdf'>Swiss Lawful Interception Report 2015</a>","Neben dieser Visualisierung der Überwachungmassnahmen publiziert die Digitale Gesellschaft jährlich einen detailierten Report, der die Statistiken der Überwachungsmassnahmen noch genauer beleuchtet. Der Swiss Lawful Interception Report kann hier heruntergeladen werden: <a href='https://www.digitale-gesellschaft.ch/uploads/2014/03/SLIR_2014.pdf'>Swiss Lawful Interception Report 2015</a>",,,,
-longtext,descr,impressum,"Die Digitale Gesellschaft ist ein offener Zusammenschluss netzpolitisch interessierter Kreise. Dem Bündnis angeschlossen sind rund 50 Personen und 15 Gruppierungen. Dazu gehören Grundrechtsorganisationen, Parteien, KünstlerInnen-Kollektive, BetreiberInnen von Netzwerkdiensten und weiteren Gruppen, die sich der kritischen, digitalen Zivilgesellschaft verpflichtet fühlen. </br> Weitere Informationen zu netzpolitischen Themen sind im Blog zu finden: <a href='https://www.digitale-gesellschaft.ch'>https://www.digitale-gesellschaft.ch</a>",,,,,
+longtext,txt,slir_nurdeutsch,Nur in Deutsch verfügbar,avaliable only in German,disponible uniquement en allemand,disponibile solo in tedesco,disponibel be en tudestg,1
+longtext,descr,impressum,"Die Digitale Gesellschaft ist ein offener Zusammenschluss netzpolitisch interessierter Kreise. Dem Bündnis angeschlossen sind rund 50 Personen und 15 Gruppierungen. Dazu gehören Grundrechtsorganisationen, Parteien, KünstlerInnen-Kollektive, BetreiberInnen von Netzwerkdiensten und weiteren Gruppen, die sich der kritischen, digitalen Zivilgesellschaft verpflichtet fühlen. <br> Weitere Informationen zu netzpolitischen Themen sind im Blog zu finden: <a href='https://www.digitale-gesellschaft.ch'>https://www.digitale-gesellschaft.ch</a><br><br>Programmierung: Ueli Kunz, <a href='http://ideadapt.net'>ideadapt.net</a>",,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
