@@ -1,9 +1,10 @@
 .row
-	.col-md-2
+	.col-xs-2
 		.btn-group.btn-group-lg.split-h
-			each aFakeCanton, idx in fakeCantons
-				button(value=aFakeCanton, class={active: aFakeCanton==canton}, class='fake btn btn-default', data-toggle='tooltip', data-placement=(idx%2? 'bottom':'top') title=window.i18n.l('region_txt_'+aFakeCanton))=aFakeCanton
-	.col-md-10
+			//- each aFakeCanton, idx in fakeCantons
+			button(value='CH', class={active: 'CH'==canton}, class='fake btn btn-default', data-toggle='tooltip', data-placement=('top') title=window.i18n.l('region_txt_ch'))=window.i18n.l('region_txt_ch')
+			button(value='BA', class={active: 'BA'==canton}, class='fake btn btn-default', data-toggle='tooltip', data-placement=('bottom') title=window.i18n.l('region_txt_ba'))=window.i18n.l('region_txt_ba_short')
+	.col-xs-10
 		.btn-group
 			each aCanton in cantons1
 				button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', title=window.i18n.l('region_txt_'+aCanton))=aCanton

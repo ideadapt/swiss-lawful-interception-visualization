@@ -8,6 +8,10 @@ Map.prototype.controller = function controller(){
 	var self = this;
 	var svgContainer = document.getElementById('svgMap');
 	var svg = svgContainer.contentDocument;
+	if(!svg){
+		console.log('hide map, screen to small');
+		return;
+	}
 	var cantons = svg.querySelectorAll('#Cantons_default>path');
 
 	function cantonClicked(){

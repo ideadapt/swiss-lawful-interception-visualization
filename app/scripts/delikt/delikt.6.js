@@ -1,4 +1,4 @@
-/*global nv, d3, numeral*/
+/*global nv, d3, numeral, bowser*/
 function Delikt(dataDivisions, filter){
 	var self = this;
 	self.view = {};
@@ -88,7 +88,7 @@ function Delikt(dataDivisions, filter){
 
 				    function updateLabel(idx){
 				    	var value = series[idx].value;
-               			var percent = (value/(total/100)).toPrecision(2);
+               			var percent = (value/(total/100)).toFixed(2);
                			value = numeral(series[idx].value).format();
                			var descr = window.i18n.l('deliktegruppe_descr_'+sections[idx]);
 
@@ -103,8 +103,11 @@ function Delikt(dataDivisions, filter){
                			d3.selectAll('#delikt .nv-legendWrap>text:nth-of-type(2)').remove();
 
 						var textSelected =d3.select('#delikt .nv-legendWrap')
-               				.append('text')
-               				.text(`${value} (${percent}%)`);
+               				.append('text');
+	       				if(bowser.browser.msie || bowser.browser.gecko){
+	       					textSelected.attr('text-anchor', 'middle');
+	       				}
+               			textSelected.text(`${value} (${percent}%)`);
                			var textWidth = $(textSelected[0]).width();
                			var textX = centerX - textWidth/2;
                			textSelected.attr('transform', `translate(${textX}, ${centerY+8})`);
@@ -132,11 +135,14 @@ function Delikt(dataDivisions, filter){
                			var centerY = svgHeight/2 - 10;
 
 					var textTotal =d3.select('#delikt .nv-legendWrap')
-           				.append('text')
-           				.text(`Total ${numeral(total).format()}`);
-               			var textWidth = $(textTotal[0]).width();
-               			var textX = centerX - textWidth/2;
-               			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
+           				.append('text');
+       				if(bowser.browser.msie || bowser.browser.gecko){
+       					textTotal.attr('text-anchor', 'middle');
+       				}
+       				textTotal.text(`Total ${numeral(total).format()}`);
+           			var textWidth = $(textTotal[0]).width();
+           			var textX = centerX - textWidth/2;
+           			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
 
 				    nv.utils.windowResize(() => {chart.update(); });
 

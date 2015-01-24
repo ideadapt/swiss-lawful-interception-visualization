@@ -3,7 +3,8 @@ function Course(dataSummary, legendTemplate){
 	var self = this;
 	self.view = {
 		l: window.i18n.l,
-		keys: []
+		keys: [],
+		titleText: null
 	};
 
 	function controller(){
@@ -18,9 +19,9 @@ function Course(dataSummary, legendTemplate){
 				    .height(300)
 					.tooltips(false)
 				    .reduceXTicks(true)
-				    .color(['#668CD9', '#9BBB59', '#FE0405']); // telefonbuch is not in charts datum. first color is for techadm
+				    .color(['#FE0405', '#9BBB59', '#668CD9']); // telefonbuch is not in charts datum. first color is for techadm
 
-				var keys = ['telefonbuch', 'techadm', 'vds', 'aktiv'];
+				var keys = ['telefonbuch', 'aktiv', 'vds', 'techadm'];
 				self.view.keys = keys;
 				var promises = keys.map(function(key){
 					return dataSummary[key]();
@@ -79,6 +80,8 @@ function Course(dataSummary, legendTemplate){
    		$('#legend_typ_aktiv').text(numeral(this.view.totalsPerYear[e.point.x].aktiv).format());
    		$('#legend_typ_vds').text(numeral(this.view.totalsPerYear[e.point.x].vds).format());
    		$('#legend_typ_techadm').text(numeral(this.view.totalsPerYear[e.point.x].techadm).format());
+   		self.view.titleText = self.view.titleText || $('#course-legend>h2').text();
+   		$('#course-legend>h2').text(`${self.view.titleText} ${e.point.x}`);
    	}
 
 	function render(){

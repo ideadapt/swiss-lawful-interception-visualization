@@ -1,4 +1,13 @@
 #map{
 	max-width: 300px;
+	height: auto;
+	display: block;
+}
 
+@media (max-width: 992px){
+	#map{
+		height: 0;
+		overflow: hidden;
+		display: none;
+	}
 }

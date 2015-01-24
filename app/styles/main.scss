@@ -17,40 +17,21 @@ table{
 	}
 }
 
-#delikt{
-	height: 263px;
-	>svg{
-		margin-top: 25px;
-	}
-}
-#deliktTable{
-	td{
-		padding: 2px;
-		border: 0;
-		transition: padding-left 0.25s;
-
-		&:hover, &.active{
-			cursor: pointer;
-			padding-left: 1em;
-			transition: padding-left 0.25s;
-		}
-	}
-	td:first-child{
-		padding-right: 0;
-		padding-left: 0;
-		&>span{
-			top: 3px;
-		}
-	}
-}
-#deliktDescr{
-	padding-top: 2em;
-}
-
 hr{
 	clear: both;
+}
+
+#welcome, #impressum, #slir{
+	font-size: 1.2em;
+}
+
+#welcome{
+	min-height: 0;
+	column-count: 2;
+	column-gap: 2em;
 }
 
 @import "course";
 @import "map";
 @import "filter";
+@import "delikt";

@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['concat', 'browserify'],
+        tasks: ['concat:live', 'browserify'],
         options: {
           livereload: true
         }
@@ -274,7 +274,17 @@ module.exports = function (grunt) {
     },
 
     concat: {
-      js: {
+      live: {
+        options:{
+          sourceMap: true
+        },
+        files: [{
+            '.tmp/scripts/main.js': [
+              '<%= config.app %>/scripts/main.js'
+            ]
+          }]
+      },
+      dist: {
         options:{
           sourceMap: true
         },
@@ -287,6 +297,7 @@ module.exports = function (grunt) {
             'bower_components/moment/moment.js',
             'bower_components/papaparse/papaparse.js',
             'bower_components/raphael/raphael.js',
+            'bower_components/bowser.js',
             'node_modules/bootstrap/dist/js/bootstrap.js',
             'bower_components/emitter/emitter.js'
           ]

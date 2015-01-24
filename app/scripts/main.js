@@ -4,7 +4,7 @@ function index(i18n){
 	$('#mainTitle').text(i18n.l('title_txt_maintitle'));
 	window.document.title = i18n.l('title_txt_maintitle');
 
-	$('#welcome').html(i18n.l('longtext_descr_welcome'));
+	$('#welcome').append($('<p>').html(i18n.l('longtext_descr_welcome')));
 	$('#impressum').html(i18n.l('longtext_descr_impressum'));
 	$('#slir').html(i18n.l('longtext_descr_slir'));
 }
@@ -45,6 +45,7 @@ $(document).ready(function(){
 	});
 	numeral.language(selectedLocale);
 
+	window.bowser = require('bowser');
 	require('es6-promise').polyfill();
 	require('6to5-polyfill');
 

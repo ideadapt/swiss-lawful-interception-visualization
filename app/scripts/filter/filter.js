@@ -22,12 +22,16 @@ function Filter(dataDivisions, map){
 		});
 
 		var svg = document.getElementById('svgMap');
-		if(svg.contentDocument.readyState === 'complete'){
-			self.svgDoc = svg.contentDocument;
+		if(!svg.contentDocument){
+			console.log('no map');
+		}else{
+			if(svg.contentDocument.readyState === 'complete'){
+				self.svgDoc = svg.contentDocument;
+			}
+			svg.addEventListener('load', function(){
+				self.svgDoc = svg.contentDocument;
+			});
 		}
-		svg.addEventListener('load', function(){
-			self.svgDoc = svg.contentDocument;
-		});
 
 		return Promise.all([cantons, years, fakeCantons]);
 	}
@@ -72,12 +76,11 @@ function Filter(dataDivisions, map){
 		$(document).ready(function(){
 			var $nav = $('#filter-row>nav');
 			var $filter = $('#filter-row');
-			var filterOffsetTop = $filter.offset().top;
-			var startSticky = filterOffsetTop;
 			var heightSet = false;
 
 			$(window).bind('scroll', function() {
-				if(($(window).scrollTop() > startSticky)){
+				var filterOffsetTop = $filter.offset().top;
+				if(($(window).scrollTop() > filterOffsetTop-10)){
 					if(!heightSet){
 						$filter.height($filter.height());
 						$nav.find('>.content').height($filter.height());

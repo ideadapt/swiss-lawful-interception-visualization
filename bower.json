@@ -24,6 +24,7 @@
     "numeral": "~1.5.3"
   },
   "devDependencies": {
-    "raphael": "~2.1.2"
+    "raphael": "~2.1.2",
+    "bowser": "~0.7.2"
   }
 }
