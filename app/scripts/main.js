@@ -60,6 +60,9 @@ $(document).ready(function(){
 
 	var Map = require('sliv-map');
 	var map = new Map();
+	$(window).load(function(){
+		map.init();
+	});
 
 	var Filter = require('sliv-filter');
 	var filter = new Filter(dataDivisions, map);
