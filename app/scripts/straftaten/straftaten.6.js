@@ -8,11 +8,26 @@ function Straftaten(dataDivisions, filter){
 		'#109618', //geldwäsche
 		'#c2943e', //menschenhandel
 		'#fe0405', //pedokriminalität
-		'#668cd9' //nachrichtendienst
+		'#668cd9', //nachrichtendienst
+		'#dddddd'  // restliche
 	];
 
 	function init(){
 		return Promise.resolve();
+	}
+
+	function totalStraftaten(year, canton){
+		var sections = ['drogen', 'gewalt', 'drohung', 'sex', 'oeFrieden', 'staat', 'finanz', 'vermoegen', 'buepf', 'diverse'];
+		var promises = sections.map((section) => {
+				return dataDivisions[section](year, canton);
+			});
+		var total = 0;
+		return Promise.all(promises).then(function(resolved){
+			resolved.forEach(function(value){
+				total += value;
+			});
+			return total;
+		});
 	}
 
 	function controller(){
@@ -26,7 +41,10 @@ function Straftaten(dataDivisions, filter){
 			});
 			d3.selectAll('#straftaten .nv-legendWrap>text').remove();
 
+			promises.push(totalStraftaten(year, canton));
+
 			Promise.all(promises).then(function(resolved){
+				var allStraftatenTotal = resolved.pop();
 				self.view.sections = sections;
 				self.view.sectionValues = {};
 				resolved.forEach(function(value, i){
@@ -43,7 +61,6 @@ function Straftaten(dataDivisions, filter){
 				render.call(self);
 
 				nv.addGraph(function() {
-					//var [width, height ] = [450, 450];
 				    var chart = nv.models.pieChart();
 			    	chart.donut(true);
 				    var margin = -40;
@@ -67,6 +84,11 @@ function Straftaten(dataDivisions, filter){
 				    	};
 					});
 
+					series.push({
+						label: window.i18n.l('schwerestraftaten_txt_total_straftaten'),
+						value: allStraftatenTotal
+					});
+
 					d3.select('#straftaten>svg').datum(series)
 				    	.transition()
 				    	.duration(250)
@@ -76,7 +98,8 @@ function Straftaten(dataDivisions, filter){
 				    	var value = series[idx].value;
                			var percent = (value/(total/100)).toFixed(2);
                			value = numeral(series[idx].value).format();
-               			var descr = window.i18n.l('schwerestraftaten_descr_'+sections[idx]);
+               			var descrI18nKey = sections[idx] || 'total_straftaten';
+               			var descr = window.i18n.l('schwerestraftaten_descr_'+descrI18nKey);
 
                			$('#straftatenDescr').text(descr);
                			$('#straftatenTable td').removeClass('active');

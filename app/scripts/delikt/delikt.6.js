@@ -57,7 +57,6 @@ function Delikt(dataDivisions, filter){
 				render.call(self);
 
 				nv.addGraph(function() {
-					//var [width, height ] = [450, 450];
 				    var chart = nv.models.pieChart();
 			    	chart.donut(true);
 				    var margin = -40;
