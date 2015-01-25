@@ -1,2 +1,8 @@
 h3=window.i18n.l('title_txt_technologie')
 div(id='circles')
+div(id='mobile')
+	ul
+		for section in view.mobileSections
+			li
+				span=section.value
+				span=section.label

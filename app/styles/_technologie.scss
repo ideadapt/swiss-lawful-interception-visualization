@@ -1,0 +1,17 @@
+#mobile{
+	ul{
+		width: 185px;
+		list-style-type: none;
+		margin-left: 0;
+		padding: 0;
+
+		li>span:first-child{
+			display: inline-block;
+			width: 53px;
+			text-align: right;
+		}
+		li>span:last-child{
+			padding-left: 1em;
+		}
+	}
+}

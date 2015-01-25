@@ -1,5 +1,5 @@
 {
-  "name": "SLIRV",
+  "name": "sliv",
   "devDependencies": {
     "6to5ify": "^3.1.2",
     "apache-server-configs": "^2.7.1",

@@ -88,7 +88,7 @@ DataDivisions.prototype.techadm = function(year, canton){
 	};
 });
 
-['post', 'internet', 'telefon', 'notsuche'].forEach(function(section){
+['post', 'internet', 'telefon', 'notsuche', 'antennensuchlauf'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
 		return sumByYearCantonSuperSub.call(this, year, canton, 'art', section);
 	};

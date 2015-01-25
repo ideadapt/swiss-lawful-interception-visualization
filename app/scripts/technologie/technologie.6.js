@@ -1,10 +1,37 @@
 /*global Raphael, numeral*/
 function Technologie(dataDivisions, filter){
 	var self = this;
-	self.view = {};
+	var artSections = ['telefon', 'notsuche', 'antennensuchlauf'];
+	self.view = {
+		mobileSections: []
+	};
 
 	function init(){
+		addMobileDetails();
 		return Promise.resolve();
+	}
+
+	function addMobileDetails(){
+		self.view.mobileSections = artSections;
+		self.view.mobileSections = artSections.map((section, idx) => {
+			return {
+				label: window.i18n.l('art_txt_'+artSections[idx]),
+				value: 0
+			};
+		});
+	}
+
+	function updateMobileDetails(year, canton){
+		var promises = artSections.map(function(section){
+			return dataDivisions[section](year, canton);
+		});
+
+		Promise.all(promises).then(function(resolved){
+			resolved.forEach((value, idx) => {
+				self.view.mobileSections[idx].value = value;
+				$('#mobile li').eq(idx).find(':nth-child(1)').text(numeral(value).format());
+			});
+		});
 	}
 
 	function controller(){
@@ -14,14 +41,16 @@ function Technologie(dataDivisions, filter){
 				return dataDivisions[section](year, canton);
 			});
 
+			updateMobileDetails(year, canton);
+
 			Promise.all(promises).then(function(resolved){
 				self.view.sections = sections;
 				var total = resolved.reduce((sum, r) => {return sum + r;}, 0);
-				var technologies = resolved.map(function(value, i){
+				var technologies = resolved.map(function(value, idx){
 					return {
-						'label': sections[i],
-						'relative': value / total,
-						'absolute': value
+						label: sections[idx],
+						relative: value / total,
+						absolute: value
 					};
 				});
 
@@ -30,7 +59,7 @@ function Technologie(dataDivisions, filter){
 				    container.removeChild(container.firstChild);
 				}
 				var sectionWidth = 120;
-				var height = 160;
+				var height = 120;
 				var width = technologies.length * sectionWidth;
 				var raphPaper = new Raphael(container, width, height);
 				technologies.forEach((date, idx)=> {
@@ -42,6 +71,10 @@ function Technologie(dataDivisions, filter){
 					var centerY = radiusMax+20;
 					if(date.absolute === 0){
 						radius = 0;
+					}else if(sections[idx] === 'mobil' && date.absolute < 1000){
+						radius *= 0.8;
+					}else if(sections[idx] === 'mobil' && date.absolute < 10000){
+						radius *= 0.95;
 					}
 
 				    var circle = raphPaper.circle(centerX, centerY, radius);
@@ -68,8 +101,8 @@ function Technologie(dataDivisions, filter){
 	}
 
 	init.call(this)
-		.then(render.bind(this))
 		.then(controller.bind(this))
+		.then(render.bind(this))
 		.catch((err) => {
 			console.error(err.message);
 		});
