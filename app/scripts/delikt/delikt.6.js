@@ -2,7 +2,7 @@
 function Delikt(dataDivisions, filter){
 	var self = this;
 	self.view = {};
-	 self.view.colors = [
+	self.view.colors = [
 		'#282828', // drogen
 		'#FE0405', // gewalt
 		'#109618', // drohung
@@ -13,7 +13,7 @@ function Delikt(dataDivisions, filter){
 		'#C2943E', // vermoegen
 		'#86BAFA', // buepf
 		'#BEC3BE',  // diverse
-		];
+	];
 
 	function init(){
 		return Promise.resolve();

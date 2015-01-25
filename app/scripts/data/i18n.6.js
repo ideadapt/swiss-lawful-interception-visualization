@@ -13,7 +13,7 @@ function I18n(){
 	this.l = function l(key){
 		key = key.toUpperCase();
 		var value = self.store[key];
-		if(value){
+		if(typeof value === 'string'){
 			return value;
 		}else{
 			value = self.fallbackStore[key];

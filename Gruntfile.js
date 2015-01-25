@@ -52,10 +52,6 @@ module.exports = function (grunt) {
         files: ['<%= config.app %>/styles/{,*/}*.less'],
         tasks: ['less:server', 'concat:vendor', 'autoprefixer']
       },
-      styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
-      },
       templates: {
         files: ['<%= config.app %>/scripts/{,*/}*.jade'],
         tasks: ['concat', 'browserify'],
@@ -168,7 +164,7 @@ module.exports = function (grunt) {
           src: [
             'styles/main.scss'
             ],
-          dest: '<%= config.dist %>',
+          dest: '.tmp',
           ext: '.css'
         }]
       },
@@ -345,14 +341,10 @@ module.exports = function (grunt) {
         }, {
           src: '.tmp/styles/vendor.css',
           dest: '<%= config.dist %>/styles/vendor.css'
+        }, {
+          src: '.tmp/styles/main.css',
+          dest: '<%= config.dist %>/styles/main.css'
         }]
-      },
-      styles: {
-        expand: true,
-        dot: true,
-        cwd: '<%= config.app %>/styles',
-        dest: '.tmp/styles/',
-        src: '{,*/}*.css'
       }
     },
 
@@ -361,15 +353,10 @@ module.exports = function (grunt) {
       server: [
         'sass:server',
         'less:server',
-        'copy:styles'
-      ],
-      test: [
-        'copy:styles'
       ],
       dist: [
         'sass:dist',
         'less:dist',
-        'copy:styles',
         'imagemin',
         'svgmin'
       ]
@@ -440,7 +427,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'concurrent',
+    'concurrent:dist',
     'autoprefixer',
     'concat',
     'browserify',
