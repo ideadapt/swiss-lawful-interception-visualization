@@ -5,6 +5,7 @@ http://nodejs.org/download/
 
 Run in terminal:
 > sudo npm -g install grunt-cli
+
 > sudo npm -g install jshint
 > npm install
 > bower install
