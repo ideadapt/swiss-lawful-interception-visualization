@@ -4,12 +4,12 @@ function Straftaten(dataDivisions, filter){
 	self.view = {};
 	self.view.colors = [
 		'transparent',  // restliche
-		'#ff6767', //krimorg
-		'#9c14db', //terror
-		'#109618', //geldwäsche
-		'#c2943e', //menschenhandel
-		'#fe0405', //pedokriminalität
-		'#668cd9', //nachrichtendienst
+		'#102931', //krimorg
+		'#59256f', //terror
+		'#153d14', //geldwäsche
+		'#c04157', //menschenhandel
+		'#bf408b', //pädokriminalität
+		'#a2cfe0', //nachrichtendienst
 		'transparent'  // restliche
 	];
 
