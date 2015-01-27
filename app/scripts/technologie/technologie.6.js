@@ -71,10 +71,14 @@ function Technologie(dataDivisions, filter){
 					var centerY = radiusMax+20;
 					if(date.absolute === 0){
 						radius = 0;
+					}else if(sections[idx] === 'mobil' && date.absolute < 100){
+						radius *= 0.4;
+					}else if(sections[idx] === 'mobil' && date.absolute < 300){
+						radius *= 0.6;
 					}else if(sections[idx] === 'mobil' && date.absolute < 1000){
 						radius *= 0.8;
 					}else if(sections[idx] === 'mobil' && date.absolute < 10000){
-						radius *= 0.95;
+						radius *= 0.9;
 					}
 
 				    var circle = raphPaper.circle(centerX, centerY, radius);
