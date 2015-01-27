@@ -5,8 +5,12 @@ function index(i18n){
 	window.document.title = i18n.l('title_txt_maintitle');
 
 	$('#welcome').append($('<p>').html(i18n.l('longtext_descr_welcome')));
-	$('#impressum').html(i18n.l('longtext_descr_impressum'));
-	$('#slir').html(i18n.l('longtext_descr_slir'));
+	$('#impressum>h2').html(i18n.l('title_txt_impressum'));
+	$('#impressum>p').html(i18n.l('longtext_descr_impressum'));
+	$('#slir>h2').html(i18n.l('title_txt_slir'));
+	$('#slir>p').html(i18n.l('longtext_descr_slir'));
+	$('#quellen>h2').html(i18n.l('title_txt_quellen'));
+	$('#quellen>p').html(i18n.l('longtext_descr_quellen'));
 }
 
 $(document).ready(function(){

@@ -31,8 +31,18 @@ hr{
 	column-gap: 2em;
 }
 
+#slir > img{
+	float: left;
+	width: 120px;
+	margin-right: 1em;
+}
+
 .nvd3.nv-pie path{
 	stroke: transparent;
+}
+
+.border-right{
+	border-right: 1px solid #eeeeee;
 }
 
 @import "course";

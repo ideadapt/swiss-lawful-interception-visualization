@@ -139,7 +139,7 @@ function Straftaten(dataDivisions, filter){
 				    	if(hover === true){
 				    		translate = 'scale(1.05, 1.05)';
 				    	}
-			    		var elPath = $paths.get(idx+1);
+			    		var elPath = $paths.get(+idx+1);
 			    		d3.select(elPath)
 			    			.transition()
                				.duration(250)
