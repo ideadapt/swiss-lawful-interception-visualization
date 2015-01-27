@@ -31,6 +31,10 @@ hr{
 	column-gap: 2em;
 }
 
+.nvd3.nv-pie path{
+	stroke: transparent;
+}
+
 @import "course";
 @import "map";
 @import "filter";

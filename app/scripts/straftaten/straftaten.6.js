@@ -3,14 +3,14 @@ function Straftaten(dataDivisions, filter){
 	var self = this;
 	self.view = {};
 	self.view.colors = [
-		'#dddddd',  // restliche
+		'transparent',  // restliche
 		'#ff6767', //krimorg
 		'#9c14db', //terror
 		'#109618', //geldwäsche
 		'#c2943e', //menschenhandel
 		'#fe0405', //pedokriminalität
 		'#668cd9', //nachrichtendienst
-		'#dddddd'  // restliche
+		'transparent'  // restliche
 	];
 
 	function init(){
@@ -84,7 +84,7 @@ function Straftaten(dataDivisions, filter){
 				    var series = resolved.map((section, idx) => {
 				    	return {
 				    		label: window.i18n.l('schwerestraftaten_txt_'+sections[idx]),
-				    		value: resolved[idx][0]
+				    		value: resolved[idx][0]*2
 				    	};
 					});
 
@@ -104,7 +104,7 @@ function Straftaten(dataDivisions, filter){
 				    	.call(chart);
 
 				    function updateLabel(idx){
-				    	var sliceIdx = idx+1;
+				    	var sliceIdx = +idx+1;
 				    	var value = series[sliceIdx].value;
                			var percent = (value/(total/100)).toFixed(2);
                			value = numeral(series[sliceIdx].value).format();
@@ -119,7 +119,7 @@ function Straftaten(dataDivisions, filter){
                			var svgHeight = $('#straftaten>svg').height();
                			var centerX = svgWidth/2 - 20;
                			var centerY = svgHeight/2 - 10;
-               			d3.selectAll('#straftaten .nv-legendWrap>text:nth-of-type(2)').remove();
+               			d3.selectAll('#straftaten .nv-legendWrap>text').remove();
 
 						var textSelected =d3.select('#straftaten .nv-legendWrap')
                				.append('text');
@@ -129,7 +129,7 @@ function Straftaten(dataDivisions, filter){
                			textSelected.text(`${value} (${percent}%)`);
                			var textWidth = $(textSelected[0]).width();
                			var textX = centerX - textWidth/2;
-               			textSelected.attr('transform', `translate(${textX}, ${centerY+8})`);
+               			textSelected.attr('transform', `translate(${textX}, ${centerY-38})`);
 				    }
 
 			    	var $slices = $('#straftaten .nv-slice');
@@ -147,21 +147,6 @@ function Straftaten(dataDivisions, filter){
 
                			updateLabel(idx);
 				    }
-
-				    var svgWidth = $('#straftaten>svg').width();
-               			var svgHeight = $('#straftaten>svg').height();
-               			var centerX = svgWidth/2 - 20;
-               			var centerY = svgHeight/2 - 10;
-
-					var textTotal =d3.select('#straftaten .nv-legendWrap')
-           				.append('text');
-       				if(bowser.browser.msie || bowser.browser.gecko){
-       					textTotal.attr('text-anchor', 'middle');
-       				}
-       				textTotal.text(`Total ${numeral(total).format()}`);
-           			var textWidth = $(textTotal[0]).width();
-           			var textX = centerX - textWidth/2;
-           			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
 
 				    nv.utils.windowResize(() => {chart.update(); });
 
