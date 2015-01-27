@@ -3,6 +3,7 @@ function Straftaten(dataDivisions, filter){
 	var self = this;
 	self.view = {};
 	self.view.colors = [
+		'#dddddd',  // restliche
 		'#ff6767', //krimorg
 		'#9c14db', //terror
 		'#109618', //geldwäsche
@@ -62,6 +63,9 @@ function Straftaten(dataDivisions, filter){
 
 				nv.addGraph(function() {
 				    var chart = nv.models.pieChart();
+				    chart.pie
+					    .startAngle(function(d) { return d.startAngle/2 -Math.PI/2; })
+					    .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 ;});
 			    	chart.donut(true);
 				    var margin = -40;
 				    chart.margin({left: margin, right: margin, top: margin, bottom: margin});
@@ -84,9 +88,14 @@ function Straftaten(dataDivisions, filter){
 				    	};
 					});
 
+					series.splice(0, 0, {
+						label: window.i18n.l('schwerestraftaten_txt_total_straftaten'),
+						value: allStraftatenTotal/2
+					});
+
 					series.push({
 						label: window.i18n.l('schwerestraftaten_txt_total_straftaten'),
-						value: allStraftatenTotal
+						value: allStraftatenTotal/2
 					});
 
 					d3.select('#straftaten>svg').datum(series)
@@ -95,9 +104,10 @@ function Straftaten(dataDivisions, filter){
 				    	.call(chart);
 
 				    function updateLabel(idx){
-				    	var value = series[idx].value;
+				    	var sliceIdx = idx+1;
+				    	var value = series[sliceIdx].value;
                			var percent = (value/(total/100)).toFixed(2);
-               			value = numeral(series[idx].value).format();
+               			value = numeral(series[sliceIdx].value).format();
                			var descrI18nKey = sections[idx] || 'total_straftaten';
                			var descr = window.i18n.l('schwerestraftaten_descr_'+descrI18nKey);
 
@@ -129,7 +139,7 @@ function Straftaten(dataDivisions, filter){
 				    	if(hover === true){
 				    		translate = 'scale(1.05, 1.05)';
 				    	}
-			    		var elPath = $paths.get(idx);
+			    		var elPath = $paths.get(idx+1);
 			    		d3.select(elPath)
 			    			.transition()
                				.duration(250)
