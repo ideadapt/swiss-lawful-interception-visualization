@@ -9,6 +9,8 @@ Run in terminal:
 
 > sudo npm -g install jshint
 
+> npm install browserify
+
 > npm install
 
 > bower install
