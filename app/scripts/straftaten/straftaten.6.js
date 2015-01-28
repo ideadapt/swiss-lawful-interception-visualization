@@ -55,7 +55,7 @@ function Straftaten(dataDivisions, filter){
 						key: window.i18n.l('schwerestraftaten_txt_'+sections[i]),
 						color: colors[i],
 						idx: i,
-						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i])[v]; }).join(', ')
+						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i+1])[v]; }).join(', ')
 					};
 					total += abs;
 				});
@@ -84,7 +84,8 @@ function Straftaten(dataDivisions, filter){
 				    var series = resolved.map((section, idx) => {
 				    	return {
 				    		label: window.i18n.l('schwerestraftaten_txt_'+sections[idx]),
-				    		value: resolved[idx][0]*2
+				    		value: resolved[idx][0]*2,
+				    		percent: resolved[idx][1]
 				    	};
 					});
 
@@ -106,8 +107,8 @@ function Straftaten(dataDivisions, filter){
 				    function updateLabel(idx){
 				    	var sliceIdx = +idx+1;
 				    	var value = series[sliceIdx].value;
-               			var percent = (value/(total/100)).toFixed(2);
-               			value = numeral(series[sliceIdx].value).format();
+               			var percent = series[sliceIdx].percent.toFixed(1);
+               			value = numeral(series[sliceIdx].value/2).format();
                			var descrI18nKey = sections[idx] || 'total_straftaten';
                			var descr = window.i18n.l('schwerestraftaten_descr_'+descrI18nKey);
 
