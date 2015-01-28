@@ -1,4 +1,4 @@
-function Art(dataDivisions, filter){
+function Typ(dataDivisions, filter){
 	var self = this;
 	self.view = {
 		total: '',
@@ -11,7 +11,7 @@ function Art(dataDivisions, filter){
 
 	function controller(){
 		function selectionChanged(year, canton){
-			var keys = ['post', 'internet', 'telefon', 'notsuche'];
+			var keys = ['aktiv', 'vds', 'techadm', 'telefonbuch'];
 			self.view.keys = keys;
 			var promises = keys.map(function(key){
 				return dataDivisions[key](year, canton);
@@ -21,14 +21,14 @@ function Art(dataDivisions, filter){
 		    	self.view.keyValues = [];
 		    	keys.forEach(function(key, idx){
 		    		self.view.keyValues.push({
-		    			i18n: window.i18n.l('ART_TXT_'+ keys[idx]),
+		    			i18n: window.i18n.l('typ_txt_'+ keys[idx]),
 		    			value: resolved[idx]
 		    		});
 
 		    		total += resolved[idx];
 		    	});
 		    	self.view.total = {
-	    			i18n: window.i18n.l('total'),
+	    			i18n: window.i18n.l('txt_txt_total'),
 	    			value: total
 	    		};
 				render.call(self);
@@ -38,9 +38,9 @@ function Art(dataDivisions, filter){
 	}
 
 	function render(){
-		var template = require('./art.jade');
+		var template = require('./typ.jade');
 		var html = template({view: self.view});
-		$('#art').html(html);
+		$('#typ').html(html);
 		return Promise.resolve();
 	}
 
@@ -52,4 +52,4 @@ function Art(dataDivisions, filter){
 		});
 }
 
-module.exports = Art;
+module.exports = Typ;

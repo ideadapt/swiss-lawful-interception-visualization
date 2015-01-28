@@ -69,18 +69,11 @@ function sumByYearCantonSuperSub(year, canton, _super, sub){
 	});
 }
 
-DataDivisions.prototype.aktiv = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'aktiv');
-};
-
-DataDivisions.prototype.vorratsdaten = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'vds');
-};
-
-DataDivisions.prototype.techadm = function(year, canton){
-	return sumByYearCantonSuperSub.call(this, year, canton, 'typ', 'techadm');
-};
-
+['aktiv', 'vds', 'techadm', 'telefonbuch'].forEach(function(section){
+	DataDivisions.prototype[section] = function(year, canton){
+		return sumByYearCantonSuperSub.call(this, year, canton, 'typ', section);
+	};
+});
 
 ['oeFrieden', 'staat', 'sex', 'buepf', 'diverse', 'drogen', 'drohung', 'finanz', 'gewalt', 'vermoegen'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){

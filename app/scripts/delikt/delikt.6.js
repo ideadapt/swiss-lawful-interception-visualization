@@ -138,7 +138,7 @@ function Delikt(dataDivisions, filter){
        				if(bowser.browser.msie || bowser.browser.gecko){
        					textTotal.attr('text-anchor', 'middle');
        				}
-       				textTotal.text(`Total ${numeral(total).format()}`);
+       				textTotal.text(`${window.i18n.l('txt_txt_total')} ${numeral(total).format()}`);
            			var textWidth = $(textTotal[0]).width();
            			var textX = centerX - textWidth/2;
            			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);

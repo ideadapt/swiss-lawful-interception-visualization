@@ -23,7 +23,6 @@ function DataSummary(){
 					'year': +year
 				});
 			});
-			console.log(flat);
 			return flat;
 		});
 		return self.transformed;

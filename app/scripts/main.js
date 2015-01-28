@@ -72,8 +72,8 @@ $(document).ready(function(){
 	var Filter = require('sliv-filter');
 	var filter = new Filter(dataDivisions, map);
 
-	var Art = require('sliv-art');
-	new Art(dataDivisions, filter);
+	var Typ = require('sliv-typ');
+	new Typ(dataDivisions, filter);
 
 	var Straftaten = require('sliv-straftaten');
 	new Straftaten(dataDivisions, filter);
