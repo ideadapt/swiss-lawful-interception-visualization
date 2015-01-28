@@ -383,6 +383,14 @@ module.exports = function (grunt) {
           dest: 'app/styles/'
         }
       }
+    },
+    shell:{
+      i18nBuild:{
+          command: ['cd i18n', 'node csv2src'].join('&&')
+      },
+      i18nCopy:{
+          command: ['cd i18n', 'cp translations.js ../app/scripts/translations.js'].join('&&')
+      }
     }
   });
 
@@ -424,6 +432,8 @@ module.exports = function (grunt) {
       'mocha'
     ]);
   });
+
+  grunt.registerTask('i18n:compile', 'Convert csv to json, copy it to source', ['shell:i18nBuild', 'shell:i18nCopy']);
 
   grunt.registerTask('build', [
     'clean:dist',
