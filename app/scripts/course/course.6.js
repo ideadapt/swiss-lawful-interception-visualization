@@ -1,8 +1,9 @@
 /*global nv, d3*/
-function Course(dataSummary, legendTemplate, numeral){
+function Course(dataSummary, legendTemplate, i18n){
 	var self = this;
+	var numeral = i18n.numeral;
 	self.view = {
-		l: window.i18n.l,
+		l: i18n.l,
 		keys: [],
 		titleText: null
 	};
@@ -43,7 +44,7 @@ function Course(dataSummary, legendTemplate, numeral){
 		    			var values = resolved[idx];
 		    			if(key === 'telefonbuch') {return null; }
 		    			return {
-		    				key: window.i18n.l('typ_txt_'+keys[idx]),
+		    				key: i18n.l('typ_txt_'+keys[idx]),
 		    				values: values.map(r => {
 		    					totalsPerYear[r.year] = totalsPerYear[r.year] || {};
 		    					totalsPerYear[r.year][keys[idx]] = r.value;
@@ -66,7 +67,7 @@ function Course(dataSummary, legendTemplate, numeral){
 			    chart.yAxis.tickFormat(function(n){
 			    	return numeral(n).format();
 			    });
-			    chart.yAxis.axisLabel(window.i18n.l('txt_txt_anzahl_anfragen'));
+			    chart.yAxis.axisLabel(i18n.l('txt_txt_anzahl_anfragen'));
 
 			    nv.utils.windowResize(() => {chart.update(); });
 

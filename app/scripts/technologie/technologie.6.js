@@ -1,5 +1,6 @@
 /*global Raphael*/
-function Technologie(dataDivisions, filter, numeral){
+function Technologie(dataDivisions, filter, i18n){
+	var numeral = i18n.numeral;
 	var self = this;
 	var artSections = ['telefon', 'notsuche', 'antennensuchlauf'];
 	self.view = {
@@ -15,7 +16,7 @@ function Technologie(dataDivisions, filter, numeral){
 		self.view.mobileSections = artSections;
 		self.view.mobileSections = artSections.map((section, idx) => {
 			return {
-				label: window.i18n.l('art_txt_'+artSections[idx]),
+				label: i18n.l('art_txt_'+artSections[idx]),
 				value: 0
 			};
 		});
@@ -88,7 +89,7 @@ function Technologie(dataDivisions, filter, numeral){
 				    value.attr('fill', '#333333');
 				    value.attr({'font-size': 12, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 
-				    var name = raphPaper.text(centerX, centerY - radiusMax - 15, window.i18n.l('technologie_txt_'+date.label));
+				    var name = raphPaper.text(centerX, centerY - radiusMax - 15, i18n.l('technologie_txt_'+date.label));
 				    name.attr('fill', '#333333');
 				    name.attr({'font-size': 12, 'font-family': '\'Helvetica Neue\', Helvetica, Arial, sans-serif;'});
 			    });
@@ -99,7 +100,7 @@ function Technologie(dataDivisions, filter, numeral){
 
 	function render(){
 		var template = require('./technologie.jade');
-		var html = template({view: this.view});
+		var html = template({view: this.view, l: i18n.l});
 		$('#technologie').html(html);
 		return Promise.resolve();
 	}

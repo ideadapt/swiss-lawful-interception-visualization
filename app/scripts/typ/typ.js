@@ -1,4 +1,5 @@
-function Typ(dataDivisions, filter, numeral){
+function Typ(dataDivisions, filter, i18n){
+	var numeral = i18n.numeral;
 	var self = this;
 	self.view = {
 		total: '',
@@ -21,7 +22,7 @@ function Typ(dataDivisions, filter, numeral){
 		    	self.view.keyValues = [];
 		    	keys.forEach(function(key, idx){
 		    		self.view.keyValues.push({
-		    			i18n: window.i18n.l('typ_txt_'+ keys[idx]),
+		    			i18n: i18n.l('typ_txt_'+ keys[idx]),
 		    			value: numeral(resolved[idx]).format()
 		    		});
 
@@ -30,7 +31,7 @@ function Typ(dataDivisions, filter, numeral){
 		    		}
 		    	});
 		    	self.view.total = {
-	    			i18n: window.i18n.l('txt_txt_total'),
+	    			i18n: i18n.l('txt_txt_total'),
 	    			value: numeral(total).format()
 	    		};
 				render.call(self);
@@ -41,7 +42,7 @@ function Typ(dataDivisions, filter, numeral){
 
 	function render(){
 		var template = require('./typ.jade');
-		var html = template({view: self.view});
+		var html = template({view: self.view, l: i18n.l});
 		$('#typ').html(html);
 		return Promise.resolve();
 	}

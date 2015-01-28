@@ -1,5 +1,6 @@
-/*global nv, d3, bowser*/
-function Delikt(dataDivisions, filter, numeral){
+/*global nv, d3*/
+function Delikt(dataDivisions, filter, i18n, bowser){
+	var numeral = i18n.numeral;
 	var self = this;
 	self.view = {};
 	self.view.colors = [
@@ -47,7 +48,7 @@ function Delikt(dataDivisions, filter, numeral){
 				resolved.forEach(function(value, i){
 					self.view.sectionValues[sections[i]] = {
 						value: value,
-						key: window.i18n.l('deliktegruppe_txt_'+sections[i]),
+						key: i18n.l('deliktegruppe_txt_'+sections[i]),
 						color: colors[i],
 						idx: i,
 						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i])[v]; }).join(', ')
@@ -75,7 +76,7 @@ function Delikt(dataDivisions, filter, numeral){
 
 				    var series = resolved.map((section, idx) => {
 				    	return {
-				    		label: window.i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx]),
+				    		label: i18n.l('DELIKTEGRUPPE_TXT_'+sections[idx]),
 				    		value: resolved[idx]
 				    	};
 					});
@@ -89,7 +90,7 @@ function Delikt(dataDivisions, filter, numeral){
 				    	var value = series[idx].value;
                			var percent = (value/(total/100)).toFixed(2);
                			value = numeral(series[idx].value).format();
-               			var descr = window.i18n.l('deliktegruppe_descr_'+sections[idx]);
+               			var descr = i18n.l('deliktegruppe_descr_'+sections[idx]);
 
                			$('#deliktDescr').text(descr);
                			$('#deliktTable td').removeClass('active');
@@ -138,7 +139,7 @@ function Delikt(dataDivisions, filter, numeral){
        				if(bowser.browser.msie || bowser.browser.gecko){
        					textTotal.attr('text-anchor', 'middle');
        				}
-       				textTotal.text(`${window.i18n.l('txt_txt_total')} ${numeral(total).format()}`);
+       				textTotal.text(`${i18n.l('txt_txt_total')} ${numeral(total).format()}`);
            			var textWidth = $(textTotal[0]).width();
            			var textX = centerX - textWidth/2;
            			textTotal.attr('transform', `translate(${textX}, ${centerY-16})`);
@@ -173,7 +174,7 @@ function Delikt(dataDivisions, filter, numeral){
 
 	function render(){
 		var template = require('./deliktTable.jade');
-		var html = template({view: this.view});
+		var html = template({view: this.view, l: i18n.l});
 		$('#deliktTable').html(html);
 		return Promise.resolve();
 	}

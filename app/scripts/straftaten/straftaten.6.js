@@ -1,5 +1,6 @@
-/*global nv, d3, bowser*/
-function Straftaten(dataDivisions, filter, numeral){
+/*global nv, d3*/
+function Straftaten(dataDivisions, filter, i18n, bowser){
+	var numeral = i18n.numeral;
 	var self = this;
 	self.view = {};
 	self.view.colors = [
@@ -53,7 +54,7 @@ function Straftaten(dataDivisions, filter, numeral){
 					var abs = value[0];
 					self.view.sectionValues[sections[i]] = {
 						value: abs,
-						key: window.i18n.l('schwerestraftaten_txt_'+sections[i]),
+						key: i18n.l('schwerestraftaten_txt_'+sections[i]),
 						color: colors[i],
 						idx: i,
 						rgb: ['r', 'g', 'b'].map((v) => { return d3.rgb(colors[i+1])[v]; }).join(', ')
@@ -84,19 +85,19 @@ function Straftaten(dataDivisions, filter, numeral){
 
 				    var series = resolved.map((section, idx) => {
 				    	return {
-				    		label: window.i18n.l('schwerestraftaten_txt_'+sections[idx]),
+				    		label: i18n.l('schwerestraftaten_txt_'+sections[idx]),
 				    		value: resolved[idx][0]*scaleSliceFactor,
 				    		percent: resolved[idx][1]
 				    	};
 					});
 
 					series.splice(0, 0, {
-						label: window.i18n.l('schwerestraftaten_txt_total_straftaten'),
+						label: '',
 						value: allStraftatenTotal/scaleSliceFactor
 					});
 
 					series.push({
-						label: window.i18n.l('schwerestraftaten_txt_total_straftaten'),
+						label: '',
 						value: allStraftatenTotal/scaleSliceFactor
 					});
 
@@ -111,7 +112,7 @@ function Straftaten(dataDivisions, filter, numeral){
                			var percent = series[sliceIdx].percent.toFixed(1);
                			value = numeral(series[sliceIdx].value/scaleSliceFactor).format();
                			var descrI18nKey = sections[idx] || 'total_straftaten';
-               			var descr = window.i18n.l('schwerestraftaten_descr_'+descrI18nKey);
+               			var descr = i18n.l('schwerestraftaten_descr_'+descrI18nKey);
 
                			$('#straftatenDescr').text(descr);
                			$('#straftatenTable td').removeClass('active');
@@ -180,7 +181,7 @@ function Straftaten(dataDivisions, filter, numeral){
 
 	function render(){
 		var template = require('./straftatenTable.jade');
-		var html = template({view: this.view});
+		var html = template({view: this.view, l: i18n.l});
 		$('#straftatenTable').html(html);
 		return Promise.resolve();
 	}

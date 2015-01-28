@@ -75,9 +75,7 @@ function sumByYearCantonSuperSub(year, canton, _super, sub){
 
 ['aktiv', 'vds', 'techadm', 'telefonbuch'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
-		var v = sumByYearCantonSuperSub.call(this, year, canton, 'typ', section);
-		v.then((va)=>{console.log(va);});
-		return v;
+		return sumByYearCantonSuperSub.call(this, year, canton, 'typ', section);
 	};
 });
 
