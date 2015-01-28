@@ -21,7 +21,7 @@ function DataDivisions(){
 						'super': superc,
 						'sub': sub,
 						'canton': cantons[i],
-						'value': +val,
+						'value': val.length === 0 ? NaN : +val,
 						'year': +year
 					});
 				});
@@ -58,20 +58,26 @@ function byCanton(canton, e){
 
 function sumByYearCantonSuperSub(year, canton, _super, sub){
 	return this.transformed.then(transformed => {
-		return transformed.filter(r => {
+		var filtered = transformed.filter(r => {
 			return r.sub === sub && r.super === _super;
 		})
 		.filter(byYear.bind(null, year))
-		.filter(byCanton.bind(null, canton))
-		.reduce((sum, b) => {
-			return sum + b.value;
-		}, 0);
+		.filter(byCanton.bind(null, canton));
+		if(filtered.length === 0){
+			return NaN;
+		}else{
+			return filtered.reduce((sum, b) => {
+				return sum + b.value;
+			}, 0);
+		}
 	});
 }
 
 ['aktiv', 'vds', 'techadm', 'telefonbuch'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
-		return sumByYearCantonSuperSub.call(this, year, canton, 'typ', section);
+		var v = sumByYearCantonSuperSub.call(this, year, canton, 'typ', section);
+		v.then((va)=>{console.log(va);});
+		return v;
 	};
 });
 

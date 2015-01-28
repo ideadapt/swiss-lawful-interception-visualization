@@ -1,5 +1,5 @@
-/*global nv, d3, numeral, bowser*/
-function Delikt(dataDivisions, filter){
+/*global nv, d3, bowser*/
+function Delikt(dataDivisions, filter, numeral){
 	var self = this;
 	self.view = {};
 	self.view.colors = [

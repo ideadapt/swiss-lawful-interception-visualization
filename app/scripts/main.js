@@ -14,7 +14,18 @@ function index(i18n){
 }
 
 $(document).ready(function(){
-
+	var numeralOrg = numeral;
+	function numeralDecorator(toFormat){
+		if(Number.isNaN(toFormat)){
+			return {
+				format: function format(){
+					return window.i18n.l('txt_txt_no_value');
+				}
+			};
+		}else{
+			return numeralOrg(toFormat);
+		}
+	}
 	var defaultLocale = 'de';
 	var localeMatch = window.location.search.match(/locale=([a-z]{2})/);
 	var selectedLocale = localeMatch ? localeMatch[1] : defaultLocale;
@@ -46,6 +57,7 @@ $(document).ready(function(){
 		numeral.defaultFormat('0,0');
 		// numeral.zeroFormat('');
 		// i18n.l('txt_txt_no_value') does not work. should have NaN Format and zeroFormat
+		// => using own numeralDecorator for now
 	});
 	numeral.language(selectedLocale);
 
@@ -61,7 +73,7 @@ $(document).ready(function(){
 	// somehow!!! require('./tooltip.jade') does not work form inside course.js ...
 	var legendTemplate = require('../../app/scripts/course/legend.jade');
 	var Course = require('sliv-course');
-	new Course(dataSummary, legendTemplate);
+	new Course(dataSummary, legendTemplate, numeralDecorator);
 
 	var Map = require('sliv-map');
 	var map = new Map();
@@ -73,14 +85,14 @@ $(document).ready(function(){
 	var filter = new Filter(dataDivisions, map);
 
 	var Typ = require('sliv-typ');
-	new Typ(dataDivisions, filter);
+	new Typ(dataDivisions, filter, numeralDecorator);
 
 	var Straftaten = require('sliv-straftaten');
-	new Straftaten(dataDivisions, filter);
+	new Straftaten(dataDivisions, filter, numeralDecorator);
 
 	var Technologie = require('sliv-technologie');
-	new Technologie(dataDivisions, filter);
+	new Technologie(dataDivisions, filter, numeralDecorator);
 
 	var Delikt = require('sliv-delikt');
-	new Delikt(dataDivisions, filter);
+	new Delikt(dataDivisions, filter, numeralDecorator);
 });

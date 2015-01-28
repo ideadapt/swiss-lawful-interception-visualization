@@ -2,8 +2,8 @@ h3=window.i18n.l('title_txt_typ')
 table.table
 	tr
 		th=view.total.i18n
-		td.text-right=numeral(view.total.value).format()
+		td.text-right=view.total.value
 	for item in view.keyValues
 		tr
 			th=item.i18n
-			td.text-right=numeral(item.value).format()
+			td.text-right=item.value

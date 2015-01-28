@@ -1,5 +1,5 @@
-/*global nv, d3, numeral*/
-function Course(dataSummary, legendTemplate){
+/*global nv, d3*/
+function Course(dataSummary, legendTemplate, numeral){
 	var self = this;
 	self.view = {
 		l: window.i18n.l,
@@ -47,7 +47,7 @@ function Course(dataSummary, legendTemplate){
 		    				values: values.map(r => {
 		    					totalsPerYear[r.year] = totalsPerYear[r.year] || {};
 		    					totalsPerYear[r.year][keys[idx]] = r.value;
-		    					return {x: r.year, y: r.value};
+		    					return {x: r.year, y: r.value || 0};
 		    				})
 		    			};
 		    		});

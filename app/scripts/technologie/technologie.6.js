@@ -1,5 +1,5 @@
-/*global Raphael, numeral*/
-function Technologie(dataDivisions, filter){
+/*global Raphael*/
+function Technologie(dataDivisions, filter, numeral){
 	var self = this;
 	var artSections = ['telefon', 'notsuche', 'antennensuchlauf'];
 	self.view = {

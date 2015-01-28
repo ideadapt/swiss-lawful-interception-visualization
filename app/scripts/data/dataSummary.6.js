@@ -19,7 +19,7 @@ function DataSummary(){
 				flat.push({
 					'super': superc,
 					'sub': sub,
-					'value': !row.CH ? 0 : +row.CH,
+					'value': row.CH.length === 0 ? NaN : +row.CH,
 					'year': +year
 				});
 			});

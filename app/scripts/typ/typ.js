@@ -1,4 +1,4 @@
-function Typ(dataDivisions, filter){
+function Typ(dataDivisions, filter, numeral){
 	var self = this;
 	self.view = {
 		total: '',
@@ -22,14 +22,16 @@ function Typ(dataDivisions, filter){
 		    	keys.forEach(function(key, idx){
 		    		self.view.keyValues.push({
 		    			i18n: window.i18n.l('typ_txt_'+ keys[idx]),
-		    			value: resolved[idx]
+		    			value: numeral(resolved[idx]).format()
 		    		});
 
-		    		total += resolved[idx];
+		    		if(!Number.isNaN(resolved[idx])){
+		    			total += resolved[idx];
+		    		}
 		    	});
 		    	self.view.total = {
 	    			i18n: window.i18n.l('txt_txt_total'),
-	    			value: total
+	    			value: numeral(total).format()
 	    		};
 				render.call(self);
 			});
