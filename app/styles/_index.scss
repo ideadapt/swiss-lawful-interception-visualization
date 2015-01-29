@@ -1,0 +1,61 @@
+#welcome, #impressum, #slir, #quellen{
+	font-size: 1.2em;
+}
+
+#welcome{
+	min-height: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 8px;
+	padding: 15px;
+	box-shadow: 0px 0px 3px #888;
+	&>p{
+		margin-bottom: 0;
+	}
+}
+
+#mainTitle{
+	margin-top: 1.75em;
+	text-align: center;
+	color: white;
+	text-shadow: 0px 0px 15px #000;
+}
+
+#startContent{
+	margin-top: 3em;
+}
+
+#slir > img{
+	float: left;
+	width: 120px;
+	margin-right: 1em;
+}
+
+#quellen{
+	ul li{
+		list-style-type: none;
+		margin-left: 0;
+		padding-left: 0;
+	}
+	ul{
+		margin-left: 0;
+		padding-left: 0;
+	}
+}
+
+#slir, #quellen, #impressum{
+	min-height: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 8px;
+	padding: 15px;
+	box-shadow: 0px 0px 3px #888;
+	&>p{
+		margin-bottom: 0;
+	}
+	h2{
+		margin-top: 0;
+	}
+}
+
+#impressum, #quellen{
+	height: 265px;
+}

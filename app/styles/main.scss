@@ -21,20 +21,29 @@ hr{
 	clear: both;
 }
 
-#welcome, #impressum, #slir, #quellen{
-	font-size: 1.2em;
+.container{
+	$offsetWidth: 40px;
+	background-clip: border-box;
+    background-position: -#{$offsetWidth} -8px;
+    background-image: url(../images/area_51.png);
+    background-repeat: no-repeat;
+    border-left: $offsetWidth solid transparent;
+    border-right: $offsetWidth solid transparent;
 }
 
-#welcome{
-	min-height: 0;
-	column-count: 2;
-	column-gap: 2em;
+footer{
+	$offsetWidth: 40px;
+	background-clip: border-box;
+    background-position: -#{$offsetWidth} 100%;
+    background-image: url(../images/area_52.png);
+    background-repeat: no-repeat;
+    border-left: $offsetWidth solid transparent;
+    border-right: $offsetWidth solid transparent;
+    padding-bottom: 160px;
 }
 
-#slir > img{
-	float: left;
-	width: 120px;
-	margin-right: 1em;
+.page-header{
+	border: 0;
 }
 
 .nvd3.nv-pie path{
@@ -45,6 +54,7 @@ hr{
 	border-right: 1px solid #eeeeee;
 }
 
+@import "index";
 @import "course";
 @import "map";
 @import "filter";

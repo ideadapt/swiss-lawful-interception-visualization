@@ -165,11 +165,11 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 
 			    	$slices.on('mouseenter', (e)=>{
 			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
-			    		updateLabel(idx);
+			    		updateLabel(+idx-1);
 			    	})
 			    	.on('mouseleave', (e)=>{
 			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
-			    		updateLabel(idx);
+			    		updateLabel(+idx-1);
 			    	});
 			 	});
 			});
