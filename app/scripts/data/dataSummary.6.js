@@ -46,21 +46,12 @@ function bySuperSub(_super, sub){
 	});
 }
 
-DataSummary.prototype.aktiv = function(){
-	return bySuperSub.call(this, 'typ', 'aktiv');
-};
 
-DataSummary.prototype.vds = function(){
-	return bySuperSub.call(this, 'typ', 'vds');
-};
-
-DataSummary.prototype.techadm = function(){
-	return bySuperSub.call(this, 'typ', 'techadm');
-};
-
-DataSummary.prototype.telefonbuch = function(){
-	return bySuperSub.call(this, 'typ', 'telefonbuch');
-};
+['aktiv', 'vds', 'techadm', 'telefonbuch', 'facebook', 'microsoft'].forEach(function(section){
+	DataSummary.prototype[section] = function(){
+		return bySuperSub.call(this, 'typ', section);
+	};
+});
 
 DataSummary.prototype.years = function(){
 	return this.transformed.then(function(transformed){

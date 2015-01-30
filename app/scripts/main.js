@@ -9,6 +9,7 @@ function index(i18n){
 	$('#impressum>p').html(i18n.l('longtext_descr_impressum'));
 	$('#slir>h2').html(i18n.l('title_txt_slir'));
 	$('#slir>p').html(i18n.l('longtext_descr_slir'));
+	$('#slir>a').attr('href', i18n.l('quelle_url_slir'));
 	$('#quellen>h2').html(i18n.l('title_txt_quellen'));
 	$('#quellen>p').html(i18n.l('longtext_descr_quellen'));
 }

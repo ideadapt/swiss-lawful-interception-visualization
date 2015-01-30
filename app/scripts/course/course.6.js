@@ -20,15 +20,17 @@ function Course(dataSummary, legendTemplate, i18n){
 				    .height(300)
 					.tooltips(false)
 				    .reduceXTicks(true)
-				    .color(['#FE0405', '#9BBB59', '#668CD9']); // telefonbuch is not in charts datum. first color is for techadm
+				    .color(['#FE0405', '#9BBB59', '#668CD9']); // telefonbuch, facebook and microsoft are not in charts datum. first color is for techadm
 
-				var keys = ['telefonbuch', 'aktiv', 'vds', 'techadm'];
+				var keys = ['facebook', 'microsoft', 'telefonbuch', 'aktiv', 'vds', 'techadm'];
 				self.view.keys = keys;
 				var promises = keys.map(function(key){
 					return dataSummary[key]();
 				});
 			    Promise.all(promises).then(function(resolved){
-			    	var tel = resolved[0];
+			    	var facebook = resolved[0];
+			    	var microsoft = resolved[1];
+			    	var tel = resolved[2];
 			    	var totalsPerYear = {};
 			    	self.view.totalsPerYear = totalsPerYear;
 
@@ -40,13 +42,21 @@ function Course(dataSummary, legendTemplate, i18n){
 			    		totalsPerYear[r.year].telefonbuch = r.value;
 		    		});
 
+		    		microsoft.map(function(r){
+			    		totalsPerYear[r.year].microsoft = r.value;
+		    		});
+
+		    		facebook.map(function(r){
+			    		totalsPerYear[r.year].facebook = r.value;
+		    		});
+
+			       	var notInChart = ['telefonbuch', 'facebook', 'microsoft'];
 		    		var datum = keys.map((key, idx) => {
 		    			var values = resolved[idx];
-		    			if(key === 'telefonbuch') {return null; }
+		    			if(notInChart.indexOf(key)!==-1) {return null; }
 		    			return {
 		    				key: i18n.l('typ_txt_'+keys[idx]),
 		    				values: values.map(r => {
-		    					totalsPerYear[r.year] = totalsPerYear[r.year] || {};
 		    					totalsPerYear[r.year][keys[idx]] = r.value;
 		    					return {x: r.year, y: r.value || 0};
 		    				})
@@ -77,10 +87,9 @@ function Course(dataSummary, legendTemplate, i18n){
 	}
 
 	function selectionChanged(e){
-   		$('#legend_typ_telefonbuch').text(numeral(this.view.totalsPerYear[e.point.x].telefonbuch).format());
-   		$('#legend_typ_aktiv').text(numeral(this.view.totalsPerYear[e.point.x].aktiv).format());
-   		$('#legend_typ_vds').text(numeral(this.view.totalsPerYear[e.point.x].vds).format());
-   		$('#legend_typ_techadm').text(numeral(this.view.totalsPerYear[e.point.x].techadm).format());
+		self.view.keys.forEach((key)=>{
+   			$(`#legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.point.x][key]).format());
+		});
    		self.view.titleText = self.view.titleText || $('#course-legend>h2').text();
    		$('#course-legend>h2').text(`${self.view.titleText} ${e.point.x}`);
    	}
