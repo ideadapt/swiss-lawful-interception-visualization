@@ -25,11 +25,17 @@
 			}
 		}
 	}
+	>svg{
+		margin-top: 1.2em;
+	}
 }
 #course-legend{
 	padding-left: 65px;
 	h2, h3{
 		margin-top: 0;
+	}
+	h2{
+		margin-bottom: 1em;
 	}
 	h3{
 		font-size: 16px;

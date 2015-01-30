@@ -42,7 +42,7 @@
 	}
 }
 
-#slir, #quellen, #impressum{
+#slir, #footerRow{
 	min-height: 0;
 	background-color: rgba(255, 255, 255, 0.8);
 	border-radius: 8px;
@@ -56,6 +56,6 @@
 	}
 }
 
-#impressum, #quellen{
-	height: 265px;
+#slir{
+	margin-bottom: 3em;
 }

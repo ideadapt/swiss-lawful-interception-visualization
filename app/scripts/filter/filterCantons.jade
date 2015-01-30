@@ -5,9 +5,9 @@
 			button(value='CH', class={active: 'CH'==canton}, class='fake btn btn-default', data-toggle='tooltip', data-placement=('top') title=l('region_txt_ch'))=l('region_txt_ch')
 			button(value='BA', class={active: 'BA'==canton}, class='fake btn btn-default', data-toggle='tooltip', data-placement=('bottom') title=l('region_txt_ba'))=l('region_txt_ba_short')
 	.col-xs-10
-		.btn-group
+		.btn-group.cantons
 			each aCanton in cantons1
 				button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', title=l('region_txt_'+aCanton))=aCanton
-		.btn-group
+		.btn-group.cantons
 			each aCanton in cantons2
 				button(value=aCanton, class={active: aCanton==canton}, class='btn btn-default', data-toggle='tooltip', data-placement='bottom' title=l('region_txt_'+aCanton))=aCanton

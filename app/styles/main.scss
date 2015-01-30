@@ -17,6 +17,10 @@ table{
 	}
 }
 
+h3{
+  margin-bottom: 1.5em;
+}
+
 hr{
 	clear: both;
 }
@@ -39,7 +43,7 @@ footer{
     background-repeat: no-repeat;
     border-left: $offsetWidth solid transparent;
     border-right: $offsetWidth solid transparent;
-    padding-bottom: 160px;
+    padding-bottom: 360px;
 }
 
 .page-header{
@@ -53,6 +57,7 @@ footer{
 .border-right{
 	border-right: 1px solid #eeeeee;
 }
+
 
 @import "index";
 @import "course";
