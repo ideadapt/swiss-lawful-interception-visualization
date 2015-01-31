@@ -2,6 +2,9 @@
 	max-width: 300px;
 	height: auto;
 	display: block;
+	&>#svgMap{
+		height: 170px;
+	}
 }
 
 @media (max-width: 992px){

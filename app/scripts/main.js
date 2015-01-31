@@ -1,6 +1,5 @@
 /*global numeral*/
 function index(i18n){
-
 	$('#mainTitle').text(i18n.l('title_txt_maintitle'));
 	window.document.title = i18n.l('title_txt_maintitle');
 
@@ -20,16 +19,15 @@ function extractLocale(defaultLocale){
 }
 
 $(document).ready(function(){
+	var bowser = require('bowser');
+	require('es6-promise').polyfill();
+	require('6to5-polyfill');
+
 	var selectedLocale = extractLocale('de');
 	var locales = require('sliv-translations').locales;
 	var I18n = require('sliv-i18n');
 	var i18n = new I18n(numeral);
 	i18n.init(locales, selectedLocale);
-
-	var bowser = require('bowser');
-	require('es6-promise').polyfill();
-	require('6to5-polyfill');
-
 	index(i18n);
 
 	var dataDivisions = require('sliv-data-divisions');

@@ -76,14 +76,14 @@ function Filter(dataDivisions, map, i18n){
 		$(document).ready(function(){
 			var $nav = $('#filter-row>nav');
 			var $filter = $('#filter-row');
+			var filterRowHeight = $filter.height();
 			var heightSet = false;
 
 			$(window).bind('scroll', function() {
 				var filterOffsetTop = $filter.offset().top;
 				if(($(window).scrollTop() > filterOffsetTop-10)){
 					if(!heightSet){
-						$filter.height($filter.height());
-						$nav.find('>.content').height($filter.height());
+						$filter.height(filterRowHeight);
 						heightSet = true;
 					}
 					$nav.addClass('goToTop');
