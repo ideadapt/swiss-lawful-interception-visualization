@@ -27,11 +27,27 @@ Build
 
 Builds the client and puts all files into dist folder. Use this dist folder as website root.
 
-> grunt build
 
+```
+#!
+
+grunt build
+```
 
 Development, Live Preview
 
 Builds dev client, starts Webserver, watch changes, preview in browser
 
-> grunt serve
+
+```
+#!
+
+grunt serve
+```
+
+
+
+
+nachdem das csv geändert wurde immer:
+grunt i18n:compile
+ausführen. danach page reload (sollte via autoreload während grunt serve gehen)
