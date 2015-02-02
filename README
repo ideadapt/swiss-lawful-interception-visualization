@@ -49,5 +49,11 @@ grunt serve
 
 
 nachdem das csv geändert wurde immer:
+
+```
+#!
+
 grunt i18n:compile
+```
+
 ausführen. danach page reload (sollte via autoreload während grunt serve gehen)
