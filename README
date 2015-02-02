@@ -5,26 +5,55 @@ http://nodejs.org/download/
 
 Run in terminal:
 
-> sudo npm -g install grunt-cli
 
-> sudo npm -g install jshint
+```
+#!
 
-> npm install browserify
+sudo npm -g install grunt-cli
 
-> npm install
+sudo npm -g install jshint
 
-> bower install
+sudo npm -g install browserify
+
+npm install
+
+bower install emitter
+
+bower install
+```
 
 
 Build
 
 Builds the client and puts all files into dist folder. Use this dist folder as website root.
 
-> grunt build
 
+```
+#!
+
+grunt build
+```
 
 Development, Live Preview
 
 Builds dev client, starts Webserver, watch changes, preview in browser
 
-> grunt serve
+
+```
+#!
+
+grunt serve
+```
+
+
+
+
+nachdem das csv geändert wurde immer:
+
+```
+#!
+
+grunt i18n:compile
+```
+
+ausführen. danach page reload (sollte via autoreload während grunt serve gehen)
