@@ -5,6 +5,9 @@ body {
   >.container{
   	margin-bottom: 3em;
   }
+  background-image: url(../images/area_51.png);
+  background-repeat: no-repeat;
+
 }
 
 table{
@@ -25,15 +28,6 @@ hr{
 	clear: both;
 }
 
-.container{
-	$offsetWidth: 40px;
-	background-clip: border-box;
-    background-position: -#{$offsetWidth} -8px;
-    background-image: url(../images/area_51.png);
-    background-repeat: no-repeat;
-    border-left: $offsetWidth solid transparent;
-    border-right: $offsetWidth solid transparent;
-}
 
 footer{
 	$offsetWidth: 40px;

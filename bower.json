@@ -21,7 +21,8 @@
     "papaparse": "4.0.7",
     "es6-promise": "~2.0.0",
     "moment": "~2.9.0",
-    "numeral": "~1.5.3"
+    "numeral": "~1.5.3",
+    "emitter": "1.5.2"
   },
   "devDependencies": {
     "raphael": "~2.1.2",
