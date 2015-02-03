@@ -6,11 +6,11 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 	self.view.colors = [
 		'transparent',  // restliche
 		'#102931', //krimorg
-		'#59256f', //terror
+		'#CCFF33', //terror
 		'#153d14', //geldwäsche
-		'#c04157', //menschenhandel
+		'#FF33FC', //menschenhandel
 		'#bf408b', //pädokriminalität
-		'#a2cfe0', //nachrichtendienst
+		'#3399FF', //nachrichtendienst
 		'transparent'  // restliche
 	];
 
