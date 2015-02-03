@@ -76,16 +76,29 @@ function Filter(dataDivisions, map, i18n){
 		$(document).ready(function(){
 			var $nav = $('#filter-row>nav');
 			var $filter = $('#filter-row');
+			var $footer = $('footer');
 			var filterRowHeight = $filter.height();
 			var heightSet = false;
 
 			$(window).bind('scroll', function() {
 				var filterOffsetTop = $filter.offset().top;
-				if(($(window).scrollTop() > filterOffsetTop)){
+				var footerOffsetTop = $footer.offset().top;
+				var gradientHeight = 40;
+				var filterTopClip = ($(window).scrollTop() > filterOffsetTop);
+				var filterBottomClip = ($(window).scrollTop() > footerOffsetTop-filterRowHeight-2*gradientHeight);
+				if(filterBottomClip){
 					if(!heightSet){
 						$filter.height(filterRowHeight);
 						heightSet = true;
 					}
+					$nav.addClass('goToTop');
+					$nav.css('top', -1*($(window).scrollTop() - footerOffsetTop +filterRowHeight+2*gradientHeight));
+				} else if(filterTopClip){
+					if(!heightSet){
+						$filter.height(filterRowHeight);
+						heightSet = true;
+					}
+					$nav.css('top', 0);
 					$nav.addClass('goToTop');
 				}else{
 					$nav.removeClass('goToTop');
