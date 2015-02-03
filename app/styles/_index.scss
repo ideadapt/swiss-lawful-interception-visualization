@@ -1,36 +1,41 @@
+
+
 #welcome, #impressum, #slir, #quellen{
 	font-size: 1.2em;
 }
 
 #welcome{
-	min-height: 0;
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 8px;
-	padding: 15px;
-	box-shadow: 0px 0px 3px #888;
+	@include shadowBox();
 	&>p{
 		margin-bottom: 0;
 	}
 }
 h1{
 	font-size: 3em;
+	margin-top: 1em;
 	margin-bottom: 1em;
 }
 #mainTitle{
-	margin-top: 1.75em;
+	margin-top: 3em;
 	text-align: center;
 	color: white;
-	text-shadow: 0px 0px 15px #000;
+	text-shadow: 0px 0px 40px #000;
 }
 
 #startContent{
 	margin-top: 8em;
+	margin-bottom: 3em;
+	@include shadowBox();
 }
 
 #slir > a > img{
 	float: left;
-	width: 120px;
+	height: 100px;
 	margin-right: 1em;
+}
+
+#slir{
+	@include shadowBox();
 }
 
 #quellen{
@@ -46,11 +51,7 @@ h1{
 }
 
 #slir, #footerRow{
-	min-height: 0;
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 8px;
-	padding: 15px;
-	box-shadow: 0px 0px 3px #888;
+	@include shadowBox();
 	&>p{
 		margin-bottom: 0;
 	}

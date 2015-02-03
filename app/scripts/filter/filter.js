@@ -81,7 +81,7 @@ function Filter(dataDivisions, map, i18n){
 
 			$(window).bind('scroll', function() {
 				var filterOffsetTop = $filter.offset().top;
-				if(($(window).scrollTop() > filterOffsetTop-10)){
+				if(($(window).scrollTop() > filterOffsetTop)){
 					if(!heightSet){
 						$filter.height(filterRowHeight);
 						heightSet = true;

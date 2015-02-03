@@ -17,6 +17,7 @@ function Delikt(dataDivisions, filter, i18n, bowser){
 	];
 
 	function init(){
+		$('#deliktIntro>h3').text(i18n.l('title_txt_deliktegruppe'));
 		return Promise.resolve();
 	}
 
@@ -88,7 +89,7 @@ function Delikt(dataDivisions, filter, i18n, bowser){
 
 				    function updateLabel(idx){
 				    	var value = series[idx].value;
-               			var percent = (value/(total/100)).toFixed(2);
+               			var percent = (value/(total/100)).toFixed(1);
                			value = numeral(series[idx].value).format();
                			var descr = i18n.l('deliktegruppe_descr_'+sections[idx]);
 

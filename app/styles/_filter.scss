@@ -44,14 +44,21 @@
 	}
 }
 
+.content{
+	background-color: rgba(255, 255, 255, 0.95);
+	padding-top: 20px;
+	border-radius: 8px;
+}
+
 .goToTop {
   position: fixed;
   top: 0;
   z-index: 1;
 
   .content{
-  	padding-top: 10px;
   	background-color: #fafafa;
+  	border-radius: 0;
+  	transition: background-color 0.5s;
   }
 }
 
@@ -99,9 +106,14 @@
 	}
 }
 #gradient-border{
-	height: 40px;
 	background: transparent;
-	background: -ms-linear-gradient(top, #fafafa 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
-	background: linear-gradient(to bottom, #fafafa 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+.goToTop{
+	#gradient-border{
+		height: 40px;
+		background: transparent;
+		background: -ms-linear-gradient(top, #fafafa 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+		background: linear-gradient(to bottom, #fafafa 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+	}
 }

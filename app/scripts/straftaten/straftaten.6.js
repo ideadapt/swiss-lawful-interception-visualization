@@ -15,6 +15,8 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 	];
 
 	function init(){
+		$('#straftatenIntro>h3').text(i18n.l('title_txt_schwerestraftaten'));
+		$('#straftatenIntro>p').text(i18n.l('schwerestraftaten_descr_descr'));
 		return Promise.resolve();
 	}
 
@@ -107,6 +109,9 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 				    	.call(chart);
 
 				    function updateLabel(idx){
+				    	if(idx === -1){
+				    		return;
+				    	}
 				    	var sliceIdx = +idx+1;
 				    	var value = series[sliceIdx].value;
                			var percent = series[sliceIdx].percent.toFixed(1);
