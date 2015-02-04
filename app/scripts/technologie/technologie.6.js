@@ -72,11 +72,15 @@ function Technologie(dataDivisions, filter, i18n){
 					var centerY = radiusMax+20;
 					if(date.absolute === 0){
 						radius = 0;
+					}else if(sections[idx] === 'mobil' && date.absolute < 25){
+						radius *= 0.2;
 					}else if(sections[idx] === 'mobil' && date.absolute < 100){
 						radius *= 0.4;
 					}else if(sections[idx] === 'mobil' && date.absolute < 300){
 						radius *= 0.6;
 					}else if(sections[idx] === 'mobil' && date.absolute < 1000){
+						radius *= 0.7;
+					}else if(sections[idx] === 'mobil' && date.absolute < 2000){
 						radius *= 0.8;
 					}else if(sections[idx] === 'mobil' && date.absolute < 10000){
 						radius *= 0.9;
