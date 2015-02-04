@@ -10,6 +10,7 @@ $rowBoxBg: rgba(255, 255, 255, 0.95);
 }
 
 body {
+  position: relative;
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
@@ -18,9 +19,9 @@ body {
   >.container{
   	margin-bottom: 3em;
   }
-  background-image: url(../images/area_51_zoom.png);
+  background-image: url(../images/area_52_zoom.png);
   background-repeat: no-repeat;
-
+  background-position: left bottom;
 }
 
 table{
@@ -57,16 +58,18 @@ hr{
   border: 0;
 }
 
-
 footer{
-	$offsetWidth: 40px;
-	background-clip: border-box;
-    background-position: -#{$offsetWidth} 100%;
-    background-image: url(../images/area_52.png);
+  margin-bottom: 600px;
+}
+
+#card{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(../images/area_51_zoom.png);
     background-repeat: no-repeat;
-    border-left: $offsetWidth solid transparent;
-    border-right: $offsetWidth solid transparent;
-    padding-bottom: 360px;
+    height: 700px;
+    width: 100%;
 }
 
 .page-header{
