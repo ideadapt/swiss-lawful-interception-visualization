@@ -73,7 +73,7 @@ function Technologie(dataDivisions, filter, i18n){
 					if(date.absolute === 0){
 						radius = 0;
 					}else if(sections[idx] === 'mobil' && date.absolute < 25){
-						radius *= 0.2;
+						radius *= 0.35;
 					}else if(sections[idx] === 'mobil' && date.absolute < 100){
 						radius *= 0.4;
 					}else if(sections[idx] === 'mobil' && date.absolute < 300){
