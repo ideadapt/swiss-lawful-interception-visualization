@@ -19,7 +19,7 @@ function Course(dataSummary, legendTemplate, i18n){
 			    	.showLegend(false)
 				    .height(300)
 					.tooltips(false)
-				    .reduceXTicks(true)
+				    .reduceXTicks(false)
 				    .color(['#FE0405', '#9BBB59', '#668CD9']); // telefonbuch, facebook and microsoft are not in charts datum. first color is for techadm
 
 				var keys = ['facebook', 'microsoft', 'telefonbuch', 'aktiv', 'vds', 'techadm'];
@@ -72,12 +72,23 @@ function Course(dataSummary, legendTemplate, i18n){
 
 			       	resolve();
 			       	self.view.latestYear = tel[tel.length-1].year;
+
 			    }).catch(err => {reject(err);});
 
-			    chart.yAxis.tickFormat(function(n){
+			    chart.yAxis.tickFormat(n=>{
 			    	return numeral(n).format();
 			    });
 			    chart.yAxis.axisLabel(i18n.l('txt_txt_anzahl_anfragen'));
+				chart.xAxis.tickFormat((y)=>{
+					var latestYear = Math.max.apply(null, Object.keys(self.view.totalsPerYear));
+					var isLastYear = latestYear === y;
+					// 2014 - 1998 = 16%2 = 0 => 1998
+					// 2014 - 1999 = 15%2 = 1 => ''
+					// 2014 - 2013 = 1%2 = 1 => ''
+					// 2015 - 1998 = 17%2 = 1 => ''
+					// 2015 - 2014 = 1%2 = 1 => ''
+				    return (isLastYear || ((latestYear-y)%2===0)) ? y : '';
+				});
 
 			    nv.utils.windowResize(() => {chart.update(); });
 
