@@ -5,9 +5,9 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 	self.view = {};
 	self.view.colors = [
 		'transparent',  // restliche
-		'#CC9ABD', //krimorg
+		'#131313', //krimorg
+		'#24af26', //geldwäsche
 		'#F79315', //terror
-		'#00CF20', //geldwäsche
 		'#387FFF', //menschenhandel
 		'#FF19D2', //pädokriminalität
 		'#132B57', //nachrichtendienst
@@ -36,7 +36,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 
 	function controller(){
 		function selectionChanged(year, canton){
-			var sections = ['krimorg', 'terror', 'geldwaesche', 'menschenhandel', 'paedo', 'nachrichtendienst'];
+			var sections = ['krimorg', 'geldwaesche', 'terror', 'menschenhandel', 'paedo', 'nachrichtendienst'];
 			var colors = self.view.colors;
 			var total = 0;
 			var innerRadiusFactor = 0.5;
