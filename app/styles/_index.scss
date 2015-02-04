@@ -6,6 +6,7 @@
 
 #welcome{
 	@include shadowBox();
+	background-color: $rowBoxBg;
 	&>p{
 		margin-bottom: 0;
 	}
