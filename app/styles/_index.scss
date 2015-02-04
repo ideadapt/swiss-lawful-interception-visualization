@@ -23,9 +23,11 @@ h1{
 }
 
 #startContent{
-	margin-top: 8em;
-	margin-bottom: 3em;
+	margin-top: 13em;
+	margin-bottom: 8em;
 	@include shadowBox();
+	background-color: $rowBoxBg;
+	box-shadow: 0px 0px 8px #FFFFFF;
 }
 
 #slir > a > img{

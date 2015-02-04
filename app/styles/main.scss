@@ -1,4 +1,6 @@
 $shadowBoxBg: rgba(255, 255, 255, 0.8);
+$rowBoxBg: rgba(255, 255, 255, 0.95);
+
 @mixin shadowBox(){
   min-height: 0;
   background-color: $shadowBoxBg;
