@@ -48,7 +48,13 @@ h1{
 		padding-left: 0;
 	}
 	li{
-		margin-top: 1em;
+		&:not(:first-child){
+			margin-top: 1em;
+		}
+		> .glyphicon{
+			font-size: 0.8em;
+			padding-right: 0.5em;
+		}
 	}
 	ul{
 		margin-left: 0;
