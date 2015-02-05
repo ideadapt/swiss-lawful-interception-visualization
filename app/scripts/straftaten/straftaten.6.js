@@ -143,15 +143,15 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 			    	var $slices = $('#straftaten .nv-slice');
 			    	var $paths = $slices.find('>path');
 				    function updateArc(idx, hover){
-				    	var translate = '';
+				    	var transform = '';
 				    	if(hover === true){
-				    		translate = 'scale(1.05, 1.05)';
+				    		transform = 'scale(1.05, 1.05)';
 				    	}
 			    		var elPath = $paths.get(+idx+1);
 			    		d3.select(elPath)
 			    			.transition()
                				.duration(250)
-               				.attr('transform', translate);
+               				.attr('transform', transform);
 
                			updateLabel(idx);
 				    }
@@ -168,9 +168,22 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 			    		updateArc(idx, false);
 			    	});
 
-			    	$slices.on('mouseenter', (e)=>{
+			    	$slices.off('mouseover').on('mouseenter', (e)=>{
 			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
-			    		updateLabel(+idx-1);
+			    		idx = +idx;
+			    		updateLabel(idx-1);
+
+			    		// restliche fake slice. do not animate
+			    		if(e.currentTarget.__data__.data.label === ''){
+			    			[0, series.length-1].forEach((fakeIdx)=>{
+					    		d3.select($slices.get(fakeIdx)).classed('hover', false);
+					    		var elPath = $paths.get(fakeIdx);
+					    		d3.select(elPath)
+					    			.transition()
+		               				.duration(0)
+		               				.attr('transform', '');
+			    			});
+			    		}
 			    	})
 			    	.on('mouseleave', (e)=>{
 			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
