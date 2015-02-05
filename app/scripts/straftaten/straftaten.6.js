@@ -137,7 +137,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
                			textSelected.text(`${value} (${percent}%)`);
                			var textWidth = $(textSelected[0]).width();
                			var textX = centerX - textWidth/2;
-               			textSelected.attr('transform', `translate(${textX}, ${centerY-38})`);
+               			textSelected.attr('transform', `translate(${textX}, ${centerY-16})`);
 				    }
 
 			    	var $slices = $('#straftaten .nv-slice');
@@ -168,7 +168,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 			    		updateArc(idx, false);
 			    	});
 
-			    	$slices.off('mouseover').on('mouseenter', (e)=>{
+			    	$slices.on('mouseenter', (e)=>{
 			    		var idx = series.findIndex((serie)=>{return serie.label === e.currentTarget.__data__.data.label;});
 			    		idx = +idx;
 			    		updateLabel(idx-1);

@@ -31,14 +31,27 @@ h1{
 	box-shadow: 0px 0px 8px #FFFFFF;
 }
 
-#slir > a > img{
-	float: left;
-	height: 100px;
-	margin-right: 1em;
+#slir, #footerRow{
+	@include shadowBox();
+	background-color: $rowBoxBg;
+	box-shadow: 0px 0px 8px #FFFFFF;
+	&>p{
+		margin-bottom: 0;
+	}
+	h2{
+		margin-top: 0;
+	}
 }
 
 #slir{
-	@include shadowBox();
+	margin-bottom: 3em;
+	margin-top: 6em;
+}
+
+#slir > a > img{
+	float: left;
+	width: 110px;
+	margin-right: 1em;
 }
 
 #quellen{
@@ -62,16 +75,22 @@ h1{
 	}
 }
 
-#slir, #footerRow{
-	@include shadowBox();
-	&>p{
-		margin-bottom: 0;
-	}
-	h2{
-		margin-top: 0;
+#lang-menu{
+	list-style-type: none;
+	li{
+		float: left;
+		font-size: 1.1em;
+		a{
+			color: #80C7FF;
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+		&:not(:last-child){
+			&:after{
+				content: '|';
+				color: $shadowBoxBg;
+			}
+		}
 	}
 }
 
-#slir{
-	margin-bottom: 3em;
-}

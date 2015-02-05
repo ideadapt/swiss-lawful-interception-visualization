@@ -39,10 +39,20 @@ table{
 }
 
 .filtered{
-  @include shadowBox();
+  margin-left: initial;
+  margin-right: initial;
   display: flex;
   align-items: stretch;
-  margin-bottom: 3em;
+
+  &.first{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: 1em;
+  }
+  &.second{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
 
 .filtered > [class*="col-"]{
@@ -51,6 +61,10 @@ table{
   &:first-child{
     margin-left: 0;
   }
+}
+
+#filtered-rows{
+  @include shadowBox();
 }
 
 hr{
@@ -66,6 +80,7 @@ footer{
     position: absolute;
     left: 0;
     top: 0;
+    z-index: -1;
     background-image: url(../images/area_51_zoom.png);
     background-repeat: no-repeat;
     height: 700px;
