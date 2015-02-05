@@ -68,8 +68,8 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 				nv.addGraph(function() {
 				    var chart = nv.models.pieChart();
 				    chart.pie
-					    .startAngle(function(d) { return d.startAngle/2 -Math.PI/2; })
-					    .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 ;});
+					    .startAngle(function(d) { return d.startAngle -Math.PI; })
+					    .endAngle(function(d) { return d.endAngle -Math.PI; });
 			    	chart.donut(true);
 				    var margin = -40;
 				    chart.margin({left: margin, right: margin, top: margin, bottom: margin});

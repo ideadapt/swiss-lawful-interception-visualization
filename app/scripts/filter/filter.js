@@ -73,7 +73,7 @@ function Filter(dataDivisions, map, i18n){
 			$(self.svgDoc).find('#'+canton).attr('class', '');
 		});
 
-		$(document).ready(function(){
+		$(window).load(function(){
 			var $nav = $('#filter-row>nav');
 			var $filter = $('#filter-row');
 			var $footer = $('footer');
