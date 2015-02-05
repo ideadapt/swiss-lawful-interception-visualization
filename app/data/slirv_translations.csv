@@ -76,9 +76,8 @@ schwerestraftaten,txt,menschenhandel,Menschenhandel,human trafficking,traite des
 schwerestraftaten,txt,nachrichtendienst,verbotener Nachrichtendienst,illegal intelligence activities,activités de renseignement illégales,attività di intelligence illegali,servetsch da spiunadi scumandà
 schwerestraftaten,txt,paedo,Pädokriminalität,pedocriminality,pédocriminalité,pedocriminality,pedo criminalitad
 schwerestraftaten,txt,terror,Terrorismus,terrorism,terrorisme,terrorismo,terrorissem
-schwerestraftaten,descr,geldwaesche,"sämtliche Handlungen, welche geeignet sind, die Ermittlung der Herkunft, die Auffindung oder die Einziehung von Vermögenswerten zu vereiteln.", , , , 
-schwerestraftaten,descr,krimorg,"Strukturierte Gruppe, welche mittels Gewaltverbrechen oder sich durch verbrecherische Mittel",,,,
-,,,"Einkünfte bereichert, wie Mafia oder Djihad",,,,
+schwerestraftaten,descr,geldwaesche,"Geldwäscherei bedeutet, die Ermittlung der Herkunft, die Auffindung oder die Einziehung von Vermögenswerten zu vereiteln.", , , , 
+schwerestraftaten,descr,krimorg,"Strukturierte Gruppe, welche mittels Gewaltverbrechen oder sich durch verbrecherische Mittel Einkünfte bereichert. Bsp. Mafia oder Djihad-Reisende",,,,
 schwerestraftaten,descr,menschenhandel,"Menschen anwerben, anbieten, vermitteln oder beherbergen durch Anwendung unerlaubter Mittel wie Täuschung, Drohung oder Nötigung zum Zwecke der Ausbeutung.", , , , 
 schwerestraftaten,descr,nachrichtendienst,verbotene politische oder wirtschaftliche Nachrichtendiensttätigkeiten,illegal political or economic intelligence activities,illégale activités politiques ou économiques renseignement,attività di intelligence politici o economici illegali,servetsch da spiunadi scumandà politica u economica
 schwerestraftaten,descr,paedo,"Sexueller Kindesmissbrauch, Kinderpornografie","child sexual abuse, child pornography","exploitation sexuelle des enfants, la pornographie juvénile","abusi sessuali sui minori, la pedopornografia","maltractament d'uffants, pornografia d'uffants"
@@ -88,13 +87,13 @@ typ,txt,techadm,Administrative Anfragen,administrative requests,demandes adminis
 typ,txt,telefonbuch,Einfache Anfragen,simple requests,demandes simples,richieste semplici,dumonda simpel
 typ,txt,vds,Vorratsdatenspeicherung,data retention,conservation des données,conservazione dei dati,retenziun dei dati
 typ,txt,facebook,Facebook,Facebook,Facebook,Facebook,Facebook
-typ,txt,microsoft,"Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft","Skype, Microsoft"
+typ,txt,microsoft,Microsoft & Skype,Microsoft & Skype,Microsoft & Skype,Microsoft & Skype,Microsoft & Skype
 typ,descr,aktiv,"Überwachung in Echtzeit. Telefongespräche werden abgehört, Mobiltelefone geortet","Monitoring in real time. e.g. listen to cellphone calls, track cellphone","Suivi en temps réel. p.e. écouter les appels de téléphone cellulaire, téléphone portable suivre","Monitoraggio in tempo reale a.e. ascoltare le chiamate del cellulare, tenere traccia del cellulare","Surveglianza en temp real, spiunar a telefon, localisar en telefonin"
 typ,descr,techadm,Vertragskopien oder Rechungskopien,"contract, billing info","contrat, informations de facturation","contratto, informazioni di fatturazione","copia da contract, infurmaziun da factura"
 typ,descr,telefonbuch,wem gehört eine eine bestimmte Telefonnummer oder eine bestimmte IP-Adresse zu einer bestimmten Zeit.,"simple basic information, ex. who used a certrain cell number or who used an IP adress at a certain time","informations de base simple, ex. qui a un nombre de cellules certrain ou utilisé adresse IP a quel temp","semplice le informazioni di base, es. chi usano un numero di cellule o ha usato indirizzo IP",infurmaziun da basa p.ex. a tgi esser determinà numer da telefon u una adressa ip
 typ,descr,vds,Metadaten der letzten sechs Monate. wer hat wann mit wem kommuniziert.,dataretention of the last six months. who communicated when to whom ,conservation des données des six derniers monts. qui communiquées lors à qui,conservazione dei dati degli ultimi sei mesi es. Chi ha utilizzato negli ultimi mesi quali indirizzi IP o quali cellulari e dove,metadati da sis mais passà p.ex. tgi che ha utilisar una adressa ip cura
-typ,descr,facebook,betroffene Facebook Accounts. Diese Liste der Facebook Daten zeigt den Umfang auf.,,,,
-typ,descr,microsoft,betroffene Microsoft/Skype Accounts,,,,
+typ,descr,facebook,Facebook Accounts. Diese Liste der Facebook Daten zeigt den Umfang auf.,,,,
+typ,descr,microsoft,"Microsoft/Skype Accounts (Skype, Hotmail, Outlook, XBOX etc.)","Microsoft/Skype Accounts (Skype, Hotmail, Outlook, XBOX etc.)","Microsoft/Skype Accounts (Skype, Hotmail, Outlook, XBOX etc.)","Microsoft/Skype Accounts (Skype, Hotmail, Outlook, XBOX etc.)","Microsoft/Skype Accounts (Skype, Hotmail, Outlook, XBOX etc.)"
 art,txt,antennensuchlauf,Antennensuchlauf,mobile subscriber scan,analyse de l'abonné mobile,ricerca abbonato mobile,tschertgar abbonato mobile
 art,txt,internet,Internet,internet,internet,internet,internet
 art,txt,notsuche,Notsuche,emergency rescue,secours d'urgence,salvataggio di emergenza,tschertgar cas d'urgenza
