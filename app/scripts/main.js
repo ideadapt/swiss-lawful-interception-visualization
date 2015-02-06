@@ -1,18 +1,4 @@
 /*global numeral*/
-function index(i18n){
-	$('#mainTitle').text(i18n.l('title_txt_maintitle'));
-	window.document.title = i18n.l('title_txt_maintitle');
-
-	$('#welcome').append($('<p>').html(i18n.l('longtext_descr_welcome')));
-	$('#impressum>h2').html(i18n.l('title_txt_impressum'));
-	$('#impressum>p').html(i18n.l('longtext_descr_impressum'));
-	$('#slir>h2').html(i18n.l('title_txt_slir'));
-	$('#slir>p').html(i18n.l('longtext_descr_slir'));
-	$('#slir>a').attr('href', i18n.l('quelle_url_slir'));
-	$('#quellen>h2').html(i18n.l('title_txt_quellen'));
-	$('#quellen>p').html(i18n.l('longtext_descr_quellen'));
-}
-
 function extractLocale(defaultLocale){
 	var localeMatch = window.location.search.match(/locale=([a-z]{2})/);
 	return localeMatch ? localeMatch[1] : defaultLocale;
@@ -28,7 +14,8 @@ $(document).ready(function(){
 	var I18n = require('sliv-i18n');
 	var i18n = new I18n(numeral);
 	i18n.init(locales, selectedLocale);
-	index(i18n);
+	var Index = require('sliv-index');
+	new Index(i18n);
 	window.i18n = i18n; // enable for debugging with i18n.unusedKeys()
 
 	var dataDivisions = require('sliv-data-divisions');

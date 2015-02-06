@@ -59,7 +59,8 @@
     "sliv-straftaten": "./app/scripts/straftaten/straftaten.6.js",
     "sliv-technologie": "./app/scripts/technologie/technologie.6.js",
     "sliv-delikt": "./app/scripts/delikt/delikt.6.js",
-    "sliv-map": "./app/scripts/map/map.js"
+    "sliv-map": "./app/scripts/map/map.js",
+    "sliv-index": "./app/scripts/index/index.js"
   },
   "browserify-shim": {
     "jquery": "$"

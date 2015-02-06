@@ -4,6 +4,7 @@ function I18n(numeral){
 	self.transformed = null;
 	self.store = {};
 	self.foundKeys = [];
+	self.languages = ['de', 'fr', 'it', 'rm', 'en'];
 
 	this.init = function(locales, lang, fallbackLang = 'de'){
 		self.lang = lang;
@@ -11,7 +12,7 @@ function I18n(numeral){
 		self.store = locales[lang];
 		self.fallbackStore = locales[fallbackLang];
 
-		['rm', 'de', 'fr', 'it', 'en'].forEach(function(lang){
+		self.languages.forEach(function(lang){
 			numeral.language(lang, {
 			    delimiters: {
 			        thousands: '\'',
