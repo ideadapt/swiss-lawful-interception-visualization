@@ -16,6 +16,11 @@ h1{
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
+.glyphicon-menu-right{
+	font-size: 0.8em;
+	padding-right: 0.5em;
+}
+
 #mainTitle{
 	margin-top: 3em;
 	text-align: center;
@@ -63,10 +68,6 @@ h1{
 	li{
 		&:not(:first-child){
 			margin-top: 1em;
-		}
-		> .glyphicon{
-			font-size: 0.8em;
-			padding-right: 0.5em;
 		}
 	}
 	ul{
