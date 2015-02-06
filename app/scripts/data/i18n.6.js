@@ -3,6 +3,7 @@ function I18n(numeral){
 	var numeralOrg = numeral;
 	self.transformed = null;
 	self.store = {};
+	self.foundKeys = [];
 
 	this.init = function(locales, lang, fallbackLang = 'de'){
 		self.lang = lang;
@@ -37,21 +38,31 @@ function I18n(numeral){
 		numeral.language(lang);
 	};
 
-	this.l = function l(key){
+	this.l = function l(key, defaultValue){
 		key = key.toUpperCase();
 		var value = self.store[key];
 		if(typeof value === 'string'){
+			self.foundKeys.push(key);
 			return value;
 		}else{
 			value = self.fallbackStore[key];
 			if(value){
 				console.warn('i18n,', self.lang, ', missing key: ', key);
+				self.foundKeys.push(key);
 				return value;
 			}else{
 				console.warn('i18n,', self.fallbackLang, ', missing key: ', key);
-				return ':'+key;
+				return defaultValue !== undefined ? defaultValue : ':'+key;
 			}
 		}
+	};
+
+	this.unusedKeys = function unusedKeys(){
+		var allKeys = Object.keys(self.store);
+		var diffKeys = allKeys.filter(k => {
+			return self.foundKeys.indexOf(k) === -1;
+		});
+		return diffKeys;
 	};
 
 	this.numeral = function numeralDecorator(toFormat){

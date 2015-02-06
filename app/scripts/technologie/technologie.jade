@@ -1,8 +1,12 @@
 h3=l('title_txt_technologie')
 div(id='circles')
 div(id='mobile')
-	ul
-		for section in view.mobileSections
-			li
-				span=section.value
-				span=section.label
+	table
+		for section, idx in view.mobileSections
+			tr(data-idx=idx)
+				td=section.value
+				td=section.label
+			if (section.descr)
+				tr
+					td
+					td=section.descr

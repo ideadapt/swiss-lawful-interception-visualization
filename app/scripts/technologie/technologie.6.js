@@ -17,6 +17,7 @@ function Technologie(dataDivisions, filter, i18n){
 		self.view.mobileSections = artSections.map((section, idx) => {
 			return {
 				label: i18n.l('art_txt_'+artSections[idx]),
+				descr: i18n.l('art_descr_'+artSections[idx], ''),
 				value: 0
 			};
 		});
@@ -30,7 +31,7 @@ function Technologie(dataDivisions, filter, i18n){
 		Promise.all(promises).then(function(resolved){
 			resolved.forEach((value, idx) => {
 				self.view.mobileSections[idx].value = value;
-				$('#mobile li').eq(idx).find(':nth-child(1)').text(numeral(value).format());
+				$('#mobile tr[data-idx]').eq(idx).find(':nth-child(1)').text(numeral(value).format());
 			});
 		});
 	}

@@ -85,6 +85,11 @@ h1{
 			padding-left: 1em;
 			padding-right: 1em;
 		}
+		&:first-child{
+			a{
+				padding-left: 0;
+			}
+		}
 		&:not(:last-child){
 			&:after{
 				content: '|';
