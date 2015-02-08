@@ -36,7 +36,7 @@ function DataSummary(){
 function unique(e, i, arr) {
     return arr.lastIndexOf(e) === i;
 }
-var fakeCantons = ['CH', 'BA'];
+var fakeCantons = ['ch', 'ba'];
 
 function bySuperSub(_super, sub){
 	return this.transformed.then(function(transformed){

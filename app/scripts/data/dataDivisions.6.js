@@ -20,7 +20,7 @@ function DataDivisions(){
 					flat.push({
 						'super': superc,
 						'sub': sub,
-						'canton': cantons[i],
+						'canton': cantons[i].toLowerCase(),
 						'value': val.length === 0 ? NaN : +val,
 						'year': +year
 					});
@@ -42,7 +42,7 @@ function DataDivisions(){
 function unique(e, i, arr) {
     return arr.lastIndexOf(e) === i;
 }
-var fakeCantons = ['CH', 'BA'];
+var fakeCantons = ['ch', 'ba'];
 function byYear(year, e){
 	if(year){
 		return e.year === year;

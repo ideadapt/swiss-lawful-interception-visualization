@@ -1,5 +1,5 @@
 /*global Emitter*/
-function Filter(dataDivisions, map, i18n){
+function Filter(dataDivisions, map, i18n, selectedYear, selectedCanton){
 	var self = this;
 	self.emitter = new Emitter();
 	self.year = null;
@@ -10,7 +10,7 @@ function Filter(dataDivisions, map, i18n){
 		var years = dataDivisions.years().then(function(years){
 			// get a set of years
 			self.years = years;
-			self.year = Math.max.apply(null, years);
+			self.year = selectedYear || Math.max.apply(null, years);
 		});
 		var cantons = dataDivisions.cantons().then(function(cantons){
 			self.cantons1 = cantons.slice(0, 13);
@@ -18,7 +18,7 @@ function Filter(dataDivisions, map, i18n){
 		});
 		var fakeCantons = dataDivisions.fakeCantons().then(function(fakeCantons){
 			self.fakeCantons = fakeCantons;
-			self.canton = fakeCantons[0]; // CH
+			self.canton = selectedCanton || fakeCantons[0]; // CH
 		});
 
 		var svg = document.getElementById('svgMap');

@@ -330,7 +330,10 @@ module.exports = function (grunt) {
             'data/*.csv'
           ]
         }, {
-          src: 'node_modules/apache-server-configs/dist/.htaccess',
+          src: '<%= config.app %>/.htpasswd',
+          dest: '<%= config.dist %>/.htpasswd'
+        }, {
+          src: '<%= config.app %>/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
         }, {
           src: '.tmp/scripts/main.js',
