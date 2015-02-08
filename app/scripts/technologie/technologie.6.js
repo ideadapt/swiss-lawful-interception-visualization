@@ -61,7 +61,7 @@ function Technologie(dataDivisions, filter, i18n){
 				    container.removeChild(container.firstChild);
 				}
 				var sectionWidth = 120;
-				var height = 120;
+				var height = 125;
 				var width = technologies.length * sectionWidth;
 				var raphPaper = new Raphael(container, width, height);
 				technologies.forEach((date, idx)=> {

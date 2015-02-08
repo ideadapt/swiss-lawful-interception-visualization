@@ -104,6 +104,28 @@ footer{
 }
 
 
+@media (max-width: 991px){
+  .filtered{
+    display: block;
+
+    &.first{
+      padding-bottom: 0;
+    }
+
+    &.second{
+      [class*="col-"]:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .filtered > [class*="col-"]{
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+}
+
+
 @import "index";
 @import "course";
 @import "map";

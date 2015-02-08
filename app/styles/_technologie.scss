@@ -1,5 +1,6 @@
 #mobile{
 	table{
+		margin-top: 1em;
 		margin-left: 0;
 		padding: 0;
 
@@ -12,5 +13,9 @@
 			padding-left: 1em;
 			white-space: normal;
 		}
+	}
+
+	#circle>svg{
+		height: auto;
 	}
 }

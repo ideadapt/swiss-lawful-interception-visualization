@@ -67,6 +67,18 @@
   }
 }
 
+@media (min-width: 992px) and (max-width: 1200px){
+	#filter .btn-group.split-h > .btn{
+		font-size: 11px;
+	}
+	#filter .btn-group > .btn{
+		margin-bottom: 0;
+	}
+	#map > #svgMap {
+		height: 153px;
+	}
+}
+
 @media (max-width: 992px){
 	#filter-row, .goToTop{
 		width: 750px;
