@@ -1,8 +1,10 @@
-function Index(i18n){
+function Index(i18n, _document){
+	var self = this;
+	self.document = _document;
 
 	function init(){
 		$('#mainTitle').text(i18n.l('title_txt_maintitle'));
-		window.document.title = i18n.l('title_txt_maintitle');
+		self.document.title = i18n.l('title_txt_maintitle');
 
 		$('#welcome').append($('<p>').html(i18n.l('longtext_descr_welcome')));
 		$('#impressum>h2').html(i18n.l('title_txt_impressum'));
