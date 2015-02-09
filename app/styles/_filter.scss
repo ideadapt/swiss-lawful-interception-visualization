@@ -81,14 +81,19 @@
 
 @media (max-width: 992px){
 	#filter-row, .goToTop{
-		width: 750px;
+		min-width: 650px;
 	}
 
 	#filter {
 		cantons>.row{
 			padding-top: 0;
-			&>div:last-child>.btn-group:last-child{
-				padding-top: 4px;
+
+			&>div:last-child{
+				padding-left: 0;
+
+				>.btn-group:last-child{
+					padding-top: 4px;
+				}
 			}
 		}
 		.btn-group{
