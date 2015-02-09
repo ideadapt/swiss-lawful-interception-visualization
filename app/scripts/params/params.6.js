@@ -25,12 +25,11 @@ function Params(_location){
 	};
 
 	self.setYear = function setYear(year){
-		console.log('year changed', self.year, year);
+		// TODO pushstate
 		self.year = year;
 	};
 
 	self.setCanton = function setCanton(canton){
-		console.log('canton changed', self.canton, canton);
 		self.canton = canton;
 	};
 }

@@ -17,15 +17,13 @@ sudo npm -g install browserify
 
 npm install
 
-bower install emitter
-
 bower install
 ```
 
 
 Build
 
-Builds the client and puts all files into dist folder. Use this dist folder as website root.
+Builds the client and puts all files into dist folder. Use the dist folder as website root.
 
 
 ```
@@ -46,8 +44,6 @@ grunt serve
 ```
 
 
-
-
 nachdem das csv geändert wurde immer:
 
 ```
@@ -56,4 +52,12 @@ nachdem das csv geändert wurde immer:
 grunt i18n:compile
 ```
 
-ausführen. danach page reload (sollte via autoreload während grunt serve gehen)
+ausführen. danach page reload; dieser sollte während grunt serve automatisch passieren.
+
+
+Deploy
+
+0. grunt build, publish dist folder
+1. update url prefix in .htaccess, index.html <base>, params.js regex
+2. customize .htpasswd
+3. test: language switch, responsiveness, filter, iframe-demo.html
