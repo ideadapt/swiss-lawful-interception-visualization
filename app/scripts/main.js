@@ -15,7 +15,7 @@ $(document).ready(function(){
 	i18n.init(locales, selectedLocale);
 
 	var Index = require('sliv-index');
-	new Index(i18n, window.document);
+	new Index(i18n, window, window.document);
 	// window.i18n = i18n; // enable to debug with i18n.unusedKeys()
 
 	var dataDivisions = require('sliv-data-divisions');

@@ -49,6 +49,7 @@
     "es6-promise": "./bower_components/es6-promise/promise.js",
     "6to5-polyfill": "./node_modules/6to5ify/node_modules/6to5-core/browser-polyfill.js",
     "bowser": "./bower_components/bowser/bowser.js",
+    "screenfull": "./bower_components/screenfull/dist/screenfull.js",
     "sliv-translations": "./app/scripts/translations.js",
     "sliv-data-divisions": "./app/scripts/data/dataDivisions.6.js",
     "sliv-data-summary": "./app/scripts/data/dataSummary.6.js",

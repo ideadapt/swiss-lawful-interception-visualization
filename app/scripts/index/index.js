@@ -1,6 +1,16 @@
-function Index(i18n, _document){
+function Index(i18n, _window, _document){
 	var self = this;
+	var screenfull = require('screenfull');
 	self.document = _document;
+	self.window = _window;
+
+	function inFrame () {
+	    try {
+	        return self.window.self !== self.window.top;
+	    } catch (e) {
+	        return true;
+	    }
+	}
 
 	function init(){
 		$('#mainTitle').text(i18n.l('title_txt_maintitle'));
@@ -18,6 +28,25 @@ function Index(i18n, _document){
 		var menuTemplate = require('./langMenu.jade');
 		var menuHtml = menuTemplate({view: { languages: i18n.languages}, l: i18n.l});
 		$('#lang-menu').html(menuHtml);
+
+		if(inFrame()){
+			if (screenfull.enabled) {
+				self.document.addEventListener(screenfull.raw.fullscreenchange, function () {
+			        if(screenfull.isFullscreen){
+			        	$('#fullscreen').addClass('in-fullscreen');
+			        }else{
+			        	$('#fullscreen').removeClass('in-fullscreen');
+			        }
+			    });
+
+				$('#fullscreen')
+				.text(i18n.l('fullscreen'))
+				.addClass('in-frame')
+				.on('click', function () {
+				    screenfull.request();
+				});
+			}
+		}
 	}
 
 	init();

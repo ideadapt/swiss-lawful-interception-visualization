@@ -22,7 +22,8 @@
     "es6-promise": "~2.0.0",
     "moment": "~2.9.0",
     "numeral": "~1.5.3",
-    "emitter": "1.5.2"
+    "emitter": "1.5.2",
+    "screenfull": "~2.0.0"
   },
   "devDependencies": {
     "raphael": "~2.1.2",
