@@ -93,7 +93,7 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          open: false,
+          open: true,
           port: 9001,
           middleware: function(connect) {
             return [
@@ -425,14 +425,15 @@ module.exports = function (grunt) {
     if (target !== 'watch') {
       grunt.task.run([
         'clean:server',
-        'concurrent:test',
-        'autoprefixer'
+        'concurrent:server'
+        /*concat:vendor*/
+        /*'copy:6to5'*/
       ]);
     }
 
     grunt.task.run([
       'connect:test',
-      'mocha'
+      'watch'
     ]);
   });
 
