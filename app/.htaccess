@@ -953,6 +953,6 @@ FileETag None
     # de/2014/gr
     # 2014
     # 2014/gr
-    RewriteCond %{REQUEST_URI} ^\/(dist\/)?([a-z]{2}\/)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$ [NC]
+    RewriteCond %{REQUEST_URI} ^\/([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$ [NC]
     RewriteRule ^(.*)$ index.html [L]
 </IfModule>

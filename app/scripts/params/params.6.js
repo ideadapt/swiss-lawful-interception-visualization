@@ -3,22 +3,22 @@ function Params(_location){
 	self.location = _location;
 
 	self.init = function init(defaultLocale){
-		// domain.x/dist/#lang/#year/#canton
+		// domain.x/#lang/#year/#canton
 	    // de
 	    // de/2014
 	    // de/2014/gr
 	    // 2014
 	    // 2014/gr
 		var path = self.location.pathname;
-		var regex = /^\/(dist\/)?([a-z]{2}\/)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$/;
+		var regex = /^\/([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$/;
 		var matches = path.match(regex);
 		var locale, year, canton;
-		locale = matches[2];
-		locale = locale ? locale.replace('/', '') : defaultLocale;
-		year = matches[3];
-		year = year ? +year.replace('/', '') : undefined;
-		canton = matches[4];
-		canton = canton ? canton.replace('/', '').toLowerCase() : undefined;
+		locale = matches[1];
+		locale = locale ? locale.replace(/\//g, '') : defaultLocale;
+		year = matches[2];
+		year = year ? +year.replace(/\//g, '') : undefined;
+		canton = matches[3];
+		canton = canton ? canton.replace(/\//g, '').toLowerCase() : undefined;
 		self.year = year;
 		self.canton = canton;
 		self.locale = locale;

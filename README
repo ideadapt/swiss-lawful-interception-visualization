@@ -58,6 +58,6 @@ ausführen. danach page reload; dieser sollte während grunt serve automatisch p
 Deploy
 
 0. grunt build, publish dist folder
-1. update url prefix in .htaccess, index.html <base>, params.js regex
-2. customize .htpasswd
+1. index.html <base>
+2. customize .htaccess
 3. test: language switch, responsiveness, filter, iframe-demo.html
