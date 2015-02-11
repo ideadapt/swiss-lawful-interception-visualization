@@ -38,8 +38,11 @@ module.exports = function (grunt) {
         }
       },
       jstest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['test:watch']
+        files: ['test/spec/{,*/}*.js', '<%= config.app %>/scripts/{,*/}*.js', 'test/index.html'],
+        tasks: ['jshint', '6to5:test'],
+        options:{
+          livereload: true
+        }
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -149,6 +152,17 @@ module.exports = function (grunt) {
           run: true,
           urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
         }
+      }
+    },
+
+    '6to5': {
+      test: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>',
+          src: ['scripts/**/*.js'],
+          dest: '.tmp'
+        }]
       }
     },
 
@@ -425,15 +439,13 @@ module.exports = function (grunt) {
     if (target !== 'watch') {
       grunt.task.run([
         'clean:server',
-        'concurrent:server'
-        /*concat:vendor*/
-        /*'copy:6to5'*/
+        '6to5:test'
       ]);
     }
 
     grunt.task.run([
       'connect:test',
-      'watch'
+      'watch:jstest'
     ]);
   });
 

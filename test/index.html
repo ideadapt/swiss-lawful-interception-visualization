@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="mocha"></div>
+    <script src="lib/sinon.js"></script>
     <script src="bower_components/mocha/mocha.js"></script>
     <script>mocha.setup('bdd')</script>
     <script src="bower_components/chai/chai.js"></script>
@@ -14,12 +15,11 @@
         var assert = chai.assert;
         var expect = chai.expect;
         var should = chai.should();
+        var module = {};
     </script>
 
-    <!--<script src="scripts/vendor.js"></script>-->
-    <!-- include source files here... -->
-
-    <script src="scripts/map/map.js"></script>
+    <!-- include app source files here... -->
+    <script src="scripts/data/i18n.6.js"></script>
 
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
