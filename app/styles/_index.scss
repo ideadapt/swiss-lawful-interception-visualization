@@ -1,5 +1,5 @@
 
-#welcome, #impressum, #slir, #quellen{
+#welcomeText, #impressum, #slir, #quellen{
 	font-size: 1.2em;
 }
 
@@ -8,6 +8,10 @@
 	background-color: $rowBoxBg;
 	&>p{
 		margin-bottom: 0;
+	}
+
+	#welcomeText{
+		clear: both;
 	}
 }
 
@@ -77,17 +81,17 @@ h1{
 }
 
 #lang-menu{
+	height: 2em;
+
 	ol{
 		list-style-type: none;
-		width: 385px;
+		width: 350px;
 		margin: 0 auto;
 		padding: 0;
 
 		li{
 			float: left;
-			font-size: 1.1em;
 			a{
-				color: #80C7FF;
 				padding-left: 1em;
 				padding-right: 1em;
 			}
@@ -99,7 +103,7 @@ h1{
 			&:not(:last-child){
 				&:after{
 					content: '|';
-					color: $shadowBoxBg;
+					color: rgba(0, 0, 0, 0.1);
 				}
 			}
 		}
