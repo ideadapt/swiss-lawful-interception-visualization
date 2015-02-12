@@ -93,7 +93,7 @@ function Delikt(dataDivisions, filter, i18n, bowser){
                			value = numeral(series[idx].value).format();
                			var descr = i18n.l('deliktegruppe_descr_'+sections[idx]);
 
-               			$('#deliktDescr').text(descr);
+               			$('#deliktDescrText').text(descr);
                			$('#deliktTable td').removeClass('active');
                			$('#deliktTable tr').eq(idx).find('td:last-child').addClass('active');
 

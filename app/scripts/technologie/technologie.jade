@@ -5,8 +5,5 @@ div(id='mobile')
 		for section, idx in view.mobileSections
 			tr(data-idx=idx)
 				td=section.value
-				td=section.label
-			if (section.descr)
-				tr
-					td
+				if (section.descr)
 					td=section.descr
