@@ -28,52 +28,6 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
-    // Watches files for changes and runs tasks based on the changed files
-    watch: {
-      js: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['concat:live', 'browserify'],
-        options: {
-          livereload: true
-        }
-      },
-      jstest: {
-        files: ['test/spec/{,*/}*.js', '<%= config.app %>/scripts/{,*/}*.js', 'test/index.html'],
-        tasks: ['jshint', '6to5:test'],
-        options:{
-          livereload: true
-        }
-      },
-      gruntfile: {
-        files: ['Gruntfile.js']
-      },
-      sass: {
-        files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
-      },
-      less: {
-        files: ['<%= config.app %>/styles/{,*/}*.less'],
-        tasks: ['less:server', 'concat:vendor', 'autoprefixer']
-      },
-      templates: {
-        files: ['<%= config.app %>/scripts/{,*/}*.jade'],
-        tasks: ['concat', 'browserify'],
-        options: {
-          livereload: true
-        }
-      },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= config.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%= config.app %>/images/{,*/}*'
-        ]
-      }
-    },
-
     // The actual grunt server settings
     connect: {
       options: {
@@ -411,6 +365,64 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('watch-test', function(){
+    grunt.config.merge({
+      watch: {
+        jstest: {
+          files: ['test/spec/{,*/}*.js', '<%= config.app %>/scripts/{,*/}*.js', 'test/index.html'],
+          tasks: ['jshint', '6to5:test'],
+          options:{
+            livereload: true
+          }
+        }
+      }
+      });
+    grunt.task.run('watch');
+  });
+
+  grunt.registerTask('watch-dev', function(){
+    grunt.config.merge({
+      watch: {
+        js: {
+          files: ['<%= config.app %>/scripts/{,*/}*.js'],
+          tasks: ['concat:live', 'browserify'],
+          options: {
+            livereload: true
+          }
+        },
+        gruntfile: {
+          files: ['Gruntfile.js']
+        },
+        sass: {
+          files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+          tasks: ['sass:server', 'autoprefixer']
+        },
+        less: {
+          files: ['<%= config.app %>/styles/{,*/}*.less'],
+          tasks: ['less:server', 'concat:vendor', 'autoprefixer']
+        },
+        templates: {
+          files: ['<%= config.app %>/scripts/{,*/}*.jade'],
+          tasks: ['concat', 'browserify'],
+          options: {
+            livereload: true
+          }
+        },
+        livereload: {
+          options: {
+            livereload: '<%= connect.options.livereload %>'
+          },
+          files: [
+            '<%= config.app %>/{,*/}*.html',
+            '.tmp/styles/{,*/}*.css',
+            '<%= config.app %>/images/{,*/}*'
+          ]
+        }
+      }
+    });
+    grunt.task.run('watch');
+  });
+
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
@@ -426,7 +438,7 @@ module.exports = function (grunt) {
       'concat',
       'browserify',
       'connect:livereload',
-      'watch'
+      'watch-dev'
     ]);
   });
 
@@ -445,7 +457,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'connect:test',
-      'watch:jstest'
+      'watch-test'
     ]);
   });
 

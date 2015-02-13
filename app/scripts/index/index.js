@@ -16,7 +16,7 @@ function Index(i18n, _window, _document){
 		$('#mainTitle').text(i18n.l('title_txt_maintitle'));
 		self.document.title = i18n.l('title_txt_maintitle');
 
-		$('#welcome').append($('<p>').html(i18n.l('longtext_descr_welcome')));
+		$('#welcomeText').append($('<p>').html(i18n.l('longtext_descr_welcome')));
 		$('#impressum>h2').html(i18n.l('title_txt_impressum'));
 		$('#impressum>p').html(i18n.l('longtext_descr_impressum'));
 		$('#slir>h2').html(i18n.l('title_txt_slir'));
