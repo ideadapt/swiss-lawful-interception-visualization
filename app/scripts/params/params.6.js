@@ -19,6 +19,10 @@ function Params(_location){
 		year = year ? +year.replace(/\//g, '') : undefined;
 		canton = matches[3];
 		canton = canton ? canton.replace(/\//g, '').toLowerCase() : undefined;
+
+		var devLocale = self.location.search.match(/locale=(.*)$/);
+		locale = devLocale ? devLocale[1] : locale;
+
 		self.year = year;
 		self.canton = canton;
 		self.locale = locale;

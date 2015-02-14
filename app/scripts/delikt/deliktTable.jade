@@ -2,6 +2,6 @@ table.table
 	if view.sectionValues
 		for section in view.sectionValues
 			tr(data-idx=section.idx)
-				td(style='color: rgb('+section.rgb+');')
-					span(class='glyphicon glyphicon-user')
-				td=section.key
+				td
+					span(class='glyphicon glyphicon-user', style='color: rgb('+section.rgb+');')
+					=section.key
