@@ -1,11 +1,11 @@
-/*global numeral*/
+/*global numeral, Emitter*/
 
 $(document).ready(function(){
 	var bowser = require('bowser');
 	require('es6-promise').polyfill();
 	require('6to5-polyfill');
 	var Params = require('sliv-params');
-	var params = new Params(window.location);
+	var params = new Params(Emitter, window.location, window);
 	params.init('de');
 
 	var selectedLocale = params.locale;

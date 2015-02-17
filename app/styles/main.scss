@@ -8,6 +8,47 @@ $rowBoxBg: rgba(255, 255, 255, 0.95);
   padding: 15px;
   box-shadow: 0px 0px 3px #888;
 }
+@mixin donutLegend(){
+  td{
+    padding: 0;
+    border: 0;
+    transition: background-color 0.25s;
+    padding-left: 8px;
+    vertical-align: inherit;
+    border-radius: 0 2px 2px 0;
+
+    &:hover, &.active{
+      cursor: pointer;
+      background-color: rgba(180, 180, 180, 0.8);
+      transition: background-color 0.25s;
+      >span{
+        background-color: white;
+      }
+    }
+    >span{
+      top: 0px;
+      left: -8px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 0;
+      padding: 4px 4px 5px 4px;
+    }
+  }
+}
+.donutDescr{
+  height: 3em;
+  padding-left: 12px;
+
+  >span.glyphicon{
+    display: block;
+    float: left;
+    line-height: 14px;
+  }
+  >span:last-child{
+    display: block;
+    float: left;
+    width: calc(100% - 23px);
+  }
+}
 
 body {
   position: relative;
@@ -17,6 +58,7 @@ body {
   background-color: #012;
 
   >.container{
+    min-width: 650px;
   	margin-bottom: 3em;
   }
   background-image: url(../images/area_52_zoom.png);

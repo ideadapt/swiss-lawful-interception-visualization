@@ -3,26 +3,5 @@
 	height: 263px;
 }
 #deliktTable{
-	td{
-		padding: 2px;
-		border: 0;
-		transition: padding-left 0.25s;
-
-		&:hover, &.active{
-			cursor: pointer;
-			background-color: rgba(255, 255, 255, 0.8);
-			transition: padding-left 0.25s;
-		}
-	}
-	td:first-child{
-		padding-right: 0;
-		padding-left: 0;
-		width: 17px;
-		&>span{
-			top: 3px;
-		}
-	}
-}
-#deliktDescr{
-	height: 3em;
+	@include donutLegend();
 }

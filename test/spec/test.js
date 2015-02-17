@@ -1,4 +1,4 @@
-/* global describe, it, expect, sinon, beforeEach, I18n */
+/* global describe, it, expect, sinon, beforeEach, I18n, Params */
 
 (function () {
   'use strict';
@@ -51,6 +51,94 @@
           expect(this.i18n.l.calledOnce);
           expect(fakeValue).to.equal('n/a');
         });
+      });
+    });
+  });
+
+  describe('Params', function(){
+    var fakeWindow = {onpopstate: ''};
+    var fakeEmitter = function emitter(){
+      this.emitSync= function(){};
+    };
+    describe('init', function(){
+      it('/de/2014/gr', function(){
+        var fakeLocation = { pathname: '/de/2014/gr', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init();
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(2014);
+        expect(params.canton).to.equal('gr');
+      });
+
+      it('/2014/gr and use provided default locale', function(){
+        var fakeLocation = { pathname: '/2014/gr', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init('de');
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(2014);
+        expect(params.canton).to.equal('gr');
+      });
+
+      it('/de/2014', function(){
+        var fakeLocation = { pathname: '/de/2014', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init();
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(2014);
+        expect(params.canton).to.equal(undefined);
+      });
+
+      it('/2014 and use provided default locale', function(){
+        var fakeLocation = { pathname: '/2014', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init('de');
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(2014);
+        expect(params.canton).to.equal(undefined);
+      });
+
+      it('/de', function(){
+        var fakeLocation = { pathname: '/de', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init();
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(undefined);
+        expect(params.canton).to.equal(undefined);
+      });
+
+      it('/', function(){
+        var fakeLocation = { pathname: '/', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init('de');
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(undefined);
+        expect(params.canton).to.equal(undefined);
+      });
+
+      it('with trailing slash /de/2014/gr/', function(){
+        var fakeLocation = { pathname: '/de/2014/gr/', search: ''};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init();
+
+        expect(params.locale).to.equal('de');
+        expect(params.year).to.equal(2014);
+        expect(params.canton).to.equal('gr');
+      });
+
+      it('?locale=fr overwrites locale given in path /de/2014/gr/', function(){
+        var fakeLocation = { pathname: '/de/2014/gr/', search: '?locale=fr'};
+        var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
+        params.init();
+
+        expect(params.locale).to.equal('fr');
+        expect(params.year).to.equal(2014);
+        expect(params.canton).to.equal('gr');
       });
     });
   });

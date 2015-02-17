@@ -138,7 +138,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
                			var descrI18nKey = sections[idx] || 'total_straftaten';
                			var descr = i18n.l('schwerestraftaten_descr_'+descrI18nKey);
 
-               			$('#straftatenDescr').text(descr);
+               			$('#straftatenDescrText').text(descr);
                			$('#straftatenTable td').removeClass('active');
                			$('#straftatenTable tr').eq(idx).find('td:last-child').addClass('active');
 

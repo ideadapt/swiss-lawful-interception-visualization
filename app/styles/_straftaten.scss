@@ -8,26 +8,5 @@
 	}
 }
 #straftatenTable{
-	td{
-		padding: 2px;
-		border: 0;
-		transition: padding-left 0.25s;
-
-		&:hover, &.active{
-			cursor: pointer;
-			padding-left: 1em;
-			transition: padding-left 0.25s;
-		}
-	}
-	td:first-child{
-		padding-right: 0;
-		padding-left: 0;
-		width: 17px;
-		&>span{
-			top: 3px;
-		}
-	}
-}
-#straftatenDescr{
-	height: 2em;
+	@include donutLegend();
 }

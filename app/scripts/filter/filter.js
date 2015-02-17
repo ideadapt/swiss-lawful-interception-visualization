@@ -8,7 +8,6 @@ function Filter(dataDivisions, map, i18n, params){
 
 	function init(){
 		var years = dataDivisions.years().then(function(years){
-			// get a set of years
 			self.years = years;
 			self.year = params.year || Math.max.apply(null, years);
 		});
@@ -40,13 +39,19 @@ function Filter(dataDivisions, map, i18n, params){
 		$('[data-toggle="tooltip"]').tooltip({container: 'body'});
 	}
 
+	function highlightMapCanton(canton){
+		$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
+		$(self.svgDoc).find('#'+canton.toUpperCase()).attr('class', 'active');
+	}
+
 	function controller(){
 
-		function selectionChanged(year, canton){
+		function selectionChanged(year, canton, fromParams){
 			$('#filterText').text(i18n.l('region_txt_'+canton) + ' ' + year);
 			self.emitter.emitSync('selectionChanged', year, canton);
-			params.setYear(year);
-			params.setCanton(canton);
+			if(!fromParams){
+				params.update({year: year, canton: canton});
+			}
 		}
 		selectionChanged(self.year, self.canton);
 
@@ -58,24 +63,23 @@ function Filter(dataDivisions, map, i18n, params){
 
 		$('#filter cantons').on('click', 'button', function cantonFilterClicked(e){
 			self.canton = e.target.value;
-			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
-			$(self.svgDoc).find('#'+self.canton).attr('class', 'active');
+			highlightMapCanton(self.canton);
 			renderCantons.call(self);
 			selectionChanged(self.year, self.canton);
 		});
 		$('#filter cantons').on('mouseenter', 'button', function cantonFilterClicked(e){
 			var canton = e.target.value;
-			$(self.svgDoc).find('#'+canton).attr('class', 'active');
+			$(self.svgDoc).find('#'+canton.toUpperCase()).attr('class', 'active');
 		});
 		$('#filter cantons').on('mouseleave', 'button', function cantonFilterClicked(e){
 			if(e.target.value === self.canton){
 				return;
 			}
 			var canton = e.target.value;
-			$(self.svgDoc).find('#'+canton).attr('class', '');
+			$(self.svgDoc).find('#'+canton.toUpperCase()).attr('class', '');
 		});
 
-		$(window).load(function(){
+		function setupSticky(){
 			var $nav = $('#filter-row>nav');
 			var $filter = $('#filter-row');
 			var $footer = $('footer');
@@ -106,7 +110,13 @@ function Filter(dataDivisions, map, i18n, params){
 					$nav.removeClass('goToTop');
 				}
 			});
-		});
+		}
+
+		if (window.document.readyState === 'complete'){
+			setupSticky();
+		}else{
+			$(window).load(setupSticky);
+		}
 
 		function mapSelectionChanged(newCanton){
 			self.canton = newCanton;
@@ -116,6 +126,16 @@ function Filter(dataDivisions, map, i18n, params){
 			selectionChanged(self.year, self.canton);
 		}
 		map.emitter.on('selectionChanged', mapSelectionChanged);
+
+		function paramsChanged(values){
+			self.canton = values.canton;
+			self.year = values.year;
+			renderYears.call(self);
+			renderCantons.call(self);
+			selectionChanged(values.year, values.canton, true);
+			highlightMapCanton(values.canton);
+		}
+		params.emitter.on('pathChanged', paramsChanged);
 	}
 
 	function renderYears(){

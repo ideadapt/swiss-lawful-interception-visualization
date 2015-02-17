@@ -1,6 +1,18 @@
-function Params(_location){
+function Params(Emitter, _location, _window){
 	var self = this;
+	self.emitter = new Emitter();
 	self.location = _location;
+	self.window = _window;
+	self.window.onpopstate = function onPopstate(ev){
+		if(!ev.state){
+			return;
+		}
+		self.update(ev.state, false);
+		self.emitter.emitSync('pathChanged', ev.state);
+		self.window.setTimeout(function(){
+			self.window.scrollTo(0, ev.state.scrollY);
+		}, 50);
+	};
 
 	self.init = function init(defaultLocale){
 		// domain.x/#lang/#year/#canton
@@ -11,6 +23,7 @@ function Params(_location){
 	    // 2014/gr
 		var path = self.location.pathname;
 		var regex = /^\/([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$/;
+		var devLocale = self.location.search.match(/locale=(.*)$/);
 		var matches = path.match(regex);
 		var locale, year, canton;
 		locale = matches[1];
@@ -19,18 +32,29 @@ function Params(_location){
 		year = year ? +year.replace(/\//g, '') : undefined;
 		canton = matches[3];
 		canton = canton ? canton.replace(/\//g, '').toLowerCase() : undefined;
+
+		locale = devLocale ? devLocale[1] : locale;
+
 		self.year = year;
 		self.canton = canton;
 		self.locale = locale;
 	};
 
-	self.setYear = function setYear(year){
-		// TODO pushstate
-		self.year = year;
-	};
-
-	self.setCanton = function setCanton(canton){
-		self.canton = canton;
+	self.update = function update(values, doPush = true){
+		if(values.year){
+			self.year = values.year;
+		}
+		if(values.canton){
+			self.canton = values.canton;
+		}
+		if(values.locale){
+			self.locale = values.locale;
+		}
+		if(doPush === true){
+			values.scrollY = self.window.scrollY;
+			var path = [self.locale, self.year, self.canton].join('/');
+			history.pushState(values, '', '/'+path);
+		}
 	};
 }
 
