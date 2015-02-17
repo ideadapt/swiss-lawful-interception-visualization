@@ -22,15 +22,16 @@ function Params(Emitter, _location, _window){
 	    // 2014
 	    // 2014/gr
 		var path = self.location.pathname;
-		var regex = /^\/([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$/;
+		var regex = /^\/(sliv\/)?([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$/;
 		var devLocale = self.location.search.match(/locale=(.*)$/);
 		var matches = path.match(regex);
-		var locale, year, canton;
-		locale = matches[1];
+		var prefix, locale, year, canton;
+		prefix = matches[1];
+		locale = matches[2];
 		locale = locale ? locale.replace(/\//g, '') : defaultLocale;
-		year = matches[2];
+		year = matches[3];
 		year = year ? +year.replace(/\//g, '') : undefined;
-		canton = matches[3];
+		canton = matches[4];
 		canton = canton ? canton.replace(/\//g, '').toLowerCase() : undefined;
 
 		locale = devLocale ? devLocale[1] : locale;
