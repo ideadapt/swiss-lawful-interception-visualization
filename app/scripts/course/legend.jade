@@ -4,4 +4,4 @@ each typ in keys.reverse()
 	h3
 		span(id='legend_typ_'+typ)
 		=l('TYP_TXT_'+typ)
-	p=l('TYP_DESCR_'+typ)
+	p!=l('TYP_DESCR_'+typ)
