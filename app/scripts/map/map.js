@@ -18,10 +18,10 @@ Map.prototype.controller = function controller(){
 		self.emitter.emitSync('selectionChanged', this.id.toLowerCase());
 	}
 	function cantonEnter(){
-		$('#filter cantons .btn[value='+this.id+']').addClass('focus');
+		$('#filter cantons .btn[value='+this.id.toLowerCase()+']').addClass('focus');
 	}
 	function cantonLeave(){
-		$('#filter cantons .btn[value='+this.id+']').removeClass('focus');
+		$('#filter cantons .btn[value='+this.id.toLowerCase()+']').removeClass('focus');
 	}
 	for(var i = 0; i<cantons.length;i++){
 		cantons[i].addEventListener('click', cantonClicked, false);

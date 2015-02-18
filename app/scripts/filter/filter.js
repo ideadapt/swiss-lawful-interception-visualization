@@ -121,7 +121,7 @@ function Filter(dataDivisions, map, i18n, params){
 		function mapSelectionChanged(newCanton){
 			self.canton = newCanton;
 			$(self.svgDoc).find('#Cantons_default>path').attr('class', '');
-			$(self.svgDoc).find('#'+self.canton).attr('class', 'active');
+			$(self.svgDoc).find('#'+self.canton.toUpperCase()).attr('class', 'active');
 			renderCantons.call(self);
 			selectionChanged(self.year, self.canton);
 		}

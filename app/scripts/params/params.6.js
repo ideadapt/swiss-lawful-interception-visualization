@@ -55,7 +55,7 @@ function Params(Emitter, _location, _window){
 		}
 		if(doPush === true){
 			values.scrollY = self.window.scrollY;
-			var path = [self.prefix, self.locale, self.year, self.canton].join('/');
+			var path = [self.prefix, self.locale, self.year, self.canton].filter(function(v){return !!v;}).join('/');
 			history.pushState(values, '', '/'+path);
 		}
 	};
