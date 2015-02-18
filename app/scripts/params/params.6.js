@@ -27,6 +27,7 @@ function Params(Emitter, _location, _window){
 		var matches = path.match(regex);
 		var prefix, locale, year, canton;
 		prefix = matches[1];
+		prefix = prefix ? prefix.replace(/\//g, '') : undefined;
 		locale = matches[2];
 		locale = locale ? locale.replace(/\//g, '') : defaultLocale;
 		year = matches[3];
@@ -36,6 +37,7 @@ function Params(Emitter, _location, _window){
 
 		locale = devLocale ? devLocale[1] : locale;
 
+		self.prefix = prefix;
 		self.year = year;
 		self.canton = canton;
 		self.locale = locale;
@@ -53,7 +55,7 @@ function Params(Emitter, _location, _window){
 		}
 		if(doPush === true){
 			values.scrollY = self.window.scrollY;
-			var path = [self.locale, self.year, self.canton].join('/');
+			var path = [self.prefix, self.locale, self.year, self.canton].join('/');
 			history.pushState(values, '', '/'+path);
 		}
 	};
