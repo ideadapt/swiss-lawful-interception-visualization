@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+
+    # de
+    # de/2014
+    # de/2014/gr
+    # 2014
+    # 2014/gr
+    RewriteCond %{REQUEST_URI} ^\/(sliv\/)?([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$ [NC]
+    RewriteRule ^(.*)$ index.html [L]
+</IfModule>
