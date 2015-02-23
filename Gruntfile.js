@@ -361,6 +361,19 @@ module.exports = function (grunt) {
       },
       i18nCopy:{
           command: ['cd i18n', 'cp translations.js ../app/scripts/translations.js'].join('&&')
+      },
+      htaccessLocal: {
+        command: [
+        'cd <%= config.dist %>',
+        'sed -i "" -e "/^AuthUserFile /s/^/#/g" .htaccess', // comment all paths
+        'sed -i "" -e "/^#AuthUserFile \\//s/^#//g" .htaccess' // uncomment absolute path
+        ].join('&&')
+      },
+      indexLocal: {
+        command: [
+        'cd <%= config.dist %>',
+        'sed -i "" -e "s/<!--\\(.*base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line
+        ].join('&&')
       }
     }
   });
@@ -473,6 +486,8 @@ module.exports = function (grunt) {
     'copy:dist',
     'htmlmin'
   ]);
+
+  grunt.registerTask('build:local', 'modify builded files in dist folder, to work in local apache environment.', ['build', 'shell:htaccessLocal', 'shell:indexLocal']);
 
   grunt.registerTask('default', [
     'newer:jshint',
