@@ -1,6 +1,25 @@
 <!doctype html>
 <html>
+	<head>
+		<meta charset="utf-8">
+	    <title>SLIV Integration</title>
+	</head>
 	<body>
-		<iframe src="https://www.digitale-gesellschaft.ch/sliv" width="640" height="540" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<p>
+			To embed the visualisation into your own website, you can use an iframe.
+			The site is optimized for a mininum width of 680px.<br/>
+			The base url is https://www.digitale-gesellschaft.ch/sliv. You can directly open the site in a preset filter state by defining a language, year and canton:
+			<pre>
+			de
+			de/2013
+			de/2013/zh
+			</pre>
+			Where the two letter language prefix is optional, and defaults to de. Other languages: rm, fr, en, it.
+
+			For example if you want to directly load the german version of Zurich in 2013 you can use the following path:
+			<pre>https://www.digitale-gesellschaft.ch/sliv/de/2013/zh</pre>
+
+		</p>
+		<iframe src="https://www.digitale-gesellschaft.ch/sliv/2013/ch" width="680" height="540" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   	</body>
 </html>
