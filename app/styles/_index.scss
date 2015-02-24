@@ -138,5 +138,12 @@ h1{
 		&:not(:first-child){
 			padding-left: 9px;
 		}
+		&.octocat{
+			padding-left: 16px;
+			>img{
+				margin-right: 9px;
+			}
+		}
 	}
 }
+
