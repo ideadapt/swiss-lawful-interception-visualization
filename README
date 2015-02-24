@@ -43,6 +43,13 @@ Builds dev client, starts Webserver, watch changes, preview in browser
 grunt serve
 ```
 
+oder um einen staging build zu erstellen, der über local.slir/sliv augerufen werden kann.
+```
+#!
+
+grunt build:local
+```
+
 
 nachdem das csv geändert wurde immer:
 
@@ -55,9 +62,3 @@ grunt i18n:compile
 ausführen. danach page reload; dieser sollte während grunt serve automatisch passieren.
 
 
-Deploy
-
-0. grunt build, publish dist folder
-1. index.html <base>
-2. customize .htaccess
-3. test: language switch, responsiveness, filter, iframe-demo.html
