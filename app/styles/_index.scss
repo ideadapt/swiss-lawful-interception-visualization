@@ -129,3 +129,14 @@ h1{
 #tracker{
 	display: none;
 }
+
+#license-icons{
+	a{
+		>img{
+			width: 24px;
+		}
+		&:not(:first-child){
+			padding-left: 9px;
+		}
+	}
+}
