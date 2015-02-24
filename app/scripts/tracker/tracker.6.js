@@ -9,10 +9,12 @@ function Tracker(params){
 	}
 
 	function controller(){
-		function paramsChanged(){
-			var $img = $('<img>').attr('id', 'tracker').attr('src', '//piwik.xiala.net/piwik.php?idsite=2&rec=1&action_name=SLIV-'+params.year+'-'+params.locale);
-			$('#tracker').remove();
-			$('body').append($img);
+		function paramsChanged(state){
+			if(state.env === 'prod'){
+				var $img = $('<img>').attr('id', 'tracker').attr('src', '//piwik.xiala.net/piwik.php?idsite=2&rec=1&action_name=SLIV-'+state.year+'-'+state.locale);
+				$('#tracker').remove();
+				$('body').append($img);
+			}
 		}
 		params.emitter.on('pathChanged', paramsChanged);
 	}

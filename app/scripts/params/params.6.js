@@ -22,6 +22,7 @@ function Params(Emitter, _location, _window){
 	    // 2014
 	    // 2014/gr
 		var path = self.location.pathname;
+		var host = self.location.hostname;
 		var regex = /^\/(sliv\/)?([a-z]{2}\/?)?(\d{4}\/?)?(\/[a-z]{2}\/?)?$/;
 		var devLocale = self.location.search.match(/locale=(.*)$/);
 		var matches = path.match(regex);
@@ -41,6 +42,7 @@ function Params(Emitter, _location, _window){
 		self.year = year;
 		self.canton = canton;
 		self.locale = locale;
+		self.env = host.indexOf('digitale-gesellschaft.ch') !== -1 ? 'prod' : 'dev';
 	};
 
 	self.update = function update(values, doPush = true){
@@ -57,7 +59,7 @@ function Params(Emitter, _location, _window){
 			values.scrollY = self.window.scrollY;
 			var path = [self.prefix, self.locale, self.year, self.canton].filter(function(v){return !!v;}).join('/');
 			history.pushState(values, '', '/'+path);
-			self.emitter.emitSync('pathChanged', {prefix: self.prefix, locale: self.locale, year: self.year, canton: self.canton});
+			self.emitter.emitSync('pathChanged', {prefix: self.prefix, locale: self.locale, year: self.year, canton: self.canton, env: self.env});
 		}
 	};
 }
