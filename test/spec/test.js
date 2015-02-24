@@ -59,7 +59,7 @@ describe('Params', function(){
   };
   describe('init', function(){
     it('/de/2014/gr', function(){
-      var fakeLocation = { pathname: '/de/2014/gr', search: ''};
+      var fakeLocation = { pathname: '/de/2014/gr', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init();
 
@@ -69,7 +69,7 @@ describe('Params', function(){
     });
 
     it('/2014/gr and use provided default locale', function(){
-      var fakeLocation = { pathname: '/2014/gr', search: ''};
+      var fakeLocation = { pathname: '/2014/gr', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init('de');
 
@@ -79,7 +79,7 @@ describe('Params', function(){
     });
 
     it('/de/2014', function(){
-      var fakeLocation = { pathname: '/de/2014', search: ''};
+      var fakeLocation = { pathname: '/de/2014', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init();
 
@@ -89,7 +89,7 @@ describe('Params', function(){
     });
 
     it('/2014 and use provided default locale', function(){
-      var fakeLocation = { pathname: '/2014', search: ''};
+      var fakeLocation = { pathname: '/2014', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init('de');
 
@@ -99,7 +99,7 @@ describe('Params', function(){
     });
 
     it('/de', function(){
-      var fakeLocation = { pathname: '/de', search: ''};
+      var fakeLocation = { pathname: '/de', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init();
 
@@ -109,7 +109,7 @@ describe('Params', function(){
     });
 
     it('/', function(){
-      var fakeLocation = { pathname: '/', search: ''};
+      var fakeLocation = { pathname: '/', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init('de');
 
@@ -119,7 +119,7 @@ describe('Params', function(){
     });
 
     it('with trailing slash /de/2014/gr/', function(){
-      var fakeLocation = { pathname: '/de/2014/gr/', search: ''};
+      var fakeLocation = { pathname: '/de/2014/gr/', search: '', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init();
 
@@ -129,7 +129,7 @@ describe('Params', function(){
     });
 
     it('?locale=fr overwrites locale given in path /de/2014/gr/', function(){
-      var fakeLocation = { pathname: '/de/2014/gr/', search: '?locale=fr'};
+      var fakeLocation = { pathname: '/de/2014/gr/', search: '?locale=fr', hostname: ''};
       var params = new Params(fakeEmitter, fakeLocation, fakeWindow);
       params.init();
 
