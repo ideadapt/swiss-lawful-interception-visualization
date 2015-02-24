@@ -160,7 +160,10 @@ function Filter(dataDivisions, map, i18n, params){
 
 	init.call(this)
 		.then(controller.bind(this))
-		.then(render.bind(this));
+		.then(render.bind(this))
+		.catch(function(err) {
+			console.error(err.message);
+		});
 }
 
 Filter.prototype.year = function year(){

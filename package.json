@@ -61,7 +61,8 @@
     "sliv-delikt": "./app/scripts/delikt/delikt.6.js",
     "sliv-map": "./app/scripts/map/map.js",
     "sliv-index": "./app/scripts/index/index.js",
-    "sliv-params": "./app/scripts/params/params.6.js"
+    "sliv-params": "./app/scripts/params/params.6.js",
+    "sliv-tracker": "./app/scripts/tracker/tracker.6.js"
   },
   "browserify-shim": {
     "jquery": "$"

@@ -46,4 +46,7 @@ $(document).ready(function(){
 
 	var Delikt = require('sliv-delikt');
 	new Delikt(dataDivisions, filter, i18n, bowser);
+
+	var Tracker = require('sliv-tracker');
+	new Tracker(params);
 });
