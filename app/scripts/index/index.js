@@ -40,7 +40,7 @@ function Index(i18n, _window, _document){
 			    });
 
 				$('#fullscreen')
-				.text(i18n.l('fullscreen'))
+				.text(i18n.l('txt_txt_fullscreen'))
 				.addClass('in-frame')
 				.on('click', function () {
 				    screenfull.request();
