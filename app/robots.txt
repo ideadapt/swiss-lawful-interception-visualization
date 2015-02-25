@@ -1,4 +1,5 @@
 # robotstxt.org/
 
-User-agent: *
-Disallow: /
+User-Agent: *
+Disallow: 
+Disallow: /iframe-demo.html
