@@ -34,12 +34,15 @@ Builds dev client, starts web server, watch changes, preview in browser
 ```
 grunt serve
 ```
+
 or to create a staging build, which can be load using /sliv path, e.g. localhost:8080/sliv.
+
 ```
-grunt build:local
+grunt build:staging
 ```
 
 after translations csv changed, use
+
 
 ```
 grunt i18n:compile

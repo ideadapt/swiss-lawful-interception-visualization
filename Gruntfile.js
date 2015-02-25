@@ -362,17 +362,23 @@ module.exports = function (grunt) {
       i18nCopy:{
           command: ['cd i18n', 'cp translations.js ../app/scripts/translations.js'].join('&&')
       },
-      htaccessLocal: {
+      htaccessStaging: {
         command: [
         'cd <%= config.dist %>',
         'sed -i "" -e "/^AuthUserFile /s/^/#/g" .htaccess', // comment all paths
         'sed -i "" -e "/^#AuthUserFile \\//s/^#//g" .htaccess' // uncomment absolute path
         ].join('&&')
       },
-      indexLocal: {
+      indexStaging: {
         command: [
         'cd <%= config.dist %>',
-        'sed -i "" -e "s/<!--\\(.*base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line
+        'sed -i "" -e "s/<!--STAGING\\(<base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line, uncomment base tag for staging
+        ].join('&&')
+      },
+      indexDev: {
+        command: [
+        'cd <%= config.app %>',
+        'sed -i "" -e "s/<!--DEV\\(<base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line, uncomment base tag for dev
         ].join('&&')
       }
     }
@@ -450,6 +456,7 @@ module.exports = function (grunt) {
       'autoprefixer',
       'concat',
       'browserify',
+      'shell:indexDev',
       'connect:livereload',
       'watch-dev'
     ]);
@@ -487,7 +494,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('build:local', 'modify builded files in dist folder, to work in local apache environment.', ['build', 'shell:htaccessLocal', 'shell:indexLocal']);
+  grunt.registerTask('build:staging', 'modify builded files in dist folder, to work in staged, local apache environment.', ['build', 'shell:htaccessStaging', 'shell:indexStaging']);
 
   grunt.registerTask('default', [
     'newer:jshint',
