@@ -61,19 +61,39 @@ body {
     min-width: 650px;
   	margin-bottom: 3em;
   }
-  background-image: url(../images/area_52_zoom.png);
-  background-repeat: no-repeat;
-  background-position: left bottom;
+}
+
+#card{
+  display: none;
+}
+
+@media (min-width: 320px){
+  body {
+    background-image: url(../images/area_52_zoom.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+  #card{
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      background-image: url(../images/area_51_zoom.png);
+      background-repeat: no-repeat;
+      height: 700px;
+      width: 100%;
+  }
 }
 
 table{
-	width: 100%;
-	td, th{
-		white-space: nowrap;
-		&.fill{
-			width: 100%;
-		}
-	}
+  width: 100%;
+  td, th{
+    white-space: nowrap;
+    &.fill{
+      width: 100%;
+    }
+  }
 }
 
 .filtered h3{
@@ -116,17 +136,6 @@ hr{
 
 footer{
   margin-bottom: 600px;
-}
-
-#card{
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    background-image: url(../images/area_51_zoom.png);
-    background-repeat: no-repeat;
-    height: 700px;
-    width: 100%;
 }
 
 .page-header{
