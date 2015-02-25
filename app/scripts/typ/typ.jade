@@ -1,6 +1,10 @@
 h3=l('title_txt_typ')
 table.table
 	for item in view.keyValues
-		tr(class='legend_typ_'+item.typ)
-			th=item.i18n
-			td.text-right=item.value
+		tr
+			td
+				strong
+					=item.i18n
+				p
+					!=l('TYP_DESCR_'+item.typ)
+			td.text-right(class='legend_typ_'+item.typ)=item.value
