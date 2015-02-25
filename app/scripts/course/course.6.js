@@ -99,7 +99,7 @@ function Course(dataSummary, legendTemplate, i18n){
 
 	function selectionChanged(e){
 		self.view.keys.forEach((key)=>{
-   			$(`#legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.point.x][key]).format());
+   			$(`#course-legend .legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.point.x][key]).format());
 		});
    		self.view.titleText = self.view.titleText || $('#course-legend>h2').text();
    		$('#course-legend>h2').text(`${self.view.titleText} ${e.point.x}`);

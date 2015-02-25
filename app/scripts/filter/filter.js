@@ -1,5 +1,4 @@
-/*global Emitter*/
-function Filter(dataDivisions, map, i18n, params){
+function Filter(dataDivisions, map, i18n, params, Emitter){
 	var self = this;
 	self.emitter = new Emitter();
 	self.year = null;

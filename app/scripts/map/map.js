@@ -1,5 +1,4 @@
-/*global Emitter*/
-function Map(){
+function Map(Emitter){
 	var self = this;
 	self.emitter = new Emitter();
 }
