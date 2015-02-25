@@ -22,7 +22,8 @@ function Course(dataSummary, legendTemplate, i18n){
 				    .reduceXTicks(false)
 				    .color(['#FE0405', '#9BBB59', '#668CD9']); // telefonbuch, facebook and microsoft are not in charts datum. first color is for techadm
 
-				var keys = ['facebook', 'microsoft', 'telefonbuch', 'aktiv', 'vds', 'techadm'];
+				// 'facebook', 'microsoft' prepend to array when data available
+				var keys = ['telefonbuch', 'aktiv', 'vds', 'techadm'];
 				self.view.keys = keys;
 				var promises = keys.map(function(key){
 					return dataSummary[key]();

@@ -131,6 +131,7 @@ h1{
 }
 
 #license-icons{
+	margin-top: 20px;
 	a{
 		>img{
 			width: 24px;
@@ -139,7 +140,6 @@ h1{
 			padding-left: 9px;
 		}
 		&.octocat{
-			padding-left: 16px;
 			>img{
 				margin-right: 9px;
 			}
