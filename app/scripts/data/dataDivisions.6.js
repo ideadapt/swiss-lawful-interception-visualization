@@ -28,14 +28,14 @@ function DataDivisions(){
 			});
 			return flat;
 		}).catch((err)=>{
-			console.error(err.message);
+			console.error(err);
 		});
 
 		return self.transformed;
 	}
 
 	init.call(this).catch(err => {
-		console.error(err.message);
+		console.error(err);
 	});
 }
 
