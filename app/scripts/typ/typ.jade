@@ -1,6 +1,6 @@
 h3=l('title_txt_typ')
 table.table
 	for item in view.keyValues
-		tr
+		tr(class='legend_typ_'+item.typ)
 			th=item.i18n
 			td.text-right=item.value

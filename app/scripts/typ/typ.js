@@ -23,6 +23,7 @@ function Typ(dataDivisions, filter, i18n){
 		    	keys.forEach(function(key, idx){
 		    		self.view.keyValues.push({
 		    			i18n: i18n.l('typ_txt_'+ keys[idx]),
+		    			typ: keys[idx],
 		    			value: numeral(resolved[idx]).format()
 		    		});
 

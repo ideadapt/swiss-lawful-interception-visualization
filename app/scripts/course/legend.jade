@@ -2,6 +2,6 @@ h2=l('title_txt_jahreszahlen')
 
 each typ in keys.reverse()
 	h3
-		span(id='legend_typ_'+typ)
+		span(class='legend_typ_'+typ)
 		=l('TYP_TXT_'+typ)
 	p!=l('TYP_DESCR_'+typ)
