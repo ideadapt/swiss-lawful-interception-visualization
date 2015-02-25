@@ -362,13 +362,6 @@ module.exports = function (grunt) {
       i18nCopy:{
           command: ['cd i18n', 'cp translations.js ../app/scripts/translations.js'].join('&&')
       },
-      htaccessStaging: {
-        command: [
-        'cd <%= config.dist %>',
-        'sed -i "" -e "/^AuthUserFile /s/^/#/g" .htaccess', // comment all paths
-        'sed -i "" -e "/^#AuthUserFile \\//s/^#//g" .htaccess' // uncomment absolute path
-        ].join('&&')
-      },
       indexStaging: {
         command: [
         'cd <%= config.dist %>',
@@ -487,7 +480,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('build:staging', 'modify builded files in dist folder, to work in staged, local apache environment.', ['build', 'shell:htaccessStaging', 'shell:indexStaging']);
+  grunt.registerTask('build:staging', 'modify builded files in dist folder, to work in staged, local apache environment.', ['build', 'shell:indexStaging']);
 
   grunt.registerTask('default', [
     'newer:jshint',
