@@ -27,13 +27,13 @@ $(document).ready(function(){
 	new Course(dataSummary, legendTemplate, i18n);
 
 	var Map = require('sliv-map');
-	var map = new Map();
+	var map = new Map(Emitter);
 	$(window).load(function(){
 		map.init();
 	});
 
 	var Filter = require('sliv-filter');
-	var filter = new Filter(dataDivisions, map, i18n, params);
+	var filter = new Filter(dataDivisions, map, i18n, params, Emitter);
 
 	var Typ = require('sliv-typ');
 	new Typ(dataDivisions, filter, i18n);
