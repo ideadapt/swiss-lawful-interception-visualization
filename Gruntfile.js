@@ -374,12 +374,6 @@ module.exports = function (grunt) {
         'cd <%= config.dist %>',
         'sed -i "" -e "s/<!--STAGING\\(<base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line, uncomment base tag for staging
         ].join('&&')
-      },
-      indexDev: {
-        command: [
-        'cd <%= config.app %>',
-        'sed -i "" -e "s/<!--DEV\\(<base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line, uncomment base tag for dev
-        ].join('&&')
       }
     }
   });
@@ -456,7 +450,6 @@ module.exports = function (grunt) {
       'autoprefixer',
       'concat',
       'browserify',
-      'shell:indexDev',
       'connect:livereload',
       'watch-dev'
     ]);

@@ -42,10 +42,20 @@ function Params(Emitter, _location, _window){
 		self.year = year;
 		self.canton = canton;
 		self.locale = locale;
-		self.env = host.indexOf('digitale-gesellschaft.ch') !== -1 ? 'prod' : 'dev';
+		self.env = getEnv(host);
 	};
 
-	self.update = function update(values, doPush = true){
+	function getEnv(host){
+		if (host.indexOf('digitale-gesellschaft.ch') !== -1){
+			return 'prod';
+		}
+		if(host.indexOf('localhost') !== -1){
+			return 'dev';
+		}
+		return 'staging';
+	}
+
+	self.update = function update(values, newState = true){
 		if(values.year){
 			self.year = values.year;
 		}
@@ -55,7 +65,7 @@ function Params(Emitter, _location, _window){
 		if(values.locale){
 			self.locale = values.locale;
 		}
-		if(doPush === true){
+		if(newState === true && self.env !== 'dev'){
 			values.scrollY = self.window.scrollY;
 			var path = [self.prefix, self.locale, self.year, self.canton].filter(function(v){return !!v;}).join('/');
 			history.pushState(values, '', '/'+path);
