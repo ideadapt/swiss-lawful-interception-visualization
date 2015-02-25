@@ -19,7 +19,7 @@ $rowBoxBg: rgba(255, 255, 255, 0.95);
 
     &:hover, &.active{
       cursor: pointer;
-      background-color: rgba(180, 180, 180, 0.8);
+      background-color: rgba(180, 180, 180, 0.6);
       transition: background-color 0.25s;
       >span{
         background-color: white;
