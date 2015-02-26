@@ -1,5 +1,4 @@
 /*global Papa*/
-
 function DataSummary(){
 	var self = this;
 	self.transformed = null;
@@ -29,7 +28,7 @@ function DataSummary(){
 	}
 
 	init.call(this).catch(err => {
-		console.error(err.message);
+		console.error(err);
 	});
 }
 

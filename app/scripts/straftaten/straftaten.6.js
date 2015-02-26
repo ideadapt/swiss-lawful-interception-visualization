@@ -229,7 +229,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 		.then(controller.bind(this))
 		.then(render.bind(this))
 		.catch((err) => {
-			console.error(err.message);
+			console.error(err);
 		});
 }
 

@@ -1,5 +1,4 @@
 /*global Papa*/
-
 function DataDivisions(){
 	var self = this;
 	self.transformed = null;

@@ -161,7 +161,7 @@ function Filter(dataDivisions, map, i18n, params, Emitter){
 		.then(controller.bind(this))
 		.then(render.bind(this))
 		.catch(function(err) {
-			console.error(err.message);
+			console.error(err);
 		});
 }
 

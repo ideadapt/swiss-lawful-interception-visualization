@@ -32,9 +32,6 @@ function I18n(numeral){
 			    }
 			});
 			numeral.defaultFormat('0,0');
-			// numeral.zeroFormat('');
-			// i18n.l('txt_txt_no_value') does not work. should have NaN Format and zeroFormat
-			// => using own numeralDecorator for now
 		});
 		numeral.language(lang);
 	};
@@ -67,6 +64,9 @@ function I18n(numeral){
 	};
 
 	this.numeral = function numeralDecorator(toFormat){
+		// numeral.zeroFormat('');
+		// i18n.l('txt_txt_no_value') does not work. should have NaN Format and zeroFormat
+		// => using own numeralDecorator for now
 		if(Number.isNaN(toFormat)){
 			return {
 				format: function format(){
