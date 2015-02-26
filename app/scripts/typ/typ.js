@@ -12,7 +12,7 @@ function Typ(dataDivisions, filter, i18n){
 
 	function controller(){
 		function selectionChanged(year, canton){
-			var keys = ['aktiv', 'vds', 'techadm', 'telefonbuch', 'kanton'];
+			var keys = ['aktiv', 'vds', 'techadm', 'telefonbuch', 'kosten'];
 			self.view.keys = keys;
 			var promises = keys.map(function(key){
 				return dataDivisions[key](year, canton);

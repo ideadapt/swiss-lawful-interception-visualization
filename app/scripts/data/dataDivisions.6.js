@@ -72,9 +72,9 @@ function sumByYearCantonSuperSub(year, canton, _super, sub){
 	});
 }
 
-['kanton'].forEach(function(section){
+['kosten'].forEach(function(section){
 	DataDivisions.prototype[section] = function(year, canton){
-		return sumByYearCantonSuperSub.call(this, year, canton, 'kosten', section);
+		return sumByYearCantonSuperSub.call(this, year, canton, 'kanton', section);
 	};
 });
 
