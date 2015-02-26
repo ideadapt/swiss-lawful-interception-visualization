@@ -114,7 +114,7 @@ function Technologie(dataDivisions, filter, i18n){
 		.then(controller.bind(this))
 		.then(render.bind(this))
 		.catch((err) => {
-			console.error(err.message);
+			console.error(err);
 		});
 }
 
