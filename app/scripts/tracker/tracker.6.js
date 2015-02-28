@@ -7,15 +7,23 @@ function Tracker(params){
 	}
 
 	function controller(){
+		function track(...segments){
+			var $img = $('<img>').attr('id', 'tracker').attr('src', '//piwik.xiala.net/piwik.php?idsite=2&rec=1&action_name='+ segments.join('-'));
+			$('#tracker').remove();
+			$('body').append($img);
+		}
 		function paramsChanged(state){
-			if(state.env === 'prod' && self.year !== state.year){
-				var $img = $('<img>').attr('id', 'tracker').attr('src', '//piwik.xiala.net/piwik.php?idsite=2&rec=1&action_name=SLIV-'+state.year+'-'+state.locale);
-				$('#tracker').remove();
-				$('body').append($img);
+			if(self.year !== state.year){
+				track('SLIV', state.year, state.locale);
 				self.year = state.year;
 			}
 		}
-		params.emitter.on('pathChanged', paramsChanged);
+		if(params.env === 'prod'){
+			params.emitter.on('pathChanged', paramsChanged);
+			$('#slir a').click(()=>{
+				track('SLIV', 'openSLIR');
+			});
+		}
 	}
 
 	init.call(this)
