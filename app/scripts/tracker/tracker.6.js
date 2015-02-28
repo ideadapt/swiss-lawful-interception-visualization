@@ -1,6 +1,7 @@
 function Tracker(params){
 	var self = this;
 	self.year = null;
+	self.canton = null;
 
 	function init(){
 		return Promise.resolve();
@@ -13,9 +14,10 @@ function Tracker(params){
 			$('body').append($img);
 		}
 		function paramsChanged(state){
-			if(self.year !== state.year){
-				track('SLIV', state.year, state.locale);
+			if(self.year !== state.year || self.canton !== state.canton){
+				track('SLIV', state.canton, state.year, state.locale);
 				self.year = state.year;
+				self.canton = state.canton;
 			}
 		}
 		if(params.env === 'prod'){
