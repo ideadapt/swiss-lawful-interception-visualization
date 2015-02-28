@@ -34,7 +34,7 @@
             RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
         </IfModule>
     </IfModule>
-
+</IfModule>
 
 
 # ----------------------------------------------------------------------
