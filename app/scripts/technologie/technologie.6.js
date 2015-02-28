@@ -16,7 +16,6 @@ function Technologie(dataDivisions, filter, i18n){
 		self.view.mobileSections = artSections;
 		self.view.mobileSections = artSections.map((section, idx) => {
 			return {
-				label: i18n.l('art_txt_'+artSections[idx]),
 				descr: i18n.l('art_descr_'+artSections[idx], ''),
 				value: 0
 			};
