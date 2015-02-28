@@ -32,11 +32,7 @@ function Index(i18n, _window, _document){
 		if(inFrame()){
 			if (screenfull.enabled) {
 				self.document.addEventListener(screenfull.raw.fullscreenchange, function () {
-			        if(screenfull.isFullscreen){
-			        	$('#fullscreen').addClass('in-fullscreen');
-			        }else{
-			        	$('#fullscreen').removeClass('in-fullscreen');
-			        }
+					$('#fullscreen').toggleClass('in-fullscreen', screenfull.isFullscreen);
 			    });
 
 				$('#fullscreen')
