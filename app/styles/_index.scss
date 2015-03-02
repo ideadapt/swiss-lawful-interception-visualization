@@ -83,12 +83,14 @@ h1{
 
 #lang-menu{
 	height: 2em;
+	white-space: nowrap;
 
 	ol{
 		list-style-type: none;
 		width: 350px;
 		margin: 0 auto;
 		padding: 0;
+		white-space: nowrap;
 
 		li{
 			float: left;
