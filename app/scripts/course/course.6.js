@@ -31,7 +31,7 @@ function Course(dataSummary, legendTemplate, i18n){
 			    Promise.all(promises).then(function(resolved){
 			    	var facebook = resolved[0];
 			    	var microsoft = resolved[1];
-			    	var tel = resolved[2];
+			    	var tel = resolved[0];  // with facebook and microsoft -> resolved[2]
 			    	var totalsPerYear = {};
 			    	self.view.totalsPerYear = totalsPerYear;
 
