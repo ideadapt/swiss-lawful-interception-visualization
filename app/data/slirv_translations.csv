@@ -6,12 +6,12 @@ sprache,txt,IT,Italiano,Italiano,Italiano,Italiano,Italiano
 sprache,txt,RM,Rumantsch,Rumantsch,Rumantsch,Rumantsch,Rumantsch
 title,txt,deliktegruppe,Deliktegruppen,Groups of Crimes,Groupes de délits,Gruppi di Reati,Gruppa da delicts
 title,txt,jahreszahlen,Überwachungsmassnahmen,Review,Rétrospective,Bilancia,Recapitulaziun
-title,txt,maintitle,Visualisierung zur staatlichen Überwachung in der Schweiz,Visualisation on Lawful Interception in Switzerland,Swiss Lawful Interception Visualization,Visualisazzione della sorveglianza governativa in Svizzera,Visualisaziun digl Spiunadi digl Stadi an Svizzra
+title,txt,maintitle,Visualisierung zur staatlichen Überwachung in der Schweiz,Visualisation on Lawful Interception in Switzerland,Visualisation de la surveillance étatique en Suisse,Visualisazzione della sorveglianza governativa in Svizzera,Visualisaziun digl Spiunadi digl Stadi an Svizzra
 title,txt,schwerestraftaten,Schwere Straftaten,Serious Crimes,Délits graves,Reati Gravi,Gravants delicts
 title,txt,technologie,Technologie,Technology,Technologie,Tecnologia,Tecnologia
-title,txt,typ,Art der Überwachung,Kind of Interception,Genre de surveillance,Forma di Sorveglianza,Furma da Surveglianza
+title,txt,typ,Art der Überwachung,Kind of Interception,Forme de surveillance,Forma di Sorveglianza,Furma da Surveglianza
 title,txt,slir,Swiss Lawful Interception Report 2015,Swiss Lawful Interception Report 2015,Swiss Lawful Interception Report 2015,Swiss Lawful Interception Report 2015,Swiss Lawful Interception Report 2015
-title,txt,impressum,Impressum,Imprint,Impressum,Note legali,Impressum
+title,txt,impressum,Impressum,Imprint,édition,Note legali,Impressum
 title,txt,quellen,Quellen,Sources,Source,Fonte,Funtaunas
 txt,txt,anzahl_anfragen,Anzahl Anfragen,Number of Requests,nombre de demandes,numero di richieste,number da dumandas
 txt,txt,no_value,k. A.,n/a,n.s.,n.d.,b.v.
@@ -59,7 +59,7 @@ deliktegruppe,txt,oeFrieden,Störung des öffentlichen Friedens,disturbing publi
 deliktegruppe,txt,sex,Sexualdelikte,sex crimes,crimes sexuels,reati sessuali,delicts sexual
 deliktegruppe,txt,staat,Staat und Landesverteidigung,security and national defence,sécurité et défense nationale,diffesa dello stato e nazionale,stadi et defensiun da la patria
 deliktegruppe,txt,vermoegen,Vermögensdelikte,property crimes ,atteintes aux biens,reati contro la proprietà,delicts da facultad
-deliktegruppe,descr,buepf,"Überwachung ohne Strafverfahren, Notsuche","requests without criminal proceedings, emergency rescue","surveillance hors procédure pénale, localisation de personnes disparues","sorveglianza senza un procedimento penale, ricerca di emergenza","surveglianza senza procedura penala, tschertgar cas d'urgenza"
+deliktegruppe,descr,buepf,"Überwachung ohne Strafverfahren, Notsuche","requests without criminal proceedings, emergency rescue","surveillance hors procédure pénale, recherche en cas d'urgence","sorveglianza senza un procedimento penale, ricerca di emergenza","surveglianza senza procedura penala, tschertgar cas d'urgenza"
 deliktegruppe,descr,diverse,Diverse,miscellaneous,divers,miscellaneo,divers
 deliktegruppe,descr,drogen,"Herstellen, Handel oder Konsum  von Drogen","Consumption, trade or manufacture of drugs","fabrication, trafic ou consommation de drogue","Consumo, il traffico o la produzione di droga","Producziun, traffic u consume da drogas"
 deliktegruppe,descr,drohung,"Drohung, Entführung, Geiselnahme, Menschenhandel","Threat, kidnapping, hostage-taking, human trafficking","menace, enlèvement, prise d'otage, traite des êtres humains","minaccia, sequestro di persona, presa di ostaggi, tratta di esseri umani","smanatscha, rapinament, rapiment d'ostagis,  commerzi cun umans"
@@ -67,8 +67,8 @@ deliktegruppe,descr,finanz,"Geldwäscherei, sich bestechen lassen, Kreditkartenm
 deliktegruppe,descr,gewalt,"Körperverletzung, Mord, Tötung, Totschlag, Gewaltdarstellungen","Assault, murder, homicide, manslaughter,depiction of violence","Atteinte à l'intégrité corporelle, assassinat, meurtre, homicide, représentation de la violence","Lesioni personali, omicidio, assassinio, rappresentazione di atti di cruda violenza","blessura corporala, assassinat, mazzament, omicidi, represchentaziun da violenza"
 deliktegruppe,descr,oeFrieden,"Störung des öffentlichen Friedens, Demonstrationen, Kriminelle Organisationen, Gefährdung durch Waffen",disturbance of public peace,"trouble de l'ordre public, manifestation, organisations criminelles, mise en danger avec des armes","pertubazione della pace pubblica, dimostrazioni, organizzazione criminosa, messa in pericolo con arme","disturba da pasch publica, demonstraziun"
 deliktegruppe,descr,sex,"Sexuelle Nötigung, Vergewaltigung, illegale Prostitution, Pornographie","sexual assault, rape, illegal prostitution, pornography","agression sexuelle, viol, prostitution illégale, pornographie","coazione sessuale, violenza carnale, prostituzione illegale, pornografia","associaziun criminala, prievel tras armas, constricziun sexuala,violaziun,prostituziun illegala, "
-deliktegruppe,descr,staat,"Landesverrat, Verbreiten menschlicher Krankheiten, Amtsmissbrauch, verbotener Nachrichtendienst","Treason,spreading of human diseases, misuse of authority, espionage","trahison, dissémination de maladies humaines, abus d'autorité, espionnage","Tradimento, la distribuzione delle malattie umane, abuso di autorità, di spionaggio","tradiment da la patria, desarar malsongas humanas, abus d'uffezi,"
-,,,,,,,servetsch d'infurmaziun scumando
+deliktegruppe,descr,staat,"Landesverrat, Verbreiten menschlicher Krankheiten, Amtsmissbrauch, verbotener Nachrichtendienst","Treason,spreading of human diseases, misuse of authority, espionage","trahison, dissémination de maladies humaines, abus d'autorité, espionnage","Tradimento, la distribuzione delle malattie umane, abuso di autorità, di spionaggio","tradiment da la patria, desarar malsongas humanas, abus d'uffezi,
+servetsch d'infurmaziun scumando"
 deliktegruppe,descr,vermoegen,"Diebstahl, Raub, Erpressung, Veruntreuung","theft, robbery, extortion, embezzlement","vol, vol qualifié, extorsion, détournement de fonds","furto, rapina, estorsione, appropriazione indebita","ladernitsch, enguladitsch, extorsiun, defraudaziun "
 schwerestraftaten,descr,descr,"Schwere Straftaten sind als Delikte hervorgehoben, da diese immer wieder ins Feld geführt werden, um Überwachung zu rechtfertigen.","Serious crimes are highlighted, because those are repeatedly brought up in arguments for surveillance.","Les délits graves sont considérés comme des crimes, ce qui permet de justifier la surveillance.","Gravi crimini sono evidenziati, in quanto questi sono ripetutamente cresciuti nel sostenere per la sorveglianza.","Grevs malfatgs en delicts extraordinaris, perchegl tgi reivan mess an discurs per giustifitgar la survigilanza"
 schwerestraftaten,txt,geldwaesche,Geldwäscherei,money laundering,blanchiment d'argent,riciclaggio di denaro,lavada da daners suspectus
