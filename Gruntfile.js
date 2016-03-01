@@ -7,6 +7,7 @@
 // 'test/spec/{,*/}*.js'
 // If you want to recursively match all subfolders, use:
 // 'test/spec/**/*.js'
+var serveStatic = require('serve-static');
 
 module.exports = function (grunt) {
 
@@ -39,11 +40,11 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          middleware: function(connect) {
+          middleware: function(connect, options) {
             return [
-              connect.static('.tmp'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
+              serveStatic('.tmp'),
+              connect().use('/bower_components', serveStatic('./bower_components')),
+              serveStatic(config.app)
             ];
           }
         }
@@ -54,10 +55,10 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function(connect) {
             return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
+              serveStatic('.tmp'),
+              serveStatic('test'),
+              connect().use('/bower_components', serveStatic('./bower_components')),
+              serveStatic(config.app)
             ];
           }
         }
@@ -396,9 +397,9 @@ module.exports = function (grunt) {
             livereload: true
           }
         },
-        gruntfile: {
-          files: ['Gruntfile.js']
-        },
+        // gruntfile: {
+        //   files: ['Gruntfile.js']
+        // },
         sass: {
           files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
           tasks: ['sass:server', 'autoprefixer']
