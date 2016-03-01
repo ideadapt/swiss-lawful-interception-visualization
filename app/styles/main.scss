@@ -91,15 +91,6 @@ body {
   }
 }
 
-@media (min-width: 1300px){
-  body{
-    background-size: contain;
-  }
-  #card{
-    background-size: cover;
-  }
-}
-
 table{
   width: 100%;
   td, th{
