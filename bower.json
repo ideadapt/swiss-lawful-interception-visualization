@@ -16,7 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~1.11.1",
+    "jquery": "~2.2.1",
     "nvd3-community": "https://github.com/nvd3-community/nvd3.git#e1fe374b363dd3342c65d9c3ac802a063fa2d8da",
     "papaparse": "4.0.7",
     "es6-promise": "~2.0.0",
