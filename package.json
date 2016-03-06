@@ -1,6 +1,6 @@
 {
   "name": "sliv",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "repository": "https://github.com/ideadapt/swiss-lawful-interception-visualization",
   "dependencies": {
     "apache-server-configs": "^2.7.1",
