@@ -1,5 +1,5 @@
-/*global nv, d3*/
-function Straftaten(dataDivisions, filter, i18n, bowser){
+/*global d3*/
+function Straftaten(dataDivisions, filter, i18n, bowser, nv){
 	var numeral = i18n.numeral;
 	var self = this;
 	self.view = {};
@@ -71,9 +71,9 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 					    .startAngle(function(d) { return d.startAngle -Math.PI; })
 					    .endAngle(function(d) { return d.endAngle -Math.PI; });
 			    	chart.donut(true);
-				    var margin = -40;
+				    var margin = -20;
 				    chart.margin({left: margin, right: margin, top: margin, bottom: margin});
-				    chart.tooltips(false);
+				    chart.tooltip.enabled(false);
 				    chart.showLabels(false);
 				    chart.showLegend(false);
 				    chart.donutRatio(innerRadiusFactor);
@@ -110,15 +110,15 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
 
 			    	var svgWidth = $('#straftaten>svg').width();
            			var svgHeight = $('#straftaten>svg').height();
-           			var centerX = svgWidth/2 - 20;
-           			var centerY = svgHeight/2 - 10;
+           			var centerX = svgWidth/2 + 20;
+           			var centerY = svgHeight/2 + 20;
 
 				    function thisIsAUprightCanton(){
 				    	if(total !== 0){
 				    		return;
 				    	}
 				    	var textUpright = d3.select('#straftaten .nv-legendWrap').append('text');
-               			if(bowser.browser.msie || bowser.browser.gecko){
+               			if(bowser.msie || bowser.gecko){
 	       					textUpright.attr('text-anchor', 'middle');
 	       				}
 	       				textUpright.text(i18n.l('TXT_TXT_KESCHWESTRATA'));
@@ -149,7 +149,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser){
                			}else{
 							var textSelected =d3.select('#straftaten .nv-legendWrap')
 	               				.append('text');
-		       				if(bowser.browser.msie || bowser.browser.gecko){
+		       				if(bowser.msie || bowser.gecko){
 		       					textSelected.attr('text-anchor', 'middle');
 		       				}
 	               			textSelected.text(`${value} (${percent}%)`);

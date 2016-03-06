@@ -1,5 +1,4 @@
-/*global Raphael*/
-function Technologie(dataDivisions, filter, i18n){
+function Technologie(dataDivisions, filter, i18n, Raphael){
 	var numeral = i18n.numeral;
 	var self = this;
 	var artSections = ['telefon', 'notsuche', 'antennensuchlauf'];

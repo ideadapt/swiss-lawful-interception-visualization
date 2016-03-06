@@ -8,7 +8,7 @@ function Params(Emitter, _location, _window){
 			return;
 		}
 		self.update(ev.state, false);
-		self.emitter.emitSync('pathChanged', ev.state);
+		self.emitter.emit('pathChanged', ev.state);
 		self.window.setTimeout(function(){
 			self.window.scrollTo(0, ev.state.scrollY);
 		}, 50);
@@ -69,7 +69,7 @@ function Params(Emitter, _location, _window){
 			values.scrollY = self.window.scrollY;
 			var path = [self.prefix, self.locale, self.year, self.canton].filter(function(v){return !!v;}).join('/');
 			history.pushState(values, '', '/'+path);
-			self.emitter.emitSync('pathChanged', {prefix: self.prefix, locale: self.locale, year: self.year, canton: self.canton, env: self.env});
+			self.emitter.emit('pathChanged', {prefix: self.prefix, locale: self.locale, year: self.year, canton: self.canton, env: self.env});
 		}
 	};
 }

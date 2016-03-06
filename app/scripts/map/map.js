@@ -14,7 +14,7 @@ Map.prototype.controller = function controller(){
 	var cantons = svg.querySelectorAll('#Cantons_default>path');
 
 	function cantonClicked(){
-		self.emitter.emitSync('selectionChanged', this.id.toLowerCase());
+		self.emitter.emit('selectionChanged', this.id.toLowerCase());
 	}
 	function cantonEnter(){
 		$('#filter cantons .btn[value='+this.id.toLowerCase()+']').addClass('focus');

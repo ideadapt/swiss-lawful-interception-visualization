@@ -1,5 +1,5 @@
-/*global nv, d3*/
-function Delikt(dataDivisions, filter, i18n, bowser){
+/*global d3*/
+function Delikt(dataDivisions, filter, i18n, bowser, nv){
 	var numeral = i18n.numeral;
 	var self = this;
 	self.view = {};
@@ -13,7 +13,7 @@ function Delikt(dataDivisions, filter, i18n, bowser){
 		'#668CD9', // finanz
 		'#C2943E', // vermoegen
 		'#86BAFA', // buepf
-		'#BEC3BE',  // diverse
+		'#BEC3BE', // diverse
 	];
 
 	function init(){
@@ -61,9 +61,9 @@ function Delikt(dataDivisions, filter, i18n, bowser){
 				nv.addGraph(function() {
 				    var chart = nv.models.pieChart();
 			    	chart.donut(true);
-				    var margin = -40;
+				    var margin = -20;
 				    chart.margin({left: margin, right: margin, top: margin, bottom: margin});
-				    chart.tooltips(false);
+				    chart.tooltip.enabled(false);
 				    chart.showLabels(false);
 				    chart.showLegend(false);
 				    chart.donutRatio(innerRadiusFactor);
@@ -99,13 +99,13 @@ function Delikt(dataDivisions, filter, i18n, bowser){
 
 				    	var svgWidth = $('#delikt>svg').width();
                			var svgHeight = $('#delikt>svg').height();
-               			var centerX = svgWidth/2 - 20;
-               			var centerY = svgHeight/2 - 10;
+               			var centerX = svgWidth/2 + 20;
+               			var centerY = svgHeight/2 + 10;
                			d3.selectAll('#delikt .nv-legendWrap>text:nth-of-type(2)').remove();
 
 						var textSelected =d3.select('#delikt .nv-legendWrap')
                				.append('text');
-	       				if(bowser.browser.msie || bowser.browser.gecko){
+	       				if(bowser.msie || bowser.gecko){
 	       					textSelected.attr('text-anchor', 'middle');
 	       				}
                			textSelected.text(`${value} (${percent}%)`);
@@ -132,12 +132,12 @@ function Delikt(dataDivisions, filter, i18n, bowser){
 
 				    var svgWidth = $('#delikt>svg').width();
                			var svgHeight = $('#delikt>svg').height();
-               			var centerX = svgWidth/2 - 20;
-               			var centerY = svgHeight/2 - 10;
+               			var centerX = svgWidth/2 + 20;
+               			var centerY = svgHeight/2 + 10;
 
-					var textTotal =d3.select('#delikt .nv-legendWrap')
+					var textTotal = d3.select('#delikt .nv-legendWrap')
            				.append('text');
-       				if(bowser.browser.msie || bowser.browser.gecko){
+       				if(bowser.msie || bowser.gecko){
        					textTotal.attr('text-anchor', 'middle');
        				}
        				textTotal.text(`${i18n.l('txt_txt_total')} ${numeral(total).format()}`);

@@ -47,7 +47,7 @@ function Filter(dataDivisions, map, i18n, params, Emitter){
 
 		function selectionChanged(year, canton, fromParams){
 			$('#filterText').text(i18n.l('region_txt_'+canton) + ' ' + year);
-			self.emitter.emitSync('selectionChanged', year, canton);
+			self.emitter.emit('selectionChanged', year, canton);
 			if(!fromParams){
 				params.update({year: year, canton: canton});
 			}

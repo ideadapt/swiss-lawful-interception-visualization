@@ -1,5 +1,4 @@
-/*global Papa*/
-function DataDivisions(){
+function DataDivisions(Papa){
 	var self = this;
 	self.transformed = null;
 
@@ -137,5 +136,4 @@ DataDivisions.prototype.fakeCantons = function(){
 	return Promise.resolve(fakeCantons);
 };
 
-var data = new DataDivisions();
-module.exports = data;
+module.exports = DataDivisions;

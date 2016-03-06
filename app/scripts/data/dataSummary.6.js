@@ -1,5 +1,4 @@
-/*global Papa*/
-function DataSummary(){
+function DataSummary(Papa){
 	var self = this;
 	self.transformed = null;
 
@@ -66,5 +65,4 @@ DataSummary.prototype.fakeCantons = function(){
 	return Promise.resolve(fakeCantons);
 };
 
-var data = new DataSummary();
-module.exports = data;
+module.exports = DataSummary;

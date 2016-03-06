@@ -1,5 +1,5 @@
-/*global nv, d3*/
-function Course(dataSummary, legendTemplate, i18n){
+/*global d3*/
+function Course(dataSummary, legendTemplate, i18n, nv){
 	var self = this;
 	var numeral = i18n.numeral;
 	self.view = {
@@ -14,11 +14,11 @@ function Course(dataSummary, legendTemplate, i18n){
 			nv.addGraph(function() {
 			    var chart = nv.models.multiBarChart();
 			    	chart.multibar.stacked(true);
+			    	chart.tooltip.enabled(false);
 			    	chart.showControls(false)
 			    	.groupSpacing(0.25)
 			    	.showLegend(false)
 				    .height(300)
-					.tooltips(false)
 				    .reduceXTicks(false)
 				    .color(['#FE0405', '#9BBB59', '#668CD9']); // telefonbuch, facebook and microsoft are not in charts datum. first color is for techadm
 
@@ -100,10 +100,10 @@ function Course(dataSummary, legendTemplate, i18n){
 
 	function selectionChanged(e){
 		self.view.keys.forEach((key)=>{
-   			$(`#course-legend .legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.point.x][key]).format());
+   			$(`#course-legend .legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.data.x][key]).format());
 		});
    		self.view.titleText = self.view.titleText || $('#course-legend>h2').text();
-   		$('#course-legend>h2').text(`${self.view.titleText} ${e.point.x}`);
+   		$('#course-legend>h2').text(`${self.view.titleText} ${e.data.x}`);
    	}
 
 	function render(){
@@ -114,7 +114,7 @@ function Course(dataSummary, legendTemplate, i18n){
 
 	controller.call(this)
 		.then(render.bind(this))
-		.then(() => { selectionChanged.call(this, {point: {x: self.view.latestYear}}); })
+		.then(() => { selectionChanged.call(this, {data: {x: self.view.latestYear}}); })
 		.catch(function(err){
 			console.error(err);
 		});

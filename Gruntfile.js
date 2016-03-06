@@ -255,16 +255,9 @@ module.exports = function (grunt) {
         },
         files: [{
           '.tmp/scripts/vendor.js': [
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/d3/d3.js',
-            'bower_components/nvd3-community/build/nv.d3.js',
-            'bower_components/numeral/numeral.js',
-            'bower_components/moment/moment.js',
-            'bower_components/papaparse/papaparse.js',
-            'bower_components/raphael/raphael.js',
-            'bower_components/bowser.js',
+            'node_modules/jquery/dist/jquery.js',
             'node_modules/bootstrap/dist/js/bootstrap.js',
-            'bower_components/emitter/emitter.js'
+            'node_modules/d3/d3.js'
           ]
         },
         {
@@ -277,7 +270,7 @@ module.exports = function (grunt) {
         files:[{
           '.tmp/styles/vendor.css': [
             '.tmp/styles/bootstrap.css',
-            'bower_components/nvd3/nv.d3.css'
+            'node_modules/nvd3/build/nv.d3.css'
           ]
         }]
       }
