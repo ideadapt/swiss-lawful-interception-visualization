@@ -11,7 +11,6 @@ sudo npm -g install grunt-cli
 sudo npm -g install jshint
 sudo npm -g install browserify
 npm install
-bower install
 ```
 
 
