@@ -19,8 +19,8 @@
     "screenfull": "^3.0.0"
   },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": "^2.1.0"
+    "node": ">=4.2.0",
+    "npm": "^2.14.0"
   },
   "browser": {
     "sliv-translations": "./app/scripts/translations.js",
