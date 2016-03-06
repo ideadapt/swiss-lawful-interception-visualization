@@ -110,7 +110,7 @@ module.exports = function (grunt) {
       }
     },
 
-    '6to5': {
+    'babel': {
       test: {
         files: [{
           expand: true,
@@ -370,7 +370,7 @@ module.exports = function (grunt) {
       watch: {
         jstest: {
           files: ['test/spec/{,*/}*.js', '<%= config.app %>/scripts/{,*/}*.js', 'test/index.html'],
-          tasks: ['jshint', '6to5:test'],
+          tasks: ['jshint', 'babel:test'],
           options:{
             livereload: true
           }
@@ -451,7 +451,7 @@ module.exports = function (grunt) {
     if (target !== 'watch') {
       grunt.task.run([
         'clean:server',
-        '6to5:test'
+        'babel:test'
       ]);
     }
 

@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var Raphael = require('raphael');
 	var nv = require('nvd3');
 	require('es6-promise').polyfill();
-	require('6to5-polyfill');
+	require('babel-polyfill');
 	var Params = require('sliv-params');
 	var params = new Params(Emitter, window.location, window);
 	params.init('de');
