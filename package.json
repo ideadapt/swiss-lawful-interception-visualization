@@ -1,7 +1,8 @@
 {
   "name": "sliv",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/ideadapt/swiss-lawful-interception-visualization",
+  "license": "see LICENSE.md",
   "dependencies": {
     "apache-server-configs": "^2.7.1",
     "babel-polyfill": "^6.6.1",
