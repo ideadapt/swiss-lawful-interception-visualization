@@ -60,7 +60,6 @@
     ]
   },
   "scripts": {
-    "start": "node server.js",
     "postinstall": "./node_modules/.bin/grunt build",
     "test": "grunt test"
   },

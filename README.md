@@ -1,3 +1,5 @@
+![build status](https://travis-ci.org/ideadapt/swiss-lawful-interception-visualization.svg?branch=master)
+
 Setup
 ===
 
