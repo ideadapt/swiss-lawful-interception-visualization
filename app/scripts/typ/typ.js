@@ -10,6 +10,13 @@ function Typ(dataDivisions, filter, i18n){
 		return Promise.resolve();
 	}
 
+	function render(){
+		var template = require('./typ.jade');
+		var html = template({view: self.view, l: i18n.l});
+		$('#typ').html(html);
+		return Promise.resolve();
+	}
+
 	function controller(){
 		function selectionChanged(year, canton){
 			var keys = ['aktiv', 'vds', 'techadm', 'telefonbuch', 'kosten'];
@@ -39,13 +46,6 @@ function Typ(dataDivisions, filter, i18n){
 			});
 		}
 		filter.emitter.on('selectionChanged', selectionChanged);
-	}
-
-	function render(){
-		var template = require('./typ.jade');
-		var html = template({view: self.view, l: i18n.l});
-		$('#typ').html(html);
-		return Promise.resolve();
 	}
 
 	init.call(this)

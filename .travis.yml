@@ -3,6 +3,6 @@ node_js:
   - 5.7
   - 4.3
   - 4.2
-script: npm test
+script: grunt
 before_install:
  - gem install sass

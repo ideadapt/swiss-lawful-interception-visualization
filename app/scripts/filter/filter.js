@@ -43,6 +43,20 @@ function Filter(dataDivisions, map, i18n, params, Emitter){
 		$(self.svgDoc).find('#'+canton.toUpperCase()).attr('class', 'active');
 	}
 
+	function renderYears(){
+		var template = require('./filterYears.jade');
+		var html = template({years: this.years, year: self.year});
+		$('#filter>years').html(html);
+	}
+
+	function renderCantons(){
+		$('#filter>cantons [data-toggle="tooltip"]').tooltip('destroy');
+		var template = require('./filterCantons.jade');
+		var html = template({cantons1: this.cantons1, cantons2: this.cantons2, fakeCantons: this.fakeCantons, canton: self.canton, l: i18n.l});
+		$('#filter>cantons').html(html);
+		initTooltip();
+	}
+
 	function controller(){
 
 		function selectionChanged(year, canton, fromParams){
@@ -135,20 +149,6 @@ function Filter(dataDivisions, map, i18n, params, Emitter){
 			highlightMapCanton(values.canton);
 		}
 		params.emitter.on('pathChanged', paramsChanged);
-	}
-
-	function renderYears(){
-		var template = require('./filterYears.jade');
-		var html = template({years: this.years, year: self.year});
-		$('#filter>years').html(html);
-	}
-
-	function renderCantons(){
-		$('#filter>cantons [data-toggle="tooltip"]').tooltip('destroy');
-		var template = require('./filterCantons.jade');
-		var html = template({cantons1: this.cantons1, cantons2: this.cantons2, fakeCantons: this.fakeCantons, canton: self.canton, l: i18n.l});
-		$('#filter>cantons').html(html);
-		initTooltip();
 	}
 
 	function render(){

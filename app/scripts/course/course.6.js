@@ -8,6 +8,14 @@ function Course(dataSummary, legendTemplate, i18n, nv){
 		titleText: null
 	};
 
+	function selectionChanged(e){
+		self.view.keys.forEach((key)=>{
+   			$(`#course-legend .legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.data.x][key]).format());
+		});
+   		self.view.titleText = self.view.titleText || $('#course-legend>h2').text();
+   		$('#course-legend>h2').text(`${self.view.titleText} ${e.data.x}`);
+   	}
+
 	function controller(){
 		return new Promise((resolve, reject)=>{
 
@@ -97,14 +105,6 @@ function Course(dataSummary, legendTemplate, i18n, nv){
 			});
 		});
 	}
-
-	function selectionChanged(e){
-		self.view.keys.forEach((key)=>{
-   			$(`#course-legend .legend_typ_${key}`).text(numeral(this.view.totalsPerYear[e.data.x][key]).format());
-		});
-   		self.view.titleText = self.view.titleText || $('#course-legend>h2').text();
-   		$('#course-legend>h2').text(`${self.view.titleText} ${e.data.x}`);
-   	}
 
 	function render(){
 		var html = legendTemplate(this.view);

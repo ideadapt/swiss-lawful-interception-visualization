@@ -22,7 +22,7 @@ $(document).ready(function(){
 	// window.i18n = i18n; // enable to debug with i18n.unusedKeys()
 
 	var DataDivisions = require('sliv-data-divisions');
-	var DataSummary = require('sliv-data-summary')
+	var DataSummary = require('sliv-data-summary');
 	var dataDivisions = new DataDivisions(Papa);
 	var dataSummary = new DataSummary(Papa);
 

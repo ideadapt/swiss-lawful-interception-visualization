@@ -3,6 +3,17 @@ function Params(Emitter, _location, _window){
 	self.emitter = new Emitter();
 	self.location = _location;
 	self.window = _window;
+
+	function getEnv(host){
+		if (host.indexOf('digitale-gesellschaft.ch') !== -1){
+			return 'prod';
+		}
+		if(host.indexOf('localhost') !== -1){
+			return 'dev';
+		}
+		return 'staging';
+	}
+
 	self.window.onpopstate = function onPopstate(ev){
 		if(!ev.state){
 			return;
@@ -44,16 +55,6 @@ function Params(Emitter, _location, _window){
 		self.locale = locale;
 		self.env = getEnv(host);
 	};
-
-	function getEnv(host){
-		if (host.indexOf('digitale-gesellschaft.ch') !== -1){
-			return 'prod';
-		}
-		if(host.indexOf('localhost') !== -1){
-			return 'dev';
-		}
-		return 'staging';
-	}
 
 	self.update = function update(values, newState = true){
 		if(values.year){

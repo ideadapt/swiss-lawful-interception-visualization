@@ -21,6 +21,13 @@ function Delikt(dataDivisions, filter, i18n, bowser, nv){
 		return Promise.resolve();
 	}
 
+	function render(){
+		var template = require('./deliktTable.jade');
+		var html = template({view: this.view, l: i18n.l});
+		$('#deliktTable').html(html);
+		return Promise.resolve();
+	}
+
 	function controller(){
 		function selectionChanged(year, canton){
 			var sections = [
@@ -170,13 +177,6 @@ function Delikt(dataDivisions, filter, i18n, bowser, nv){
 		}
 		filter.emitter.on('selectionChanged', selectionChanged);
 
-		return Promise.resolve();
-	}
-
-	function render(){
-		var template = require('./deliktTable.jade');
-		var html = template({view: this.view, l: i18n.l});
-		$('#deliktTable').html(html);
 		return Promise.resolve();
 	}
 

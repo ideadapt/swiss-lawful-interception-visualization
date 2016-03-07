@@ -6,11 +6,6 @@ function Technologie(dataDivisions, filter, i18n, Raphael){
 		mobileSections: []
 	};
 
-	function init(){
-		addMobileDetails();
-		return Promise.resolve();
-	}
-
 	function addMobileDetails(){
 		self.view.mobileSections = artSections;
 		self.view.mobileSections = artSections.map((section, idx) => {
@@ -19,6 +14,11 @@ function Technologie(dataDivisions, filter, i18n, Raphael){
 				value: 0
 			};
 		});
+	}
+
+	function init(){
+		addMobileDetails();
+		return Promise.resolve();
 	}
 
 	function updateMobileDetails(year, canton){

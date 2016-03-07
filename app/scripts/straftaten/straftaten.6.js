@@ -34,6 +34,13 @@ function Straftaten(dataDivisions, filter, i18n, bowser, nv){
 		});
 	}
 
+	function render(){
+		var template = require('./straftatenTable.jade');
+		var html = template({view: this.view, l: i18n.l});
+		$('#straftatenTable').html(html);
+		return Promise.resolve();
+	}
+
 	function controller(){
 		function selectionChanged(year, canton){
 			var sections = ['krimorg', 'geldwaesche', 'terror', 'menschenhandel', 'paedo', 'nachrichtendienst'];
@@ -215,13 +222,6 @@ function Straftaten(dataDivisions, filter, i18n, bowser, nv){
 		}
 		filter.emitter.on('selectionChanged', selectionChanged);
 
-		return Promise.resolve();
-	}
-
-	function render(){
-		var template = require('./straftatenTable.jade');
-		var html = template({view: this.view, l: i18n.l});
-		$('#straftatenTable').html(html);
 		return Promise.resolve();
 	}
 

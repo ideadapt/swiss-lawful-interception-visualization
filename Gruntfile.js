@@ -40,7 +40,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          middleware: function(connect, options) {
+          middleware: function() {
             return [
               serveStatic('.tmp'),
               serveStatic(config.app)
