@@ -4,9 +4,9 @@
 
 // # Globbing
 // for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
+// 'test/{,*/}*.js'
 // If you want to recursively match all subfolders, use:
-// 'test/spec/**/*.js'
+// 'test/**/*.js'
 var serveStatic = require('serve-static');
 
 module.exports = function (grunt) {
@@ -43,21 +43,6 @@ module.exports = function (grunt) {
           middleware: function(connect, options) {
             return [
               serveStatic('.tmp'),
-              connect().use('/bower_components', serveStatic('./bower_components')),
-              serveStatic(config.app)
-            ];
-          }
-        }
-      },
-      test: {
-        options: {
-          open: true,
-          port: 9001,
-          middleware: function(connect) {
-            return [
-              serveStatic('.tmp'),
-              serveStatic('test'),
-              connect().use('/bower_components', serveStatic('./bower_components')),
               serveStatic(config.app)
             ];
           }
@@ -95,19 +80,8 @@ module.exports = function (grunt) {
       all: [
         'Gruntfile.js',
         '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
+        'test/{,*/}*.js'
       ]
-    },
-
-    // Mocha testing framework configuration options
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-        }
-      }
     },
 
     'babel': {
@@ -123,9 +97,6 @@ module.exports = function (grunt) {
 
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
-      options: {
-        loadPath: 'bower_components'
-      },
       dist: {
         files: [{
           expand: true,
@@ -361,6 +332,11 @@ module.exports = function (grunt) {
         'cd <%= config.dist %>',
         'sed -i "" -e "s/<!--STAGING\\(<base[ a-z:./=\\"0-9]*>\\)-->/\\1/" index.html', // jshint ignore:line, uncomment base tag for staging
         ].join('&&')
+      },
+      test:{
+        command:[
+        'node_modules/.bin/mocha test/*.js'
+        ].join('&&')
       }
     }
   });
@@ -369,11 +345,8 @@ module.exports = function (grunt) {
     grunt.config.merge({
       watch: {
         jstest: {
-          files: ['test/spec/{,*/}*.js', '<%= config.app %>/scripts/{,*/}*.js', 'test/index.html'],
-          tasks: ['jshint', 'babel:test'],
-          options:{
-            livereload: true
-          }
+          files: ['test/{,*/}*.js', '<%= config.app %>/scripts/{,*/}*.js'],
+          tasks: ['babel:test', 'shell:test']
         }
       }
       });
@@ -390,9 +363,6 @@ module.exports = function (grunt) {
             livereload: true
           }
         },
-        // gruntfile: {
-        //   files: ['Gruntfile.js']
-        // },
         sass: {
           files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
           tasks: ['sass:server', 'autoprefixer']
@@ -442,25 +412,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run([target ? ('serve:' + target) : 'serve']);
-  });
-
-  grunt.registerTask('test', function (target) {
-    if (target !== 'watch') {
-      grunt.task.run([
-        'clean:server',
-        'babel:test'
-      ]);
-    }
-
-    grunt.task.run([
-      'connect:test',
-      'watch-test'
-    ]);
-  });
-
   grunt.registerTask('i18n:compile', 'Convert csv to json, copy it to source', ['shell:i18nBuild', 'shell:i18nCopy']);
 
   grunt.registerTask('build', [
@@ -478,7 +429,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
+    'babel:test',
+    'shell:test',
     'build'
   ]);
 };

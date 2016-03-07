@@ -1,4 +1,12 @@
-/* global describe, it, expect, sinon, beforeEach, I18n, Params */
+/* global describe, it, beforeEach */
+var sinon = require('sinon');
+var chai = require('chai');
+var expect = chai.expect;
+var path = require('path');
+var basePath = path.join.bind(null, '..', '.tmp', 'scripts');
+
+var I18n = require(basePath('data', 'i18n.6.js'));
+var Params = require(basePath('params', 'params.6.js'));
 
 describe('I18n', function () {
 
