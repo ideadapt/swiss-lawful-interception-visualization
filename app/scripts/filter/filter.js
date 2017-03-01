@@ -128,7 +128,7 @@ function Filter(dataDivisions, map, i18n, params, Emitter){
 		if (window.document.readyState === 'complete'){
 			setupSticky();
 		}else{
-			$(window).load(setupSticky);
+			$(window).on("load", setupSticky);
 		}
 
 		function mapSelectionChanged(newCanton){

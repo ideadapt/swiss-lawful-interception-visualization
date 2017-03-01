@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 	var Map = require('sliv-map');
 	var map = new Map(Emitter);
-	$(window).load(function(){
+	$(window).on("load", function(){
 		map.init();
 	});
 
