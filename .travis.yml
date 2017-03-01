@@ -1,8 +1,14 @@
 language: node_js
 node_js:
-  - 5.7
-  - 4.3
-  - 4.2
+  - 7.6
+  - 6.10
+  - 4.8
 script: grunt
 before_install:
- - gem install sass
+  - npm install -g yarn --cache-min 999999999
+install:
+  - yarn
+cache:
+  yarn: true
+  directories:
+    - node_modules
