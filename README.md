@@ -9,10 +9,10 @@ http://nodejs.org/download/
 Run in terminal:
 
 ```
-sudo npm -g install grunt-cli
-sudo npm -g install jshint
-sudo npm -g install browserify
-npm install
+yarn global add install grunt-cli
+yarn global add install jshint
+yarn global add install browserify
+yarn install
 ```
 
 
