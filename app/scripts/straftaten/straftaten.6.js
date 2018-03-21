@@ -125,7 +125,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser, nv){
 				    		return;
 				    	}
 				    	var textUpright = d3.select('#straftaten .nv-legendWrap').append('text');
-               			if(bowser.msie || bowser.gecko){
+               			if(bowser.msie){
 	       					textUpright.attr('text-anchor', 'middle');
 	       				}
 	       				textUpright.text(i18n.l('TXT_TXT_KESCHWESTRATA'));
@@ -156,7 +156,7 @@ function Straftaten(dataDivisions, filter, i18n, bowser, nv){
                			}else{
 							var textSelected =d3.select('#straftaten .nv-legendWrap')
 	               				.append('text');
-		       				if(bowser.msie || bowser.gecko){
+		       				if(bowser.msie){
 		       					textSelected.attr('text-anchor', 'middle');
 		       				}
 	               			textSelected.text(`${value} (${percent}%)`);
