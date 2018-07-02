@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.12.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -14,3 +14,8 @@ patch:
         patched: '2017-09-27T11:44:57.332Z'
     - emitter > gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
         patched: '2017-09-27T11:44:57.332Z'
+  'npm:lodash:20180130':
+    - emitter > gulp-babel > babel-core > babel-plugin-proto-to-assign > lodash:
+        patched: '2018-07-02T23:17:32.542Z'
+    - emitter > gulp-babel > babel-core > lodash:
+        patched: '2018-07-02T23:17:32.542Z'
