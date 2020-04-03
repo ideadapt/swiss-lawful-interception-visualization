@@ -16,7 +16,7 @@
     "node-sass": "^4.5.0",
     "numeral": "^1.5.3",
     "nvd3": "1.8.5",
-    "papaparse": "4.1.4",
+    "papaparse": "5.2.0",
     "raphael": "2.2.7",
     "screenfull": "3.0.2"
   },
